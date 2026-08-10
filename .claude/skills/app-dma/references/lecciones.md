@@ -286,3 +286,32 @@ Tres reglas que salen de aquí:
    (`grep -n "^import X\|import X as"` y mira la indentación). Que el
    archivo compile con `ast.parse` no dice nada: `NameError` es de tiempo
    de ejecución.
+
+---
+
+## 21. Una dependencia que no compila no rompe la función: rompe el deploy
+
+Para los avisos push, la librería obvia es `pywebpush`. Arrastra `http-ece`,
+que **solo se publica como código fuente** (no hay ni una rueda compilada en
+PyPI) y su `setup.py` ya no funciona con setuptools moderno:
+`AttributeError: install_layout`. En un servicio como Render, donde el
+`pip install` es parte del arranque, eso no significa "los avisos no
+funcionan": significa **el servicio entero no levanta**.
+
+Antes de añadir una dependencia a algo que ya está en producción:
+
+```bash
+pip download <paquete> --no-deps --only-binary=:all: -d /tmp/x
+```
+
+Si responde *"No matching distribution found"*, ese paquete se compila en
+cada despliegue y depende de que las herramientas del sistema le sigan
+gustando. Para una pieza pequeña y con norma pública, sale más barato
+escribirla: Web Push son 150 líneas sobre `cryptography` (que sí publica
+binarios) — RFC 8291 para cifrar y RFC 8292 para firmar.
+
+Y la prueba que lo hace defendible: **el RFC trae un vector de ejemplo con
+salt y clave efímera fijos**. Reproducirlo byte a byte demuestra que el
+cifrado es correcto sin necesidad de un teléfono delante. Cuando escribas
+criptografía a mano, busca primero el vector de prueba de la norma; si no lo
+hay, no la escribas a mano.
