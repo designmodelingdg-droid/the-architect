@@ -258,3 +258,31 @@ retorna sin hacer nada (jamás bloquea a A); B anula en vez de borrar
 cuando A elimina; y si el destino depende de un dato del registro (p. ej.
 "pagado con tarjeta"), la columna de enrutamiento viaja en A y el trigger
 decide la cuenta destino en B.
+
+---
+
+## 20. `import` dentro de una función no existe para el resto del módulo
+
+Síntoma: el panel web recibía **502** de todas las rutas nuevas del puente
+(`/api/agenda/*`) mientras el mismo asistente leía el calendario perfecto
+por WhatsApp. Causa: `import google_client as gcal` estaba escrito **dentro
+de una función** (importado local), así que en cualquier otro handler el
+nombre `gcal` no existía; cada petición lanzaba `NameError`, el `except
+Exception` genérico lo convertía en 502 y el mensaje decía "calendario no
+disponible" — culpando a Google de un error propio.
+
+Tres reglas que salen de aquí:
+
+1. Si un módulo lo usan varios handlers, **impórtalo a nivel de módulo**.
+   El import local solo se justifica para romper un ciclo o para algo
+   pesado y raramente usado; en ese caso, ponlo en *cada* función que lo
+   use, nunca en una sola.
+2. Un `except Exception` que traduce todo a "servicio externo caído"
+   **esconde bugs propios**. Devuelve siempre un campo `detalle` con el
+   error real (recortado) y muéstralo en el cliente: convierte un 502 mudo
+   en un diagnóstico leíble sin abrir los logs.
+3. Antes de dar por buena una ruta nueva en un archivo de miles de líneas,
+   comprueba que **todos los nombres que usa están en el ámbito correcto**
+   (`grep -n "^import X\|import X as"` y mira la indentación). Que el
+   archivo compile con `ast.parse` no dice nada: `NameError` es de tiempo
+   de ejecución.
