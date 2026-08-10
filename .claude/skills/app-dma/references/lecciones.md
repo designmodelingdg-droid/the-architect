@@ -176,3 +176,85 @@ Lo que más valor dio en este proyecto:
   formulario.
 - **Operaciones simultáneas**: si ambos usuarios pueden hacer lo mismo a la vez,
   protege con `UNIQUE` y trata el conflicto como éxito, no como error.
+
+---
+
+## 13. Singleton con id booleano: `where id`, no `where id = 1`
+
+En `dg.settings` el id se definió como `id boolean primary key default
+true check (id)` — garantiza una sola fila. La condición correcta es
+`where id` a secas; `where id = 1` revienta con `operator does not exist:
+boolean = integer`. Si el proyecto mezcla singletons booleanos y numéricos
+(en `caja.settings` sí es `id = 1`), revisa el schema antes de filtrar.
+El arnés de Postgres real atrapa esto al primer intento — otra razón para
+correrlo siempre antes de entregar SQL.
+
+---
+
+## 14. SQL para producción: SIEMPRE archivo adjunto, nunca chat
+
+El formato del chat se come los asteriscos (`a * b` → `a  b`) y puede
+corromper multiplicaciones dentro del SQL sin que nadie lo note hasta que
+los montos salen mal. Todo SQL que otra persona vaya a pegar en el SQL
+Editor se entrega como archivo. Y el script debe terminar con una consulta
+de verificación (conteos, totales) para que quien lo corre confirme el
+resultado sin saber SQL.
+
+---
+
+## 15. Aviso falso de RLS en el SQL Editor de Supabase
+
+Al correr ciertos INSERT/UPDATE el editor avisa "esta consulta crea una
+tabla sin RLS" aunque el script no cree ninguna tabla. Es un falso
+positivo. La opción correcta es **"Run without RLS"** — significa "correr
+sin cambiar la configuración", que es lo que se quiere cuando RLS ya está
+activa. Verificable con `pg_class` (`relrowsecurity` / `relforcerowsecurity`).
+Jamás elegir "Run and enable RLS" a ciegas.
+
+---
+
+## 16. Rate limit de la API de GitHub: el plan B es merge directo
+
+La API puede pasar horas devolviendo rate limit y bloquear crear/mergear
+PRs. Si el usuario lo aprueba, el plan B es `git merge --squash rama` +
+commit + `git push origin main`, con TODA la verificación (lint, tests,
+build, arnés de BD) hecha ANTES del merge. Los PRs supersedidos se
+cierran cuando la API vuelva. Nunca dejes el trabajo verificado esperando
+a una API caída sin contárselo al usuario.
+
+---
+
+## 17. Datos de plataformas externas sin tocar su API directa
+
+Cuando la red del entorno bloquea una API (o no hay token utilizable), el
+conector correspondiente en **Windsor.ai** (MCP) suele resolver la
+lectura: GoHighLevel expone órdenes, transacciones, contactos, pipelines y
+oportunidades. Con eso se construyó el catálogo real de productos con
+precios verificados contra pagos reales. Regla de oro: cruza siempre el
+dato de la plataforma con la fuente oficial del negocio (en DMA, el guion
+de ventas) antes de darlo por bueno.
+
+---
+
+## 18. Las ventanas de negocio no son el mes calendario
+
+El "mes contable" del usuario va del día 5 al día 5. Ese tipo de regla
+debe vivir en UN solo módulo (`contableWindow()`) que todo lo demás
+consume: dashboard, obligaciones, estadísticas, cierres. Si cada pantalla
+calcula su propia ventana, aparecen números distintos para "el mes" y el
+usuario pierde la confianza. Y cuidado con los servidores intermedios:
+una whitelist de parámetros desactualizada degradaba "corte" a "mes" en
+silencio — el bug más caro de encontrar de todo el proyecto.
+
+---
+
+## 19. Espejo entre apps del mismo Supabase: trigger, no HTTP
+
+Para que un registro de la app A aparezca en la app B (gasto del hogar →
+gasto personal en finanzas): trigger `security definer` en el esquema de
+A que inserta en el de B, idempotente por `UNIQUE (source, source_id)` con
+`on conflict do update`. Reglas: si B no está configurada, el trigger
+retorna sin hacer nada (jamás bloquea a A); B anula en vez de borrar
+cuando A elimina; y si el destino depende de un dato del registro (p. ej.
+"pagado con tarjeta"), la columna de enrutamiento viaja en A y el trigger
+decide la cuenta destino en B.

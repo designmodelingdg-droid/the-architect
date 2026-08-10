@@ -236,6 +236,18 @@ And recommends skills for the **build phase** in the blueprint:
 | `/seo-audit` | SEO auditing after build |
 | `/humanizer` | Making content sound natural |
 
+## Proven in Production (DMA)
+
+This repo also carries the battle-tested toolkit distilled from building two
+real apps end to end:
+
+| Piece | What it is |
+|---|---|
+| `.claude/skills/app-dma/` | The full app-architect skill: interview → blueprint → block-by-block build, with tested assets (RLS harness, PWA icons, service worker, CI) and 19 production lessons |
+| `.claude/skills/spec` · `build` · `review` + `specs/` | Self-correcting cycle for single features inside an existing app |
+| `casos/caja-familiar.md` | Complete case study: the small app (2 users, 13 blocks) |
+| `casos/control-financiero-dg.md` | Complete case study: the big system (40+ blocks, 3 repos, shared Supabase) |
+
 ---
 
 ## Contributing
@@ -473,6 +485,18 @@ Y recomienda skills para la **fase de construccion** en el blueprint:
 | `/shadcn-ui` | Configurar librerias de componentes |
 | `/seo-audit` | Auditoria SEO despues de construir |
 | `/humanizer` | Hacer que el contenido suene natural |
+
+## Probado en Produccion (DMA)
+
+Este repo tambien guarda el kit destilado de construir dos apps reales de
+punta a punta:
+
+| Pieza | Que es |
+|---|---|
+| `.claude/skills/app-dma/` | El skill arquitecto completo: entrevista → blueprint → construccion por bloques, con assets probados (arnes de RLS, iconos PWA, service worker, CI) y 19 lecciones de produccion |
+| `.claude/skills/spec` · `build` · `review` + `specs/` | Ciclo auto-correctivo para funciones puntuales dentro de una app existente |
+| `casos/caja-familiar.md` | Caso completo: la app pequeña (2 usuarios, 13 bloques) |
+| `casos/control-financiero-dg.md` | Caso completo: el sistema grande (40+ bloques, 3 repos, Supabase compartido) |
 
 ---
 

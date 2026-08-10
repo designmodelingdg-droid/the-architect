@@ -113,7 +113,24 @@ Vercel (gratis, de los creadores de Next.js). Escribe `docs/DEPLOY.md` paso a pa
 | `references/stack.md` | Al proponer la arquitectura |
 | `references/blueprint.md` | Al redactar el blueprint |
 | `references/supabase-compartido.md` | Si la base de datos convive con otras apps |
-| `references/lecciones.md` | **Antes de depurar algo raro** — 12 trampas reales ya resueltas |
+| `references/lecciones.md` | **Antes de depurar algo raro** — 19 trampas reales ya resueltas |
+
+**Casos reales completos** (en el repo `the-architect`, carpeta `casos/`):
+
+| Caso | Qué muestra |
+|---|---|
+| `casos/caja-familiar.md` | El caso pequeño y completo: 2 usuarios, 13 bloques, de la entrevista a producción |
+| `casos/control-financiero-dg.md` | El sistema grande: 40+ bloques, 3 repos, Supabase compartido, asistente integrado, operación de producción por SQL adjunto |
+
+Cuando el usuario diga "otra app como la financiera" o "como Caja Familiar",
+lee el caso correspondiente: ahí está el orden real de bloques y las
+decisiones que funcionaron.
+
+**Ciclo `/spec` → `/build` → `/review`** (skills hermanos en `.claude/skills/`):
+para funciones puntuales DENTRO de una app ya construida, ese ciclo es más
+liviano que un bloque completo — la spec de la función va en `specs/` y
+`/review` la verifica requisito por requisito. Este skill (app-dma) es para
+construir apps enteras; el ciclo spec/build/review es para hacerles cirugía.
 
 **Assets probados (cópialos, funcionan):**
 
