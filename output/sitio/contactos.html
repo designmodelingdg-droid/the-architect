@@ -1,0 +1,187 @@
+<!--
+  CONTACTOS · Design Modeling DG
+  PEGAR EN: WordPress → esta página → plantilla Elementor Canvas → un widget HTML.
+  Los estilos vienen de estilos-compartidos.css (Apariencia → Personalizar → CSS adicional).
+-->
+<div class="dm">
+
+<nav class="dm-nav">
+  <div class="nav-top">
+    <div class="nav-top-inner">
+      <a href="mailto:info@dgdesignmodeling.com">info@dgdesignmodeling.com</a>
+      <a href="https://wa.me/593984372010">(+593) 98 4372010</a>
+      <a href="tel:+59325137246">(02) 513-7246</a>
+    </div>
+  </div>
+  <input type="checkbox" id="dm-menu" class="nav-check" />
+  <div class="nav-inner">
+    <a href="/"><img class="nav-logo" src="https://dgdesignmodeling.com/wp-content/uploads/2025/08/logo-dm-EX05-scaled.png" alt="Design Modeling DG — Consultoría BIM" /></a>
+    <div class="nav-links">
+        <a href="/servicios/">Servicios</a>
+        <a href="/dg-bim-intelligence/">Plataforma</a>
+        <a href="/quienes-somos/">Quiénes somos</a>
+        <a href="/acreditaciones/">Acreditaciones</a>
+        <a href="/bolsa-de-trabajo/">Bolsa de trabajo</a>
+        <a href="/blog/">Blog</a>
+        <a href="/contactos/" aria-current="page">Contacto</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <a href="/contactos/" class="nav-cta">Agenda tu diagnóstico</a>
+      <label for="dm-menu" class="nav-toggle" role="button" tabindex="0" aria-label="Abrir menú">&#9776;</label>
+    </div>
+  </div>
+  <div class="nav-movil">
+    <a href="/servicios/">Servicios</a>
+    <a href="/dg-bim-intelligence/">Plataforma</a>
+    <a href="/quienes-somos/">Quiénes somos</a>
+    <a href="/acreditaciones/">Acreditaciones</a>
+    <a href="/bolsa-de-trabajo/">Bolsa de trabajo</a>
+    <a href="/blog/">Blog</a>
+    <a href="/contactos/" aria-current="page">Contacto</a>
+  </div>
+</nav>
+
+
+<section class="page-hero" style="background-image: linear-gradient(135deg, rgba(0,30,48,0.93) 0%, rgba(0,62,92,0.84) 100%), url('https://dgdesignmodeling.com/wp-content/uploads/2026/08/dm-hero.jpg');">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Inicio</a><span>›</span><a href="/contactos/">Contacto</a><span>›</span></div>
+    <span class="eyebrow">Contacto</span>
+    <h1>Cuéntanos de tu proyecto</h1>
+    <p class="lead">Treinta minutos de diagnóstico pueden ahorrarte semanas de retrabajo en obra. Sin costo, sin compromiso y con una respuesta concreta sobre qué encontramos.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="contacto-grid">
+      <div>
+        <span class="eyebrow">Dónde encontrarnos</span>
+        <h2>MODELING-DG S.A.S</h2>
+        <p class="lead" style="margin-bottom:30px">RUC: 1793148549001</p>
+        <div class="dato">
+          <h4>Oficina</h4>
+          <span>Tomasa Mideros y Juana Terrazas OE4-86</span>
+          <span>Quito, Ecuador</span>
+        </div>
+        <div class="dato">
+          <h4>Correos</h4>
+          <a href="mailto:info@dgdesignmodeling.com">info@dgdesignmodeling.com</a>
+          <a href="mailto:designmodelingdg@gmail.com">designmodelingdg@gmail.com</a>
+        </div>
+        <div class="dato">
+          <h4>Teléfonos</h4>
+          <a href="tel:+59325137246">(02) 513-7246</a>
+          <a href="https://wa.me/593984372010" target="_blank" rel="noopener">(+593) 098 437-2010 · WhatsApp</a>
+          <a href="tel:+593983742722">(+593) 098 374-2722</a>
+        </div>
+        <div class="dato">
+          <h4>Horario de atención</h4>
+          <span>Lunes a viernes, 9:00 a 18:00 (GMT-5)</span>
+        </div>
+      </div>
+      <div class="form-card" id="formulario">
+        <div class="form-header">
+          <span class="badge-mini">Sin costo · Sin compromiso</span>
+          <h3>Agenda tu diagnóstico</h3>
+          <p>Revisamos tu proyecto y te decimos qué encontramos. Un consultor te contacta en 24 h.</p>
+        </div>
+        <div class="form-body">
+
+          <!-- ▼▼ REEMPLAZAR POR EL IFRAME DE SHARP CRM ▼▼ -->
+          <div class="form-placeholder">
+            <div class="fp-title">Formulario pendiente de conectar</div>
+            <div class="fp-text">Aquí va el formulario de Sharp CRM.<br>Mientras tanto, escríbenos directo:</div>
+            <div class="form-alt">
+              <a href="https://wa.me/593984372010?text=Hola%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20de%20consultor%C3%ADa%20BIM" target="_blank" rel="noopener" class="btn btn-wa">Escríbenos por WhatsApp</a>
+              <a href="mailto:info@dgdesignmodeling.com?subject=Diagn%C3%B3stico%20de%20consultor%C3%ADa%20BIM" class="btn btn-linea">info@dgdesignmodeling.com</a>
+            </div>
+          </div>
+          <!--
+            CUANDO TENGAS EL FORM ID, borra el div.form-placeholder de arriba y pega esto,
+            reemplazando PEGAR_FORM_ID_AQUI por tu ID real de Sharp CRM:
+
+            <iframe src="https://link.apisystem.tech/widget/form/PEGAR_FORM_ID_AQUI"
+              id="inline-PEGAR_FORM_ID_AQUI" data-layout="{{'id':'INLINE'}}"
+              data-trigger-type="alwaysShow" data-activation-type="alwaysActivated"
+              data-deactivation-type="neverDeactivate" data-form-name="FORMULARIO CONSULTORIA BIM"
+              data-height="620" data-layout-iframe-id="inline-PEGAR_FORM_ID_AQUI"
+              data-form-id="PEGAR_FORM_ID_AQUI" title="FORMULARIO CONSULTORIA BIM"></iframe>
+            <script src="https://link.apisystem.tech/js/form_embed.js"></script>
+          -->
+          <!-- ▲▲ FIN DEL BLOQUE A REEMPLAZAR ▲▲ -->
+
+        </div>
+        <div class="form-footer">Respuesta en menos de 24 h · Atendemos Ecuador y toda Latinoamérica</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-crema">
+  <div class="container">
+    <div class="sec-head center">
+      <span class="eyebrow">También por aquí</span>
+      <h2>Accede a material exclusivo en nuestras redes</h2>
+      <p class="lead">Publicamos herramientas, tutoriales y novedades pensadas para profesionales que quieren transformar la manera de diseñar y construir.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:26px">
+        <a href="https://wa.me/593984372010" target="_blank" rel="noopener" class="btn btn-wa">WhatsApp</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="btn btn-linea">Instagram</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="btn btn-linea">LinkedIn</a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener" class="btn btn-linea">YouTube</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="dm-footer">
+  <div class="footer-grid">
+    <div>
+      <img class="footer-logo" src="https://dgdesignmodeling.com/wp-content/uploads/2025/08/logo-dm-EX05-scaled.png" alt="Design Modeling DG" />
+      <p class="footer-about">Consultoría BIM para proyectos estructurales y arquitectónicos. Partner y Centro de Formación Autorizado de Autodesk. Ecuador y Latinoamérica.</p>
+      <div class="redes">
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">Fb</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">Ig</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">In</a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">Yt</a>
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok">Tk</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <a href="/servicios/#calculo">Cálculo estructural</a>
+      <a href="/servicios/#arquitectura">Arquitectura y planos</a>
+      <a href="/servicios/#coordinacion">Coordinación BIM</a>
+      <a href="/servicios/#implementacion">Implementación BIM</a>
+      <a href="/dg-bim-intelligence/">DG BIM Intelligence</a>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <a href="/quienes-somos/">Quiénes somos</a>
+      <a href="/acreditaciones/">Acreditaciones</a>
+      <a href="/bolsa-de-trabajo/">Bolsa de trabajo</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://designmodelingacademy.com/es/" target="_blank" rel="noopener">Design Modeling Academy</a>
+    </div>
+    <div class="footer-col">
+      <h4>Conversemos</h4>
+      <a href="mailto:info@dgdesignmodeling.com">info@dgdesignmodeling.com</a>
+      <a href="https://wa.me/593984372010" target="_blank" rel="noopener">(+593) 98 4372010</a>
+      <a href="tel:+59325137246">(02) 513-7246</a>
+      <span>Tomasa Mideros y Juana Terrazas OE4-86</span>
+      <span>Quito, Ecuador</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Copyright © 2026 MODELING-DG S.A.S · RUC: 1793148549001 · Todos los derechos reservados.</span>
+    <span>
+      <a href="/terminos-y-condiciones/">Términos y condiciones</a> ·
+      <a href="/politicas-de-privacidad/">Políticas de privacidad</a> ·
+      <a href="/politicas-de-cookies/">Cookies</a>
+    </span>
+  </div>
+</footer>
+
+<a class="dm-wa" href="https://wa.me/593984372010?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20consultor%C3%ADa%20BIM" target="_blank" rel="noopener">Contactar a un asesor</a>
+
+</div>
