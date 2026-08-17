@@ -108,7 +108,8 @@ tablero-kpis-design/
         pendientes/page.tsx        # 3b. Pendientes abiertos
         cierre/page.tsx            # 4. Cierre del mes + export
         ajustes/page.tsx           # metas, ítems de control, personas (solo admin)
-      api/cron/sync-ventas/route.ts  # lo dispara el cron de Vercel
+      api/cron/sync-ventas/route.ts   # cron de Vercel: ventas GHL
+      api/cron/sync-clickup/route.ts  # cron de Vercel: trazabilidad ClickUp
     actions/
       marcas.ts                    # marcar / desmarcar  ← la acción más usada
       pendientes.ts
@@ -141,6 +142,7 @@ tablero-kpis-design/
       003_whitelist.sql
       004_semillas.sql             # personas, KPIs con metas reales, 25 ítems, 14 pendientes
     functions/sync-ventas/         # Edge Function (Deno): GHL + Meta
+    functions/sync-clickup/        # Edge Function (Deno): tareas cerradas de ClickUp
     tests/rls.sql                  # arnés de seguridad
   scripts/
     gen-icons.mjs                  # del skill app-dma
@@ -466,7 +468,8 @@ Vercel desde fuera.
 | `registrarEntrega` | `actions/entregas.ts` | cualquiera sobre lo suyo | con `en_clickup` |
 | `validarVenta` / `descartarVenta` | `actions/ventas.ts` | **solo admin (Dayana)** | mueve `por_validar` → `validada`/`descartada` |
 | `cerrarPeriodo` | `actions/periodos.ts` | **solo admin**, en dos pasos | sella el periodo |
-| `GET /api/cron/sync-ventas` | route handler | cron de Vercel + `CRON_SECRET` | dispara la Edge Function |
+| `GET /api/cron/sync-ventas` | route handler | cron de Vercel + `CRON_SECRET` | trae y depura las ventas de GHL |
+| `GET /api/cron/sync-clickup` | route handler | cron de Vercel + `CRON_SECRET` | cruza las tareas cerradas de ClickUp contra `entregas` |
 
 ### Detalle de las críticas
 
@@ -644,17 +647,28 @@ contra `permitidos` → si el correo no está, la base lanza excepción y el usu
 
 ### Registro
 
-**Cerrado.** Whitelist dura en la base. Correos iniciales:
+**Cerrado.** Whitelist dura en la base. Correos tomados del workspace de ClickUp de DMA
+(fuente de verdad del equipo, consultada el 17/08/2026):
 
-| Correo | Nombre | Rol |
-|---|---|---|
-| (correo de Dayana Bruno) | Dayana Bruno | `admin` |
-| (correo de Ester Alvarez) | Ester Alvarez | `coordinadora` |
-| (correo de Aylin Tapia) | Aylin Tapia | `miembro` |
-| (correo de Camila Pinto) | Camila Pinto | `miembro` |
+| Correo | Nombre | Rol | Función |
+|---|---|---|---|
+| `designmodelingdg@gmail.com` | Dayana Calderón Brunetti | `admin` | Dirección |
+| `asistencia.generaldg@gmail.com` | Ester Álvarez | `coordinadora` | Asesora Cursos · coordinación operativa |
+| `aylin.taur@gmail.com` | Aylin Tapia | `miembro` | Soporte Técnico |
+| `cami16012001@gmail.com` | Camila Pinto | `miembro` | Setter (se incorporó el 05/08) |
+| `martinezeber61@gmail.com` | Eber Martínez | `miembro` | Closer Máster |
+| `gabrielpantoja.ucab@gmail.com` | Gabriel Pantoja Linares | `miembro` | Supervisión de Soporte |
 
-> Los correos exactos los carga el usuario en `004_semillas.sql` antes de aplicar las
-> migraciones. No van en el repo.
+> **Dos cosas a confirmar antes de aplicar `004_semillas.sql`:**
+> 1. **Gabriel queda como `miembro`** por defecto. Aprueba permisos de jornada y dio las
+>    capacitaciones de Soporte, así que podría corresponderle `coordinadora` — pero un rol
+>    con más privilegios no se asume: lo decide Dayana.
+> 2. **Franklin no tiene cuenta en ClickUp**, así que no hay correo suyo. Aparece en el
+>    informe entre las capacitaciones del equipo de ventas. Si va a marcar en el tablero,
+>    hay que sumarlo a mano a `permitidos`.
+>
+> El archivo `004_semillas.sql` con estos correos **no se versiona en el repo público**: se
+> aplica directamente contra el Supabase del proyecto.
 
 ### Rutas protegidas
 
@@ -794,22 +808,31 @@ quedándose con el de mayor valor; excluir "Prueba"; $0 y recurrentes a higiene)
 todo como `por_validar`. Cron diario en Vercel.
 *Entregable:* las ventas del periodo aparecen solas, ninguna suma al total todavía.
 
-**Bloque 10 · Validación + higiene CRM**
+**Bloque 10 · Sync de ClickUp (trazabilidad automática)**
+Como ClickUp se queda (Anexo D), la marca `entregas.en_clickup` **no se tilda a mano**.
+Edge Function `sync-clickup` que lee las tareas cerradas del workspace por responsable y
+periodo (`clickup_filter_tasks` sobre el workspace de DMA), las cruza contra `entregas` por
+título y responsable, y actualiza `en_clickup`. Lo que no cruza queda como "solo en el
+tablero" y alimenta el KPI `registro_entregas`. Mismo cron que el bloque 9.
+*Entregable:* la brecha entre lo entregado y lo registrado en ClickUp se calcula sola, sin
+que nadie la tilde.
+
+**Bloque 11 · Validación + higiene CRM**
 Pantalla de cierre: Dayana valida o descarta; la lista de higiene sale con nombre y apellido.
 *Entregable:* el total del semáforo se mueve solo con lo que Dayana validó.
 
-**Bloque 11 · Export del cierre**
+**Bloque 12 · Export del cierre**
 Botón que baja el JSON del periodo con la estructura que consumen los scripts de ReportLab
 existentes y el método `/cierre-mes`.
 *Entregable:* el informe administrativo se arma desde el tablero, sin re-teclear.
 
-**Bloque 12 · PWA + pulido**
+**Bloque 13 · PWA + pulido**
 `manifest.json`, service worker (`assets/sw.js` del skill), cabeceras de caché
 (`assets/next.config.ts` — **no saltarse esto**, es la tarde perdida de Caja Familiar),
 estados vacíos y de carga.
 *Entregable:* instalable en el celular de Ester, con estados vacíos en llano.
 
-**Bloque 13 · Deploy + checklist de seguridad**
+**Bloque 14 · Deploy + checklist de seguridad**
 Vercel, variables de entorno, `docs/DEPLOY.md` y `docs/OPERACION.md`.
 *Entregable:* en producción, con la prueba de rechazo repetida contra el dominio real.
 
@@ -824,6 +847,7 @@ Vercel, variables de entorno, `docs/DEPLOY.md` y `docs/OPERACION.md`.
 - Cuenta de Vercel
 - Cuenta de Google Cloud para el cliente OAuth
 - Acceso a Windsor.ai con el conector `gohighlevel` activo (para el bloque 9)
+- Token de API de ClickUp del workspace de DMA (para el bloque 10)
 
 ### Variables
 
@@ -834,6 +858,8 @@ Vercel, variables de entorno, `docs/DEPLOY.md` y `docs/OPERACION.md`.
 | `SUPABASE_SERVICE_ROLE_KEY` | Edge Function y semillas | Supabase → Settings → API | **NO — nunca al cliente** |
 | `WINDSOR_API_KEY` | leer GHL | Windsor.ai → API | **NO** |
 | `GHL_LOCATION_ID` | cuenta DMA (`nkKbOarn5IwHeMv48uY9`) | GHL | **NO** |
+| `CLICKUP_API_TOKEN` | leer tareas cerradas | ClickUp → Settings → Apps | **NO** |
+| `CLICKUP_TEAM_ID` | workspace de DMA | ClickUp → URL del workspace | **NO** |
 | `CRON_SECRET` | autenticar el cron de Vercel | generar con `openssl rand -hex 32` | **NO** |
 | `UPSTASH_REDIS_REST_URL` / `_TOKEN` | rate limiting | Upstash | **NO** |
 | `TZ_NEGOCIO` | `America/Guayaquil` | fijo | sí |
@@ -898,7 +924,10 @@ PR. Sin los tres en verde, no se mergea.
 
 `vercel.json`:
 ```json
-{ "crons": [{ "path": "/api/cron/sync-ventas", "schedule": "0 11 * * *" }] }
+{ "crons": [
+  { "path": "/api/cron/sync-ventas",  "schedule": "0 11 * * *" },
+  { "path": "/api/cron/sync-clickup", "schedule": "0 11 * * *" }
+] }
 ```
 11:00 UTC = 06:00 en Guayaquil. El handler exige `CRON_SECRET`.
 
@@ -952,9 +981,9 @@ Subdominio interno, por ejemplo `kpis.designmodeling.com`, apuntando a Vercel. N
 | `/dataviz` | Bloques 6 y 7 | Antes de escribir la primera línea de gráfico: tarjetas KPI, barras y semáforo consistentes |
 | `/frontend-design` | Bloques 4, 5, 6 | Interfaz de nivel producción sobre el brandkit DMA |
 | `/shadcn-ui` | Bloques 1 y 5 | Checkbox, Tabs y Dialog accesibles |
-| `/cierre-mes` | Bloques 9, 10, 11 | Las reglas de depuración de GHL y el formato del cierre ya validados con Dayana |
-| `/spec` → `/build` → `/review` | Después del bloque 13 | Para funciones sueltas sobre la app ya construida; más liviano que un bloque completo |
-| `/playwright-cli` | Bloque 13 | E2E del flujo de marcado y capturas contra el diseño |
+| `/cierre-mes` | Bloques 9, 11, 12 | Las reglas de depuración de GHL y el formato del cierre ya validados con Dayana |
+| `/spec` → `/build` → `/review` | Después del bloque 14 | Para funciones sueltas sobre la app ya construida; más liviano que un bloque completo |
+| `/playwright-cli` | Bloque 14 | E2E del flujo de marcado y capturas contra el diseño |
 
 ---
 
@@ -1037,6 +1066,7 @@ Escala 4px. Ancho máximo 1200px. Mobile-first: las filas marcables miden 44px d
 | `SUPABASE_SERVICE_ROLE_KEY` | Edge Function. Nunca llega al cliente |
 | `WINDSOR_API_KEY` | leer GoHighLevel |
 | `GHL_LOCATION_ID` | cuenta DMA en GHL |
+| `CLICKUP_API_TOKEN` / `CLICKUP_TEAM_ID` | leer tareas cerradas de ClickUp |
 | `CRON_SECRET` | autenticar el cron de Vercel |
 | `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | rate limiting |
 
@@ -1061,24 +1091,28 @@ Escala 4px. Ancho máximo 1200px. Mobile-first: las filas marcables miden 44px d
 
 ## 16. Reglas No Negociables
 
-1. **No convertir esto en un segundo ClickUp.** El checklist marca sobre un catálogo curado
-   de ítems recurrentes. Si aparece la necesidad de re-teclear cada tarea del día, la
-   respuesta es corregir el catálogo, no agregar un formulario de alta libre.
-2. **La zona horaria es `America/Guayaquil`** y la ventana del periodo va del día 5 al día
+1. **No convertir esto en un segundo ClickUp.** ClickUp se queda y convive con el tablero
+   (Anexo D): las tareas puntuales viven allá, los ítems recurrentes y los números viven
+   acá. El checklist marca sobre un catálogo curado. Si aparece la necesidad de re-teclear
+   cada tarea del día, la respuesta es corregir el catálogo, no agregar un formulario de
+   alta libre.
+2. **`entregas.en_clickup` nunca se tilda a mano.** Lo calcula el sync del bloque 10. Pedirle
+   a alguien que marque en dos sistemas es exactamente lo que produjo el 32,6%.
+3. **La zona horaria es `America/Guayaquil`** y la ventana del periodo va del día 5 al día
    5. Ambas cosas viven en `lib/fechas.ts` y están cubiertas por tests.
-3. **`vence` obligatorio en pendientes.** Es la corrección directa del hallazgo del informe.
-4. **Nada suma al total sin validar.** Las ventas sincronizadas entran como `por_validar`;
+4. **`vence` obligatorio en pendientes.** Es la corrección directa del hallazgo del informe.
+5. **Nada suma al total sin validar.** Las ventas sincronizadas entran como `por_validar`;
    solo el `admin` las mueve. Las de $0, duplicadas o sin fuente van a higiene con nombre y
    apellido.
-5. **Seguridad en RLS y whitelist en la base.** Registro cerrado; un correo ajeno se rechaza
+6. **Seguridad en RLS y whitelist en la base.** Registro cerrado; un correo ajeno se rechaza
    en Postgres, no en la UI. El arnés de RLS pasa antes de cada merge.
-6. **Dinero en centavos, porcentajes en puntos base, horas en minutos.** Enteros siempre.
-7. **El cierre de periodo es en dos pasos y reversible el mismo día** por el admin. Lección
+7. **Dinero en centavos, porcentajes en puntos base, horas en minutos.** Enteros siempre.
+8. **El cierre de periodo es en dos pasos y reversible el mismo día** por el admin. Lección
    del cierre de caja de Caja Familiar.
-8. **Mobile-first.** Ester marca desde el celular: filas de 44px, sin hover como única
+9. **Mobile-first.** Ester marca desde el celular: filas de 44px, sin hover como única
    affordance, sin tablas que obliguen a desplazamiento horizontal.
-9. **Marcar es optimista y sin spinner.** Si el servidor falla, se revierte y avisa.
-10. **Repo privado.** Ningún correo ni nombre real en el código: van en `004_semillas.sql`,
+10. **Marcar es optimista y sin spinner.** Si el servidor falla, se revierte y avisa.
+11. **Repo privado.** Ningún correo ni nombre real en el código: van en `004_semillas.sql`,
     que se aplica en el Supabase del usuario.
 
 ---
@@ -1147,35 +1181,81 @@ Cursos US$41,93 · ROAS 2,76x.
 
 ## Anexo C · Los 14 pendientes de arranque
 
-Cargar en `004_semillas.sql` con `estado = 'abierto'`. **Los 9 que hoy no tienen fecha
-necesitan una antes de entrar** — el campo es obligatorio y esa es exactamente la
-corrección que persigue el tablero.
+Cargar en `004_semillas.sql` con `estado = 'abierto'`. Fechas repartidas sobre los días
+hábiles que quedan de agosto de 2026, respetando dependencias y equilibrando la carga entre
+Aylin y Ester.
 
 | Tarea | Responsable | Vence | Prioridad | Área |
 |---|---|---|---|---|
-| Revisar y aplicar política de privacidad en Vimeo | Aylin | 14/08 | alta | GHL |
-| Política de privacidad en Vimeo (con Gabriel) | Aylin | *asignar* | media | Soporte |
-| Renombrar y ordenar videos base de cada curso | Aylin | *asignar* | media | GHL |
-| Crear correos nuevos con IA para plantillas | Aylin | *asignar* | media | GHL |
-| Limpiar correos viejos + mejorar plantillas con IA | Aylin | *asignar* | media | GHL |
-| Limpiar automatizaciones sin uso + activar workflow | Aylin | *asignar* | media | GHL |
-| Actualizar landings de la página de recursos | Ester | 14/08 | alta | GHL |
-| Publicar artes de marketing para ads + IG | Ester | 14/08 | alta | Contenido |
-| Primer post de agosto + contenido de la semana 1 | Ester | 14/08 | alta | Contenido |
-| Correos post-pérdida (secuencia tras oportunidad perdida) | Ester | *asignar* | alta | GHL |
-| Notificación de nuevo comentario para docentes | Ester | *asignar* | media | GHL |
-| Enviar a Patricio el código consolidado del bot (PR #4) | Ester | *asignar* | media | GHL |
-| Configurar campañas de correo en GHL (con Patricio) | Ester | *asignar* | media | Marketing |
-| Añadir los 4 puntos definidos en la interfaz de cursos | Aylin + Ester | *asignar* | media | GHL |
+| Revisar y aplicar política de privacidad en Vimeo | Aylin | **mar 18/08** ⚠ | alta | GHL |
+| Actualizar landings de la página de recursos | Ester | **mar 18/08** ⚠ | alta | GHL |
+| Publicar artes de marketing para ads + IG | Ester | **mié 19/08** ⚠ | alta | Contenido |
+| Primer post de agosto + contenido de la semana 1 | Ester | **mié 19/08** ⚠ | alta | Contenido |
+| Enviar a Patricio el código consolidado del bot (PR #4) | Ester | mar 18/08 | media | GHL |
+| Correos post-pérdida (secuencia tras oportunidad perdida) | Ester | jue 20/08 | alta | GHL |
+| Añadir los 4 puntos definidos en la interfaz de cursos | Aylin + Ester | vie 21/08 | media | GHL |
+| Política de privacidad en Vimeo (con Gabriel) | Aylin | vie 21/08 | media | Soporte |
+| Crear correos nuevos con IA para plantillas | Aylin | lun 24/08 | media | GHL |
+| Notificación de nuevo comentario para docentes | Ester | mar 25/08 | media | GHL |
+| Renombrar y ordenar videos base de cada curso | Aylin | mié 26/08 | media | GHL |
+| Configurar campañas de correo en GHL (con Patricio) | Ester | jue 27/08 | media | Marketing |
+| Limpiar correos viejos + mejorar plantillas con IA | Aylin | vie 28/08 | media | GHL |
+| Limpiar automatizaciones sin uso + activar workflow | Aylin | lun 31/08 | media | GHL |
 
-## Anexo D · Advertencia honesta
+**⚠ Las cuatro marcadas ya están vencidas.** Tenían vencimiento 14/08 y hoy es 17/08, así
+que entran al tablero en rojo desde el primer día. Reprogramadas al 18 y 19 de agosto: son
+las de prioridad alta y conviene cerrarlas esta misma semana.
 
-DMA ya opera con tres sistemas de registro (GHL, ClickUp y planillas) y el diagnóstico de
-los informes es que el problema no es la falta de herramientas sino que el trabajo no se
-registra en ninguna. **Un cuarto tablero solo ayuda si reemplaza algo.**
+**Criterio del reparto:**
+- **Cadena de correos con IA** (Aylin): crear plantillas nuevas 24/08 → limpiar las viejas
+  28/08 → limpiar automatizaciones y activar el workflow 31/08. En ese orden, porque cada
+  una depende de la anterior.
+- **Cadena del bot** (Ester): mandar el código a Patricio el 18/08 desbloquea configurar las
+  campañas de correo con él, que queda el 27/08.
+- **Correos post-pérdida** al 20/08 pese a no tener dependencias: es la única entrega del
+  bloque de automatizaciones que no se completó en el ciclo anterior y golpea directo la
+  recuperación de oportunidades.
+- **Carga pareja:** Aylin cierra 6 (18, 21, 24, 26, 28, 31) y Ester 7 (18×2, 19×2, 20, 25,
+  27), con la compartida el 21. Ninguna semana lleva más de tres por persona.
 
-La recomendación es explícita: el tablero **sustituye el armado manual del informe
-administrativo** y se vuelve el único lugar del ritual semanal del equipo de Design.
-ClickUp queda para el detalle granular de tareas — o se retira para este equipo. Esa
-decisión es de Dayana y Ester, y conviene tomarla **antes** del bloque 5; si el equipo
-termina marcando en dos lugares, el tablero heredará el mismo 32,6% que hoy tiene ClickUp.
+> **Corrección al informe:** son **10** los pendientes sin fecha, no 9 como decía el
+> Anexo B del PDF administrativo. La diferencia es la tarea compartida de Aylin + Ester,
+> que quedó fuera de ese conteo.
+
+## Anexo D · La frontera con ClickUp
+
+**Decisión tomada (Dayana, 17/08/2026): ClickUp se queda.** El equipo lo sigue usando y el
+tablero convive con él. Eso obliga a trazar la frontera con precisión, porque el riesgo real
+no desaparece: si una persona tiene que registrar lo mismo en dos lugares, deja de hacerlo
+en uno — y así el tablero heredaría el mismo 32,6% que hoy tiene ClickUp.
+
+### Quién manda sobre qué
+
+| | ClickUp | Tablero |
+|---|---|---|
+| **Tareas granulares del día a día** | ✅ fuente de verdad | ❌ no las duplica |
+| **Ítems de control recurrentes** (diario/semanal/mensual) | ❌ | ✅ los ~25 del Anexo A |
+| **Pendientes de cierre de periodo** | ❌ | ✅ con `vence` obligatorio |
+| **KPIs, metas y semáforo** | ❌ | ✅ |
+| **Jornada, horas y entregas** | ❌ | ✅ |
+| **Ventas e higiene del CRM** | ❌ (eso es GHL) | ✅ validación y cola |
+
+Regla de bolsillo: **si es una tarea puntual con nombre propio, va a ClickUp. Si es algo que
+se repite cada día o cada semana, o es un número contra una meta, va al tablero.**
+
+### La consecuencia técnica: no se marca `en_clickup` a mano
+
+Ester **no** tiene que ir tildando qué entregas quedaron registradas en ClickUp — eso sería
+justo el trabajo doble que mata la adopción. Como ClickUp se queda, el tablero **lee su API**
+y calcula la trazabilidad solo (bloque 10). El KPI `registro_entregas` deja de ser una
+casilla y pasa a ser una consulta.
+
+Esto además convierte a ClickUp en un aliado del diagnóstico en vez de en su síntoma: el
+tablero muestra en vivo la brecha entre lo que el equipo entregó y lo que ClickUp registró,
+que es exactamente el número que el informe tardó un mes en descubrir.
+
+### Lo único que hay que sostener
+
+El tablero **sustituye el armado manual del informe administrativo**. Si al cierre del mes
+alguien vuelve a reconstruir la información a mano, el tablero no está cumpliendo su función
+y hay que revisar el catálogo del Anexo A, no agregarle pantallas.
