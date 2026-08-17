@@ -4,9 +4,14 @@
 **De:** The Architect · encargo de Dayana Calderón
 **Fecha:** 17 de agosto de 2026
 
-Este documento es autosuficiente: contiene los datos reales del equipo, los permisos, el
-esquema de base de datos y las integraciones. No hace falta leer la conversación que lo
-originó.
+Este documento se lee solo: trae los datos reales del equipo, la matriz de permisos, el
+esquema de base de datos completo de los tres módulos, las integraciones y el orden de
+construcción. No hace falta leer la conversación que lo originó.
+
+Lo único que no está transcrito acá son **tres catálogos de arranque** —los 25 ítems de
+control, los KPIs con sus metas en detalle y los 14 pendientes—, que viven en los anexos de
+`tablero-kpis-design-blueprint.md` y, ya listos para copiar, en las constantes del `<script>`
+de las maquetas HTML. Ver §5.3.
 
 ---
 
@@ -379,8 +384,150 @@ Dayana; para el servidor hace falta una API key propia.
 
 ## 5. Módulo KPIs Equipo
 
-Cinco vistas: semáforo del mes, checklist del equipo, KPIs por persona, pendientes y cierre.
-El detalle completo está en `tablero-kpis-design-blueprint.md`. Lo esencial:
+Cinco vistas: **semáforo del mes · checklist del equipo · KPIs por persona · pendientes ·
+cierre**.
+
+### 5.1 El catálogo de indicadores, con metas y línea base
+
+Esto es lo que no se puede inventar: las metas son de Dayana y la línea base es el ciclo
+05 jul – 05 ago 2026, ya cerrado. Cargarlo tal cual permite que el semáforo tenga sentido
+desde el primer día.
+
+| Clave | Nombre | Bloque | Unidad | Meta | Dirección | Línea base jul–ago |
+|---|---|---|---|---|---|---|
+| `facturacion_cobrada` | Facturación cobrada | comercial | `usd_centavos` | 1000000 | mayor mejor | 340687 (US$ 3.406,87) |
+| `master_estudiantes` | Máster High Tickets | comercial | `conteo` | 12 | mayor mejor | 1 |
+| `lowcost_facturado` | Cursos Lowcost | comercial | `usd_centavos` | 300000 | mayor mejor | 290687 |
+| `asistencia_citas` | Asistencia a citas | comercial | `bp` | 8000 | mayor mejor | 3020 (30,2%) |
+| `higiene_crm` | Ventas registradas en GHL | comercial | `bp` | 9000 | mayor mejor | 5310 |
+| `registro_entregas` | Entregas registradas | administrativo | `bp` | 8500 | mayor mejor | 3260 |
+| `cumplimiento_jornada` | Cumplimiento de jornada | administrativo | `bp` | 9500 | mayor mejor | 9840 |
+| `cac_master` | CAC Máster | marketing | `usd_centavos` | 40000 | **menor** mejor | 39204 |
+| `cac_cursos` | CAC Cursos | marketing | `usd_centavos` | 4500 | **menor** mejor | 4193 |
+| `roas` | ROAS sobre cobrado | marketing | `bp` | 30000 | mayor mejor | 27600 (2,76x) |
+
+**Unidades, todas enteras:** `usd_centavos` (dinero), `bp` = puntos base (porcentajes:
+8000 = 80,0%), `conteo`, `minutos` (tiempo). Ningún `float` para plata ni para porcentajes.
+
+**Regla del semáforo:** verde si cumple la meta; ámbar desde el 80% de la meta; rojo bajo
+eso. Para los indicadores de *menor mejor* la razón se invierte (`meta / valor`). Cada
+tarjeta muestra además la etiqueta en texto —Cumplido / En riesgo / Incumplido— porque el
+color solo no basta.
+
+Contexto para leer la línea base: **la asistencia a citas es el cuello de botella real.**
+De 53 citas agendadas, 37 no llegaron. Con asistencia normal el Máster habría cerrado 8
+estudiantes en vez de 1 — el problema no fue el cierre ni la pauta.
+
+### 5.2 Tablas del módulo
+
+```sql
+create type direccion_meta as enum ('mayor_mejor','menor_mejor');
+create type cadencia       as enum ('diario','semanal','mensual');
+create type origen_valor   as enum ('manual','ghl','meta','clickup');
+create type estado_venta   as enum ('por_validar','validada','descartada');
+
+-- La ventana del mes: del día 5 al día 5. `termina` es exclusivo.
+create table periodos (
+  id bigserial primary key,
+  inicia date not null, termina date not null,
+  etiqueta text not null unique,          -- '2026-07'
+  cerrado boolean not null default false,
+  check (termina > inicia)
+);
+
+create table kpis (
+  id bigserial primary key,
+  clave text not null unique, nombre text not null,
+  bloque text not null check (bloque in ('comercial','marketing','administrativo')),
+  unidad text not null check (unidad in ('usd_centavos','bp','conteo','minutos')),
+  meta_valor bigint, direccion direccion_meta not null default 'mayor_mejor',
+  umbral_ambar_bp int not null default 8000,
+  orden int not null default 0, activo boolean not null default true
+);
+
+create table kpi_valores (
+  id bigserial primary key,
+  kpi_id bigint not null references kpis(id) on delete cascade,
+  periodo_id bigint not null references periodos(id) on delete cascade,
+  valor bigint not null, origen origen_valor not null default 'manual', nota text,
+  actualizado_por uuid references profiles(id),
+  actualizado_en timestamptz not null default now(),
+  unique (kpi_id, periodo_id)
+);
+
+-- El catálogo de lo marcable. Esta tabla es el producto del módulo.
+create table items_control (
+  id bigserial primary key,
+  titulo text not null, area area_equipo not null, cadencia cadencia not null,
+  responsable_id uuid references profiles(id) on delete set null,
+  orden int not null default 0, activo boolean not null default true
+);
+
+-- Marcar = insertar. Desmarcar = borrar. Nada más.
+create table marcas (
+  id bigserial primary key,
+  item_id bigint not null references items_control(id) on delete cascade,
+  fecha_ancla date not null,
+  marcado_por uuid not null references profiles(id),
+  marcado_en timestamptz not null default now(),
+  unique (item_id, fecha_ancla)
+);
+
+-- El historial lo escribe un trigger, nunca la app.
+create table marcas_log (
+  id bigserial primary key,
+  item_id bigint not null, fecha_ancla date not null,
+  accion text not null check (accion in ('marca','desmarca')),
+  actor uuid not null, ocurrio_en timestamptz not null default now()
+);
+
+create table jornada (
+  id bigserial primary key,
+  persona_id uuid not null references profiles(id),
+  periodo_id bigint not null references periodos(id) on delete cascade,
+  nominales_min int not null, ausencia_min int not null default 0,
+  recuperadas_min int not null default 0, cumplidas_min int not null, nota text,
+  unique (persona_id, periodo_id)
+);
+
+create table entregas (
+  id bigserial primary key,
+  persona_id uuid not null references profiles(id),
+  periodo_id bigint not null references periodos(id) on delete cascade,
+  titulo text not null, area area_equipo not null,
+  en_clickup boolean not null default false,   -- lo calcula el sync, nunca una persona
+  creado_en timestamptz not null default now()
+);
+
+create table ventas (
+  id bigserial primary key,
+  periodo_id bigint not null references periodos(id) on delete cascade,
+  cliente text not null,
+  producto text not null check (producto in ('master','acero','lowcost','diplomado','otro')),
+  monto_centavos bigint not null default 0,
+  fuente text, pipeline text, ghl_id text unique,
+  estado estado_venta not null default 'por_validar',
+  motivo_higiene text,                          -- sin_monto | duplicado | sin_fuente | prueba | recurrente
+  validado_por uuid references profiles(id), validado_en timestamptz,
+  sincronizado_en timestamptz not null default now()
+);
+```
+
+`pendientes` es la tabla `tareas` del §3.3 con `origen = 'manual'`: no hace falta duplicarla.
+
+### 5.3 Datos de arranque que están en el blueprint
+
+Tres catálogos largos viven en `tablero-kpis-design-blueprint.md` para no repetirlos acá:
+
+| Qué | Dónde | Contenido |
+|---|---|---|
+| **25 ítems de control** | Anexo A | 7 diarios, 11 semanales y 7 mensuales, con área y responsable |
+| Los mismos KPIs de §5.1 | Anexo B | Con el detalle de cada meta |
+| **14 pendientes de arranque** | Anexo C | Con responsable y vencimiento ya repartidos en agosto |
+
+Los 25 ítems y los 14 pendientes también están **completos y ordenados dentro de las
+maquetas HTML**, en las constantes `ITEMS` y `PENDIENTES` del `<script>` — es la forma más
+rápida de copiarlos a las semillas.
 
 ### El patrón central: cómo funciona el marcado
 
