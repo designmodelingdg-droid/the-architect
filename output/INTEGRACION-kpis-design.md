@@ -22,6 +22,7 @@ de las maquetas HTML. Ver §5.3.
 | `maqueta-tablero-kpis-design.html` | Maqueta navegable del módulo **KPIs Equipo** (5 vistas) |
 | `maqueta-tareas-playbook.html` | Maqueta navegable de **Tareas** y **Playbook** (4 vistas) |
 | `tablero-kpis-design-blueprint.md` | Diseño técnico largo del módulo KPIs: SQL completo, RLS, 14 bloques |
+| `mi-agenda-blueprint.md` | **Reutilizable**: la app personal de Dayana ya resolvió proyectos, pasos e ideas con su SQL, CHECK y triggers. Leerlo antes de escribir esa parte (§3.3) |
 | Este documento | El brief de construcción de los tres módulos |
 
 Las maquetas son HTML autocontenido: sin dependencias, sin build, sin peticiones externas.
@@ -216,7 +217,142 @@ Más un **resumen diario a las 08:00 hora de Ecuador** con lo que vence hoy y lo
 dueño. Sin ese resumen la gente no vuelve, y el módulo muere como murió ClickUp — que hoy
 registra el 32,6% del trabajo real del área.
 
-### 3.3 Datos
+### 3.3 Proyectos, adjuntos, recordatorios e ideas — el patrón de Mi Agenda
+
+Dayana ya opera su app personal **Mi Agenda** con exactamente esta forma, y funciona. El
+equipo debería tener lo mismo, con dueño compartido. **No hay que diseñarlo de nuevo:** el
+blueprint de esa app está en `output/mi-agenda-blueprint.md` (mismo repo) y trae el SQL de
+`proyectos`, `pasos` e `ideas` ya resuelto, con sus CHECK y sus triggers. Conviene leerlo
+antes de escribir la primera migración de esta parte.
+
+Lo que se copia tal cual:
+
+- **Proyectos** con nombre, *resultado* («cómo se ve terminado»), estado
+  `activo · pausado · terminado · cancelado`, color, vencimiento y orden. En Mi Agenda un
+  proyecto agrupa **pasos**; acá agrupa **tareas** — es la misma relación.
+- **Ideas** como bandeja de captura, con estado `nueva · en_proyecto · archivada · descartada`
+  y `proyecto_id` con `on delete set null`: borrar un proyecto no borra la idea que lo
+  originó, la deja suelta.
+- La regla de que `cerrado_en` existe **si y solo si** el estado es terminado o cancelado.
+
+Lo que hay que agregar porque Mi Agenda no lo tiene:
+
+**Adjuntos.** Se cuelgan de una tarea **o** de un proyecto, con cuatro tipos:
+
+| Tipo | Qué es | Dónde vive |
+|---|---|---|
+| `archivo` | Subida directa (PDF, imagen, xlsx…) | Bucket privado de Storage |
+| `nota` | Texto escrito ahí mismo | La propia tabla |
+| `enlace` | URL externa con título | La propia tabla |
+| `archivero` | Referencia a un archivo **ya subido antes** | Apunta al mismo objeto de Storage |
+
+El cuarto tipo es el que evita que el mismo brochure se suba once veces: el archivero es el
+repositorio común del equipo, y adjuntar desde ahí no duplica el archivo, lo referencia.
+
+**Recordatorios.** No son lo mismo que las notificaciones del §3.2. Una notificación reacciona
+a un hecho; un recordatorio es alguien diciendo «avísame de esto el jueves a las 9». Se
+guarda aparte y al dispararse genera un aviso normal.
+
+```sql
+create type estado_proyecto as enum ('activo','pausado','terminado','cancelado');
+create type estado_idea     as enum ('nueva','en_proyecto','archivada','descartada');
+create type tipo_adjunto    as enum ('archivo','nota','enlace','archivero');
+
+create table proyectos (
+  id bigserial primary key,
+  nombre text not null check (char_length(nombre) between 1 and 160),
+  resultado text not null default '',            -- cómo se ve terminado
+  area area_equipo not null,
+  responsable_id uuid references profiles(id),
+  estado estado_proyecto not null default 'activo',
+  color text not null default 'sky',
+  vence date,
+  orden int not null default 0,
+  creado_por uuid not null references profiles(id),
+  creado_en timestamptz not null default now(),
+  cerrado_en timestamptz,
+  check ((cerrado_en is not null) = (estado in ('terminado','cancelado')))
+);
+
+-- Una tarea puede vivir suelta o dentro de un proyecto.
+alter table tareas add column proyecto_id bigint references proyectos(id) on delete set null;
+
+create table adjuntos (
+  id bigserial primary key,
+  tarea_id    bigint references tareas(id)    on delete cascade,
+  proyecto_id bigint references proyectos(id) on delete cascade,
+  tipo tipo_adjunto not null,
+  titulo text not null,
+  cuerpo text,                                   -- tipo 'nota'
+  url text,                                      -- tipo 'enlace'
+  storage_path text,                             -- tipos 'archivo' y 'archivero'
+  bytes bigint,
+  mime text,
+  subido_por uuid not null references profiles(id),
+  creado_en timestamptz not null default now(),
+  -- cuelga de una tarea o de un proyecto, nunca de las dos ni de ninguna
+  check (num_nonnulls(tarea_id, proyecto_id) = 1),
+  check (
+    (tipo = 'nota'      and cuerpo is not null) or
+    (tipo = 'enlace'    and url    is not null) or
+    (tipo in ('archivo','archivero') and storage_path is not null)
+  )
+);
+create index on adjuntos (tarea_id);
+create index on adjuntos (proyecto_id);
+
+create table ideas (
+  id bigserial primary key,
+  texto text not null check (char_length(texto) between 1 and 2000),
+  estado estado_idea not null default 'nueva',
+  area area_equipo,
+  proyecto_id bigint references proyectos(id) on delete set null,
+  autor_id uuid not null references profiles(id),
+  creado_en timestamptz not null default now()
+);
+
+create table recordatorios (
+  id bigserial primary key,
+  tarea_id bigint references tareas(id) on delete cascade,
+  para_id  uuid not null references profiles(id),
+  recordar_en timestamptz not null,
+  nota text,
+  disparado_en timestamptz,
+  creado_por uuid not null references profiles(id)
+);
+create index on recordatorios (recordar_en) where disparado_en is null;
+```
+
+**Storage:** un bucket **privado** con política por rol. Los adjuntos del equipo incluyen
+brochures, guiones y planillas internas — nada de bucket público con URL adivinable. La
+descarga se sirve con URL firmada de vida corta.
+
+### 3.4 La vista de calendario
+
+La app ya tiene un **Calendario de publicaciones**. Lo correcto no es un segundo calendario
+sino **capas sobre el mismo**, con un interruptor por capa:
+
+| Capa | Qué pinta | Origen |
+|---|---|---|
+| 📅 Publicaciones | Lo que ya existe hoy | El módulo actual |
+| 🗂️ Tareas | Cada tarea en su fecha de `vence` | `tareas` |
+| 📌 Proyectos | El vencimiento del proyecto, como banda | `proyectos` |
+| 🎙️ Reuniones | Las reuniones de Fathom | `reuniones` |
+| ⏰ Recordatorios | Los que aún no se dispararon | `recordatorios` |
+
+Dos calendarios separados obligan a mirar en dos lugares para saber cómo viene la semana, y
+eso es justo lo que ya pasa hoy entre ClickUp, GHL y las planillas.
+
+Detalles que definen si sirve o estorba:
+
+- **Vista mes y vista semana.** La de mes para planificar; la de semana para trabajar.
+- **Filtro por persona y por área**, con «solo lo mío» como primer botón.
+- **Las vencidas se pintan en rojo y se quedan en su día**, no saltan a hoy: mover la fecha
+  es una decisión de alguien, no un efecto de la interfaz.
+- **Arrastrar una tarea a otro día cambia su `vence`** y deja rastro en el historial.
+- Todo en `America/Guayaquil`. Un evento del 31/08 a las 23:00 no puede aparecer el 1/09.
+
+### 3.5 Datos
 
 ```sql
 create type area_equipo  as enum ('marketing','gerencia','soporte','plataforma','comercial');
@@ -562,13 +698,17 @@ maqueta es exactamente la lógica que va al servidor.
 | 1 | **Base de datos + identidad real por persona** | Sin saber quién es cada quien no hay asignación, permisos ni notificaciones. Todo lo demás depende de esto |
 | 2 | Whitelist + permisos en la base | La seguridad se construye acá, nunca al final |
 | 3 | Tareas con áreas, comentarios y `vence` obligatorio | Sobre el Kanban actual |
-| 4 | Bandeja + correo + resumen diario 08:00 | Lo que hace que el equipo vuelva |
-| 5 | Sync de Fathom → reuniones y compromisos | |
-| 6 | Conversión compromiso → tarea | Cierra el ciclo reunión-tablero |
-| 7 | KPIs: semáforo y checklist | El módulo de Ester |
-| 8 | Sync GoHighLevel y ClickUp | Ventas por validar y trazabilidad |
-| 9 | Playbook de ventas | Necesita las llamadas ya sincronizadas del bloque 5 |
-| 10 | Export del cierre | Alimenta los PDF de KPIs que ya existen |
+| 4 | **Proyectos + ideas** | Copiando el SQL de `mi-agenda-blueprint.md`, que ya lo resolvió |
+| 5 | **Adjuntos + archivero** (bucket privado) | Es lo que hace que se trabaje *dentro* de la tarea |
+| 6 | Bandeja + correo + resumen diario 08:00 | Lo que hace que el equipo vuelva |
+| 7 | **Recordatorios** | Reusa la bandeja del bloque 6 |
+| 8 | **Capas de tareas sobre el calendario existente** | No un calendario nuevo: capas sobre el de publicaciones |
+| 9 | Sync de Fathom → reuniones y compromisos | |
+| 10 | Conversión compromiso → tarea | Cierra el ciclo reunión-tablero |
+| 11 | KPIs: semáforo y checklist | El módulo de Ester |
+| 12 | Sync GoHighLevel y ClickUp | Ventas por validar y trazabilidad |
+| 13 | Playbook de ventas | Necesita las llamadas ya sincronizadas del bloque 9 |
+| 14 | Export del cierre | Alimenta los PDF de KPIs que ya existen |
 
 Un bloque por rama, verificado (`lint` + `test` + `build` en verde) antes de pasar al
 siguiente.

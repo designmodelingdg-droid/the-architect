@@ -251,6 +251,53 @@ h1 {
 .st-in { --c: var(--info); --cbg: var(--info-bg); }
 .st-nd { --c: var(--neutro); --cbg: var(--neutro-bg); }
 
+/* ---------- Calendario ---------- */
+.cal-cab {
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 1px;
+  margin-bottom: 1px;
+}
+.cal-cab span {
+  font-family: var(--f-ui); font-size: 10.5px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--tinta-3); padding: 6px 8px; text-align: center;
+}
+.cal {
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 1px;
+  background: var(--borde); border: 1px solid var(--borde);
+  border-radius: var(--r-card); overflow: hidden;
+}
+.dia {
+  background: var(--surface); min-height: 108px; min-width: 0; padding: 7px 8px 9px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.dia.fuera { background: var(--surface-2); }
+.dia .num {
+  font-family: var(--f-ui); font-size: 12px; font-weight: 700; color: var(--tinta-2);
+  font-variant-numeric: tabular-nums;
+}
+.dia.fuera .num { color: var(--tinta-3); opacity: .6; }
+.dia.hoy .num {
+  background: var(--azul); color: #fff; border-radius: 20px;
+  padding: 1px 7px; align-self: flex-start;
+}
+.ev {
+  font-size: 11.5px; line-height: 1.3; padding: 3px 6px; border-radius: 5px;
+  background: var(--cbg, var(--neutro-bg)); color: var(--c, var(--tinta-2));
+  border-left: 2.5px solid var(--c, var(--neutro));
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.ev.venc { font-weight: 700; }
+.dia .mas { font-size: 11px; color: var(--tinta-3); }
+
+/* ---------- Adjuntos en la card ---------- */
+.adj { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
+.adj a, .adj span {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-family: var(--f-ui); font-weight: 600;
+  padding: 3px 8px; border-radius: 6px; text-decoration: none;
+  background: var(--surface-2); border: 1px solid var(--borde); color: var(--tinta-2);
+}
+.adj a:hover { border-color: var(--azul); color: var(--azul-texto); }
+
 /* ---------- Reuniones ---------- */
 .reunion {
   background: var(--surface); border: 1px solid var(--borde);
@@ -372,6 +419,7 @@ footer.pie {
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" id="t-ban" aria-controls="p-ban" aria-selected="true">🔔 Bandeja <span class="cuenta" id="c-ban">6</span></button>
       <button class="tab" role="tab" id="t-kan" aria-controls="p-kan" aria-selected="false">🗂️ Kanban <span class="cuenta" id="c-kan">0</span></button>
+      <button class="tab" role="tab" id="t-cal" aria-controls="p-cal" aria-selected="false">📅 Calendario</button>
       <button class="tab" role="tab" id="t-reu" aria-controls="p-reu" aria-selected="false">🎙️ Reuniones <span class="cuenta" id="c-reu">0</span></button>
       <button class="tab" role="tab" id="t-pla" aria-controls="p-pla" aria-selected="false">🎯 Playbook de ventas</button>
     </div>
@@ -407,6 +455,21 @@ footer.pie {
         tablero y se filtran con los chips de arriba: así Dayana ve todo de un vistazo y cada
         quien filtra lo suyo. Las tareas que nacen de una reunión llevan el ícono 🎙️ y
         guardan el enlace a la grabación en el minuto exacto.
+      </div>
+    </section>
+
+    <!-- ============ CALENDARIO ============ -->
+    <section class="panel" id="p-cal" role="tabpanel" aria-labelledby="t-cal" hidden>
+      <div class="filtros" id="capas"></div>
+      <div class="cal-cab" id="cal-cab"></div>
+      <div class="cal" id="cal"></div>
+      <div class="nota">
+        <b>No es un calendario nuevo: son capas sobre el que ya existe.</b> El de
+        publicaciones sigue siendo el mismo; encima se encienden tareas, vencimientos de
+        proyecto, reuniones y recordatorios. Dos calendarios separados obligan a mirar en dos
+        lugares para saber cómo viene la semana — que es justo lo que ya pasa entre ClickUp,
+        GHL y las planillas. Las vencidas se quedan en su día en rojo: mover la fecha es una
+        decisión de alguien, no un efecto de la interfaz.
       </div>
     </section>
 
@@ -481,7 +544,8 @@ const COLUMNAS = [
 const TAREAS = [
   { t: "Limpiar CRM: duplicados, pruebas, montos y fuentes", d: "Mover los cruzados entre pipelines",
     a: "comercial", q: "Ester", f: "18/08", col: "proceso",
-    reu: "Cierre y Apertura DM · 07 ago", url: "https://fathom.video/calls/775933090?timestamp=2436" },
+    reu: "Cierre y Apertura DM · 07 ago", url: "https://fathom.video/calls/775933090?timestamp=2436",
+    adj: [{t:"archivo", n:"Lista de higiene.xlsx"}, {t:"nota", n:"Criterios de depuración"}] },
   { t: "Revisar automatización pre-WhatsApp", d: "Afinar etiquetas, asignaciones y notificaciones",
     a: "plataforma", q: "Ester", f: "20/08", col: "hacer",
     reu: "Cierre y Apertura DM · 07 ago", url: "https://fathom.video/calls/775933090?timestamp=2707" },
@@ -511,11 +575,13 @@ const TAREAS = [
     reu: "Cierre y Apertura DM · 07 ago", url: "https://fathom.video/calls/775933090?timestamp=3232" },
   { t: "Grabar reels de orgánico y pauta", d: "Enviar a Francisco para edición con logos",
     a: "marketing", q: "Ester", f: "21/08", col: "hacer",
-    reu: "Cierre y Apertura DM · 07 ago", url: "https://fathom.video/calls/775933090?timestamp=2476" },
+    reu: "Cierre y Apertura DM · 07 ago", url: "https://fathom.video/calls/775933090?timestamp=2476",
+    adj: [{t:"archivero", n:"Guion agosto.pdf"}, {t:"archivero", n:"Logos DG"}] },
   { t: "Correos post-pérdida en GHL", d: "Secuencia tras marcar oportunidad perdida",
     a: "plataforma", q: "Ester", f: "20/08", col: "hacer", reu: null, url: null },
   { t: "Actualizar landings de la página de recursos", d: "",
-    a: "marketing", q: "Ester", f: "18/08", col: "proceso", reu: null, url: null },
+    a: "marketing", q: "Ester", f: "18/08", col: "proceso", reu: null, url: null,
+    adj: [{t:"enlace", n:"Landing actual", u:"https://dg-contenido-ia.vercel.app/panel"}] },
   { t: "Política de privacidad en Vimeo", d: "Revisar y aplicar",
     a: "soporte", q: "Aylin", f: "18/08", col: "hacer", reu: null, url: null },
   { t: "Enviar a Patricio el código consolidado del bot", d: "PR #4",
@@ -628,6 +694,13 @@ const el = (tag, cls, txt) => {
 };
 const CLS_P = { ok: "st-ok", al: "st-al", gr: "st-gr", in: "st-in", nd: "st-nd" };
 
+/* "Hoy" siempre en horario de Ecuador, nunca con la hora del navegador. */
+const HOY_ISO = new Date().toLocaleDateString("en-CA", { timeZone: "America/Guayaquil" });
+const aISO = f => { const [d, m] = f.split("/"); return `2026-${m}-${d}`; };
+/* Una tarea está vencida si su fecha ya pasó y no está en Listo.
+   Misma regla en el Kanban y en el calendario: una sola fuente de verdad. */
+const estaVencida = (f, col) => col !== "listo" && aISO(f) < HOY_ISO;
+
 /* ================= Bandeja ================= */
 const leidos = new Set();
 
@@ -696,8 +769,7 @@ function pintaKanban() {
       const metas = el("div", "metas");
       metas.append(el("span", "mini " + AREAS[t.a].cls, AREAS[t.a].nom));
       metas.append(el("span", "mini st-nd", t.q));
-      const vencida = ["18/08"].includes(t.f) && estadoCol.get(i) !== "listo";
-      metas.append(el("span", "mini " + (vencida ? "st-gr" : "st-nd"), t.f));
+      metas.append(el("span", "mini " + (estaVencida(t.f, estadoCol.get(i)) ? "st-gr" : "st-nd"), t.f));
       if (t.reu) {
         const a = el("a", "mini st-in", "🎙️ " + t.reu);
         a.href = t.url; a.target = "_blank"; a.rel = "noopener";
@@ -705,6 +777,18 @@ function pintaKanban() {
         metas.append(a);
       }
       card.append(metas);
+
+      if (t.adj?.length) {
+        const a = el("div", "adj");
+        t.adj.forEach(x => {
+          const ic = { archivo: "📄", nota: "📝", enlace: "🔗", archivero: "📎" }[x.t];
+          const n = x.u ? el("a", null) : el("span", null);
+          if (x.u) { n.href = x.u; n.target = "_blank"; n.rel = "noopener"; }
+          n.textContent = `${ic} ${x.n}`;
+          a.append(n);
+        });
+        card.append(a);
+      }
 
       const mover = el("div", "mover");
       COLUMNAS.forEach(dest => {
@@ -854,6 +938,94 @@ function pintaSetteo() {
   $("#setteo").replaceChildren(box);
 }
 
+
+/* ================= Calendario ================= */
+/* Capas sobre el calendario que ya existe, no un calendario nuevo. */
+const CAPAS = [
+  { id:"pub",  nom:"📅 Publicaciones", c:"var(--info)",    bg:"var(--info-bg)"    },
+  { id:"tar",  nom:"🗂️ Tareas",        c:"var(--azul)",    bg:"var(--neutro-bg)"  },
+  { id:"proy", nom:"📌 Proyectos",      c:"var(--naranja)", bg:"var(--crema)"      },
+  { id:"reu",  nom:"🎙️ Reuniones",     c:"var(--ok)",      bg:"var(--ok-bg)"      },
+  { id:"rec",  nom:"⏰ Recordatorios",  c:"var(--alerta)",  bg:"var(--alerta-bg)"  }
+];
+const capasOn = new Set(CAPAS.map(c => c.id));
+
+/* Eventos que no son tareas (las tareas se leen de TAREAS por su fecha). */
+const OTROS = [
+  { d:"2026-08-18", capa:"pub",  t:"Post: caso de obra" },
+  { d:"2026-08-19", capa:"reu",  t:"Equipo de ventas" },
+  { d:"2026-08-20", capa:"pub",  t:"Reel de valor" },
+  { d:"2026-08-21", capa:"rec",  t:"Confirmar citas del lunes" },
+  { d:"2026-08-24", capa:"pub",  t:"Carrusel Máster" },
+  { d:"2026-08-26", capa:"reu",  t:"Revisión semanal" },
+  { d:"2026-08-28", capa:"pub",  t:"Testimonio egresado" },
+  { d:"2026-08-31", capa:"proy", t:"Vence: campañas de agosto" },
+  { d:"2026-09-01", capa:"pub",  t:"Apertura septiembre" }
+];
+
+const HOY_EC = new Date(new Date().toLocaleDateString("en-CA", { timeZone:"America/Guayaquil" }) + "T12:00:00");
+
+function pintaCapas() {
+  $("#capas").replaceChildren(...CAPAS.map(c => {
+    const b = el("button", "chip");
+    b.type = "button";
+    b.setAttribute("aria-pressed", String(capasOn.has(c.id)));
+    b.textContent = c.nom;
+    b.onclick = () => {
+      capasOn.has(c.id) ? capasOn.delete(c.id) : capasOn.add(c.id);
+      pintaCalendario();
+    };
+    return b;
+  }));
+}
+
+function pintaCalendario() {
+  pintaCapas();
+  const y = 2026, m = 7;                                  // agosto de 2026
+  $("#cal-cab").replaceChildren(...["lun","mar","mié","jue","vie","sáb","dom"]
+    .map(d => el("span", null, d)));
+
+  const primero = new Date(y, m, 1);
+  const inicio = new Date(primero);
+  inicio.setDate(1 - ((primero.getDay() + 6) % 7));       // arranca en lunes
+
+  // Tareas por día, a partir de su vencimiento "DD/MM"
+  const porDia = {};
+  const empuja = (iso, capa, txt, venc) => (porDia[iso] ||= []).push({ capa, txt, venc });
+  if (capasOn.has("tar")) {
+    TAREAS.forEach((t, i) => {
+      const [d, mm] = t.f.split("/");
+      const iso = `2026-${mm}-${d}`;
+      empuja(iso, "tar", t.t, estaVencida(t.f, estadoCol.get(i)));
+    });
+  }
+  OTROS.forEach(o => { if (capasOn.has(o.capa)) empuja(o.d, o.capa, o.t, false); });
+
+  const celdas = [];
+  for (let i = 0; i < 42; i++) {
+    const f = new Date(inicio); f.setDate(inicio.getDate() + i);
+    const iso = f.toLocaleDateString("en-CA");
+    const fuera = f.getMonth() !== m;
+    const esHoy = iso === HOY_ISO;
+
+    const c = el("div", "dia" + (fuera ? " fuera" : "") + (esHoy ? " hoy" : ""));
+    c.append(el("span", "num", String(f.getDate())));
+
+    const evs = porDia[iso] || [];
+    evs.slice(0, 3).forEach(e => {
+      const capa = CAPAS.find(x => x.id === e.capa);
+      const n = el("div", "ev" + (e.venc ? " venc" : ""), e.txt);
+      n.style.setProperty("--c",  e.venc ? "var(--grave)"    : capa.c);
+      n.style.setProperty("--cbg", e.venc ? "var(--grave-bg)" : capa.bg);
+      n.title = e.txt;
+      c.append(n);
+    });
+    if (evs.length > 3) c.append(el("div", "mas", `+${evs.length - 3} más`));
+    celdas.push(c);
+  }
+  $("#cal").replaceChildren(...celdas);
+}
+
 /* ================= Pestañas ================= */
 $$(".tab").forEach(t => {
   t.onclick = () => {
@@ -871,4 +1043,5 @@ pintaKanban();
 pintaReuniones();
 pintaLlamadas();
 pintaSetteo();
+pintaCalendario();
 </script>
