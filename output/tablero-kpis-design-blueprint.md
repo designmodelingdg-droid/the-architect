@@ -654,18 +654,17 @@ contra `permitidos` → si el correo no está, la base lanza excepción y el usu
 |---|---|---|---|
 | `designmodelingdg@gmail.com` | Dayana Calderón Brunetti | `admin` | Dirección |
 | `asistencia.generaldg@gmail.com` | Ester Álvarez | `coordinadora` | Asesora Cursos · coordinación operativa |
+| `gabrielpantoja.ucab@gmail.com` | Gabriel Pantoja Linares | `coordinadora` | Supervisión de Soporte |
 | `aylin.taur@gmail.com` | Aylin Tapia | `miembro` | Soporte Técnico |
 | `cami16012001@gmail.com` | Camila Pinto | `miembro` | Setter (se incorporó el 05/08) |
 | `martinezeber61@gmail.com` | Eber Martínez | `miembro` | Closer Máster |
-| `gabrielpantoja.ucab@gmail.com` | Gabriel Pantoja Linares | `miembro` | Supervisión de Soporte |
+| **`(falta el correo)`** | Franklin | `miembro` | Closer |
 
-> **Dos cosas a confirmar antes de aplicar `004_semillas.sql`:**
-> 1. **Gabriel queda como `miembro`** por defecto. Aprueba permisos de jornada y dio las
->    capacitaciones de Soporte, así que podría corresponderle `coordinadora` — pero un rol
->    con más privilegios no se asume: lo decide Dayana.
-> 2. **Franklin no tiene cuenta en ClickUp**, así que no hay correo suyo. Aparece en el
->    informe entre las capacitaciones del equipo de ventas. Si va a marcar en el tablero,
->    hay que sumarlo a mano a `permitidos`.
+Correos tomados del workspace de ClickUp de DMA el 17/08/2026. Roles confirmados por Dayana.
+
+> **Franklin no tiene cuenta en ClickUp**, así que su correo es el único dato que falta para
+> completar `permitidos`. Sin él no puede entrar: la whitelist rechaza en la base cualquier
+> correo que no esté cargado. Entra como `miembro`, igual que Eber.
 >
 > El archivo `004_semillas.sql` con estos correos **no se versiona en el repo público**: se
 > aplica directamente contra el Supabase del proyecto.
@@ -680,8 +679,8 @@ contra `permitidos` → si el correo no está, la base lanza excepción y el usu
 | Rol | Puede |
 |---|---|
 | `admin` (Dayana) | Todo. Definir metas y periodos, **validar ventas**, cerrar el periodo, gestionar personas e ítems |
-| `coordinadora` (Ester) | Marcar y desmarcar cualquier ítem, crear y asignar pendientes, cargar jornada y entregas de todos, ver todo. **No** valida ventas ni cierra el periodo |
-| `miembro` | Marcar y desmarcar **solo los ítems donde es responsable**, cambiar el estado de **sus** pendientes, registrar **sus** entregas. Lectura del resto |
+| `coordinadora` (Ester, Gabriel) | Marcar y desmarcar cualquier ítem, crear y asignar pendientes, cargar jornada y entregas de todos, ver todo. **No** valida ventas ni cierra el periodo |
+| `miembro` (Aylin, Camila, Eber, Franklin) | Marcar y desmarcar **solo los ítems donde es responsable**, cambiar el estado de **sus** pendientes, registrar **sus** entregas. Lectura del resto |
 
 > Que cada miembro marque lo suyo es lo que ataca el problema en el origen. Ester conserva
 > el poder de marcar por cualquiera — si el equipo no adopta, ella sigue pudiendo llevar el
