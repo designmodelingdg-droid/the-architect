@@ -26,9 +26,37 @@ de las maquetas HTML. Ver §5.3.
 | Este documento | El brief de construcción de los tres módulos |
 
 Las maquetas son HTML autocontenido: sin dependencias, sin build, sin peticiones externas.
-Se abren en el navegador y funcionan. **No son código de producción** — el estado vive en
-`localStorage`, así que lo que marca una persona no lo ve nadie más. Sirven para aprobar
-diseño e interacción y como referencia exacta de comportamiento.
+Se abren en el navegador con doble clic y funcionan. **No son código de producción** — el
+estado vive en memoria o en `localStorage`, así que lo que marca una persona no lo ve nadie
+más. Sirven para aprobar diseño e interacción y como referencia exacta de comportamiento.
+
+### Cómo verlas
+
+**La forma segura: abrir los dos archivos `.html` directamente.** Están en el PR, se
+descargan y se abren en cualquier navegador. No necesitan servidor ni conexión.
+
+También están publicadas en línea, enlazadas entre sí desde el menú lateral para recorrerlas
+como si fueran una sola app:
+
+| Maqueta | Enlace |
+|---|---|
+| KPIs Equipo | `https://claude.ai/code/artifact/e2d2ef2f-0352-42ba-9883-9a55b9658d44` |
+| Tareas y Playbook | `https://claude.ai/code/artifact/cdf6c3ae-8a38-43e8-951b-61d41d8b1cb6` |
+
+> **Ojo:** esas páginas son **privadas de la cuenta de Dayana**. Si Patricio abre los enlaces
+> sin que se los hayan compartido, no va a ver nada. O Dayana las comparte desde el menú de
+> cada página, o se trabaja con los archivos `.html` — que para construir es lo práctico,
+> porque hay que leerles el código.
+
+### Qué probar en cada una
+
+| Maqueta | Vistas | Qué está vivo |
+|---|---|---|
+| **KPIs Equipo** | Semáforo · Checklist · Equipo · Pendientes · Cierre | Marcar y desmarcar ítems (persiste en el navegador), validar y descartar ventas moviendo el total |
+| **Tareas y Playbook** | Bandeja · Kanban · Calendario · Reuniones · Playbook | Mover tarjetas entre columnas, filtrar por área, encender y apagar capas del calendario, convertir un compromiso de reunión en tarea y verlo aparecer en el Kanban |
+
+La función `ancla()` del `<script>` de la maqueta de KPIs y la función `estaVencida()` de la
+de Tareas son **la lógica exacta que va al servidor** — no son atajos de demostración.
 
 ---
 
