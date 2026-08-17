@@ -1,0 +1,975 @@
+<title>KPIs Equipo Design</title>
+
+<style>
+/* ============================================================
+   Módulo "KPIs Equipo" — Design Modeling OS
+   Maqueta navegable. Lenguaje visual tomado de dg-contenido-ia.
+   ============================================================ */
+
+:root {
+  --navy:        #102a3f;
+  --navy-deep:   #0a1c2b;
+  --azul:        #003e5c;
+  --azul-texto:  #0b2f4a;
+  --naranja:     #ca7520;
+  --crema:       #f9ecdb;
+  --crema-borde: #ecd6b6;
+
+  --ground:      #ffffff;
+  --surface:     #ffffff;
+  --surface-2:   #f6f8fa;
+  --borde:       #e4eaef;
+  --borde-fuerte:#cfd9e1;
+
+  --tinta:       #16303f;
+  --tinta-2:     #5a7183;
+  --tinta-3:     #8296a5;
+
+  --ok:          #16874d;
+  --ok-bg:       #e2f4ea;
+  --alerta:      #a9761a;
+  --alerta-bg:   #fbf0d8;
+  --grave:       #b5342f;
+  --grave-bg:    #fbe6e5;
+  --neutro:      #7c8f9d;
+  --neutro-bg:   #eef2f5;
+
+  --sb-texto:    #b9cad8;
+  --sb-activo:   #ffffff;
+  --sb-hover:    rgba(255,255,255,.07);
+
+  --r-card: 12px;
+  --r-ctl:  9px;
+  --sombra: 0 1px 2px rgb(11 47 74 / .06), 0 1px 3px rgb(11 47 74 / .04);
+
+  --f-ui: Overpass, Nunito, ui-rounded, "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-tx: Nunito, ui-rounded, "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --navy:        #0c1f2e;
+    --navy-deep:   #071521;
+    --azul-texto:  #d7e6f0;
+    --crema:       #33261a;
+    --crema-borde: #574230;
+
+    --ground:      #0b1723;
+    --surface:     #12222f;
+    --surface-2:   #172937;
+    --borde:       #23394a;
+    --borde-fuerte:#33506a;
+
+    --tinta:       #e2edf4;
+    --tinta-2:     #9db2c2;
+    --tinta-3:     #7b93a5;
+
+    --ok:          #5cc98d;
+    --ok-bg:       #123324;
+    --alerta:      #e0b354;
+    --alerta-bg:   #382e12;
+    --grave:       #f08d88;
+    --grave-bg:    #3a1a19;
+    --neutro:      #8ea3b2;
+    --neutro-bg:   #1b2c3a;
+
+    --sombra: 0 1px 2px rgb(0 0 0 / .3);
+  }
+}
+
+:root[data-theme="dark"] {
+  --navy:        #0c1f2e;
+  --navy-deep:   #071521;
+  --azul-texto:  #d7e6f0;
+  --crema:       #33261a;
+  --crema-borde: #574230;
+
+  --ground:      #0b1723;
+  --surface:     #12222f;
+  --surface-2:   #172937;
+  --borde:       #23394a;
+  --borde-fuerte:#33506a;
+
+  --tinta:       #e2edf4;
+  --tinta-2:     #9db2c2;
+  --tinta-3:     #7b93a5;
+
+  --ok:          #5cc98d;
+  --ok-bg:       #123324;
+  --alerta:      #e0b354;
+  --alerta-bg:   #382e12;
+  --grave:       #f08d88;
+  --grave-bg:    #3a1a19;
+  --neutro:      #8ea3b2;
+  --neutro-bg:   #1b2c3a;
+
+  --sombra: 0 1px 2px rgb(0 0 0 / .3);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--tinta);
+  font-family: var(--f-tx);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Aviso de maqueta ---------- */
+.aviso {
+  background: var(--crema);
+  border-bottom: 1px solid var(--crema-borde);
+  color: var(--tinta);
+  padding: 9px 20px;
+  font-size: 13px;
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+}
+.aviso strong { font-family: var(--f-ui); font-weight: 700; }
+
+/* ---------- Estructura ---------- */
+.app { display: flex; min-height: 100vh; align-items: stretch; }
+
+.sidebar {
+  width: 244px; flex: 0 0 244px;
+  background: var(--navy);
+  padding: 18px 12px 28px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+.marca { display: flex; gap: 11px; align-items: center; padding: 4px 8px 0; }
+.marca .logo {
+  width: 40px; height: 40px; border-radius: 10px; flex: 0 0 40px;
+  background: linear-gradient(150deg, #1d4f6e, #0d3049);
+  color: #fff; font-family: var(--f-ui); font-weight: 800; font-size: 15px;
+  display: grid; place-items: center; letter-spacing: -.02em;
+}
+.marca .nom {
+  font-family: var(--f-ui); font-weight: 800; font-size: 13px;
+  color: #fff; letter-spacing: .01em; line-height: 1.15; white-space: nowrap;
+}
+.marca .sub {
+  font-size: 10px; color: var(--sb-texto); letter-spacing: .13em;
+  text-transform: uppercase; margin-top: 3px; font-weight: 600;
+}
+
+.nav { display: flex; flex-direction: column; gap: 1px; }
+.nav a {
+  display: flex; align-items: center; gap: 11px;
+  padding: 9px 12px; border-radius: var(--r-ctl);
+  color: var(--sb-texto); text-decoration: none;
+  font-family: var(--f-ui); font-size: 14px; font-weight: 600;
+}
+.nav a .ic { font-size: 15px; width: 20px; text-align: center; }
+.nav a:hover { background: var(--sb-hover); color: #fff; }
+.nav a.on { background: var(--sb-activo); color: var(--navy-deep); }
+.nav a:focus-visible { outline: 2px solid var(--naranja); outline-offset: 1px; }
+.nav .sep {
+  margin: 9px 12px 4px; font-size: 10px; letter-spacing: .13em;
+  text-transform: uppercase; color: #6c8598; font-weight: 700;
+  font-family: var(--f-ui);
+}
+
+.main { flex: 1 1 auto; min-width: 0; padding: 30px 34px 64px; }
+.wrap { max-width: 1180px; }
+
+/* ---------- Encabezado ---------- */
+.eyebrow {
+  font-family: var(--f-ui); font-size: 11.5px; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--naranja);
+  margin: 0 0 7px;
+}
+h1 {
+  font-family: var(--f-ui); font-weight: 800; font-size: 33px; line-height: 1.13;
+  color: var(--azul-texto); margin: 0 0 9px; letter-spacing: -.015em;
+  text-wrap: balance;
+}
+.lede { color: var(--tinta-2); margin: 0; max-width: 62ch; font-size: 15px; }
+
+.barra-periodo {
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+  margin: 20px 0 4px;
+}
+.selector {
+  font-family: var(--f-ui); font-size: 13.5px; font-weight: 600;
+  color: var(--tinta); background: var(--surface);
+  border: 1px solid var(--borde-fuerte); border-radius: var(--r-ctl);
+  padding: 8px 11px;
+}
+.selector:focus-visible { outline: 2px solid var(--naranja); outline-offset: 1px; }
+.periodo-meta { font-size: 13px; color: var(--tinta-3); }
+
+/* ---------- Pestañas ---------- */
+.tabs {
+  display: flex; gap: 3px; margin: 22px 0 24px;
+  border-bottom: 1px solid var(--borde); flex-wrap: wrap;
+}
+.tab {
+  appearance: none; background: none; border: 0; cursor: pointer;
+  font-family: var(--f-ui); font-size: 14.5px; font-weight: 700;
+  color: var(--tinta-2); padding: 10px 15px 12px;
+  border-bottom: 2.5px solid transparent; margin-bottom: -1px;
+  display: flex; align-items: center; gap: 8px;
+}
+.tab:hover { color: var(--azul-texto); }
+.tab[aria-selected="true"] { color: var(--azul-texto); border-bottom-color: var(--naranja); }
+.tab:focus-visible { outline: 2px solid var(--naranja); outline-offset: -3px; border-radius: 4px; }
+.tab .cuenta {
+  font-size: 11px; font-weight: 800; padding: 1px 7px; border-radius: 20px;
+  background: var(--neutro-bg); color: var(--tinta-2); font-variant-numeric: tabular-nums;
+}
+.tab[aria-selected="true"] .cuenta { background: var(--crema); color: var(--naranja); }
+
+.panel[hidden] { display: none; }
+
+/* ---------- Tarjetas KPI ---------- */
+.rejilla {
+  display: grid; gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-bottom: 12px;
+}
+.kpi {
+  background: var(--surface); border: 1px solid var(--borde);
+  border-radius: var(--r-card); padding: 16px 17px 15px;
+  box-shadow: var(--sombra); position: relative; overflow: hidden;
+}
+.kpi::before {
+  content: ""; position: absolute; inset: 0 auto 0 0; width: 3px;
+  background: var(--c, var(--neutro));
+}
+.kpi .rot {
+  font-family: var(--f-ui); font-size: 11px; font-weight: 700;
+  letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2);
+  margin: 0 0 9px;
+}
+.kpi .val {
+  font-family: var(--f-ui); font-weight: 800; font-size: 29px; line-height: 1;
+  color: var(--c, var(--tinta)); letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+}
+.kpi .meta { font-size: 12.5px; color: var(--tinta-3); margin: 6px 0 11px; font-variant-numeric: tabular-nums; }
+.medidor { height: 7px; border-radius: 4px; background: var(--neutro-bg); overflow: hidden; }
+.medidor > i { display: block; height: 100%; border-radius: 4px; background: var(--c, var(--neutro)); }
+.estado {
+  display: inline-flex; align-items: center; gap: 5px; margin-top: 10px;
+  font-family: var(--f-ui); font-size: 11.5px; font-weight: 700;
+  padding: 3px 9px; border-radius: 20px;
+  background: var(--cbg, var(--neutro-bg)); color: var(--c, var(--tinta-2));
+}
+
+.st-ok    { --c: var(--ok);     --cbg: var(--ok-bg); }
+.st-al    { --c: var(--alerta); --cbg: var(--alerta-bg); }
+.st-gr    { --c: var(--grave);  --cbg: var(--grave-bg); }
+.st-nd    { --c: var(--neutro); --cbg: var(--neutro-bg); }
+
+.rotulo-sec {
+  font-family: var(--f-ui); font-size: 11.5px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-3);
+  margin: 30px 0 12px;
+}
+
+.nota {
+  background: var(--crema); border: 1px solid var(--crema-borde);
+  border-radius: var(--r-card); padding: 14px 16px; margin: 22px 0 0;
+  font-size: 14px; color: var(--tinta);
+}
+.nota b { font-family: var(--f-ui); }
+
+/* ---------- Checklist ---------- */
+.sub-tabs { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+.chip {
+  appearance: none; cursor: pointer; font-family: var(--f-ui);
+  font-size: 13.5px; font-weight: 700; padding: 7px 14px;
+  border-radius: 20px; border: 1px solid var(--borde-fuerte);
+  background: var(--surface); color: var(--tinta-2);
+  display: inline-flex; align-items: center; gap: 7px;
+}
+.chip:hover { border-color: var(--azul); color: var(--azul-texto); }
+.chip[aria-pressed="true"] { background: var(--azul); border-color: var(--azul); color: #fff; }
+.chip:focus-visible { outline: 2px solid var(--naranja); outline-offset: 2px; }
+.chip .n { font-variant-numeric: tabular-nums; opacity: .85; font-size: 12px; }
+
+.avance {
+  display: flex; align-items: center; gap: 13px; flex-wrap: wrap;
+  background: var(--surface-2); border: 1px solid var(--borde);
+  border-radius: var(--r-card); padding: 13px 16px; margin-bottom: 20px;
+}
+.avance .txt { font-family: var(--f-ui); font-weight: 800; font-size: 16px; color: var(--azul-texto); font-variant-numeric: tabular-nums; }
+.avance .medidor { flex: 1 1 190px; height: 8px; }
+.avance .fecha { font-size: 12.5px; color: var(--tinta-3); }
+
+.grupo { margin-bottom: 22px; }
+.grupo > h3 {
+  font-family: var(--f-ui); font-size: 11.5px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-3);
+  margin: 0 0 8px;
+}
+.lista { border: 1px solid var(--borde); border-radius: var(--r-card); overflow: hidden; background: var(--surface); }
+
+.fila {
+  display: flex; align-items: center; gap: 13px;
+  padding: 11px 15px; min-height: 52px;
+  border-top: 1px solid var(--borde); cursor: pointer;
+  background: none; border-left: 0; border-right: 0; border-bottom: 0;
+  width: 100%; text-align: left; font: inherit; color: inherit;
+}
+.fila:first-child { border-top: 0; }
+.fila:hover { background: var(--surface-2); }
+.fila:focus-visible { outline: 2px solid var(--naranja); outline-offset: -2px; }
+.fila .caja {
+  flex: 0 0 21px; width: 21px; height: 21px; border-radius: 6px;
+  border: 2px solid var(--borde-fuerte); background: var(--surface);
+  display: grid; place-items: center; transition: background .12s, border-color .12s;
+}
+.fila .caja svg { width: 13px; height: 13px; opacity: 0; }
+.fila[aria-pressed="true"] .caja { background: var(--ok); border-color: var(--ok); }
+.fila[aria-pressed="true"] .caja svg { opacity: 1; }
+.fila .tit { flex: 1 1 auto; font-size: 14.5px; min-width: 0; }
+.fila[aria-pressed="true"] .tit { color: var(--tinta-3); text-decoration: line-through; text-decoration-thickness: 1px; }
+.fila .quien {
+  font-family: var(--f-ui); font-size: 11px; font-weight: 700;
+  padding: 3px 9px; border-radius: 20px; background: var(--neutro-bg);
+  color: var(--tinta-2); white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* ---------- Tablas ---------- */
+.tabla-cont { overflow-x: auto; border: 1px solid var(--borde); border-radius: var(--r-card); background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 14px; }
+th, td { padding: 11px 15px; text-align: left; border-bottom: 1px solid var(--borde); }
+th {
+  font-family: var(--f-ui); font-size: 11px; font-weight: 700;
+  letter-spacing: .09em; text-transform: uppercase; color: var(--tinta-2);
+  background: var(--surface-2); white-space: nowrap;
+}
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: 0; }
+tr.total td { background: var(--surface-2); font-weight: 700; font-family: var(--f-ui); }
+.persona { font-family: var(--f-ui); font-weight: 700; color: var(--azul-texto); }
+.persona small { display: block; font-family: var(--f-tx); font-weight: 400; color: var(--tinta-3); font-size: 12px; }
+
+.pastilla {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--f-ui); font-size: 11.5px; font-weight: 700;
+  padding: 3px 9px; border-radius: 20px;
+  background: var(--cbg, var(--neutro-bg)); color: var(--c, var(--tinta-2));
+  white-space: nowrap;
+}
+.punto { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: 0 0 7px; }
+
+.vencida { color: var(--grave); font-weight: 700; }
+
+/* ---------- Cierre ---------- */
+.dos-col { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.bloque { border: 1px solid var(--borde); border-radius: var(--r-card); background: var(--surface); overflow: hidden; }
+.bloque > header {
+  padding: 14px 16px; border-bottom: 1px solid var(--borde); background: var(--surface-2);
+}
+.bloque h3 { font-family: var(--f-ui); font-size: 15px; font-weight: 800; color: var(--azul-texto); margin: 0; }
+.bloque header p { margin: 3px 0 0; font-size: 13px; color: var(--tinta-3); }
+.bloque .cuerpo { padding: 6px 0; }
+
+.venta { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-top: 1px solid var(--borde); }
+.venta:first-child { border-top: 0; }
+.venta .quien2 { flex: 1 1 auto; min-width: 0; }
+.venta .quien2 b { font-family: var(--f-ui); font-size: 14px; color: var(--tinta); display: block; }
+.venta .quien2 small { color: var(--tinta-3); font-size: 12px; }
+.venta .monto { font-family: var(--f-ui); font-weight: 800; font-variant-numeric: tabular-nums; font-size: 14.5px; white-space: nowrap; }
+.acciones { display: flex; gap: 6px; }
+.btn {
+  appearance: none; cursor: pointer; font-family: var(--f-ui);
+  font-size: 12.5px; font-weight: 700; padding: 6px 11px;
+  border-radius: 7px; border: 1px solid var(--borde-fuerte);
+  background: var(--surface); color: var(--tinta-2); white-space: nowrap;
+}
+.btn:hover { border-color: var(--azul); color: var(--azul-texto); }
+.btn.si { background: var(--ok); border-color: var(--ok); color: #fff; }
+.btn.si:hover { filter: brightness(1.08); color: #fff; }
+.btn:focus-visible { outline: 2px solid var(--naranja); outline-offset: 2px; }
+.resuelta { opacity: .5; }
+
+.total-caja {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 14px 16px; border-top: 1px solid var(--borde); background: var(--surface-2);
+  font-family: var(--f-ui);
+}
+.total-caja b { font-size: 20px; font-weight: 800; color: var(--azul-texto); font-variant-numeric: tabular-nums; }
+.total-caja span { font-size: 12.5px; color: var(--tinta-3); }
+
+.vacio { padding: 26px 16px; text-align: center; color: var(--tinta-3); font-size: 13.5px; }
+
+footer.pie {
+  margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--borde);
+  font-size: 13px; color: var(--tinta-3);
+}
+
+@media (max-width: 900px) {
+  .app { flex-direction: column; }
+  .sidebar { width: 100%; flex: none; padding-bottom: 14px; }
+  .nav { flex-direction: row; flex-wrap: wrap; }
+  .nav .sep { width: 100%; margin: 6px 4px 2px; }
+  .main { padding: 22px 18px 50px; }
+  h1 { font-size: 27px; }
+}
+</style>
+
+<div class="aviso">
+  <strong>Maqueta navegable</strong>
+  <span>Números reales del ciclo 05 jul – 05 ago 2026. Lo que marques se guarda solo en este navegador — todavía no hay base de datos compartida.</span>
+</div>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="marca">
+      <div class="logo">DG</div>
+      <div>
+        <div class="nom">DESIGN MODELING</div>
+        <div class="sub">OS · Contenido</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#" tabindex="-1"><span class="ic">🏠</span> Inicio</a>
+      <a href="#" tabindex="-1"><span class="ic">🤖</span> Copiloto</a>
+      <a href="#" tabindex="-1"><span class="ic">🧠</span> Estrategia mensual</a>
+      <a href="#" tabindex="-1"><span class="ic">✨</span> Generador</a>
+      <a href="#" tabindex="-1"><span class="ic">📤</span> Subir</a>
+      <a href="#" tabindex="-1"><span class="ic">✅</span> Aprobación</a>
+      <a href="#" tabindex="-1"><span class="ic">📅</span> Calendario</a>
+      <a href="#" tabindex="-1"><span class="ic">🗂️</span> Tareas</a>
+      <div class="sep">Nuevo módulo</div>
+      <a href="#" class="on" aria-current="page"><span class="ic">📊</span> KPIs Equipo</a>
+      <div class="sep">Resto</div>
+      <a href="#" tabindex="-1"><span class="ic">📝</span> Blog &amp; SEO</a>
+      <a href="#" tabindex="-1"><span class="ic">💬</span> Comunidades</a>
+      <a href="#" tabindex="-1"><span class="ic">✉️</span> Correo</a>
+      <a href="#" tabindex="-1"><span class="ic">📈</span> Métricas</a>
+      <a href="#" tabindex="-1"><span class="ic">🔌</span> Integraciones</a>
+      <a href="#" tabindex="-1"><span class="ic">🎨</span> Marca</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+    <p class="eyebrow">Design Modeling OS</p>
+    <h1>KPIs del equipo de Design</h1>
+    <p class="lede">Marca y desmarca el control del equipo. Las ventas y la pauta llegan solas desde GoHighLevel y Meta; lo demás lo marcas tú.</p>
+
+    <div class="barra-periodo">
+      <label for="per" style="font-size:13px;color:var(--tinta-2);font-weight:600;font-family:var(--f-ui)">Periodo</label>
+      <select class="selector" id="per">
+        <option value="jul">05 jul – 05 ago 2026 · cerrado</option>
+        <option value="ago">05 ago – 05 sep 2026 · en curso</option>
+      </select>
+      <span class="periodo-meta" id="per-meta">23 días hábiles · ventana del día 5 al día 5</span>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="t-sem" aria-controls="p-sem" aria-selected="true">🚦 Semáforo</button>
+      <button class="tab" role="tab" id="t-chk" aria-controls="p-chk" aria-selected="false">✅ Checklist <span class="cuenta" id="chk-cuenta">0/7</span></button>
+      <button class="tab" role="tab" id="t-eq"  aria-controls="p-eq"  aria-selected="false">👥 Equipo</button>
+      <button class="tab" role="tab" id="t-pen" aria-controls="p-pen" aria-selected="false">📌 Pendientes <span class="cuenta" id="pen-cuenta">14</span></button>
+      <button class="tab" role="tab" id="t-cie" aria-controls="p-cie" aria-selected="false">🔒 Cierre</button>
+    </div>
+
+    <!-- ============ SEMÁFORO ============ -->
+    <section class="panel" id="p-sem" role="tabpanel" aria-labelledby="t-sem">
+      <div class="rejilla" id="kpis-comercial"></div>
+      <p class="rotulo-sec">Marketing · Meta Ads</p>
+      <div class="rejilla" id="kpis-marketing"></div>
+      <div class="nota" id="nota-sem"></div>
+    </section>
+
+    <!-- ============ CHECKLIST ============ -->
+    <section class="panel" id="p-chk" role="tabpanel" aria-labelledby="t-chk" hidden>
+      <div class="sub-tabs" id="cadencias"></div>
+      <div class="avance">
+        <span class="txt" id="av-txt">0 de 7</span>
+        <div class="medidor st-ok" style="--c:var(--ok)"><i id="av-barra" style="width:0%"></i></div>
+        <span class="fecha" id="av-fecha"></span>
+      </div>
+      <div id="grupos"></div>
+    </section>
+
+    <!-- ============ EQUIPO ============ -->
+    <section class="panel" id="p-eq" role="tabpanel" aria-labelledby="t-eq" hidden>
+      <div class="tabla-cont">
+        <table>
+          <thead>
+            <tr>
+              <th>Persona</th>
+              <th class="num">Jornada</th>
+              <th class="num">Cumplimiento</th>
+              <th class="num">Entregas</th>
+              <th class="num">En ClickUp</th>
+              <th class="num">Pendientes</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="tb-equipo"></tbody>
+        </table>
+      </div>
+      <div class="nota">
+        <b>La columna que importa es «En ClickUp».</b> No se tilda a mano: la calcula la
+        sincronización cruzando las tareas cerradas del workspace contra las entregas del
+        periodo. La brecha entre «Entregas» y «En ClickUp» <em>es</em> el problema de
+        trazabilidad — 30 de 92 en este ciclo.
+      </div>
+    </section>
+
+    <!-- ============ PENDIENTES ============ -->
+    <section class="panel" id="p-pen" role="tabpanel" aria-labelledby="t-pen" hidden>
+      <div class="tabla-cont">
+        <table>
+          <thead>
+            <tr>
+              <th>Tarea</th>
+              <th>Responsable</th>
+              <th>Vence</th>
+              <th>Prioridad</th>
+              <th>Área</th>
+            </tr>
+          </thead>
+          <tbody id="tb-pendientes"></tbody>
+        </table>
+      </div>
+      <div class="nota">
+        <b>Ninguna tarea puede entrar sin fecha.</b> En el ciclo anterior 10 de 14 pendientes
+        no tenían vencimiento y se postergaron. El campo es obligatorio en la base de datos,
+        no solo en el formulario. Las cuatro en rojo vencían el 14/08 y siguen abiertas.
+      </div>
+    </section>
+
+    <!-- ============ CIERRE ============ -->
+    <section class="panel" id="p-cie" role="tabpanel" aria-labelledby="t-cie" hidden>
+      <div class="dos-col">
+        <div class="bloque">
+          <header>
+            <h3>Ventas por validar</h3>
+            <p>Llegan de GoHighLevel ya depuradas. Solo Dayana valida — lo que no valide, no suma al total.</p>
+          </header>
+          <div class="cuerpo" id="lista-ventas"></div>
+          <div class="total-caja">
+            <span>Validado del periodo</span>
+            <b id="total-validado">US$ 0,00</b>
+          </div>
+        </div>
+
+        <div class="bloque">
+          <header>
+            <h3>Higiene del CRM</h3>
+            <p>Lo que llegó incompleto. Sale como tarea del equipo, con nombre y apellido.</p>
+          </header>
+          <div class="cuerpo" id="lista-higiene"></div>
+        </div>
+      </div>
+      <div class="nota">
+        <b>Aquí se acaba el armado manual del informe.</b> El botón de exportar baja todo el
+        periodo — jornada, entregas, marcas, ventas validadas e higiene — en el formato que
+        consumen los scripts que ya generan los PDF. Nadie vuelve a reconstruirlo a mano.
+      </div>
+    </section>
+
+    <footer class="pie">
+      Maqueta del módulo <b>KPIs Equipo</b> para Design Modeling OS · Los datos corresponden al
+      ciclo 05 jul – 05 ago 2026. Los nombres de clientes en «Cierre» son de ejemplo: en
+      producción salen de GoHighLevel.
+    </footer>
+   </div>
+  </main>
+</div>
+
+<script type="module">
+/* ==========================================================
+   Datos del ciclo 05 jul – 05 ago 2026 (informes de Ester)
+   ========================================================== */
+
+const KPIS = {
+  comercial: [
+    { rot: "Facturación cobrada", val: 340687, meta: 1000000, u: "usd", dir: "mas" },
+    { rot: "Máster High Tickets", val: 1,      meta: 12,      u: "n", suf: " estudiante",  dir: "mas" },
+    { rot: "Cursos Lowcost",      val: 290687, meta: 300000,  u: "usd", dir: "mas" },
+    { rot: "Asistencia a citas",  val: 3020,   meta: 8000,    u: "bp", dir: "mas",
+      pie: "De 53 citas agendadas, 37 no llegaron" },
+    { rot: "Higiene CRM",         val: 5310,   meta: 9000,    u: "bp", dir: "mas",
+      pie: "Facturación marcada como ganada" },
+    { rot: "Registro de entregas",val: 3260,   meta: 8500,    u: "bp", dir: "mas",
+      pie: "30 de 92 entregas en ClickUp" }
+  ],
+  marketing: [
+    { rot: "ROAS sobre cobrado",  val: 276,    meta: 300,     u: "x",   dir: "mas" },
+    { rot: "CAC Máster",          val: 39204,  meta: 40000,   u: "usd", dir: "menos" },
+    { rot: "CAC Cursos",          val: 4193,   meta: 4500,    u: "usd", dir: "menos" }
+  ]
+};
+
+const ITEMS = {
+  diario: [
+    ["Revisar conversaciones no leídas en GHL", "GHL", "Ester"],
+    ["Asignar responsable a las conversaciones nuevas", "GHL", "Ester"],
+    ["Confirmar asistencia de las citas de mañana", "Comercial", "Camila"],
+    ["Registrar las ventas del día como ganadas en GHL", "Comercial", "Eber"],
+    ["Revisar errores del bot y reportarlos", "GHL", "Ester"],
+    ["Registrar las entregas del día", "Soporte", "Equipo"],
+    ["Mover leads en los seguimientos 1-4", "GHL", "Ester"]
+  ],
+  semanal: [
+    ["Cruzar ventas de la semana contra la planilla de inscritos", "Comercial", "Ester"],
+    ["Revisar oportunidades sin monto asignado", "Comercial", "Eber"],
+    ["Revisar oportunidades sin fuente", "Comercial", "Eber"],
+    ["Revisar el reporte semanal de Olympus (pauta)", "Marketing", "Ester"],
+    ["Publicar el contenido de la semana en IG", "Contenido", "Ester"],
+    ["Programar los videos de valor del feed", "Contenido", "Ester"],
+    ["Reunión de seguimiento con el equipo de ventas", "Comercial", "Gabriel"],
+    ["Revisar pendientes vencidos del equipo", "Soporte", "Gabriel"],
+    ["Actualizar artes y creativos de campaña", "Marketing", "Ester"],
+    ["Revisar accesos de clientes nuevos", "Soporte", "Aylin"],
+    ["Depurar automatizaciones sin uso", "GHL", "Aylin"]
+  ],
+  mensual: [
+    ["Cargar jornada del periodo de cada persona", "Soporte", "Ester"],
+    ["Cerrar el conteo de entregas del periodo", "Soporte", "Ester"],
+    ["Validar las ventas del periodo con Dayana", "Comercial", "Ester"],
+    ["Emitir la lista de higiene del CRM al equipo", "Comercial", "Ester"],
+    ["Consolidar el resultado de pauta del periodo", "Marketing", "Ester"],
+    ["Definir metas del periodo siguiente", "Comercial", "Dayana"],
+    ["Exportar el cierre y generar los informes", "Soporte", "Ester"]
+  ]
+};
+
+const EQUIPO = [
+  { n: "Aylin Tapia", rol: "Soporte Técnico · 5 h/día", j: "110:00", c: 10000, e: 31, ck: 6,  p: 6 },
+  { n: "Ester Álvarez", rol: "Asesora Cursos · 8 h/día", j: "179:20", c: 9746,  e: 61, ck: 24, p: 7 }
+];
+
+const PENDIENTES = [
+  ["Revisar y aplicar política de privacidad en Vimeo", "Aylin", "18/08", "alta", "GHL", true],
+  ["Actualizar landings de la página de recursos", "Ester", "18/08", "alta", "GHL", true],
+  ["Enviar a Patricio el código consolidado del bot (PR #4)", "Ester", "18/08", "media", "GHL", false],
+  ["Publicar artes de marketing para ads + IG", "Ester", "19/08", "alta", "Contenido", true],
+  ["Primer post de agosto + contenido de la semana 1", "Ester", "19/08", "alta", "Contenido", true],
+  ["Correos post-pérdida (secuencia tras oportunidad perdida)", "Ester", "20/08", "alta", "GHL", false],
+  ["Añadir los 4 puntos definidos en la interfaz de cursos", "Aylin + Ester", "21/08", "media", "GHL", false],
+  ["Política de privacidad en Vimeo (con Gabriel)", "Aylin", "21/08", "media", "Soporte", false],
+  ["Crear correos nuevos con IA para plantillas", "Aylin", "24/08", "media", "GHL", false],
+  ["Notificación de nuevo comentario para docentes", "Ester", "25/08", "media", "GHL", false],
+  ["Renombrar y ordenar videos base de cada curso", "Aylin", "26/08", "media", "GHL", false],
+  ["Configurar campañas de correo en GHL (con Patricio)", "Ester", "27/08", "media", "Marketing", false],
+  ["Limpiar correos viejos + mejorar plantillas con IA", "Aylin", "28/08", "media", "GHL", false],
+  ["Limpiar automatizaciones sin uso + activar workflow", "Aylin", "31/08", "media", "GHL", false]
+];
+
+const VENTAS = [
+  { c: "Cliente 01", p: "Máster BIM+IA", m: 190000, f: "registro-formulario" },
+  { c: "Cliente 02", p: "Especialización Acero", m: 19999, f: "sms-whatsapp" },
+  { c: "Cliente 03", p: "Curso Lowcost", m: 2700, f: "Campaña de Facebook Ads" },
+  { c: "Cliente 04", p: "Curso Lowcost", m: 2700, f: "sales-agent" },
+  { c: "Cliente 05", p: "Diplomado Estructuras", m: 49999, f: "whatsapp-api" },
+  { c: "Cliente 06", p: "Curso Lowcost", m: 2700, f: "Instagram" },
+  { c: "Cliente 07", p: "Curso Lowcost", m: 2700, f: "registro-formulario" }
+];
+
+const HIGIENE = [
+  { c: "Cliente 08", m: "Cerrado en $0 — falta asignar monto", t: "sin monto" },
+  { c: "Cliente 09", m: "Cerrado en $0 — falta asignar monto", t: "sin monto" },
+  { c: "Cliente 10", m: "Aparece en Máster HT y en Acero", t: "duplicado" },
+  { c: "Cliente 11", m: "Sin campaña de origen registrada", t: "sin fuente" },
+  { c: "Cliente 12", m: "Sin campaña de origen registrada", t: "sin fuente" },
+  { c: "Cliente 13", m: "Etapa PAGO RECURRENTE — confirmar si cuenta", t: "recurrente" }
+];
+
+/* ================= Utilidades ================= */
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+const usd = c => "US$ " + (c / 100).toLocaleString("es-EC", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const pct = bp => (bp / 100).toLocaleString("es-EC", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%";
+
+function formatea(k) {
+  if (k.u === "usd") return usd(k.val);
+  if (k.u === "bp")  return pct(k.val);
+  if (k.u === "x")   return (k.val / 100).toLocaleString("es-EC", { minimumFractionDigits: 2 }) + "x";
+  const s = k.suf ? (k.val === 1 ? k.suf : k.suf + "s") : "";
+  return k.val.toLocaleString("es-EC") + s;
+}
+function formateaMeta(k) {
+  if (k.u === "usd") return usd(k.meta);
+  if (k.u === "bp")  return pct(k.meta);
+  if (k.u === "x")   return (k.meta / 100).toLocaleString("es-EC", { minimumFractionDigits: 2 }) + "x";
+  return k.meta.toLocaleString("es-EC");
+}
+
+/* Semáforo: verde si cumple la meta, ámbar desde el 80%, rojo bajo eso. */
+function evalua(k) {
+  if (k.val == null || !k.meta) return { cls: "st-nd", txt: "Sin dato", frac: 0 };
+  const razon = k.dir === "menos" ? k.meta / k.val : k.val / k.meta;
+  const frac  = Math.max(0, Math.min(1, razon));
+  if (razon >= 1)   return { cls: "st-ok", txt: "Cumplido",   frac };
+  if (razon >= 0.8) return { cls: "st-al", txt: "En riesgo",  frac };
+  return { cls: "st-gr", txt: "Incumplido", frac };
+}
+
+function tarjeta(k) {
+  const e = evalua(k);
+  const el = document.createElement("article");
+  el.className = "kpi " + e.cls;
+  el.innerHTML = `
+    <p class="rot">${k.rot}</p>
+    <div class="val">${formatea(k)}</div>
+    <p class="meta">Meta: ${formateaMeta(k)}${k.pie ? " · " + k.pie : ""}</p>
+    <div class="medidor"><i style="width:${(e.frac * 100).toFixed(1)}%"></i></div>
+    <span class="estado"><span class="punto"></span>${e.txt}</span>`;
+  return el;
+}
+
+/* ================= Semáforo ================= */
+function pintaSemaforo() {
+  const a = $("#kpis-comercial"), b = $("#kpis-marketing");
+  a.replaceChildren(...KPIS.comercial.map(tarjeta));
+  b.replaceChildren(...KPIS.marketing.map(tarjeta));
+  $("#nota-sem").innerHTML =
+    "<b>Lo que este semáforo dice del ciclo:</b> la pauta no es el problema — los tres " +
+    "indicadores de marketing están en meta o cerca. El Máster no falló por cierre sino por " +
+    "asistencia: con asistencia normal habrían sido 8 estudiantes en vez de 1. Y los dos " +
+    "indicadores más rojos, higiene del CRM y registro de entregas, miden lo mismo: el " +
+    "trabajo se hizo pero no quedó anotado.";
+}
+
+/* ================= Checklist ================= */
+const ETIQUETAS = { diario: "Hoy", semanal: "Esta semana", mensual: "Este mes" };
+let cadenciaActiva = "diario";
+
+const hoyEC = () => new Date().toLocaleDateString("en-CA", { timeZone: "America/Guayaquil" });
+
+/* El ancla es lo que hace que los diarios se limpien solos al cambiar el día:
+   no hay ningún proceso que "resetee" nada, simplemente cambia la clave. */
+function ancla(cad) {
+  const hoy = hoyEC();
+  if (cad === "diario") return hoy;
+  const d = new Date(hoy + "T12:00:00");
+  if (cad === "semanal") {
+    d.setDate(d.getDate() - ((d.getDay() + 6) % 7));       // lunes ISO
+    return d.toLocaleDateString("en-CA");
+  }
+  const dia5 = new Date(d.getFullYear(), d.getMonth(), 5); // periodo: día 5 al día 5
+  if (d.getDate() < 5) dia5.setMonth(dia5.getMonth() - 1);
+  return dia5.toLocaleDateString("en-CA");
+}
+
+const LLAVE = "dma-kpis-maqueta";
+const leer  = () => { try { return JSON.parse(localStorage.getItem(LLAVE)) || {}; } catch { return {}; } };
+const guardar = e => { try { localStorage.setItem(LLAVE, JSON.stringify(e)); } catch {} };
+
+const marcado = (cad, i) => !!leer()[`${cad}|${ancla(cad)}|${i}`];
+function alterna(cad, i) {
+  const e = leer(), k = `${cad}|${ancla(cad)}|${i}`;
+  if (e[k]) delete e[k]; else e[k] = 1;
+  guardar(e);
+}
+
+function pintaCadencias() {
+  $("#cadencias").replaceChildren(...Object.keys(ITEMS).map(cad => {
+    const hechos = ITEMS[cad].filter((_, i) => marcado(cad, i)).length;
+    const b = document.createElement("button");
+    b.className = "chip";
+    b.type = "button";
+    b.setAttribute("aria-pressed", String(cad === cadenciaActiva));
+    b.innerHTML = `${ETIQUETAS[cad]} <span class="n">${hechos}/${ITEMS[cad].length}</span>`;
+    b.onclick = () => { cadenciaActiva = cad; pintaChecklist(); };
+    return b;
+  }));
+}
+
+function pintaChecklist() {
+  pintaCadencias();
+  const items = ITEMS[cadenciaActiva];
+  const hechos = items.filter((_, i) => marcado(cadenciaActiva, i)).length;
+
+  $("#av-txt").textContent = `${hechos} de ${items.length}`;
+  $("#av-barra").style.width = (items.length ? hechos / items.length * 100 : 0) + "%";
+  $("#av-barra").parentElement.className = "medidor " + (hechos === items.length ? "st-ok" : hechos ? "st-al" : "st-nd");
+  $("#chk-cuenta").textContent = `${hechos}/${items.length}`;
+
+  const f = new Date(ancla(cadenciaActiva) + "T12:00:00");
+  const fmt = f.toLocaleDateString("es-EC", { day: "numeric", month: "long" });
+  $("#av-fecha").textContent =
+    cadenciaActiva === "diario"  ? `Se limpia solo mañana · ${fmt}` :
+    cadenciaActiva === "semanal" ? `Semana del ${fmt}` : `Periodo desde el ${fmt}`;
+
+  // Agrupado por área, y lo ya marcado baja al final de su grupo.
+  const areas = [...new Set(items.map(x => x[1]))];
+  $("#grupos").replaceChildren(...areas.map(area => {
+    const filas = items
+      .map((x, i) => ({ x, i }))
+      .filter(o => o.x[1] === area)
+      .sort((a, b) => marcado(cadenciaActiva, a.i) - marcado(cadenciaActiva, b.i));
+
+    const g = document.createElement("section");
+    g.className = "grupo";
+    const h = document.createElement("h3");
+    h.textContent = area;
+    const lista = document.createElement("div");
+    lista.className = "lista";
+
+    filas.forEach(({ x, i }) => {
+      const on = marcado(cadenciaActiva, i);
+      const b = document.createElement("button");
+      b.className = "fila";
+      b.type = "button";
+      b.setAttribute("aria-pressed", String(on));
+      b.innerHTML = `
+        <span class="caja"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7.5-8" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="tit"></span>
+        <span class="quien"></span>`;
+      b.querySelector(".tit").textContent = x[0];
+      b.querySelector(".quien").textContent = x[2];
+      b.onclick = () => { alterna(cadenciaActiva, i); pintaChecklist(); };
+      lista.append(b);
+    });
+
+    g.append(h, lista);
+    return g;
+  }));
+}
+
+/* ================= Equipo ================= */
+function pintaEquipo() {
+  const filas = EQUIPO.map(p => {
+    const e = evalua({ val: p.c, meta: 9500, dir: "mas" });
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td><span class="persona"></span></td>
+      <td class="num">${p.j}</td>
+      <td class="num">${pct(p.c)}</td>
+      <td class="num">${p.e}</td>
+      <td class="num">${p.ck}</td>
+      <td class="num">${p.p}</td>
+      <td><span class="pastilla ${e.cls}"><span class="punto"></span>${e.txt}</span></td>`;
+    const nom = tr.querySelector(".persona");
+    nom.textContent = p.n;
+    const s = document.createElement("small");
+    s.textContent = p.rol;
+    nom.append(s);
+    return tr;
+  });
+
+  const tot = document.createElement("tr");
+  tot.className = "total";
+  const te = EQUIPO.reduce((a, p) => a + p.e, 0);
+  const tk = EQUIPO.reduce((a, p) => a + p.ck, 0);
+  const tp = EQUIPO.reduce((a, p) => a + p.p, 0);
+  tot.innerHTML = `
+    <td>TOTAL ÁREA</td>
+    <td class="num">289:20</td>
+    <td class="num">98,4%</td>
+    <td class="num">${te}</td>
+    <td class="num">${tk}</td>
+    <td class="num">${tp}</td>
+    <td><span class="pastilla st-ok"><span class="punto"></span>Cumplido</span></td>`;
+
+  $("#tb-equipo").replaceChildren(...filas, tot);
+}
+
+/* ================= Pendientes ================= */
+function pintaPendientes() {
+  $("#tb-pendientes").replaceChildren(...PENDIENTES.map(([t, r, v, pr, a, vencida]) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td class="tt"></td>
+      <td class="rr"></td>
+      <td class="${vencida ? "vencida" : ""}">${v}${vencida ? " · vencida" : ""}</td>
+      <td><span class="pastilla ${pr === "alta" ? "st-gr" : "st-nd"}">${pr}</span></td>
+      <td class="aa"></td>`;
+    tr.querySelector(".tt").textContent = t;
+    tr.querySelector(".rr").textContent = r;
+    tr.querySelector(".aa").textContent = a;
+    return tr;
+  }));
+  $("#pen-cuenta").textContent = PENDIENTES.length;
+}
+
+/* ================= Cierre ================= */
+const estadoVentas = new Map();
+
+function pintaCierre() {
+  const cont = $("#lista-ventas");
+  cont.replaceChildren(...VENTAS.map((v, i) => {
+    const st = estadoVentas.get(i);
+    const fila = document.createElement("div");
+    fila.className = "venta" + (st ? " resuelta" : "");
+    fila.innerHTML = `
+      <span class="quien2"><b></b><small></small></span>
+      <span class="monto">${usd(v.m)}</span>
+      <span class="acciones"></span>`;
+    fila.querySelector("b").textContent = v.c;
+    fila.querySelector("small").textContent = `${v.p} · ${v.f}`;
+
+    const acc = fila.querySelector(".acciones");
+    if (st) {
+      const p = document.createElement("span");
+      p.className = "pastilla " + (st === "ok" ? "st-ok" : "st-nd");
+      p.innerHTML = `<span class="punto"></span>${st === "ok" ? "Validada" : "Descartada"}`;
+      acc.append(p);
+    } else {
+      const si = document.createElement("button");
+      si.className = "btn si"; si.type = "button"; si.textContent = "Validar";
+      si.onclick = () => { estadoVentas.set(i, "ok"); pintaCierre(); };
+      const no = document.createElement("button");
+      no.className = "btn"; no.type = "button"; no.textContent = "Descartar";
+      no.onclick = () => { estadoVentas.set(i, "no"); pintaCierre(); };
+      acc.append(si, no);
+    }
+    return fila;
+  }));
+
+  const total = VENTAS.reduce((a, v, i) => a + (estadoVentas.get(i) === "ok" ? v.m : 0), 0);
+  $("#total-validado").textContent = usd(total);
+
+  $("#lista-higiene").replaceChildren(...HIGIENE.map(h => {
+    const d = document.createElement("div");
+    d.className = "venta";
+    d.innerHTML = `
+      <span class="quien2"><b></b><small></small></span>
+      <span class="pastilla st-al"><span class="punto"></span>${h.t}</span>`;
+    d.querySelector("b").textContent = h.c;
+    d.querySelector("small").textContent = h.m;
+    return d;
+  }));
+}
+
+/* ================= Pestañas ================= */
+const tabs = $$(".tab");
+tabs.forEach(t => {
+  t.onclick = () => {
+    tabs.forEach(o => {
+      const activa = o === t;
+      o.setAttribute("aria-selected", String(activa));
+      $("#" + o.getAttribute("aria-controls")).hidden = !activa;
+    });
+  };
+});
+
+/* Periodo: el ciclo cerrado trae los números reales; el que corre aún no tiene. */
+$("#per").onchange = e => {
+  const enCurso = e.target.value === "ago";
+  $("#per-meta").textContent = enCurso
+    ? "En curso · los indicadores se completan al cierre"
+    : "23 días hábiles · ventana del día 5 al día 5";
+
+  ["comercial", "marketing"].forEach(g => KPIS[g].forEach(k => {
+    if (k.origen === undefined) k.origen = k.val;
+    k.val = enCurso ? null : k.origen;
+  }));
+  pintaSemaforo();
+};
+
+/* ================= Arranque ================= */
+pintaSemaforo();
+pintaChecklist();
+pintaEquipo();
+pintaPendientes();
+pintaCierre();
+</script>
