@@ -3,22 +3,22 @@ import { Reveal } from "./reveal";
 
 export function Section({
   children,
-  tone = "white",
+  tone = "base",
   id,
   className = "",
 }: {
   children: ReactNode;
-  tone?: "white" | "crema" | "palido" | "oscuro";
+  tone?: "base" | "panel" | "blueprint" | "claro";
   id?: string;
   className?: string;
 }) {
   const bg =
-    tone === "crema" ? "bg-crema" :
-    tone === "palido" ? "bg-azul-palido" :
-    tone === "oscuro" ? "bg-gradient-to-br from-navy to-azul text-white" :
-    "bg-white";
+    tone === "panel" ? "bg-navy-2" :
+    tone === "blueprint" ? "bg-navy blueprint" :
+    tone === "claro" ? "bg-azul-palido text-[#12283a]" :
+    "bg-navy";
   return (
-    <section id={id} className={`scroll-mt-24 px-5 py-16 md:py-20 ${bg} ${className}`}>
+    <section id={id} className={`scroll-mt-24 px-5 py-16 md:py-24 ${bg} ${className}`}>
       <div className="mx-auto max-w-6xl">{children}</div>
     </section>
   );
@@ -29,23 +29,23 @@ export function SectionHead({
   title,
   lead,
   center = true,
-  dark = false,
+  num,
 }: {
   eyebrow: string;
   title: string;
   lead?: string;
   center?: boolean;
-  dark?: boolean;
+  num?: string;
 }) {
   return (
     <Reveal className={`max-w-3xl ${center ? "mx-auto text-center" : ""}`}>
-      <span className={`mb-3 inline-block text-[11px] font-bold uppercase tracking-[2.2px] ${dark ? "text-naranja-claro" : "text-naranja"}`}>
+      <span className="tag-tech mb-4 inline-flex items-center gap-2.5">
+        {num ? <span className="text-tinta-suave">{num}</span> : null}
+        <span aria-hidden className="inline-block h-px w-7 bg-naranja/60" />
         {eyebrow}
       </span>
-      <h2 className={`text-3xl font-bold leading-tight md:text-4xl ${dark ? "text-white" : "text-azul"}`}>{title}</h2>
-      {lead ? (
-        <p className={`mt-4 text-base leading-relaxed md:text-lg ${dark ? "text-white/84" : "text-muted-foreground"}`}>{lead}</p>
-      ) : null}
+      <h2 className="text-3xl font-bold leading-[1.1] text-white md:text-[2.6rem]">{title}</h2>
+      {lead ? <p className="mt-4 text-base leading-relaxed text-tinta-suave md:text-lg">{lead}</p> : null}
     </Reveal>
   );
 }

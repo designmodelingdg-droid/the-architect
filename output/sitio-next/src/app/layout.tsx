@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Overpass, Nunito } from "next/font/google";
+import { Overpass, Nunito, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
@@ -19,21 +19,28 @@ const nunito = Nunito({
   display: "swap",
 });
 
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-mono-tech",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://dgdesignmodeling.com"),
   title: {
-    default: "Design Modeling DG — Consultoría BIM estructural",
+    default: "Design Modeling DG — Consultoría BIM con inteligencia artificial",
     template: "%s · Design Modeling DG",
   },
   description:
-    "Consultoría BIM para proyectos estructurales y arquitectónicos en Ecuador y Latinoamérica. Cálculo estructural, coordinación BIM y DG BIM Intelligence, nuestra plataforma propia.",
+    "Consultoría BIM estructural con IA aplicada con criterio: cálculo sismorresistente, coordinación de disciplinas y DG BIM Intelligence, el agente que razona sobre tu proyecto. Ecuador y Latinoamérica.",
   openGraph: {
     type: "website",
     locale: "es_EC",
     siteName: "Design Modeling DG",
-    title: "Design Modeling DG — Consultoría BIM estructural",
+    title: "Design Modeling DG — Consultoría BIM con inteligencia artificial",
     description:
-      "Ingeniería estructural y BIM para proyectos que no admiten sorpresas. Diez años resolviendo en el modelo lo que a otros les aparece en obra.",
+      "El criterio de 10 años de BIM Management, ahora razonando en cada proyecto. Consultoría estructural + DG BIM Intelligence.",
     images: [{ url: "/images/dm-hero.jpg", width: 1920, height: 1097 }],
   },
 };
@@ -41,7 +48,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body className={`${overpass.variable} ${nunito.variable} bg-background text-foreground antialiased`}>
+      <body className={`${overpass.variable} ${nunito.variable} ${mono.variable} bg-background text-foreground antialiased`}>
         <Navbar />
         <main>{children}</main>
         <Footer />
