@@ -12,11 +12,11 @@ export function CtaFinal({
   cta?: string;
 }) {
   return (
-    <section className="blueprint-fino border-t border-white/8 bg-navy px-5 py-20 text-center">
+    <section className="blueprint-navy border-t border-white/8 bg-navy px-5 py-20 text-center">
       <Reveal>
-        <span className="tag-tech mb-4 inline-block">// listo para empezar</span>
+        <span className="tag-tech mb-4 inline-block text-naranja-claro">Listo para empezar</span>
         <h2 className="mx-auto max-w-2xl text-3xl font-bold text-white md:text-5xl">{title}</h2>
-        <p className="mx-auto mt-4 max-w-xl leading-relaxed text-tinta-suave">{text}</p>
+        <p className="mx-auto mt-4 max-w-xl leading-relaxed text-white/70">{text}</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link
             href="/contactos"

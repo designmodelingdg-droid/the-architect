@@ -31,7 +31,7 @@ export default function Plataforma() {
   return (
     <>
       <PageHero
-        num="§02"
+        num="02"
         eyebrow="DG BIM Intelligence"
         title="Un consultor BIM que razona, 24/7 dentro de tu proyecto"
         lead="No es un chatbot. Es un agente con el criterio de +10 años de BIM Management: lee tu proyecto, razona paso a paso y te dice qué hacer y por qué — con evidencia, impacto y nivel de confianza en cada hallazgo."
@@ -47,32 +47,32 @@ export default function Plataforma() {
         ]}
       />
 
-      <Section tone="panel">
+      <Section tone="navy">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-14">
           <Reveal>
-            <span className="tag-tech mb-4 inline-flex items-center gap-2.5">
-              <span className="text-tinta-suave">01</span>
+            <span className="tag-tech mb-4 inline-flex items-center gap-2.5 text-naranja-claro">
+              <span className="text-white/50">01/</span>
               <span aria-hidden className="inline-block h-px w-7 bg-naranja/60" />
               La diferencia
             </span>
             <h2 className="text-3xl font-bold leading-[1.1] text-white md:text-[2.6rem]">
               No te suelta una respuesta plana. Te guía con criterio.
             </h2>
-            <p className="mt-4 leading-relaxed text-tinta-suave md:text-lg">
+            <p className="mt-4 leading-relaxed text-white/70 md:text-lg">
               La diferencia con un ChatGPT genérico: este agente aplica reglas condicionales de
               conocimiento profundo del dominio. No responde en abstracto — razona sobre tu modelo,
               «primero esto, después esto», como lo haría un consultor senior sentado al lado de tu
-              equipo.
+              equipo. Y cuando le falta contexto, pregunta antes de recomendar.
             </p>
             <ol className="mt-7 space-y-4">
               {PASOS.map(([t, d], i) => (
                 <li key={t} className="flex gap-4">
-                  <span className="font-mono-tech mt-0.5 text-[13px] font-semibold text-naranja-claro" aria-hidden>
-                    0{i + 1}
+                  <span className="mt-0.5 font-heading text-[13px] font-bold text-naranja-claro" aria-hidden>
+                    0{i + 1}/
                   </span>
                   <div>
                     <h3 className="font-heading text-[15px] font-bold text-white">{t}</h3>
-                    <p className="text-sm leading-relaxed text-tinta-suave">{d}</p>
+                    <p className="text-sm leading-relaxed text-white/65">{d}</p>
                   </div>
                 </li>
               ))}
@@ -84,7 +84,7 @@ export default function Plataforma() {
         </div>
       </Section>
 
-      <Section tone="blueprint">
+      <Section tone="base">
         <SectionHead
           num="02"
           eyebrow="Por rol"
@@ -95,8 +95,8 @@ export default function Plataforma() {
           {ROLES.map(([rol, d], i) => (
             <Reveal key={rol} delay={i * 0.06}>
               <article className="panel h-full p-6">
-                <span className="font-mono-tech text-[10px] uppercase tracking-[0.16em] text-tinta-suave">rol_0{i + 1}</span>
-                <h3 className="mt-2 text-lg font-bold text-naranja-claro">{rol}</h3>
+                <span className="font-heading text-[10px] font-bold uppercase tracking-[0.16em] text-tinta-suave">Rol 0{i + 1}</span>
+                <h3 className="mt-2 text-lg font-bold text-naranja">{rol}</h3>
                 <p className="mt-2 text-[13.5px] leading-relaxed text-tinta-suave">{d}</p>
               </article>
             </Reveal>
@@ -113,11 +113,11 @@ export default function Plataforma() {
         />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           <Reveal>
-            <article className="panel h-full border-t-2 border-t-emerald-400/70 p-6">
-              <span className="inline-flex items-center gap-1.5 font-mono-tech text-[10px] uppercase tracking-[0.14em] text-emerald-300">
+            <article className="panel h-full border-t-2 border-t-emerald-500 p-6">
+              <span className="inline-flex items-center gap-1.5 font-heading text-[10px] font-bold uppercase tracking-[0.14em] text-emerald-600">
                 <Check className="size-3" aria-hidden /> Disponible hoy
               </span>
-              <ul className="mt-4 space-y-2.5 text-[14.5px] text-tinta/90">
+              <ul className="mt-4 space-y-2.5 text-[14.5px] text-tinta">
                 <li>Tablero de Modelador BIM</li>
                 <li>Tablero de Gerente BIM</li>
                 <li>Agente especializado 24/7</li>
@@ -126,11 +126,11 @@ export default function Plataforma() {
             </article>
           </Reveal>
           <Reveal delay={0.07}>
-            <article className="panel h-full border-t-2 border-t-naranja/70 p-6">
-              <span className="inline-flex items-center gap-1.5 font-mono-tech text-[10px] uppercase tracking-[0.14em] text-naranja-claro">
+            <article className="panel h-full border-t-2 border-t-naranja p-6">
+              <span className="inline-flex items-center gap-1.5 font-heading text-[10px] font-bold uppercase tracking-[0.14em] text-naranja">
                 <Clock className="size-3" aria-hidden /> En desarrollo
               </span>
-              <ul className="mt-4 space-y-2.5 text-[14.5px] text-tinta/90">
+              <ul className="mt-4 space-y-2.5 text-[14.5px] text-tinta">
                 <li>Tablero de Coordinador BIM</li>
                 <li>Conexión directa con Revit / Cloud</li>
                 <li>Mejoras de integración</li>
@@ -139,10 +139,10 @@ export default function Plataforma() {
           </Reveal>
           <Reveal delay={0.14}>
             <article className="panel h-full border-t-2 border-t-azul-medio p-6">
-              <span className="inline-flex items-center gap-1.5 font-mono-tech text-[10px] uppercase tracking-[0.14em] text-azul-palido">
+              <span className="inline-flex items-center gap-1.5 font-heading text-[10px] font-bold uppercase tracking-[0.14em] text-azul-medio">
                 <Eye className="size-3" aria-hidden /> Visión futura
               </span>
-              <ul className="mt-4 space-y-2.5 text-[14.5px] text-tinta/90">
+              <ul className="mt-4 space-y-2.5 text-[14.5px] text-tinta">
                 <li>Inteligencia empresarial del proyecto</li>
                 <li>Automatizaciones avanzadas</li>
                 <li>Auditoría integral</li>
@@ -151,7 +151,7 @@ export default function Plataforma() {
           </Reveal>
         </div>
         <Reveal className="mt-7">
-          <p className="text-center font-mono-tech text-[11px] uppercase tracking-[0.12em] text-tinta-suave">
+          <p className="text-center font-heading text-[11px] font-bold uppercase tracking-[0.12em] text-tinta-suave">
             Lo disponible se demuestra · lo en desarrollo se explica · lo futuro es visión, no promesa contractual
           </p>
         </Reveal>
@@ -166,9 +166,9 @@ export default function Plataforma() {
           ].map(([t, d, cta], i) => (
             <Reveal key={t} delay={i * 0.08}>
               <article className="panel flex h-full flex-col border-l-2 border-l-naranja p-7">
-                <h3 className="text-xl font-bold text-white">{t}</h3>
+                <h3 className="text-xl font-bold text-navy">{t}</h3>
                 <p className="mt-3 flex-1 text-[14.5px] leading-relaxed text-tinta-suave">{d}</p>
-                <Link href="/contactos" className="mt-5 inline-flex items-center gap-1.5 font-heading text-sm font-bold text-naranja-claro transition-colors hover:text-white">
+                <Link href="/contactos" className="mt-5 inline-flex items-center gap-1.5 font-heading text-sm font-bold text-naranja transition-colors hover:text-azul">
                   {cta} →
                 </Link>
               </article>

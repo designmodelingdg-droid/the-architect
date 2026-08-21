@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Overpass, Nunito, JetBrains_Mono } from "next/font/google";
+import { Overpass, Nunito } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
@@ -16,13 +16,6 @@ const nunito = Nunito({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
   variable: "--font-nunito",
-  display: "swap",
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "600"],
-  variable: "--font-mono-tech",
   display: "swap",
 });
 
@@ -48,7 +41,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body className={`${overpass.variable} ${nunito.variable} ${mono.variable} bg-background text-foreground antialiased`}>
+      <body className={`${overpass.variable} ${nunito.variable} bg-background text-foreground antialiased`}>
         <Navbar />
         <main>{children}</main>
         <Footer />

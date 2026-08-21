@@ -15,7 +15,7 @@ export default function Contactos() {
   return (
     <>
       <PageHero
-        num="§05"
+        num="05"
         eyebrow="Contacto"
         title="Cuéntanos de tu proyecto"
         lead="Treinta minutos de diagnóstico pueden ahorrarte semanas de retrabajo en obra. Sin costo, sin compromiso y con una respuesta concreta sobre qué encontramos."
@@ -42,7 +42,7 @@ export default function Contactos() {
               target="_blank"
               rel="noopener"
               data-btn
-              className="rounded-lg border border-white/20 px-6 py-3 font-heading text-sm font-bold text-tinta hover:border-naranja-claro hover:text-naranja-claro"
+              className="rounded-lg border border-input px-6 py-3 font-heading text-sm font-bold text-azul hover:border-naranja hover:text-naranja"
             >
               {r.label}
             </a>

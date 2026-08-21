@@ -14,7 +14,7 @@ export default function Blog() {
   return (
     <>
       <PageHero
-        num="§06"
+        num="06"
         eyebrow="Blog"
         title="Ingeniería, BIM e inteligencia artificial"
         lead="Artículos técnicos sobre coordinación BIM, diseño sismorresistente e IA aplicada a la construcción, escritos por el equipo que los ejecuta."
@@ -22,8 +22,8 @@ export default function Blog() {
       />
       <Section>
         <Reveal className="panel mx-auto max-w-xl px-8 py-14 text-center">
-          <span className="tag-tech">status: en_preparacion</span>
-          <h2 className="mt-3 text-2xl font-bold text-white">Estamos preparando los primeros artículos</h2>
+          <span className="tag-tech">En preparación</span>
+          <h2 className="mt-3 text-2xl font-bold text-navy">Estamos preparando los primeros artículos</h2>
           <p className="mt-3 leading-relaxed text-tinta-suave">
             Muy pronto publicaremos contenido técnico. Mientras tanto, escríbenos si tienes una duda
             concreta sobre tu proyecto.
