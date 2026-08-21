@@ -14,3 +14,13 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Previews derivados de output/home-consultoria-bim.html
+output/_preview-local.html
+output/_artifact-preview.html
+output/sitio/_local/
+output/sitio/_artifact-sitio.html
+
+# Caché de Python
+__pycache__/
+*.pyc
