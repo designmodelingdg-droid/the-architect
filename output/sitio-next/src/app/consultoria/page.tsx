@@ -1,78 +1,33 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Check, Minus } from "lucide-react";
+import Link from "next/link";
+import { Check, Minus, ArrowRight } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { AvalesMarquee } from "@/components/site/marquee";
 import { Section, SectionHead } from "@/components/site/section";
 import { Reveal } from "@/components/site/reveal";
 import { CtaFinal } from "@/components/site/cta-final";
+import { FAMILIAS } from "@/lib/site";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const metadata: Metadata = {
   title: "Consultoría BIM",
   description:
-    "Cálculo estructural sismorresistente, arquitectura y planos, coordinación BIM e implementación en empresas — cada servicio entregado con DG BIM Intelligence.",
+    "Catálogo completo de consultoría BIM: ingeniería estructural, arquitectura y documentación, coordinación BIM, implementación y BIM + IA con DG BIM Intelligence.",
 };
 
-const SERVICIOS = [
-  {
-    id: "calculo",
-    img: "/images/v2-calculo.jpg",
-    n: "SRV.01",
-    title: "Cálculo Estructural",
-    lead: "Diseñamos y evaluamos estructuras sismorresistentes siguiendo códigos nacionales e internacionales. Desde la fase conceptual hasta la ingeniería de detalle.",
-    items: [
-      "Diseño de nuevas edificaciones",
-      "Estudios de factibilidad",
-      "Evaluación del estado actual de estructuras existentes",
-      "Rehabilitación y evaluación sísmica",
-      "Diseño y análisis de vibración",
-      "Evaluación del desempeño estructural",
-    ],
-  },
-  {
-    id: "arquitectura",
-    img: "/images/v2-planos.jpg",
-    n: "SRV.02",
-    title: "Arquitectura y Planos",
-    lead: "Documentación arquitectónica completa, lista para trámite municipal y para construir — no para volver a dibujar.",
-    items: [
-      "Planos arquitectónicos y de detalle constructivo",
-      "Instalaciones eléctricas, sanitarias e hidráulicas",
-      "Planos según normativa municipal",
-      "Planos estructurales",
-      "Plantas amobladas para presentación y venta",
-    ],
-  },
-  {
-    id: "coordinacion",
-    img: "/images/v2-clash.jpg",
-    n: "SRV.03",
-    title: "Modelado y Coordinación BIM",
-    lead: "Modelo federado de las tres disciplinas y detección sistemática de interferencias, con criterio estructural para decidir qué elemento cede.",
-    items: [
-      "Modelado y diseño BIM de edificios y estructuras",
-      "Levantamiento BIM de edificaciones existentes",
-      "BIM «in situ» para gestión de cambios durante la obra",
-      "Detección y resolución de interferencias con DG BIM Intelligence",
-      "Asesoría y dirección técnica del proceso",
-    ],
-  },
-  {
-    id: "implementacion",
-    img: "/images/v2-implementacion.jpg",
-    n: "SRV.04",
-    title: "Implementación BIM en tu empresa",
-    lead: "Si tu organización quiere trabajar en BIM y no sabe por dónde empezar, acompañamos el proceso hasta que tu equipo camine solo.",
-    items: [
-      "Diagnóstico de madurez BIM de la organización",
-      "Definición de estándares y flujos de trabajo",
-      "Capacitación del equipo técnico",
-      "Acompañamiento del primer proyecto piloto",
-      "Implantación de DG BIM Intelligence como herramienta de gestión",
-    ],
-  },
-];
+const DETALLE: Record<string, string> = {
+  estructural:
+    "Diseñamos y evaluamos estructuras sismorresistentes siguiendo códigos nacionales e internacionales. Desde la fase conceptual hasta la ingeniería de detalle, con memorias de cálculo defendibles en cualquier revisión.",
+  arquitectura:
+    "Documentación arquitectónica completa, lista para trámite municipal y para construir — no para volver a dibujar.",
+  coordinacion:
+    "Modelo federado de las tres disciplinas y detección sistemática de interferencias, con criterio estructural para decidir qué elemento cede.",
+  implementacion:
+    "Si tu organización quiere trabajar en BIM y no sabe por dónde empezar, acompañamos el proceso hasta que tu equipo camine solo.",
+  "bim-ia":
+    "El plus que ninguna otra consultora te da: cada servicio se entrega con DG BIM Intelligence, y también lo licenciamos como software independiente para empresas con equipo BIM propio.",
+};
 
 const FAQ = [
   ["¿Trabajan con proyectos que ya están en ejecución?", "Sí, y es más común de lo que parece. Hacemos levantamiento BIM de lo que ya está construido y modelamos lo que falta, para que el resto de la obra se coordine sobre información real y no sobre planos que ya cambiaron."],
@@ -101,61 +56,68 @@ export default function Consultoria() {
   return (
     <>
       <PageHero
-        num="§01"
+        num="01"
         eyebrow="Consultoría"
-        title="Ingeniería que se defiende en cualquier revisión"
-        lead="Desde la fase conceptual hasta la ingeniería de detalle. Soluciones costo-efectivas para estructuras nuevas o existentes, con diseño sismorresistente según códigos nacionales e internacionales — y cada servicio entregado con visibilidad total en DG BIM Intelligence."
+        title="Un catálogo completo de consultoría BIM"
+        lead="Cinco familias de servicios que cubren el proyecto de punta a punta: del cálculo estructural a la inteligencia artificial aplicada. Diseño sismorresistente según códigos nacionales e internacionales, y cada servicio entregado con visibilidad total en DG BIM Intelligence."
         crumb={{ label: "Consultoría", href: "/consultoria" }}
       />
       <AvalesMarquee />
 
-      {SERVICIOS.map((s, i) => (
-        <Section key={s.id} id={s.id} tone={i % 2 ? "panel" : "base"}>
+      {FAMILIAS.map((f, i) => (
+        <Section key={f.slug} id={f.slug} tone={i % 2 ? "panel" : "base"}>
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
             <Reveal className={i % 2 ? "lg:order-2" : ""}>
-              <span className="tag-tech mb-3.5 inline-flex items-center gap-2.5">
-                <span className="text-tinta-suave">{s.n}</span>
-                <span aria-hidden className="inline-block h-px w-7 bg-naranja/60" />
-                Servicio
-              </span>
-              <h2 className="text-3xl font-bold leading-tight text-white md:text-4xl">{s.title}</h2>
-              <p className="mt-4 leading-relaxed text-tinta-suave md:text-lg">{s.lead}</p>
+              <div className="flex items-baseline gap-4">
+                <span className="num-seccion" aria-hidden>{f.num}/</span>
+                <span className="tag-tech">Servicio</span>
+              </div>
+              <h2 className="mt-2 text-3xl font-bold leading-tight text-navy md:text-4xl">{f.label}</h2>
+              <p className="mt-4 leading-relaxed text-tinta-suave md:text-lg">{DETALLE[f.slug] ?? f.resumen}</p>
               <ul className="mt-6 space-y-2.5">
-                {s.items.map((item) => (
-                  <li key={item} className="flex gap-2.5 text-[15px] text-tinta/90">
-                    <Check className="mt-1 size-4 shrink-0 text-naranja-claro" aria-hidden />
+                {f.servicios.map((item) => (
+                  <li key={item} className="flex gap-2.5 text-[15px] text-tinta">
+                    <Check className="mt-1 size-4 shrink-0 text-naranja" aria-hidden />
                     {item}
                   </li>
                 ))}
               </ul>
+              {f.href ? (
+                <Link
+                  href={f.href}
+                  className="mt-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-bold uppercase tracking-[0.08em] text-naranja hover:text-azul"
+                >
+                  Conoce la plataforma <ArrowRight className="size-4" aria-hidden />
+                </Link>
+              ) : null}
             </Reveal>
             <Reveal delay={0.1} className={i % 2 ? "lg:order-1" : ""}>
               <div className="panel overflow-hidden">
-                <Image src={s.img} alt={s.title} width={1100} height={825} className="size-full object-cover" />
+                <Image src={f.img} alt={f.label} width={1100} height={825} className="size-full object-cover" />
               </div>
             </Reveal>
           </div>
         </Section>
       ))}
 
-      <Section tone="blueprint">
+      <Section tone="navy">
         <SectionHead
-          num="§02"
+          dark
           eyebrow="Capacidad técnica"
           title="Qué tipo de estructuras diseñamos"
           lead="Nuestra experiencia cubre los sistemas y materiales que se usan realmente en la construcción de la región."
         />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {[
-            ["MAT", "Materiales", "Acero laminado en caliente · Acero laminado en frío · Mampostería estructural · Hormigón armado · Estructuras compuestas"],
-            ["SYS", "Sistemas estructurales", "Pórticos a momento · Pórticos arriostrados · Sistemas duales · Muros de corte · Aislamiento sísmico"],
-            ["TIP", "Tipologías", "Edificaciones en altura · Naves industriales · Silos y tanques · Vivienda · Rehabilitación de existentes"],
-          ].map(([code, t, d], i) => (
+            ["Materiales", "Acero laminado en caliente · Acero laminado en frío · Mampostería estructural · Hormigón armado · Estructuras compuestas"],
+            ["Sistemas estructurales", "Pórticos a momento · Pórticos arriostrados · Sistemas duales · Muros de corte · Aislamiento sísmico"],
+            ["Tipologías", "Edificaciones en altura · Naves industriales · Silos y tanques · Vivienda · Rehabilitación de existentes"],
+          ].map(([t, d], i) => (
             <Reveal key={t} delay={i * 0.07}>
-              <article className="panel h-full p-6">
-                <span className="font-mono-tech text-[11px] tracking-[0.16em] text-naranja-claro">{code}</span>
+              <article className="h-full rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+                <span className="font-heading text-[13px] font-bold text-naranja-claro" aria-hidden>{String(i + 1).padStart(2, "0")}/</span>
                 <h3 className="mt-2 text-lg font-bold text-white">{t}</h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-tinta-suave">{d}</p>
+                <p className="mt-2 text-[14px] leading-relaxed text-white/70">{d}</p>
               </article>
             </Reveal>
           ))}
@@ -164,7 +126,6 @@ export default function Consultoria() {
 
       <Section tone="panel">
         <SectionHead
-          num="§03"
           eyebrow="Antes de agendar"
           title="¿Somos el equipo para tu proyecto?"
           lead="Preferimos decirlo claro desde el inicio en vez de descubrirlo a mitad del contrato."
@@ -172,11 +133,11 @@ export default function Consultoria() {
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <Reveal>
             <div className="panel h-full border-l-2 border-l-naranja p-7">
-              <h3 className="text-lg font-bold text-white">Sí, si estás en esta situación</h3>
+              <h3 className="text-lg font-bold text-navy">Sí, si estás en esta situación</h3>
               <ul className="mt-4 space-y-3">
                 {SI.map((item) => (
-                  <li key={item} className="flex gap-2.5 text-[14.5px] leading-relaxed text-tinta/90">
-                    <Check className="mt-0.5 size-4 shrink-0 text-naranja-claro" aria-hidden />
+                  <li key={item} className="flex gap-2.5 text-[14.5px] leading-relaxed text-tinta">
+                    <Check className="mt-0.5 size-4 shrink-0 text-naranja" aria-hidden />
                     {item}
                   </li>
                 ))}
@@ -184,7 +145,7 @@ export default function Consultoria() {
             </div>
           </Reveal>
           <Reveal delay={0.08}>
-            <div className="panel h-full border-l-2 border-l-white/20 p-7 opacity-90">
+            <div className="panel h-full border-l-2 border-l-border p-7">
               <h3 className="text-lg font-bold text-tinta-suave">Probablemente todavía no</h3>
               <ul className="mt-4 space-y-3">
                 {NO.map((item) => (
@@ -200,12 +161,12 @@ export default function Consultoria() {
       </Section>
 
       <Section>
-        <SectionHead num="§04" eyebrow="Preguntas frecuentes" title="Lo que nos preguntan antes de contratar" />
+        <SectionHead eyebrow="Preguntas frecuentes" title="Lo que nos preguntan antes de contratar" />
         <Reveal className="mx-auto mt-10 max-w-3xl">
           <Accordion type="single" collapsible className="space-y-2.5">
             {FAQ.map(([q, a], i) => (
-              <AccordionItem key={q} value={`faq-${i}`} className="panel border-white/10 px-5">
-                <AccordionTrigger className="py-4 text-left font-heading text-[15px] font-semibold text-white hover:no-underline">
+              <AccordionItem key={q} value={`faq-${i}`} className="panel border-border px-5">
+                <AccordionTrigger className="py-4 text-left font-heading text-[15px] font-semibold text-navy hover:no-underline">
                   {q}
                 </AccordionTrigger>
                 <AccordionContent className="pb-4 text-[14.5px] leading-relaxed text-tinta-suave">{a}</AccordionContent>

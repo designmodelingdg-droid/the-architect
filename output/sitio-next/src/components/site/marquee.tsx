@@ -3,12 +3,12 @@ import { AVALES } from "@/lib/site";
 
 export function AvalesMarquee({ label = "Respaldados por" }: { label?: string }) {
   return (
-    <section aria-label={label} className="border-b border-white/8 bg-navy-2/70 py-7">
+    <section aria-label={label} className="border-y border-border bg-white py-7">
       <p className="tag-tech mb-4 text-center">{label}</p>
       <div className="dm-marquee-mask overflow-hidden">
         <div className="dm-marquee-track flex w-max items-center gap-14 md:gap-16">
           {[...AVALES, ...AVALES].map((a, i) => (
-            <div key={i} className="flex h-14 items-center rounded-lg bg-white/95 px-4">
+            <div key={i} className="flex h-14 items-center px-2 opacity-80 grayscale transition-all hover:opacity-100 hover:grayscale-0">
               <Image
                 src={a.src}
                 alt={i < AVALES.length ? a.alt : ""}

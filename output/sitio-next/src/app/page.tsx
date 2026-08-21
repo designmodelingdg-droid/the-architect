@@ -1,43 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Check } from "lucide-react";
+import { IconoLinkedIn } from "@/components/site/icono-linkedin";
 import { Section, SectionHead } from "@/components/site/section";
 import { Reveal, HeroReveal } from "@/components/site/reveal";
 import { AvalesMarquee } from "@/components/site/marquee";
 import { AgentPanel } from "@/components/site/agent-panel";
 import { DataStrip } from "@/components/site/data-strip";
 import { ContactoBloque } from "@/components/site/contacto-bloque";
-import { ACADEMIA } from "@/lib/site";
+import { ACADEMIA, FAMILIAS, VERTICALES, EQUIPO } from "@/lib/site";
 
-const SERVICIOS = [
-  {
-    img: "/images/v2-calculo.jpg",
-    title: "Cálculo Estructural",
-    desc: "Estructuras sismorresistentes con memoria de cálculo defendible. Diseño nuevo, evaluación y rehabilitación de existentes.",
-    href: "/consultoria#calculo",
-    code: "SRV.01",
-  },
-  {
-    img: "/images/v2-planos.jpg",
-    title: "Arquitectura y Planos",
-    desc: "Documentación completa con instalaciones, lista para trámite municipal y para construir — no para volver a dibujar.",
-    href: "/consultoria#arquitectura",
-    code: "SRV.02",
-  },
-  {
-    img: "/images/v2-clash.jpg",
-    title: "Coordinación BIM",
-    desc: "Modelo federado y detección sistemática de interferencias entre disciplinas, con criterio para decidir qué elemento cede.",
-    href: "/consultoria#coordinacion",
-    code: "SRV.03",
-  },
-  {
-    img: "/images/v2-implementacion.jpg",
-    title: "Implementación BIM",
-    desc: "Estándares, flujos y capacitación para que tu organización trabaje en BIM sin improvisar, con acompañamiento del piloto.",
-    href: "/consultoria#implementacion",
-    code: "SRV.04",
-  },
+const PILARES = [
+  { t: "Consultoría estructural", d: "Cálculo sismorresistente, evaluación de existentes y documentación lista para construir." },
+  { t: "Metodología BIM", d: "Modelo federado, coordinación de disciplinas e implementación en tu organización." },
+  { t: "Inteligencia artificial", d: "DG BIM Intelligence: nuestro software propio audita el proyecto con criterio de ingeniería." },
 ];
 
 const COSTOS = [
@@ -46,49 +22,39 @@ const COSTOS = [
   ["5–10×", "más caro corregir en obra", "El mismo error cuesta horas en el modelo y semanas cuando ya está construido."],
 ];
 
-const PASOS = [
-  { n: "01.00", t: "Diagnóstico", d: "Revisamos tu proyecto y te decimos qué encontramos: riesgos, vacíos y qué se puede optimizar. Sin costo." },
-  { n: "02.00", t: "Propuesta cerrada", d: "Alcance, entregables, plazos y precio por escrito. Si algo cambia, se conversa antes." },
-  { n: "03.00", t: "Ejecución", d: "Modelamos, calculamos y coordinamos. Tú sigues el avance real en DG BIM Intelligence." },
-  { n: "04.00", t: "Entrega", d: "Modelo federado, planos, memorias y reportes. La plataforma puede quedar activa para tu equipo." },
-];
-
 export default function Home() {
   return (
     <>
-      <section className="blueprint-fino relative overflow-hidden bg-navy py-16 md:py-24">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-40 -top-40 size-[560px] rounded-full bg-naranja/8 blur-3xl"
-        />
+      {/* Hero claro con el software como protagonista */}
+      <section className="blueprint-fino relative overflow-hidden border-b border-border bg-crema py-16 md:py-24">
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
           <div>
             <HeroReveal>
               <span className="tag-tech mb-5 inline-flex items-center gap-2.5">
-                <span aria-hidden className="size-1.5 rounded-full bg-naranja-claro" />
+                <span aria-hidden className="size-1.5 rounded-full bg-naranja" />
                 Consultoría BIM + IA · Ecuador y Latinoamérica
               </span>
             </HeroReveal>
             <HeroReveal delay={0.08}>
-              <h1 className="text-[2.6rem] font-bold leading-[1.02] text-white md:text-[3.9rem]">
-                El criterio de 10 años de BIM Management,{" "}
-                <span className="text-naranja-claro">razonando en cada proyecto.</span>
+              <h1 className="text-[2.6rem] font-bold leading-[1.04] text-navy md:text-[3.7rem]">
+                Aceleramos la transformación digital{" "}
+                <span className="text-naranja">de tus proyectos de construcción.</span>
               </h1>
             </HeroReveal>
             <HeroReveal delay={0.16}>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-tinta-suave md:text-lg">
-                Calculamos, coordinamos y auditamos proyectos estructurales con metodología BIM — y
-                con DG BIM Intelligence, nuestro agente de IA entrenado con criterio real de
-                ingeniería, los conflictos se cazan en el modelo, no en la obra.
+                Consultoría BIM estructural y arquitectónica en todo el ciclo del proyecto — con un
+                plus que ninguna otra consultora te da: DG BIM Intelligence, nuestro software de IA
+                que razona sobre tu modelo con criterio real de ingeniería.
               </p>
             </HeroReveal>
             <HeroReveal delay={0.24}>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/contactos" data-btn className="rounded-lg bg-naranja px-7 py-3.5 font-heading text-[15px] font-bold text-white shadow-lg shadow-naranja/25 hover:bg-naranja-claro">
+                <Link href="/contactos" data-btn className="rounded-lg bg-naranja px-7 py-3.5 font-heading text-[15px] font-bold text-white shadow-lg shadow-naranja/25 hover:bg-azul">
                   Agenda tu diagnóstico
                 </Link>
-                <Link href="/dg-bim-intelligence" data-btn className="rounded-lg border border-white/25 px-7 py-3.5 font-heading text-[15px] font-bold text-white hover:border-naranja-claro hover:text-naranja-claro">
-                  Conoce la plataforma
+                <Link href="/consultoria" data-btn className="rounded-lg border border-azul/30 px-7 py-3.5 font-heading text-[15px] font-bold text-azul hover:border-naranja hover:text-naranja">
+                  Ver servicios
                 </Link>
               </div>
             </HeroReveal>
@@ -102,85 +68,86 @@ export default function Home() {
       <DataStrip
         items={[
           ["10+", "años en proyectos BIM"],
+          ["+3.800", "profesionales formados"],
           ["ARQ/EST/MEP", "coordinación completa"],
-          ["24/7", "agente razonando"],
-          ["Autodesk", "partner autorizado"],
+          ["24/7", "agente de IA razonando"],
         ]}
       />
 
-      <Section tone="panel">
+      {/* Tres pilares — banda navy */}
+      <Section tone="navy">
         <SectionHead
-          num="§01"
-          eyebrow="El costo del error"
-          title="El error no está en el plano. Está en lo que nadie revisó a tiempo."
-          lead="Los proyectos no se salen de presupuesto por una mala decisión de diseño. Se salen por conflictos entre disciplinas que nadie vio hasta que la cuadrilla ya estaba en sitio."
+          dark
+          eyebrow="Consultoría — BIM — IA"
+          title="Metodología BIM con un plus: software propio de IA"
+          lead="Hacemos lo que hace una consultora BIM seria. Y además construimos la herramienta que interpreta tu proyecto y ayuda a tu equipo a decidir."
         />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {COSTOS.map(([num, label, desc], i) => (
-            <Reveal key={label} delay={i * 0.08}>
-              <article className="panel h-full p-7">
-                <p className="font-heading text-4xl font-extrabold text-naranja-claro md:text-5xl">{num}</p>
-                <p className="font-mono-tech mt-2 text-[11px] uppercase tracking-[0.12em] text-tinta/85">{label}</p>
-                <p className="mt-3 text-[13.5px] leading-relaxed text-tinta-suave">{desc}</p>
+          {PILARES.map((p, i) => (
+            <Reveal key={p.t} delay={i * 0.08}>
+              <article className="h-full rounded-2xl border border-white/10 bg-white/[0.04] p-7">
+                <span className="font-heading text-[13px] font-bold text-naranja-claro" aria-hidden>{String(i + 1).padStart(2, "0")}/</span>
+                <h3 className="mt-2 text-xl font-bold text-white">{p.t}</h3>
+                <p className="mt-2 text-[14px] leading-relaxed text-white/70">{p.d}</p>
               </article>
             </Reveal>
           ))}
         </div>
       </Section>
 
-      <Section tone="blueprint">
+      {/* Catálogo de servicios numerado estilo 01/–05/ */}
+      <Section tone="base" id="servicios">
         <SectionHead
-          num="§02"
-          eyebrow="Consultoría"
-          title="Cuatro servicios. Un mismo estándar de criterio."
-          lead="Desde el cálculo de la estructura hasta la implementación de BIM en toda tu organización. Cada servicio se entrega con visibilidad total en nuestra plataforma."
+          eyebrow="Servicios"
+          title="Un catálogo completo de consultoría BIM"
+          lead="Cinco familias de servicios que cubren el proyecto de punta a punta — del cálculo estructural a la inteligencia artificial aplicada."
         />
-        <div className="mt-12 grid gap-5 md:grid-cols-2">
-          {SERVICIOS.map((s, i) => (
-            <Reveal key={s.title} delay={i * 0.06}>
-              <Link href={s.href} className="group block">
-                <article className="panel h-full overflow-hidden transition-shadow duration-300 group-hover:panel-glow">
-                  <div className="relative aspect-[16/8.5] overflow-hidden">
-                    <Image
-                      src={s.img}
-                      alt={s.title}
-                      width={1100}
-                      height={585}
-                      className="size-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-                    />
-                    <span className="font-mono-tech absolute left-4 top-4 rounded bg-navy/80 px-2 py-1 text-[10px] tracking-[0.14em] text-naranja-claro backdrop-blur">
-                      {s.code}
-                    </span>
+        <div className="mt-14 space-y-14">
+          {FAMILIAS.map((f, i) => (
+            <Reveal key={f.slug}>
+              <article className={`grid items-center gap-8 lg:grid-cols-2 lg:gap-14 ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}>
+                <div>
+                  <div className="flex items-baseline gap-4">
+                    <span className="num-seccion" aria-hidden>{f.num}/</span>
+                    <h3 className="text-2xl font-bold text-navy md:text-[1.7rem]">{f.label}</h3>
                   </div>
-                  <div className="p-6">
-                    <h3 className="flex items-center justify-between text-xl font-bold text-white">
-                      {s.title}
-                      <ArrowUpRight className="size-4 text-naranja-claro opacity-0 transition-opacity group-hover:opacity-100" aria-hidden />
-                    </h3>
-                    <p className="mt-2 text-[14px] leading-relaxed text-tinta-suave">{s.desc}</p>
-                  </div>
-                </article>
-              </Link>
+                  <p className="mt-3 leading-relaxed text-tinta-suave md:text-lg">{f.resumen}</p>
+                  <ul className="mt-5 flex flex-wrap gap-2">
+                    {f.servicios.map((s) => (
+                      <li key={s} className="rounded-full border border-border bg-crema px-3.5 py-1.5 text-[12.5px] font-semibold text-tinta">
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href={f.href ?? `/consultoria#${f.slug}`}
+                    className="mt-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-bold uppercase tracking-[0.08em] text-naranja hover:text-azul"
+                  >
+                    Conocer más <ArrowRight className="size-4" aria-hidden />
+                  </Link>
+                </div>
+                <div className="overflow-hidden rounded-2xl border border-border shadow-lg shadow-navy/5">
+                  <Image src={f.img} alt={f.label} width={1100} height={640} className="aspect-[16/9.5] size-full object-cover" />
+                </div>
+              </article>
             </Reveal>
           ))}
         </div>
       </Section>
 
-      <Section tone="panel">
+      {/* DG BIM Intelligence — banda navy estrella */}
+      <Section tone="navy" id="plataforma">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-14">
           <Reveal>
-            <span className="tag-tech mb-4 inline-flex items-center gap-2.5">
-              <span className="text-tinta-suave">§03</span>
-              <span aria-hidden className="inline-block h-px w-7 bg-naranja/60" />
-              Nuestra plataforma
-            </span>
+            <span className="tag-tech mb-4 inline-block text-naranja-claro">Nuestro software</span>
             <h2 className="text-3xl font-bold leading-[1.1] text-white md:text-[2.6rem]">
               No es un chatbot. Es un consultor BIM que razona.
             </h2>
-            <p className="mt-4 leading-relaxed text-tinta-suave md:text-lg">
+            <p className="mt-4 leading-relaxed text-white/70 md:text-lg">
               DG BIM Intelligence lee tu proyecto, razona paso a paso con el criterio de +10 años de
               BIM Management y te dice qué hacer y por qué — con evidencia, impacto y nivel de
-              confianza en cada hallazgo.
+              confianza en cada hallazgo. Lo usamos en nuestra consultoría y lo licenciamos a
+              empresas con equipo BIM propio.
             </p>
             <ul className="mt-6 space-y-3.5">
               {[
@@ -188,14 +155,14 @@ export default function Home() {
                 "Control de calidad del modelo antes de que llegue a obra",
                 "Tableros por rol: modelador, coordinador, gerencia y dueño",
               ].map((t) => (
-                <li key={t} className="flex gap-3 text-[15px] text-tinta/90">
+                <li key={t} className="flex gap-3 text-[15px] text-white/85">
                   <Check className="mt-1 size-4 shrink-0 text-naranja-claro" aria-hidden />
                   {t}
                 </li>
               ))}
             </ul>
             <Link href="/dg-bim-intelligence" data-btn className="mt-7 inline-block rounded-lg bg-naranja px-6 py-3.5 font-heading text-sm font-bold text-white hover:bg-naranja-claro">
-              Ver cómo razona
+              Conoce DG BIM Intelligence
             </Link>
           </Reveal>
           <Reveal delay={0.12}>
@@ -204,29 +171,49 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section tone="blueprint">
+      {/* El costo del error */}
+      <Section tone="panel">
         <SectionHead
-          num="§04"
-          eyebrow="Cómo trabajamos"
-          title="Cuatro pasos, sin sorpresas a mitad de camino"
-          lead="Sabes desde el primer día qué recibes, cuándo lo recibes y cuánto cuesta."
+          eyebrow="Por qué importa"
+          title="El error no está en el plano. Está en lo que nadie revisó a tiempo."
+          lead="Los proyectos no se salen de presupuesto por una mala decisión de diseño. Se salen por conflictos entre disciplinas que nadie vio hasta que la cuadrilla ya estaba en sitio."
         />
-        <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {PASOS.map((p, i) => (
-            <Reveal key={p.n} delay={i * 0.06}>
-              <li className="panel h-full p-6">
-                <span className="font-mono-tech text-[12px] tracking-[0.14em] text-naranja-claro" aria-hidden>{p.n}</span>
-                <h3 className="mt-3 text-base font-bold text-white">{p.t}</h3>
-                <p className="mt-1.5 text-[13.5px] leading-relaxed text-tinta-suave">{p.d}</p>
-              </li>
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {COSTOS.map(([num, label, desc], i) => (
+            <Reveal key={label} delay={i * 0.08}>
+              <article className="panel h-full p-7">
+                <p className="font-heading text-4xl font-extrabold text-naranja md:text-5xl">{num}</p>
+                <p className="mt-2 font-heading text-[11px] font-bold uppercase tracking-[0.12em] text-tinta">{label}</p>
+                <p className="mt-3 text-[13.5px] leading-relaxed text-tinta-suave">{desc}</p>
+              </article>
             </Reveal>
           ))}
-        </ol>
+        </div>
       </Section>
 
-      <Section>
+      {/* Con quiénes trabajamos */}
+      <Section tone="base">
         <SectionHead
-          num="§05"
+          eyebrow="Con quiénes trabajamos"
+          title="Soluciones para cada actor del proyecto"
+          lead="Constructoras, promotoras, estudios y propietarios: cada uno recibe lo que necesita para que el proyecto llegue a obra sin conflictos entre disciplinas."
+        />
+        <div className="mt-12 grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
+          {VERTICALES.map((v, i) => (
+            <Reveal key={v.label} delay={i * 0.05}>
+              <article className="border-t-2 border-border pt-5 transition-colors hover:border-naranja">
+                <span className="font-heading text-[12px] font-bold text-naranja" aria-hidden>{i + 1}/</span>
+                <h3 className="mt-1.5 text-lg font-bold text-navy">{v.label}</h3>
+                <p className="mt-1.5 text-[13.5px] leading-relaxed text-tinta-suave">{v.detalle}</p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      {/* Proyectos destacados */}
+      <Section tone="panel">
+        <SectionHead
           eyebrow="Proyectos"
           title="El criterio se demuestra en obra"
         />
@@ -243,7 +230,7 @@ export default function Home() {
                     <Image src={p.img} alt={p.t} width={1600} height={900} className="size-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
                   </div>
                   <div className="p-5">
-                    <h3 className="text-base font-bold text-white">{p.t}</h3>
+                    <h3 className="text-base font-bold text-navy">{p.t}</h3>
                     <p className="mt-1 text-[13px] text-tinta-suave">{p.d}</p>
                   </div>
                 </article>
@@ -252,18 +239,52 @@ export default function Home() {
           ))}
         </div>
         <Reveal className="mt-9 text-center">
-          <Link href="/proyectos" data-btn className="inline-block rounded-lg border border-white/25 px-6 py-3 font-heading text-sm font-bold text-white hover:border-naranja-claro hover:text-naranja-claro">
+          <Link href="/proyectos" data-btn className="inline-block rounded-lg border border-azul/30 px-6 py-3 font-heading text-sm font-bold text-azul hover:border-naranja hover:text-naranja">
             Ver los proyectos
+          </Link>
+        </Reveal>
+      </Section>
+
+      {/* Equipo */}
+      <Section tone="base">
+        <SectionHead
+          eyebrow="El equipo"
+          title="Ingenieros con nombre, apellido y LinkedIn"
+          lead="Quien firma tu proyecto es quien lo revisa. Conoce a las personas detrás de cada entrega."
+        />
+        <div className="mx-auto mt-12 grid max-w-3xl gap-5 sm:grid-cols-2">
+          {EQUIPO.map((m, i) => (
+            <Reveal key={m.nombre} delay={i * 0.08}>
+              <article className="panel h-full p-7 text-center">
+                <Image src={m.foto} alt={m.nombre} width={220} height={220} className="mx-auto size-24 rounded-full border-2 border-naranja/40 object-cover" />
+                <h3 className="mt-4 text-lg font-bold text-navy">{m.nombre}</h3>
+                <p className="tag-tech mt-1">{m.cargo}</p>
+                <a
+                  href={m.linkedin}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label={`LinkedIn de ${m.nombre}`}
+                  className="mt-3 inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-[12px] font-semibold text-azul transition-colors hover:border-naranja hover:text-naranja"
+                >
+                  <IconoLinkedIn /> LinkedIn
+                </a>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal className="mt-9 text-center">
+          <Link href="/nosotros#equipo" className="inline-flex items-center gap-1.5 font-heading text-[13px] font-bold uppercase tracking-[0.08em] text-naranja hover:text-azul">
+            Conoce a todo el equipo <ArrowRight className="size-4" aria-hidden />
           </Link>
         </Reveal>
       </Section>
 
       <AvalesMarquee />
 
-      <div className="border-b border-white/8 bg-navy-2/60 px-5 py-5">
+      <div className="border-b border-border bg-crema px-5 py-5">
         <p className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[13.5px] text-tinta-suave">
           ¿Buscas formarte en BIM en vez de contratar consultoría?
-          <a href={ACADEMIA} target="_blank" rel="noopener" className="inline-flex items-center gap-1 font-heading font-bold text-naranja-claro hover:text-white">
+          <a href={ACADEMIA} target="_blank" rel="noopener" className="inline-flex items-center gap-1 font-heading font-bold text-naranja hover:text-azul">
             Design Modeling Academy <ArrowUpRight className="size-3.5" aria-hidden />
           </a>
         </p>

@@ -14,12 +14,12 @@ const FILAS = [
 export function AgentPanel() {
   const reduced = useReducedMotion();
   return (
-    <div className="panel panel-glow relative overflow-hidden p-0" role="img" aria-label="DG BIM Intelligence analizando un proyecto: hallazgo, evidencia, impacto y acción recomendada">
+    <div className="panel-oscuro relative overflow-hidden p-0" role="img" aria-label="DG BIM Intelligence analizando un proyecto: hallazgo, evidencia, impacto y acción recomendada">
       <div className="flex items-center justify-between border-b border-white/8 px-5 py-3">
-        <span className="font-mono-tech text-[11px] tracking-[0.14em] text-tinta-suave">
-          DG_BIM_INTELLIGENCE · PROYECTO-042
+        <span className="font-heading text-[11px] font-bold uppercase tracking-[0.13em] text-azul-palido/60">
+          DG BIM Intelligence — Proyecto 042
         </span>
-        <span className="flex items-center gap-1.5 font-mono-tech text-[10px] uppercase tracking-widest text-emerald-400">
+        <span className="flex items-center gap-1.5 font-heading text-[10px] font-bold uppercase tracking-widest text-emerald-400">
           <span className="size-1.5 rounded-full bg-emerald-400" aria-hidden /> razonando
         </span>
       </div>
@@ -33,7 +33,7 @@ export function AgentPanel() {
             className="grid grid-cols-[92px_1fr] items-start gap-3"
           >
             <span
-              className={`font-mono-tech mt-0.5 rounded px-1.5 py-0.5 text-center text-[10px] font-semibold uppercase tracking-wider ${
+              className={`mt-0.5 rounded px-1.5 py-0.5 text-center font-heading text-[10px] font-bold uppercase tracking-wider ${
                 f.tone === "naranja"
                   ? "bg-naranja/18 text-naranja-claro"
                   : f.tone === "verde"
@@ -43,16 +43,16 @@ export function AgentPanel() {
             >
               {f.k}
             </span>
-            <p className="text-[13.5px] leading-relaxed text-tinta/90">{f.v}</p>
+            <p className="text-[13.5px] leading-relaxed text-azul-palido/90">{f.v}</p>
           </motion.div>
         ))}
         <motion.p
           initial={reduced ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: reduced ? 0 : 3.3 }}
-          className="font-mono-tech pt-1 text-[11px] text-tinta-suave"
+          className="pt-1 font-heading text-[11px] font-semibold text-azul-palido/55"
         >
-          &gt; siguiente: verificar pases estructurales del N+9 <span className="cursor-agente" aria-hidden />
+          Siguiente: verificar pases estructurales del N+9 <span className="cursor-agente" aria-hidden />
         </motion.p>
       </div>
     </div>
