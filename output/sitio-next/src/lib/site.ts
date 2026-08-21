@@ -1,15 +1,22 @@
 export const WA = "https://wa.me/593984372010";
 export const WA_MSG = (t: string) => `${WA}?text=${encodeURIComponent(t)}`;
 export const EMAIL = "info@dgdesignmodeling.com";
+export const ACADEMIA = "https://designmodelingacademy.com/es/";
 
 export const NAV = [
-  { label: "Servicios", href: "/servicios" },
-  { label: "Plataforma", href: "/dg-bim-intelligence" },
-  { label: "Quiénes somos", href: "/quienes-somos" },
-  { label: "Acreditaciones", href: "/acreditaciones" },
-  { label: "Bolsa de trabajo", href: "/bolsa-de-trabajo" },
-  { label: "Blog", href: "/blog" },
+  { label: "Consultoría", href: "/consultoria" },
+  { label: "DG BIM Intelligence", href: "/dg-bim-intelligence" },
+  { label: "Proyectos", href: "/proyectos" },
+  { label: "Nosotros", href: "/nosotros" },
   { label: "Contacto", href: "/contactos" },
+];
+
+export const REDES = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/design-modeling-dg/posts/" },
+  { label: "Instagram", href: "https://www.instagram.com/design_modeling_dg/" },
+  { label: "TikTok", href: "https://www.tiktok.com/@designmodelingdg" },
+  { label: "Facebook", href: "https://www.facebook.com/designmodelingdg" },
+  { label: "X", href: "https://x.com/DgModeling" },
 ];
 
 export const AVALES = [

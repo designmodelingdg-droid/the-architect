@@ -12,15 +12,16 @@ export function CtaFinal({
   cta?: string;
 }) {
   return (
-    <section className="bg-gradient-to-br from-naranja to-naranja-claro px-5 py-16 text-center text-white">
+    <section className="blueprint-fino border-t border-white/8 bg-navy px-5 py-20 text-center">
       <Reveal>
-        <h2 className="text-3xl font-bold md:text-4xl">{title}</h2>
-        <p className="mx-auto mt-3.5 max-w-xl leading-relaxed text-white/95">{text}</p>
-        <div className="mt-7 flex flex-wrap justify-center gap-3">
+        <span className="tag-tech mb-4 inline-block">// listo para empezar</span>
+        <h2 className="mx-auto max-w-2xl text-3xl font-bold text-white md:text-5xl">{title}</h2>
+        <p className="mx-auto mt-4 max-w-xl leading-relaxed text-tinta-suave">{text}</p>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link
             href="/contactos"
             data-btn
-            className="rounded-lg bg-white px-7 py-3.5 font-heading text-[15px] font-bold text-naranja shadow-lg shadow-black/15 hover:shadow-xl"
+            className="rounded-lg bg-naranja px-7 py-3.5 font-heading text-[15px] font-bold text-white shadow-lg shadow-naranja/25 hover:bg-naranja-claro"
           >
             {cta}
           </Link>
@@ -29,7 +30,7 @@ export function CtaFinal({
             target="_blank"
             rel="noopener"
             data-btn
-            className="rounded-lg border-2 border-white/70 px-7 py-3.5 font-heading text-[15px] font-bold text-white hover:bg-white/12"
+            className="rounded-lg border border-white/25 px-7 py-3.5 font-heading text-[15px] font-bold text-white hover:border-naranja-claro hover:text-naranja-claro"
           >
             Escríbenos por WhatsApp
           </a>

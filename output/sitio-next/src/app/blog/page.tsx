@@ -7,38 +7,32 @@ import { CtaFinal } from "@/components/site/cta-final";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Artículos técnicos sobre metodología BIM, diseño estructural y gestión de proyectos.",
+  description: "Artículos técnicos sobre metodología BIM, IA aplicada a la construcción y diseño estructural.",
 };
 
-/*
- * Cuando haya artículos: crear src/app/blog/[slug]/page.tsx por entrada
- * y reemplazar el estado vacío por el grid de tarjetas.
- */
 export default function Blog() {
   return (
     <>
       <PageHero
+        num="§06"
         eyebrow="Blog"
-        title="Ingeniería, BIM y construcción"
-        lead="Artículos técnicos sobre metodología BIM, diseño estructural y gestión de proyectos, escritos por el equipo que los ejecuta."
-        image="/images/dm-pg-blog.jpg"
+        title="Ingeniería, BIM e inteligencia artificial"
+        lead="Artículos técnicos sobre coordinación BIM, diseño sismorresistente e IA aplicada a la construcción, escritos por el equipo que los ejecuta."
         crumb={{ label: "Blog", href: "/blog" }}
       />
-
       <Section>
-        <Reveal className="mx-auto max-w-xl rounded-2xl border border-dashed border-border bg-crema px-8 py-14 text-center">
-          <h2 className="text-2xl font-bold text-azul">Estamos preparando los primeros artículos</h2>
-          <p className="mt-3 leading-relaxed text-muted-foreground">
-            Muy pronto publicaremos contenido técnico sobre coordinación BIM, diseño sismorresistente
-            y gestión de proyectos. Mientras tanto, escríbenos si tienes una duda concreta sobre tu
-            proyecto.
+        <Reveal className="panel mx-auto max-w-xl px-8 py-14 text-center">
+          <span className="tag-tech">status: en_preparacion</span>
+          <h2 className="mt-3 text-2xl font-bold text-white">Estamos preparando los primeros artículos</h2>
+          <p className="mt-3 leading-relaxed text-tinta-suave">
+            Muy pronto publicaremos contenido técnico. Mientras tanto, escríbenos si tienes una duda
+            concreta sobre tu proyecto.
           </p>
           <Link href="/contactos" data-btn className="mt-6 inline-block rounded-lg bg-naranja px-6 py-3.5 font-heading text-sm font-bold text-white hover:bg-naranja-claro">
             Hacer una consulta
           </Link>
         </Reveal>
       </Section>
-
       <CtaFinal title="¿Tienes una duda técnica sobre tu proyecto?" text="Agenda un diagnóstico sin costo y te damos una respuesta concreta." />
     </>
   );

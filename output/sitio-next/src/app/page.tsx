@@ -1,290 +1,273 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Check } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { Section, SectionHead } from "@/components/site/section";
 import { Reveal, HeroReveal } from "@/components/site/reveal";
 import { AvalesMarquee } from "@/components/site/marquee";
+import { AgentPanel } from "@/components/site/agent-panel";
+import { DataStrip } from "@/components/site/data-strip";
 import { ContactoBloque } from "@/components/site/contacto-bloque";
-import { CLIENTES } from "@/lib/site";
+import { ACADEMIA } from "@/lib/site";
 
 const SERVICIOS = [
   {
-    img: "/images/dm-servicio-estructural.jpg",
+    img: "/images/v2-calculo.jpg",
     title: "Cálculo Estructural",
-    desc: "Estructuras sismorresistentes para edificaciones nuevas y rehabilitación de existentes, con memoria de cálculo defendible ante cualquier revisión.",
-    href: "/servicios#calculo",
+    desc: "Estructuras sismorresistentes con memoria de cálculo defendible. Diseño nuevo, evaluación y rehabilitación de existentes.",
+    href: "/consultoria#calculo",
+    code: "SRV.01",
   },
   {
-    img: "/images/dm-servicio-arquitectura.jpg",
+    img: "/images/v2-planos.jpg",
     title: "Arquitectura y Planos",
-    desc: "Planos arquitectónicos con instalaciones eléctricas, sanitarias e hidráulicas, listos para trámite municipal y para construir.",
-    href: "/servicios#arquitectura",
+    desc: "Documentación completa con instalaciones, lista para trámite municipal y para construir — no para volver a dibujar.",
+    href: "/consultoria#arquitectura",
+    code: "SRV.02",
   },
   {
-    img: "/images/dm-servicio-coordinacion.jpg",
-    title: "Modelado y Coordinación BIM",
-    desc: "Modelo federado de las tres disciplinas con detección sistemática de interferencias, y actualización durante la ejecución de obra.",
-    href: "/servicios#coordinacion",
+    img: "/images/v2-clash.jpg",
+    title: "Coordinación BIM",
+    desc: "Modelo federado y detección sistemática de interferencias entre disciplinas, con criterio para decidir qué elemento cede.",
+    href: "/consultoria#coordinacion",
+    code: "SRV.03",
   },
   {
-    img: "/images/dm-servicio-implementacion.jpg",
-    title: "Implementación BIM en tu empresa",
-    desc: "Diagnóstico, estándares, flujos y capacitación para que tu organización trabaje en BIM sin improvisar.",
-    href: "/servicios#implementacion",
+    img: "/images/v2-implementacion.jpg",
+    title: "Implementación BIM",
+    desc: "Estándares, flujos y capacitación para que tu organización trabaje en BIM sin improvisar, con acompañamiento del piloto.",
+    href: "/consultoria#implementacion",
+    code: "SRV.04",
   },
 ];
 
-const PROBLEMAS = [
-  {
-    title: "Retrabajo en sitio",
-    desc: "Demoler, reubicar y volver a ejecutar lo que ya estaba construido. Materiales pagados dos veces y una cuadrilla parada mientras se decide qué hacer.",
-  },
-  {
-    title: "Frentes detenidos",
-    desc: "El ducto choca con la viga. La estructura dice una cosa, instalaciones otra. El frente se congela hasta que alguien cede, y el cronograma se corre solo.",
-  },
-  {
-    title: "Adicionales que no negocias",
-    desc: "Cada cambio no previsto entra como adicional. Y los adicionales, cuando la obra ya arrancó, nunca se negocian a tu favor.",
-  },
+const COSTOS = [
+  ["5–10%", "del proyecto se va en rework", "El retrabajo por errores de coordinación consume el margen antes de que lo veas venir."],
+  ["US$1.080", "cuesta cada RFI en promedio", "Cada solicitud de información que nace de un conflicto no resuelto tiene precio."],
+  ["5–10×", "más caro corregir en obra", "El mismo error cuesta horas en el modelo y semanas cuando ya está construido."],
 ];
 
 const PASOS = [
-  { n: "01", t: "Diagnóstico", d: "Revisamos tu proyecto y te decimos qué encontramos: riesgos, vacíos de información y qué se puede optimizar. Sin costo." },
-  { n: "02", t: "Propuesta cerrada", d: "Alcance, entregables, plazos y precio por escrito. Si algo cambia, se conversa antes — no aparece en la factura." },
-  { n: "03", t: "Ejecución", d: "Modelamos, calculamos y coordinamos. Tú sigues el avance real en DG BIM Intelligence, sin pedir reportes." },
-  { n: "04", t: "Entrega", d: "Modelo federado, planos, memorias y reportes. Y si quieres, la plataforma queda activa para tu equipo." },
+  { n: "01.00", t: "Diagnóstico", d: "Revisamos tu proyecto y te decimos qué encontramos: riesgos, vacíos y qué se puede optimizar. Sin costo." },
+  { n: "02.00", t: "Propuesta cerrada", d: "Alcance, entregables, plazos y precio por escrito. Si algo cambia, se conversa antes." },
+  { n: "03.00", t: "Ejecución", d: "Modelamos, calculamos y coordinamos. Tú sigues el avance real en DG BIM Intelligence." },
+  { n: "04.00", t: "Entrega", d: "Modelo federado, planos, memorias y reportes. La plataforma puede quedar activa para tu equipo." },
 ];
 
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden bg-navy py-20 text-white md:py-28">
-        <Image src="/images/dm-hero.jpg" alt="" fill priority sizes="100vw" className="object-cover" aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-br from-navy/90 via-navy/82 to-azul/72" aria-hidden />
-        <div className="relative mx-auto max-w-6xl px-5">
-          <HeroReveal>
-            <span className="mb-4 inline-block rounded-full border border-naranja-claro/40 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[2.5px] text-naranja-claro">
-              Consultoría BIM · Ecuador y Latinoamérica
-            </span>
-          </HeroReveal>
-          <HeroReveal delay={0.08}>
-            <h1 className="max-w-3xl text-4xl font-bold leading-[1.06] md:text-6xl">
-              Ingeniería estructural y BIM para proyectos que{" "}
-              <em className="not-italic text-naranja-claro">no admiten sorpresas</em>
-            </h1>
-          </HeroReveal>
-          <HeroReveal delay={0.16}>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/87 md:text-lg">
-              Diseñamos, calculamos y coordinamos proyectos estructurales y arquitectónicos con
-              metodología BIM. Diez años resolviendo en el modelo lo que a otros les aparece en obra.
-            </p>
-          </HeroReveal>
-          <HeroReveal delay={0.24}>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/servicios" data-btn className="rounded-lg bg-naranja px-7 py-3.5 font-heading text-[15px] font-bold text-white hover:bg-naranja-claro">
-                Ver nuestros servicios
-              </Link>
-              <Link href="/contactos" data-btn className="rounded-lg border-2 border-white/60 px-7 py-3.5 font-heading text-[15px] font-bold text-white hover:bg-white/12">
-                Agenda tu diagnóstico
-              </Link>
-            </div>
-          </HeroReveal>
-          <HeroReveal delay={0.34}>
-            <dl className="mt-11 grid max-w-xl grid-cols-3 gap-3.5">
-              {[
-                ["10+", "Años en proyectos BIM"],
-                ["Autodesk", "Partner autorizado"],
-                ["ARQ/EST/MEP", "Coordinación completa"],
-              ].map(([num, label]) => (
-                <div key={label} className="rounded-xl border border-white/12 bg-white/5 px-3 py-4 text-center">
-                  <dt className="sr-only">{label}</dt>
-                  <dd className="font-heading text-sm font-extrabold text-naranja-claro md:text-lg">{num}</dd>
-                  <dd className="mt-1 text-[10.5px] uppercase tracking-wide text-white/68">{label}</dd>
-                </div>
-              ))}
-            </dl>
+      <section className="blueprint-fino relative overflow-hidden bg-navy py-16 md:py-24">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-40 -top-40 size-[560px] rounded-full bg-naranja/8 blur-3xl"
+        />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+          <div>
+            <HeroReveal>
+              <span className="tag-tech mb-5 inline-flex items-center gap-2.5">
+                <span aria-hidden className="size-1.5 rounded-full bg-naranja-claro" />
+                Consultoría BIM + IA · Ecuador y Latinoamérica
+              </span>
+            </HeroReveal>
+            <HeroReveal delay={0.08}>
+              <h1 className="text-[2.6rem] font-bold leading-[1.02] text-white md:text-[3.9rem]">
+                El criterio de 10 años de BIM Management,{" "}
+                <span className="text-naranja-claro">razonando en cada proyecto.</span>
+              </h1>
+            </HeroReveal>
+            <HeroReveal delay={0.16}>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-tinta-suave md:text-lg">
+                Calculamos, coordinamos y auditamos proyectos estructurales con metodología BIM — y
+                con DG BIM Intelligence, nuestro agente de IA entrenado con criterio real de
+                ingeniería, los conflictos se cazan en el modelo, no en la obra.
+              </p>
+            </HeroReveal>
+            <HeroReveal delay={0.24}>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link href="/contactos" data-btn className="rounded-lg bg-naranja px-7 py-3.5 font-heading text-[15px] font-bold text-white shadow-lg shadow-naranja/25 hover:bg-naranja-claro">
+                  Agenda tu diagnóstico
+                </Link>
+                <Link href="/dg-bim-intelligence" data-btn className="rounded-lg border border-white/25 px-7 py-3.5 font-heading text-[15px] font-bold text-white hover:border-naranja-claro hover:text-naranja-claro">
+                  Conoce la plataforma
+                </Link>
+              </div>
+            </HeroReveal>
+          </div>
+          <HeroReveal delay={0.35}>
+            <AgentPanel />
           </HeroReveal>
         </div>
       </section>
 
-      <AvalesMarquee />
+      <DataStrip
+        items={[
+          ["10+", "años en proyectos BIM"],
+          ["ARQ/EST/MEP", "coordinación completa"],
+          ["24/7", "agente razonando"],
+          ["Autodesk", "partner autorizado"],
+        ]}
+      />
 
-      <Section>
+      <Section tone="panel">
         <SectionHead
-          eyebrow="Qué hacemos"
-          title="Consultoría BIM de punta a punta"
-          lead="Desde el cálculo de la estructura hasta la implementación de BIM en toda tu organización. Puedes contratar una pieza o el proceso completo."
+          num="§01"
+          eyebrow="El costo del error"
+          title="El error no está en el plano. Está en lo que nadie revisó a tiempo."
+          lead="Los proyectos no se salen de presupuesto por una mala decisión de diseño. Se salen por conflictos entre disciplinas que nadie vio hasta que la cuadrilla ya estaba en sitio."
         />
-        <div className="mt-11 grid gap-5 md:grid-cols-2">
-          {SERVICIOS.map((s, i) => (
-            <Reveal key={s.title} delay={i * 0.06}>
-              <article className="group overflow-hidden rounded-2xl border border-border bg-white transition-shadow hover:shadow-xl hover:shadow-azul/10">
-                <div className="aspect-video overflow-hidden bg-navy">
-                  <Image
-                    src={s.img}
-                    alt={s.title}
-                    width={900}
-                    height={506}
-                    className="size-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-azul">{s.title}</h3>
-                  <p className="mt-2 text-[14.5px] leading-relaxed text-muted-foreground">{s.desc}</p>
-                  <Link href={s.href} className="mt-4 inline-flex items-center gap-1.5 font-heading text-sm font-bold text-naranja transition-colors hover:text-azul">
-                    Ver el servicio →
-                  </Link>
-                </div>
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {COSTOS.map(([num, label, desc], i) => (
+            <Reveal key={label} delay={i * 0.08}>
+              <article className="panel h-full p-7">
+                <p className="font-heading text-4xl font-extrabold text-naranja-claro md:text-5xl">{num}</p>
+                <p className="font-mono-tech mt-2 text-[11px] uppercase tracking-[0.12em] text-tinta/85">{label}</p>
+                <p className="mt-3 text-[13.5px] leading-relaxed text-tinta-suave">{desc}</p>
               </article>
             </Reveal>
           ))}
         </div>
-        <Reveal className="mt-9 text-center">
-          <Link href="/servicios" data-btn className="inline-block rounded-lg border-2 border-azul px-6 py-3 font-heading text-sm font-bold text-azul hover:bg-azul hover:text-white">
-            Ver todos los servicios
-          </Link>
-        </Reveal>
       </Section>
 
-      <Section tone="oscuro">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-          <Reveal>
-            <span className="mb-3 inline-block text-[11px] font-bold uppercase tracking-[2.2px] text-naranja-claro">Nuestra plataforma</span>
-            <h2 className="text-3xl font-bold md:text-4xl">DG BIM Intelligence</h2>
-            <p className="mt-4 leading-relaxed text-white/85 md:text-lg">
-              La desarrollamos porque ninguna herramienta del mercado nos daba lo que necesitábamos.
-              Hoy la usamos en nuestros proyectos y la ofrecemos a nuestros clientes.
-            </p>
-            <ul className="mt-6 space-y-4">
-              {[
-                ["Detección de interferencias", "Conflictos entre arquitectura, estructura e instalaciones, clasificados por severidad."],
-                ["Control de calidad del modelo", "Elementos sin clasificar, propiedades incompletas y warnings, antes de que el modelo llegue a obra."],
-                ["Un tablero para cada rol", "El modelador ve su modelo, el coordinador los conflictos, la gerencia el avance."],
-              ].map(([t, d]) => (
-                <li key={t} className="flex gap-3">
-                  <Check className="mt-1 size-4 shrink-0 text-naranja-claro" aria-hidden />
-                  <div>
-                    <strong className="font-heading text-[15px] text-white">{t}</strong>
-                    <p className="text-sm leading-relaxed text-white/78">{d}</p>
+      <Section tone="blueprint">
+        <SectionHead
+          num="§02"
+          eyebrow="Consultoría"
+          title="Cuatro servicios. Un mismo estándar de criterio."
+          lead="Desde el cálculo de la estructura hasta la implementación de BIM en toda tu organización. Cada servicio se entrega con visibilidad total en nuestra plataforma."
+        />
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
+          {SERVICIOS.map((s, i) => (
+            <Reveal key={s.title} delay={i * 0.06}>
+              <Link href={s.href} className="group block">
+                <article className="panel h-full overflow-hidden transition-shadow duration-300 group-hover:panel-glow">
+                  <div className="relative aspect-[16/8.5] overflow-hidden">
+                    <Image
+                      src={s.img}
+                      alt={s.title}
+                      width={1100}
+                      height={585}
+                      className="size-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                    />
+                    <span className="font-mono-tech absolute left-4 top-4 rounded bg-navy/80 px-2 py-1 text-[10px] tracking-[0.14em] text-naranja-claro backdrop-blur">
+                      {s.code}
+                    </span>
                   </div>
+                  <div className="p-6">
+                    <h3 className="flex items-center justify-between text-xl font-bold text-white">
+                      {s.title}
+                      <ArrowUpRight className="size-4 text-naranja-claro opacity-0 transition-opacity group-hover:opacity-100" aria-hidden />
+                    </h3>
+                    <p className="mt-2 text-[14px] leading-relaxed text-tinta-suave">{s.desc}</p>
+                  </div>
+                </article>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      <Section tone="panel">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-14">
+          <Reveal>
+            <span className="tag-tech mb-4 inline-flex items-center gap-2.5">
+              <span className="text-tinta-suave">§03</span>
+              <span aria-hidden className="inline-block h-px w-7 bg-naranja/60" />
+              Nuestra plataforma
+            </span>
+            <h2 className="text-3xl font-bold leading-[1.1] text-white md:text-[2.6rem]">
+              No es un chatbot. Es un consultor BIM que razona.
+            </h2>
+            <p className="mt-4 leading-relaxed text-tinta-suave md:text-lg">
+              DG BIM Intelligence lee tu proyecto, razona paso a paso con el criterio de +10 años de
+              BIM Management y te dice qué hacer y por qué — con evidencia, impacto y nivel de
+              confianza en cada hallazgo.
+            </p>
+            <ul className="mt-6 space-y-3.5">
+              {[
+                "Detección de interferencias clasificadas por severidad, con responsable asignado",
+                "Control de calidad del modelo antes de que llegue a obra",
+                "Tableros por rol: modelador, coordinador, gerencia y dueño",
+              ].map((t) => (
+                <li key={t} className="flex gap-3 text-[15px] text-tinta/90">
+                  <Check className="mt-1 size-4 shrink-0 text-naranja-claro" aria-hidden />
+                  {t}
                 </li>
               ))}
             </ul>
             <Link href="/dg-bim-intelligence" data-btn className="mt-7 inline-block rounded-lg bg-naranja px-6 py-3.5 font-heading text-sm font-bold text-white hover:bg-naranja-claro">
-              Conocer la plataforma
+              Ver cómo razona
             </Link>
           </Reveal>
-          <Reveal delay={0.1}>
-            <div className="overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/40">
-              <Image src="/images/dm-plataforma.jpg" alt="DG BIM Intelligence — panel de control del proyecto" width={1400} height={800} className="size-full object-cover" />
-            </div>
+          <Reveal delay={0.12}>
+            <AgentPanel />
           </Reveal>
         </div>
       </Section>
 
-      <Section tone="crema">
+      <Section tone="blueprint">
         <SectionHead
-          eyebrow="El costo real"
-          title="El error no está en el plano. Está en lo que nadie revisó a tiempo."
-          lead="Los proyectos no se salen de presupuesto por una mala decisión de diseño. Se salen por conflictos entre disciplinas que nadie vio hasta que la cuadrilla ya estaba en sitio."
-        />
-        <div className="mt-11 grid gap-5 md:grid-cols-3">
-          {PROBLEMAS.map((p, i) => (
-            <Reveal key={p.title} delay={i * 0.07}>
-              <article className="h-full rounded-xl border border-border border-l-4 border-l-naranja bg-white p-6">
-                <h3 className="text-lg font-bold text-azul">{p.title}</h3>
-                <p className="mt-2 text-[14.5px] leading-relaxed text-muted-foreground">{p.desc}</p>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
-
-      <Section>
-        <SectionHead
+          num="§04"
           eyebrow="Cómo trabajamos"
           title="Cuatro pasos, sin sorpresas a mitad de camino"
           lead="Sabes desde el primer día qué recibes, cuándo lo recibes y cuánto cuesta."
         />
-        <ol className="mt-11 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {PASOS.map((p, i) => (
             <Reveal key={p.n} delay={i * 0.06}>
-              <li className="h-full rounded-xl border border-border bg-crema p-6">
-                <span className="font-heading text-3xl font-extrabold text-naranja-palido" aria-hidden>{p.n}</span>
-                <h3 className="mt-2 text-base font-bold text-azul">{p.t}</h3>
-                <p className="mt-1.5 text-[13.5px] leading-relaxed text-muted-foreground">{p.d}</p>
+              <li className="panel h-full p-6">
+                <span className="font-mono-tech text-[12px] tracking-[0.14em] text-naranja-claro" aria-hidden>{p.n}</span>
+                <h3 className="mt-3 text-base font-bold text-white">{p.t}</h3>
+                <p className="mt-1.5 text-[13.5px] leading-relaxed text-tinta-suave">{p.d}</p>
               </li>
             </Reveal>
           ))}
         </ol>
       </Section>
 
-      <Section tone="crema">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-          <Reveal>
-            <div className="overflow-hidden rounded-2xl shadow-xl shadow-azul/15">
-              <Image src="/images/dm-pg-empresa.jpg" alt="Estudio de ingeniería de Design Modeling DG" width={1600} height={900} className="size-full object-cover" />
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <span className="mb-3 inline-block text-[11px] font-bold uppercase tracking-[2.2px] text-naranja">Quiénes somos</span>
-            <h2 className="text-3xl font-bold leading-tight text-azul md:text-4xl">Una consultora dirigida por dos ingenieros, no por un comercial</h2>
-            <p className="mt-4 leading-relaxed text-muted-foreground md:text-lg">
-              Diez años diseñando y modelando estructuras con metodología BIM. Somos Partner y Centro
-              de Formación Autorizado de Autodesk, y quien firma tu proyecto es quien lo revisa.
-            </p>
-            <Link href="/quienes-somos" className="mt-5 inline-flex items-center gap-1.5 font-heading text-sm font-bold text-naranja transition-colors hover:text-azul">
-              Conocer al equipo →
-            </Link>
-          </Reveal>
-        </div>
-      </Section>
-
       <Section>
-        <SectionHead eyebrow="Confían en nosotros" title="Empresas y organizaciones que trabajan con Design Modeling" />
-        <div className="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-          {CLIENTES.map((c, i) => (
-            <Reveal key={c.alt} delay={i * 0.05}>
-              <div className={`flex aspect-[3/2] items-center justify-center rounded-xl border p-4 ${c.dark ? "border-navy bg-navy" : "border-border bg-crema"}`}>
-                <Image src={c.src} alt={c.alt} width={160} height={100} className="max-h-14 w-auto object-contain" />
-              </div>
+        <SectionHead
+          num="§05"
+          eyebrow="Proyectos"
+          title="El criterio se demuestra en obra"
+        />
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {[
+            { img: "/images/v2-proy-torre.jpg", t: "Edificación en altura", d: "Cálculo sismorresistente y coordinación completa" },
+            { img: "/images/v2-proy-nave.jpg", t: "Naves industriales", d: "Estructura metálica y análisis de pórticos" },
+            { img: "/images/v2-proy-rehab.jpg", t: "Rehabilitación", d: "Evaluación sísmica y reforzamiento de existentes" },
+          ].map((p, i) => (
+            <Reveal key={p.t} delay={i * 0.07}>
+              <Link href="/proyectos" className="group block">
+                <article className="panel overflow-hidden">
+                  <div className="aspect-video overflow-hidden">
+                    <Image src={p.img} alt={p.t} width={1600} height={900} className="size-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="text-base font-bold text-white">{p.t}</h3>
+                    <p className="mt-1 text-[13px] text-tinta-suave">{p.d}</p>
+                  </div>
+                </article>
+              </Link>
             </Reveal>
           ))}
         </div>
-        <Reveal className="mt-8 text-center">
-          <Link href="/acreditaciones" data-btn className="inline-block rounded-lg border-2 border-azul px-6 py-3 font-heading text-sm font-bold text-azul hover:bg-azul hover:text-white">
-            Ver nuestras acreditaciones
+        <Reveal className="mt-9 text-center">
+          <Link href="/proyectos" data-btn className="inline-block rounded-lg border border-white/25 px-6 py-3 font-heading text-sm font-bold text-white hover:border-naranja-claro hover:text-naranja-claro">
+            Ver los proyectos
           </Link>
         </Reveal>
       </Section>
 
-      <Section tone="palido">
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-          <Reveal>
-            <span className="mb-3 inline-block text-[11px] font-bold uppercase tracking-[2.2px] text-naranja">También formamos equipos</span>
-            <h2 className="text-3xl font-bold leading-tight text-azul md:text-4xl">Design Modeling Academy</h2>
-            <p className="mt-4 leading-relaxed text-[#37536b] md:text-lg">
-              Además de la consultoría, formamos a los profesionales del sector: másters, diplomados
-              universitarios y especializaciones en BIM, avalados por Autodesk y universidades
-              internacionales. Si lo que buscas es capacitar a tu equipo, ese es el camino.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a href="https://designmodelingacademy.com/es/" target="_blank" rel="noopener" data-btn className="rounded-lg bg-azul px-6 py-3.5 font-heading text-sm font-bold text-white hover:bg-azul-medio">
-                Ver la academia
-              </a>
-              <Link href="/bolsa-de-trabajo" data-btn className="rounded-lg border-2 border-azul px-6 py-3.5 font-heading text-sm font-bold text-azul hover:bg-azul hover:text-white">
-                Bolsa de trabajo
-              </Link>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <div className="overflow-hidden rounded-2xl shadow-xl shadow-azul/15">
-              <Image src="/images/dm-pg-acreditaciones.jpg" alt="Certificaciones y diplomas internacionales" width={1600} height={900} className="size-full object-cover" />
-            </div>
-          </Reveal>
-        </div>
-      </Section>
+      <AvalesMarquee />
+
+      <div className="border-b border-white/8 bg-navy-2/60 px-5 py-5">
+        <p className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[13.5px] text-tinta-suave">
+          ¿Buscas formarte en BIM en vez de contratar consultoría?
+          <a href={ACADEMIA} target="_blank" rel="noopener" className="inline-flex items-center gap-1 font-heading font-bold text-naranja-claro hover:text-white">
+            Design Modeling Academy <ArrowUpRight className="size-3.5" aria-hidden />
+          </a>
+        </p>
+      </div>
 
       <ContactoBloque />
     </>
