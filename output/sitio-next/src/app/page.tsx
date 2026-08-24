@@ -229,17 +229,17 @@ export default function Home() {
         />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {[
-            { img: "/images/v2-proy-torre.jpg", t: "Edificación en altura", d: "Cálculo sismorresistente y coordinación completa" },
-            { img: "/images/v2-proy-nave.jpg", t: "Naves industriales", d: "Estructura metálica y análisis de pórticos" },
-            { img: "/images/v2-proy-rehab.jpg", t: "Rehabilitación", d: "Evaluación sísmica y reforzamiento de existentes" },
+            { img: "/images/proy-piscina.jpg", t: "Piscina P-01 · Castillo del Sol", d: "Costa Rica · 2026 — vaso monolítico sobre 12 micropilotes, detalle constructivo real" },
+            { img: "/images/proy-silos.jpg", t: "Silos Packaging & Process", d: "Quito–Brasil · 2020 — 8 silos de 120 t con ingeniería de detalle en Revit" },
+            { img: "/images/proy-kayuko.jpg", t: "Edificio Kayuko", d: "Oaxaca, México · 2021 — 5 niveles en hormigón armado, Robot + Revit" },
           ].map((p, i) => (
             <Reveal key={p.t} delay={i * 0.07}>
               <Link href="/proyectos" className="group block">
                 <article className="panel overflow-hidden">
-                  <div className="aspect-video overflow-hidden">
-                    <Image src={p.img} alt={p.t} width={1600} height={900} className="size-full object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                  <div className="relative aspect-video overflow-hidden bg-white">
+                    <Image src={p.img} alt={p.t} fill sizes="(min-width:768px) 33vw, 100vw" className="object-contain p-2 transition-transform duration-700 group-hover:scale-[1.03]" />
                   </div>
-                  <div className="p-5">
+                  <div className="border-t border-border p-5">
                     <h3 className="text-base font-bold text-navy">{p.t}</h3>
                     <p className="mt-1 text-[13px] text-tinta-suave">{p.d}</p>
                   </div>
