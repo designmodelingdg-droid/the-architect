@@ -156,18 +156,25 @@ button, a[data-btn] { transition: background-color 200ms var(--ease-out-brand), 
     linear-gradient(90deg, rgba(0, 62, 92, 0.05) 1px, transparent 1px);
   background-size: 44px 44px;
 }
+/* Fondos generativos «Estructura Emergente»: retícula + pórticos wireframe */
 .blueprint-fino {
-  background-image:
-    linear-gradient(rgba(0, 62, 92, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 62, 92, 0.07) 1px, transparent 1px);
-  background-size: 96px 96px;
+  background-color: #fafaf7;
+  background-image: url("/images/fondos/hero-claro.jpg");
+  background-size: cover;
+  background-position: center bottom;
 }
 /* Variante para bandas navy */
 .blueprint-navy {
-  background-image:
-    linear-gradient(rgba(208, 234, 245, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(208, 234, 245, 0.06) 1px, transparent 1px);
-  background-size: 44px 44px;
+  background-color: #001e30;
+  background-image: url("/images/fondos/banda-navy.jpg");
+  background-size: cover;
+  background-position: center bottom;
+}
+.fondo-cta {
+  background-color: #001e30;
+  background-image: url("/images/fondos/cta-navy.jpg");
+  background-size: cover;
+  background-position: center bottom;
 }
 
 /* Tarjeta clara elevada */
