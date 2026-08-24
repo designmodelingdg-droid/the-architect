@@ -51,7 +51,7 @@ export default function Nosotros() {
           </Reveal>
           <Reveal delay={0.1}>
             <div className="panel overflow-hidden">
-              <Image src="/images/v2-nosotros.jpg" alt="Estudio de ingeniería de Design Modeling DG" width={1600} height={900} className="size-full object-cover" />
+              <Image src="/images/v3-nosotros.jpg" alt="Estudio de ingeniería de Design Modeling DG" width={1600} height={900} className="size-full object-cover" />
             </div>
           </Reveal>
         </div>

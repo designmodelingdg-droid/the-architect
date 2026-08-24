@@ -236,8 +236,8 @@ export default function Home() {
             <Reveal key={p.t} delay={i * 0.07}>
               <Link href="/proyectos" className="group block">
                 <article className="panel overflow-hidden">
-                  <div className="relative aspect-video overflow-hidden bg-white">
-                    <Image src={p.img} alt={p.t} fill sizes="(min-width:768px) 33vw, 100vw" className="object-contain p-2 transition-transform duration-700 group-hover:scale-[1.03]" />
+                  <div className="relative aspect-video overflow-hidden">
+                    <Image src={p.img} alt={p.t} fill sizes="(min-width:768px) 33vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                   </div>
                   <div className="border-t border-border p-5">
                     <h3 className="text-base font-bold text-navy">{p.t}</h3>

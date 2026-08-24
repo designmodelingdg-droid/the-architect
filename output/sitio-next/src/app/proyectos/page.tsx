@@ -150,8 +150,8 @@ export default function Proyectos() {
             <Reveal key={p.titulo}>
               <article className="panel overflow-hidden">
                 <div className="grid lg:grid-cols-[1.05fr_0.95fr]">
-                  <div className="relative aspect-[16/10] overflow-hidden bg-white lg:aspect-auto">
-                    <Image src={p.img} alt={p.imgAlt} fill sizes="(min-width:1024px) 50vw, 100vw" className="object-contain" />
+                  <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto">
+                    <Image src={p.img} alt={p.imgAlt} fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
                   </div>
                   <div className="p-7 md:p-9">
                     <span className="font-heading text-[10.5px] font-bold uppercase tracking-[0.15em] text-tinta-suave">{p.cliente}</span>
@@ -223,8 +223,8 @@ export default function Proyectos() {
           {HISTORIAL.map((p, i) => (
             <Reveal key={p.titulo} delay={(i % 3) * 0.06}>
               <article className="panel h-full overflow-hidden">
-                <div className="relative aspect-[16/10] bg-white">
-                  <Image src={p.img} alt={`Modelo estructural de ${p.titulo}`} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-contain p-2" />
+                <div className="relative aspect-[16/10]">
+                  <Image src={p.img} alt={`Modelo estructural de ${p.titulo}`} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover" />
                 </div>
                 <div className="border-t border-border p-5">
                   <span className="font-heading text-[10px] font-bold uppercase tracking-[0.12em] text-naranja">{p.lugar}</span>

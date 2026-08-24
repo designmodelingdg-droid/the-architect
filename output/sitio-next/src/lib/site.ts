@@ -27,7 +27,7 @@ export const FAMILIAS = [
       "Diseño y análisis de vibración",
       "Evaluación del desempeño estructural",
     ],
-    img: "/images/v2-calculo.jpg",
+    img: "/images/v3-calculo.jpg",
   },
   {
     num: "02",
@@ -41,7 +41,7 @@ export const FAMILIAS = [
       "Planos estructurales",
       "Plantas amobladas para presentación y venta",
     ],
-    img: "/images/v2-planos.jpg",
+    img: "/images/v3-planos.jpg",
   },
   {
     num: "03",
@@ -55,7 +55,7 @@ export const FAMILIAS = [
       "Detección y resolución de interferencias",
       "Asesoría y dirección técnica del proceso",
     ],
-    img: "/images/v2-clash.jpg",
+    img: "/images/v3-clash.jpg",
   },
   {
     num: "04",
@@ -69,7 +69,7 @@ export const FAMILIAS = [
       "Acompañamiento del primer proyecto piloto",
       "Implantación de DG BIM Intelligence como herramienta de gestión",
     ],
-    img: "/images/v2-implementacion.jpg",
+    img: "/images/v3-implementacion.jpg",
   },
   {
     num: "05",
