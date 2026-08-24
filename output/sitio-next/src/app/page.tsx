@@ -30,8 +30,7 @@ export default function Home() {
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
           <div>
             <HeroReveal>
-              <span className="tag-tech mb-5 inline-flex items-center gap-2.5">
-                <span aria-hidden className="size-1.5 rounded-full bg-naranja" />
+              <span className="tag-tech mb-5 inline-block">
                 Consultoría BIM + IA · Ecuador y Latinoamérica
               </span>
             </HeroReveal>
@@ -166,7 +165,18 @@ export default function Home() {
             </Link>
           </Reveal>
           <Reveal delay={0.12}>
-            <AgentPanel />
+            <figure className="overflow-hidden rounded-2xl border border-white/15 shadow-2xl shadow-black/40">
+              <Image
+                src="/images/sw-agente.jpg"
+                alt="DG BIM Intelligence: el Agente BIM respondiendo sobre un proyecto real, con hallazgo y evidencia"
+                width={1600}
+                height={954}
+                className="size-full object-cover"
+              />
+              <figcaption className="border-t border-white/10 bg-navy-2 px-4 py-2.5 text-center font-heading text-[10.5px] font-bold uppercase tracking-[0.12em] text-azul-palido/60">
+                Captura real de la plataforma — Agente BIM en un proyecto
+              </figcaption>
+            </figure>
           </Reveal>
         </div>
       </Section>
@@ -256,7 +266,7 @@ export default function Home() {
           {EQUIPO.map((m, i) => (
             <Reveal key={m.nombre} delay={i * 0.08}>
               <article className="panel h-full p-7 text-center">
-                <Image src={m.foto} alt={m.nombre} width={220} height={220} className="mx-auto size-24 rounded-full border-2 border-naranja/40 object-cover" />
+                <Image src={m.foto} alt={m.nombre} width={320} height={320} className="mx-auto size-36 rounded-full border-2 border-naranja/40 object-cover md:size-40" />
                 <h3 className="mt-4 text-lg font-bold text-navy">{m.nombre}</h3>
                 <p className="tag-tech mt-1">{m.cargo}</p>
                 <a
