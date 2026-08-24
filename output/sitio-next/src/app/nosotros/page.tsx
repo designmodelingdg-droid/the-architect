@@ -67,13 +67,13 @@ export default function Nosotros() {
         <div className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-2">
           {EQUIPO.map((p) => (
             <Reveal key={p.nombre}>
-              <article className="panel h-full p-7">
-                <div className="mb-4 size-20 overflow-hidden rounded-full border-2 border-naranja/50 bg-crema">
-                  <Image src={p.foto} alt={p.nombre} width={160} height={160} className="size-full object-cover" />
+              <article className="panel h-full p-7 text-center">
+                <div className="mx-auto mb-5 size-36 overflow-hidden rounded-full border-2 border-naranja/50 bg-crema md:size-44">
+                  <Image src={p.foto} alt={p.nombre} width={360} height={360} className="size-full object-cover" />
                 </div>
-                <p className="text-[14.5px] leading-relaxed text-tinta-suave">{p.bio}</p>
-                <p className="mt-4 font-heading text-[15px] font-bold text-navy">{p.nombre}</p>
-                <p className="font-heading text-[11px] font-bold uppercase tracking-[0.12em] text-naranja">{p.cargo}</p>
+                <p className="font-heading text-[17px] font-bold text-navy">{p.nombre}</p>
+                <p className="mt-0.5 font-heading text-[11px] font-bold uppercase tracking-[0.12em] text-naranja">{p.cargo}</p>
+                <p className="mt-3 text-[14px] leading-relaxed text-tinta-suave">{p.bio}</p>
                 <a
                   href={p.linkedin}
                   target="_blank"

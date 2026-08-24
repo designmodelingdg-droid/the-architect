@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Overpass, Nunito } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/site/navbar";
+import { TopBar } from "@/components/site/topbar";
 import { Footer } from "@/components/site/footer";
 import { WaFloat } from "@/components/site/wa-float";
 
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <body className={`${overpass.variable} ${nunito.variable} bg-background text-foreground antialiased`}>
+        <TopBar />
         <Navbar />
         <main>{children}</main>
         <Footer />

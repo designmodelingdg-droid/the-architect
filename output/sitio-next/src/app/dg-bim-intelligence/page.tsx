@@ -4,8 +4,8 @@ import { Check, Clock, Eye } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHead } from "@/components/site/section";
 import { Reveal } from "@/components/site/reveal";
+import Image from "next/image";
 import { CtaFinal } from "@/components/site/cta-final";
-import { AgentPanel } from "@/components/site/agent-panel";
 import { DataStrip } from "@/components/site/data-strip";
 
 export const metadata: Metadata = {
@@ -79,7 +79,18 @@ export default function Plataforma() {
             </ol>
           </Reveal>
           <Reveal delay={0.12}>
-            <AgentPanel />
+            <figure className="overflow-hidden rounded-2xl border border-white/15 shadow-2xl shadow-black/40">
+              <Image
+                src="/images/sw-agente.jpg"
+                alt="El Agente BIM respondiendo dentro de la plataforma: hallazgo de 23 elementos sin código de clasificación, con evidencia"
+                width={1600}
+                height={954}
+                className="size-full object-cover"
+              />
+              <figcaption className="border-t border-white/10 bg-navy-2 px-4 py-2.5 text-center font-heading text-[10.5px] font-bold uppercase tracking-[0.12em] text-azul-palido/60">
+                Captura real — el agente razonando sobre un proyecto
+              </figcaption>
+            </figure>
           </Reveal>
         </div>
       </Section>
@@ -107,6 +118,32 @@ export default function Plataforma() {
       <Section tone="panel">
         <SectionHead
           num="03"
+          eyebrow="Así se ve por dentro"
+          title="Pantallas reales, no maquetas"
+          lead="Lo que ves aquí es la plataforma funcionando sobre un proyecto de ejemplo — el mismo entorno que recibe tu equipo."
+        />
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {[
+            ["/images/sw-dashboard.jpg", "Dashboard del Modelador", "Elementos, LOD, propiedades por completar y calidad del modelo en un vistazo."],
+            ["/images/sw-agente.jpg", "Agente BIM", "Pregunta sobre tu proyecto y recibe hallazgos con evidencia y prioridad."],
+            ["/images/sw-gerente.jpg", "Panel de Gerencia", "Riesgo, avance y calidad para decidir sin abrir veinte reportes."],
+          ].map(([img, t, d], i) => (
+            <Reveal key={t} delay={i * 0.07}>
+              <figure className="panel h-full overflow-hidden">
+                <Image src={img} alt={`${t} — captura real de DG BIM Intelligence`} width={1600} height={954} className="aspect-video size-full object-cover object-left-top" />
+                <figcaption className="p-5">
+                  <h3 className="text-base font-bold text-navy">{t}</h3>
+                  <p className="mt-1 text-[13px] leading-relaxed text-tinta-suave">{d}</p>
+                </figcaption>
+              </figure>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      <Section tone="base">
+        <SectionHead
+          num="04"
           eyebrow="Roadmap honesto"
           title="Lo disponible se demuestra. Lo futuro es visión."
           lead="Preferimos decirte exactamente en qué punto está la plataforma antes de que la contrates."
@@ -157,8 +194,8 @@ export default function Plataforma() {
         </Reveal>
       </Section>
 
-      <Section>
-        <SectionHead num="04" eyebrow="Cómo se contrata" title="Dos formas de usarla" />
+      <Section tone="panel">
+        <SectionHead num="05" eyebrow="Cómo se contrata" title="Dos formas de usarla" />
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           {[
             ["Incluida en tu consultoría", "Si nos contratas para modelar, calcular o coordinar tu proyecto, la plataforma viene incluida durante toda la ejecución. Es la forma en que te entregamos visibilidad del avance sin que tengas que pedir reportes.", "Agendar diagnóstico"],
