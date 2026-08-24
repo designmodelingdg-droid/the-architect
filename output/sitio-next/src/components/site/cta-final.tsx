@@ -12,7 +12,7 @@ export function CtaFinal({
   cta?: string;
 }) {
   return (
-    <section className="blueprint-navy border-t border-white/8 bg-navy px-5 py-20 text-center">
+    <section className="fondo-cta border-t border-white/8 bg-navy px-5 py-20 text-center">
       <Reveal>
         <span className="tag-tech mb-4 inline-block text-naranja-claro">Listo para empezar</span>
         <h2 className="mx-auto max-w-2xl text-3xl font-bold text-white md:text-5xl">{title}</h2>
