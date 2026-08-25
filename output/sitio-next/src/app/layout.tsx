@@ -34,8 +34,15 @@ export const metadata: Metadata = {
     siteName: "Design Modeling DG",
     title: "Design Modeling DG — Consultoría BIM con inteligencia artificial",
     description:
-      "El criterio de 10 años de BIM Management, ahora razonando en cada proyecto. Consultoría estructural + DG BIM Intelligence.",
-    images: [{ url: "/images/dm-hero.jpg", width: 1920, height: 1097 }],
+      "Consultoría BIM estructural y arquitectónica con un plus: DG BIM Intelligence, nuestro software de IA. Ecuador y Latinoamérica.",
+    images: [{ url: "/images/og-web.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Design Modeling DG — Consultoría BIM con inteligencia artificial",
+    description:
+      "Consultoría BIM estructural y arquitectónica con software propio de IA. Ecuador y Latinoamérica.",
+    images: ["/images/og-web.jpg"],
   },
 };
 
