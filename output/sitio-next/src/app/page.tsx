@@ -147,9 +147,9 @@ export default function Home() {
 
       {/* Banda cinematográfica: el modelado BIM con IA mientras se navega */}
       <CineBanda
-        video="/videos/modelado.mp4"
-        poster="/images/modelado-poster.jpg"
-        eyebrow="Modelado BIM + IA"
+        video="/videos/revit.mp4"
+        poster="/images/revit-poster.jpg"
+        eyebrow="Modelado BIM + IA · Revit"
         titulo={
           <>
             Tu proyecto se modela <span className="text-naranja-claro">con inteligencia artificial.</span>

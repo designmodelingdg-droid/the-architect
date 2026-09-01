@@ -7,6 +7,8 @@ import { AvalesMarquee } from "@/components/site/marquee";
 import { Section, SectionHead } from "@/components/site/section";
 import { Reveal } from "@/components/site/reveal";
 import { CtaFinal } from "@/components/site/cta-final";
+import { CineBanda } from "@/components/site/cine-banda";
+import { ParallaxImg } from "@/components/site/parallax";
 import { FAMILIAS } from "@/lib/site";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
@@ -61,6 +63,7 @@ export default function Consultoria() {
         title="Un catálogo completo de consultoría BIM"
         lead="Cinco familias de servicios que cubren el proyecto de punta a punta: del cálculo estructural a la inteligencia artificial aplicada. Diseño sismorresistente según códigos nacionales e internacionales, y cada servicio entregado con visibilidad total en DG BIM Intelligence."
         crumb={{ label: "Consultoría", href: "/consultoria" }}
+        fondo="/images/ing/historia-6-edificio-wireframe.jpg"
       />
       <AvalesMarquee />
 
@@ -92,13 +95,26 @@ export default function Consultoria() {
               ) : null}
             </Reveal>
             <Reveal delay={0.1} className={i % 2 ? "lg:order-1" : ""}>
-              <div className="panel overflow-hidden">
-                <Image src={f.img} alt={f.label} width={1100} height={825} className="size-full object-cover" />
-              </div>
+              <ParallaxImg className="panel">
+                <div className="relative aspect-[4/3]">
+                  <Image src={f.img} alt={f.label} fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
+                </div>
+              </ParallaxImg>
             </Reveal>
           </div>
         </Section>
       ))}
+
+      {/* Banda cinematográfica: acero real antes de la capacidad técnica */}
+      <CineBanda
+        img="/images/ing/historia-3-portico-nave.jpg"
+        eyebrow="Capacidad técnica"
+        titulo={
+          <>
+            Acero, hormigón y <span className="text-naranja-claro">criterio sismorresistente.</span>
+          </>
+        }
+      />
 
       <Section tone="navy">
         <SectionHead

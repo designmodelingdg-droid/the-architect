@@ -5,19 +5,21 @@ import Link from "next/link";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 
 /*
- * Banda cinematográfica a sangre completa: video de fondo con parallax que
- * ocupa casi todo el viewport mientras el usuario navega, con titular
- * editorial encima. El video se pausa con prefers-reduced-motion.
+ * Banda cinematográfica a sangre completa: video o imagen de fondo con
+ * parallax que ocupa casi todo el viewport mientras el usuario navega, con
+ * titular editorial encima. El video se pausa con prefers-reduced-motion.
  */
 export function CineBanda({
   video,
   poster,
+  img,
   eyebrow,
   titulo,
   cta,
 }: {
-  video: string;
-  poster: string;
+  video?: string;
+  poster?: string;
+  img?: string;
   eyebrow: string;
   titulo: React.ReactNode;
   cta?: { href: string; label: string };
@@ -45,18 +47,23 @@ export function CineBanda({
   return (
     <section ref={ref} className="relative flex min-h-[74vh] items-center justify-center overflow-hidden bg-navy">
       <motion.div aria-hidden style={reducido ? undefined : { y, scale: 1.22 }} className="absolute inset-0">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster={poster}
-          className="size-full object-cover"
-        >
-          <source src={video} type="video/mp4" />
-        </video>
+        {video ? (
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={poster}
+            className="size-full object-cover"
+          >
+            <source src={video} type="video/mp4" />
+          </video>
+        ) : img ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={img} alt="" className="size-full object-cover" />
+        ) : null}
       </motion.div>
       <div aria-hidden className="absolute inset-0 bg-navy/35" />
       <div aria-hidden className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-navy/70 to-transparent" />
