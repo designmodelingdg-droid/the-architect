@@ -167,6 +167,8 @@ export const AVALES = [
   { src: "/images/av5.png", alt: "Universidad de las Naciones" },
   { src: "/images/av6.png", alt: "UAIII" },
   { src: "/images/av7.png", alt: "Sello de excelencia educativa" },
+  { src: "/images/av8-cype.png", alt: "CYPE Authorized Partner" },
+  { src: "/images/av9-naces.png", alt: "NACES" },
 ];
 
 export const CLIENTES = [
