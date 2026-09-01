@@ -7,7 +7,7 @@ import { Reveal, HeroReveal } from "@/components/site/reveal";
 import { AvalesMarquee } from "@/components/site/marquee";
 import { AgentPanel } from "@/components/site/agent-panel";
 import { VimeoFondo } from "@/components/site/vimeo-fondo";
-import { ScrollCine } from "@/components/site/scroll-cine";
+import { CineBanda } from "@/components/site/cine-banda";
 import { ParallaxFondo, ParallaxImg } from "@/components/site/parallax";
 import { DataStrip } from "@/components/site/data-strip";
 import { ContactoBloque } from "@/components/site/contacto-bloque";
@@ -145,13 +145,14 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Efecto reel: teléfono con el modelado BIM que sale de la página */}
-      <ScrollCine
+      {/* Banda cinematográfica: el video vertical de IA + clash a sangre completa */}
+      <CineBanda
         vimeoId="1223019570"
+        vimeoAspect={9 / 16}
         eyebrow="Modelado BIM + IA · Revit"
         titulo={
           <>
-            Tu proyecto se modela <span className="text-naranja">con inteligencia artificial.</span>
+            Tu proyecto se modela <span className="text-naranja-claro">con inteligencia artificial.</span>
           </>
         }
         cta={{ href: "/dg-bim-intelligence", label: "Mira cómo lo hacemos" }}

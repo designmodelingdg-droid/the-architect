@@ -27,7 +27,7 @@ export const FAMILIAS = [
       "Diseño y análisis de vibración",
       "Evaluación del desempeño estructural",
     ],
-    img: "/images/v3-calculo.jpg",
+    img: "/images/revit-estructural.jpg",
   },
   {
     num: "02",
@@ -41,7 +41,7 @@ export const FAMILIAS = [
       "Planos estructurales",
       "Plantas amobladas para presentación y venta",
     ],
-    img: "/images/v3-planos.jpg",
+    img: "/images/revit-arquitectura.jpg",
   },
   {
     num: "03",
@@ -55,7 +55,7 @@ export const FAMILIAS = [
       "Detección y resolución de interferencias",
       "Asesoría y dirección técnica del proceso",
     ],
-    img: "/images/v3-clash.jpg",
+    img: "/images/revit-coordinacion.jpg",
   },
   {
     num: "04",
@@ -69,7 +69,7 @@ export const FAMILIAS = [
       "Acompañamiento del primer proyecto piloto",
       "Implantación de DG BIM Intelligence como herramienta de gestión",
     ],
-    img: "/images/v3-implementacion.jpg",
+    img: "/images/revit-implementacion.jpg",
   },
   {
     num: "05",
