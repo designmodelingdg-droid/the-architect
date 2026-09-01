@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import { VimeoFondo } from "./vimeo-fondo";
+import { ZonaMouse, CapaMouse } from "./zona-mouse";
 
 /*
  * Banda cinematográfica a sangre completa: video o imagen de fondo con
@@ -50,8 +51,10 @@ export function CineBanda({
   }, []);
 
   return (
-    <section ref={ref} className="relative flex min-h-[74vh] items-center justify-center overflow-hidden bg-navy">
-      <motion.div aria-hidden style={reducido ? undefined : { y, scale: 1.22 }} className="absolute inset-0">
+    <div ref={ref}>
+      <ZonaMouse className="relative flex min-h-[74vh] items-center justify-center overflow-hidden bg-navy">
+      <CapaMouse profundidad={20} className="absolute inset-0">
+      <motion.div style={reducido ? undefined : { y, scale: 1.22 }} className="absolute inset-0">
         {vimeoId ? (
           <VimeoFondo id={vimeoId} poster={poster} aspect={vimeoAspect} />
         ) : video ? (
@@ -72,12 +75,14 @@ export function CineBanda({
           <img src={img} alt="" className="size-full object-cover" />
         ) : null}
       </motion.div>
+      </CapaMouse>
       <div aria-hidden className="absolute inset-0 bg-navy/35" />
       <div aria-hidden className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-navy/70 to-transparent" />
       <div aria-hidden className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-navy/70 to-transparent" />
+      <CapaMouse profundidad={-8} className="relative">
       <motion.div
         style={reducido ? undefined : { y: yTexto }}
-        className="relative mx-auto max-w-4xl px-5 py-24 text-center"
+        className="mx-auto max-w-4xl px-5 py-24 text-center"
       >
         <span className="tag-tech mb-5 inline-block text-naranja-claro">{eyebrow}</span>
         <h2 className="text-[2.3rem] font-bold leading-[1.06] text-white drop-shadow-lg md:text-[3.6rem]">
@@ -93,6 +98,8 @@ export function CineBanda({
           </Link>
         )}
       </motion.div>
-    </section>
+      </CapaMouse>
+      </ZonaMouse>
+    </div>
   );
 }
