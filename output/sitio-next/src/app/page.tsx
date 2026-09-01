@@ -6,6 +6,7 @@ import { Section, SectionHead } from "@/components/site/section";
 import { Reveal, HeroReveal } from "@/components/site/reveal";
 import { AvalesMarquee } from "@/components/site/marquee";
 import { AgentPanel } from "@/components/site/agent-panel";
+import { HeroVideo } from "@/components/site/hero-video";
 import { DataStrip } from "@/components/site/data-strip";
 import { ContactoBloque } from "@/components/site/contacto-bloque";
 import { ACADEMIA, FAMILIAS, VERTICALES, EQUIPO } from "@/lib/site";
@@ -25,23 +26,27 @@ const COSTOS = [
 export default function Home() {
   return (
     <>
-      {/* Hero claro con el software como protagonista */}
-      <section className="blueprint-fino relative overflow-hidden border-b border-border bg-crema py-16 md:py-24">
+      {/* Hero cinematográfico: video del edificio + panel del agente */}
+      <section className="relative overflow-hidden border-b border-navy bg-navy py-20 md:py-28">
+        <HeroVideo />
+        {/* Degradados para legibilidad: navy desde la izquierda y desde abajo */}
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/55 to-navy/15" />
+        <div aria-hidden className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-navy/80 to-transparent" />
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
           <div>
             <HeroReveal>
-              <span className="tag-tech mb-5 inline-block">
+              <span className="tag-tech mb-5 inline-block text-naranja-claro">
                 Consultoría BIM + IA · Ecuador y Latinoamérica
               </span>
             </HeroReveal>
             <HeroReveal delay={0.08}>
-              <h1 className="text-[2.6rem] font-bold leading-[1.04] text-navy md:text-[3.7rem]">
+              <h1 className="text-[2.6rem] font-bold leading-[1.04] text-white md:text-[3.7rem]">
                 Aceleramos la transformación digital{" "}
-                <span className="text-naranja">de tus proyectos de construcción.</span>
+                <span className="text-naranja-claro">de tus proyectos de construcción.</span>
               </h1>
             </HeroReveal>
             <HeroReveal delay={0.16}>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-tinta-suave md:text-lg">
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
                 Consultoría BIM estructural y arquitectónica en todo el ciclo del proyecto — con un
                 plus que ninguna otra consultora te da: DG BIM Intelligence, nuestro software de IA
                 que razona sobre tu modelo con criterio real de ingeniería.
@@ -49,10 +54,10 @@ export default function Home() {
             </HeroReveal>
             <HeroReveal delay={0.24}>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/contactos" data-btn className="rounded-lg bg-naranja px-7 py-3.5 font-heading text-[15px] font-bold text-white shadow-lg shadow-naranja/25 hover:bg-azul">
+                <Link href="/contactos" data-btn className="rounded-lg bg-naranja px-7 py-3.5 font-heading text-[15px] font-bold text-white shadow-lg shadow-naranja/40 hover:bg-naranja-claro">
                   Agenda tu diagnóstico
                 </Link>
-                <Link href="/consultoria" data-btn className="rounded-lg border border-azul/30 px-7 py-3.5 font-heading text-[15px] font-bold text-azul hover:border-naranja hover:text-naranja">
+                <Link href="/consultoria" data-btn className="rounded-lg border border-white/40 px-7 py-3.5 font-heading text-[15px] font-bold text-white hover:border-naranja-claro hover:text-naranja-claro">
                   Ver servicios
                 </Link>
               </div>
