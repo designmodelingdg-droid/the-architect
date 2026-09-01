@@ -63,7 +63,7 @@ export default function Consultoria() {
         title="Un catálogo completo de consultoría BIM"
         lead="Cinco familias de servicios que cubren el proyecto de punta a punta: del cálculo estructural a la inteligencia artificial aplicada. Diseño sismorresistente según códigos nacionales e internacionales, y cada servicio entregado con visibilidad total en DG BIM Intelligence."
         crumb={{ label: "Consultoría", href: "/consultoria" }}
-        fondo="/images/ing/historia-6-edificio-wireframe.jpg"
+        vimeo={{ id: "1223019560", aspect: 9 / 16, poster: "/images/posters/esc2.jpg" }}
       />
       <AvalesMarquee />
 
@@ -116,7 +116,7 @@ export default function Consultoria() {
         }
       />
 
-      <Section tone="navy">
+      <Section tone="navy" fondoVimeo={{ id: "1223019570", aspect: 9 / 16, poster: "/images/posters/esc3.jpg" }}>
         <SectionHead
           dark
           eyebrow="Capacidad técnica"
