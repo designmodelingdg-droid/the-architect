@@ -98,21 +98,56 @@ export const VERTICALES = [
   { label: "Equipos BIM internos", detalle: "Implementación, estándares y DG BIM Intelligence como software independiente." },
 ];
 
-/* Equipo — se amplía cuando Dayana pase el resto de perfiles */
+/* Equipo — datos y fotos del documento oficial del equipo */
 export const EQUIPO = [
   {
-    nombre: "Ing. Dayana Calderón Brunetti",
+    nombre: "Dayana Calderón Brunetti",
     cargo: "Fundadora y CEO",
-    foto: "/images/dayana.png",
-    linkedin: LINKEDIN_EMPRESA, // TODO: reemplazar por el perfil personal cuando lo pase
-    bio: "Lidera la optimización administrativa y operativa de los proyectos, integrando procesos y tecnología para que cada cliente reciba resultados verificables.",
+    foto: "/images/equipo/dayana.jpg",
+    linkedin: "https://www.linkedin.com/in/dayana-calderon-brunetti-409771142/",
+    bio: "Ingeniera Química. Lidera la estrategia, gestión y crecimiento de la organización, integrando innovación, tecnología y educación para el sector AEC.",
   },
   {
-    nombre: "Ing. Gabriel Pantoja",
-    cargo: "Cofundador · Director Técnico BIM",
-    foto: "/images/gabriel.png",
-    linkedin: LINKEDIN_EMPRESA, // TODO: reemplazar por el perfil personal cuando lo pase
-    bio: "Ingeniero Civil especializado en BIM Management y estructuras. Dirige la parte técnica de cada proyecto — y su criterio de +10 años es el que entrena a DG BIM Intelligence.",
+    nombre: "Gabriel Pantoja Linares",
+    cargo: "CEO y Cofundador · Dirección Técnica BIM",
+    foto: "/images/equipo/gabriel.jpg",
+    linkedin: "https://www.linkedin.com/in/gabriel-pantoja-b9202a115/",
+    bio: "Ingeniero Civil, especialista en estructuras y BIM Management. Dirige el rumbo técnico de cada proyecto — y su criterio de +10 años es el que entrena a DG BIM Intelligence.",
+  },
+  {
+    nombre: "Mijail Mayorga",
+    cargo: "Director de Proyectos",
+    foto: "/images/equipo/mijail.jpg",
+    linkedin: "https://www.linkedin.com/in/mijailmayorga/",
+    bio: "Ingeniero Civil especializado en metodología BIM. Planifica, coordina y supervisa la ejecución de los proyectos, cuidando plazos, calidad y coordinación entre disciplinas.",
+  },
+  {
+    nombre: "Ester Celeste Álvarez",
+    cargo: "Arquitecta · Asistencia General",
+    foto: "/images/equipo/ester.jpg",
+    linkedin: "https://www.linkedin.com/in/estercalvarezt/",
+    bio: "Arquitecta Urbanista (UTE). Desarrollo arquitectónico en Revit y visualización con Lumion, V-Ray y Twinmotion; soporte administrativo y de plataformas.",
+  },
+  {
+    nombre: "Aylin Tapia Urzúa",
+    cargo: "Asistencia General",
+    foto: "/images/equipo/aylin.jpg",
+    linkedin: "https://www.linkedin.com/in/aylin-i-tapia-4920a429b/",
+    bio: "Gestiona la organización de cursos, los accesos de la comunidad y los procesos de certificación que sostienen la operación diaria.",
+  },
+  {
+    nombre: "Camila Pinto",
+    cargo: "Community Manager",
+    foto: "/images/equipo/camila.jpg",
+    linkedin: "https://www.linkedin.com/in/mar%C3%ADa-camila-p-2825aa243/",
+    bio: "Comunicación y gestión de comunidad: la primera experiencia cercana de cada cliente con Design Modeling.",
+  },
+  {
+    nombre: "Pilar Dávalos",
+    cargo: "Asistencia de Gerencia y Posventa",
+    foto: "/images/equipo/pilar.jpg",
+    linkedin: "https://www.linkedin.com/in/pilar-davalos-copywriter/",
+    bio: "Publicidad, gestión comercial y copywriting. Acompaña al cliente después de cada entrega para que la relación no termine con el proyecto.",
   },
 ];
 

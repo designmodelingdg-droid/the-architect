@@ -173,6 +173,7 @@ export default function Home() {
             </p>
             <ul className="mt-6 space-y-3.5">
               {[
+                "Sincronización directa desde Revit con el complemento DG BIM Sync",
                 "Detección de interferencias clasificadas por severidad, con responsable asignado",
                 "Control de calidad del modelo antes de que llegue a obra",
                 "Tableros por rol: modelador, coordinador, gerencia y dueño",
@@ -286,7 +287,7 @@ export default function Home() {
           lead="Quien firma tu proyecto es quien lo revisa. Conoce a las personas detrás de cada entrega."
         />
         <div className="mx-auto mt-12 grid max-w-3xl gap-5 sm:grid-cols-2">
-          {EQUIPO.map((m, i) => (
+          {EQUIPO.slice(0, 2).map((m, i) => (
             <Reveal key={m.nombre} delay={i * 0.08}>
               <article className="panel alza h-full p-7 text-center">
                 <Image src={m.foto} alt={m.nombre} width={320} height={320} className="mx-auto size-36 rounded-full border-2 border-naranja/40 object-cover md:size-40" />
