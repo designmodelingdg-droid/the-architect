@@ -7,6 +7,8 @@ import { Reveal, HeroReveal } from "@/components/site/reveal";
 import { AvalesMarquee } from "@/components/site/marquee";
 import { AgentPanel } from "@/components/site/agent-panel";
 import { HeroVideo } from "@/components/site/hero-video";
+import { CineBanda } from "@/components/site/cine-banda";
+import { ParallaxFondo, ParallaxImg } from "@/components/site/parallax";
 import { DataStrip } from "@/components/site/data-strip";
 import { ContactoBloque } from "@/components/site/contacto-bloque";
 import { ACADEMIA, FAMILIAS, VERTICALES, EQUIPO } from "@/lib/site";
@@ -28,7 +30,9 @@ export default function Home() {
     <>
       {/* Hero cinematográfico: video del edificio + panel del agente */}
       <section className="relative overflow-hidden border-b border-navy bg-navy py-20 md:py-28">
-        <HeroVideo />
+        <ParallaxFondo>
+          <HeroVideo />
+        </ParallaxFondo>
         {/* Degradados para legibilidad: navy desde la izquierda y desde abajo */}
         <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/55 to-navy/15" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-navy/80 to-transparent" />
@@ -130,14 +134,29 @@ export default function Home() {
                     Conocer más <ArrowRight className="size-4" aria-hidden />
                   </Link>
                 </div>
-                <div className="overflow-hidden rounded-2xl border border-border shadow-lg shadow-navy/5">
-                  <Image src={f.img} alt={f.label} width={1100} height={640} className="aspect-[16/9.5] size-full object-cover" />
-                </div>
+                <ParallaxImg className="rounded-2xl border border-border shadow-lg shadow-navy/5">
+                  <div className="relative aspect-[16/9.5]">
+                    <Image src={f.img} alt={f.label} fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
+                  </div>
+                </ParallaxImg>
               </article>
             </Reveal>
           ))}
         </div>
       </Section>
+
+      {/* Banda cinematográfica: el modelado BIM con IA mientras se navega */}
+      <CineBanda
+        video="/videos/modelado.mp4"
+        poster="/images/modelado-poster.jpg"
+        eyebrow="Modelado BIM + IA"
+        titulo={
+          <>
+            Tu proyecto se modela <span className="text-naranja-claro">con inteligencia artificial.</span>
+          </>
+        }
+        cta={{ href: "/dg-bim-intelligence", label: "Mira cómo lo hacemos" }}
+      />
 
       {/* DG BIM Intelligence — banda navy estrella */}
       <Section tone="navy" id="plataforma">
