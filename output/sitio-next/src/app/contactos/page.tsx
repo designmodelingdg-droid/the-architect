@@ -15,6 +15,7 @@ export default function Contactos() {
   return (
     <>
       <PageHero
+        vimeo={{ id: "1223019560", aspect: 9 / 16, poster: "/images/posters/esc2.jpg" }}
         num="05"
         eyebrow="Contacto"
         title="Cuéntanos de tu proyecto"

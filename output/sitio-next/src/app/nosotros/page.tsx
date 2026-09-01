@@ -51,8 +51,14 @@ export default function Nosotros() {
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="panel overflow-hidden">
-              <Image src="/images/v3-nosotros.jpg" alt="Estudio de ingeniería de Design Modeling DG" width={1600} height={900} className="size-full object-cover" />
+            <div className="panel alza overflow-hidden">
+              <Image
+                src="/images/nosotros-estudio.jpg"
+                alt="Estructura de hormigón arriostrada en obra al atardecer, con luces de trabajo"
+                width={1920}
+                height={1072}
+                className="size-full object-cover"
+              />
             </div>
           </Reveal>
         </div>
@@ -63,12 +69,12 @@ export default function Nosotros() {
           num="01"
           eyebrow="El equipo"
           title="Detrás de cada proyecto hay ingenieros con nombre y apellido"
-          lead="Cada perfil enlaza a su LinkedIn para que sepas exactamente con quién trabajas. El equipo completo se irá sumando aquí."
+          lead="Cada perfil enlaza a su LinkedIn para que sepas exactamente con quién trabajas."
         />
-        <div className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-2">
-          {EQUIPO.map((p) => (
-            <Reveal key={p.nombre}>
-              <article className="panel h-full p-7 text-center">
+        <div className="mx-auto mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {EQUIPO.map((p, i) => (
+            <Reveal key={p.nombre} delay={(i % 3) * 0.06}>
+              <article className="panel alza h-full p-7 text-center">
                 <div className="mx-auto mb-5 size-36 overflow-hidden rounded-full border-2 border-naranja/50 bg-crema md:size-44">
                   <Image src={p.foto} alt={p.nombre} width={360} height={360} className="size-full object-cover" />
                 </div>
@@ -117,11 +123,11 @@ export default function Nosotros() {
 
       <Section>
         <SectionHead num="03" eyebrow="Confían en nosotros" title="Empresas que trabajan con Design Modeling" />
-        <div className="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mx-auto mt-12 grid max-w-6xl grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
           {CLIENTES.map((c, i) => (
             <Reveal key={c.alt} delay={i * 0.05}>
-              <div className={`flex aspect-[3/2] items-center justify-center rounded-xl border p-4 ${c.dark ? "border-navy bg-navy" : "border-border bg-white"}`}>
-                <Image src={c.src} alt={c.alt} width={160} height={100} className="max-h-12 w-auto object-contain" />
+              <div className={`alza flex aspect-square items-center justify-center rounded-2xl border p-6 sm:aspect-[4/3] ${c.dark ? "border-navy bg-navy" : "border-border bg-white"}`}>
+                <Image src={c.src} alt={c.alt} width={320} height={200} className="max-h-24 w-auto max-w-full object-contain" />
               </div>
             </Reveal>
           ))}

@@ -160,6 +160,10 @@ export default function Plataforma() {
                 <li>Tablero de Gerente BIM</li>
                 <li>Agente especializado 24/7</li>
                 <li>Carga y control de datos del proyecto</li>
+                <li>
+                  Conexión directa con Revit — complemento DG BIM Sync: sincroniza tu modelo desde
+                  Revit y la data está en la plataforma en minutos
+                </li>
               </ul>
             </article>
           </Reveal>
@@ -170,7 +174,7 @@ export default function Plataforma() {
               </span>
               <ul className="mt-4 space-y-2.5 text-[14.5px] text-tinta">
                 <li>Tablero de Coordinador BIM</li>
-                <li>Conexión directa con Revit / Cloud</li>
+                <li>Conexión con Autodesk Construction Cloud</li>
                 <li>Mejoras de integración</li>
               </ul>
             </article>
