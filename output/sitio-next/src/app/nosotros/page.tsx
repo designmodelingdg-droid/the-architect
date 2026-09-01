@@ -24,6 +24,7 @@ export default function Nosotros() {
         title="Una consultora dirigida por ingenieros, no por un comercial"
         lead="Diez años diseñando y modelando estructuras con metodología BIM para Ecuador y Latinoamérica. Quien firma tu proyecto es quien lo revisa — y el criterio que aplicamos a mano es el mismo que hoy entrenamos en nuestra propia IA."
         crumb={{ label: "Nosotros", href: "/nosotros" }}
+        vimeo={{ id: "1223019533", poster: "/images/hero-poster.jpg" }}
       />
       <AvalesMarquee />
 
@@ -89,7 +90,7 @@ export default function Nosotros() {
         </div>
       </Section>
 
-      <Section id="acreditaciones" tone="navy">
+      <Section id="acreditaciones" tone="navy" fondoVimeo={{ id: "1223019550", aspect: 9 / 16, poster: "/images/posters/esc1.jpg" }}>
         <SectionHead
           dark
           num="02"

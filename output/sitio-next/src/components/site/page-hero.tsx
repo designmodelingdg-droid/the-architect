@@ -2,6 +2,7 @@ import Link from "next/link";
 import { HeroReveal } from "./reveal";
 import { ParallaxFondo } from "./parallax";
 import { ZonaMouse, CapaMouse } from "./zona-mouse";
+import { VimeoFondo } from "./vimeo-fondo";
 
 /*
  * Hero de página interna. Con `fondo` se vuelve cinematográfico: imagen a
@@ -15,6 +16,7 @@ export function PageHero({
   crumb,
   num,
   fondo,
+  vimeo,
 }: {
   eyebrow: string;
   title: string;
@@ -22,8 +24,10 @@ export function PageHero({
   crumb: { label: string; href: string };
   num: string;
   fondo?: string;
+  /* Video de Vimeo a sangre completa como fondo del hero */
+  vimeo?: { id: string; aspect?: number; poster?: string };
 }) {
-  const oscuro = Boolean(fondo);
+  const oscuro = Boolean(fondo || vimeo);
   return (
     <ZonaMouse
       className={
@@ -36,8 +40,12 @@ export function PageHero({
         <>
           <CapaMouse profundidad={20} className="absolute inset-0">
             <ParallaxFondo>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={fondo} alt="" className="size-full object-cover" />
+              {vimeo ? (
+                <VimeoFondo id={vimeo.id} aspect={vimeo.aspect} poster={vimeo.poster} />
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={fondo} alt="" className="size-full object-cover" />
+              )}
             </ParallaxFondo>
           </CapaMouse>
           <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-navy/85 via-navy/55 to-navy/20" />

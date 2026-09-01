@@ -36,6 +36,7 @@ export default function Plataforma() {
         title="Un consultor BIM que razona, 24/7 dentro de tu proyecto"
         lead="No es un chatbot. Es un agente con el criterio de +10 años de BIM Management: lee tu proyecto, razona paso a paso y te dice qué hacer y por qué — con evidencia, impacto y nivel de confianza en cada hallazgo."
         crumb={{ label: "DG BIM Intelligence", href: "/dg-bim-intelligence" }}
+        vimeo={{ id: "1223019570", aspect: 9 / 16, poster: "/images/posters/esc3.jpg" }}
       />
 
       <DataStrip
@@ -47,7 +48,7 @@ export default function Plataforma() {
         ]}
       />
 
-      <Section tone="navy">
+      <Section tone="navy" fondoVimeo={{ id: "1223019560", aspect: 9 / 16, poster: "/images/posters/esc2.jpg" }}>
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-14">
           <Reveal>
             <span className="tag-tech mb-4 inline-flex items-center gap-2.5 text-naranja-claro">

@@ -81,8 +81,8 @@ export default function Home() {
         ]}
       />
 
-      {/* Tres pilares — banda navy */}
-      <Section tone="navy">
+      {/* Tres pilares — banda navy con video tenue */}
+      <Section tone="navy" fondoVimeo={{ id: "1223019550", aspect: 9 / 16, poster: "/images/posters/esc1.jpg" }}>
         <SectionHead
           dark
           eyebrow="Consultoría — BIM — IA"

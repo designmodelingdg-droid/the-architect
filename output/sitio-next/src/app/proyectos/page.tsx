@@ -136,7 +136,7 @@ export default function Proyectos() {
         title="El criterio se demuestra en obra"
         lead="Proyectos reales en Ecuador, México, Colombia, Panamá, Perú y Costa Rica. Lo que ves aquí son nuestros propios modelos de cálculo, detalles constructivos y entregables — no fotos de banco de imágenes."
         crumb={{ label: "Proyectos", href: "/proyectos" }}
-        fondo="/images/ing/historia-16-grua-torre.jpg"
+        vimeo={{ id: "1223019550", aspect: 9 / 16, poster: "/images/posters/esc1.jpg" }}
       />
 
       {/* Proyectos recientes */}
