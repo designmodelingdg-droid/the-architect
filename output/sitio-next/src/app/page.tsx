@@ -5,7 +5,6 @@ import { IconoLinkedIn } from "@/components/site/icono-linkedin";
 import { Section, SectionHead } from "@/components/site/section";
 import { Reveal, HeroReveal } from "@/components/site/reveal";
 import { AvalesMarquee } from "@/components/site/marquee";
-import { AgentPanel } from "@/components/site/agent-panel";
 import { VimeoFondo } from "@/components/site/vimeo-fondo";
 import { CineBanda } from "@/components/site/cine-banda";
 import { ParallaxFondo, ParallaxImg } from "@/components/site/parallax";
@@ -29,7 +28,7 @@ const COSTOS = [
 export default function Home() {
   return (
     <>
-      {/* Hero cinematográfico: video del edificio + panel del agente */}
+      {/* Hero cinematográfico: el video de Revit a pantalla completa */}
       <ZonaMouse className="relative overflow-hidden border-b border-navy bg-navy py-20 md:py-28">
         <CapaMouse profundidad={22} className="absolute inset-0">
           <ParallaxFondo>
@@ -39,8 +38,8 @@ export default function Home() {
         {/* Degradados para legibilidad: navy desde la izquierda y desde abajo */}
         <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/55 to-navy/15" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-navy/80 to-transparent" />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-          <CapaMouse profundidad={-7}>
+        <div className="relative mx-auto max-w-6xl px-5">
+          <CapaMouse profundidad={-7} className="max-w-2xl">
             <HeroReveal>
               <span className="tag-tech mb-5 inline-block text-naranja-claro">
                 Consultoría BIM + IA · Ecuador y Latinoamérica
@@ -70,11 +69,6 @@ export default function Home() {
               </div>
             </HeroReveal>
           </CapaMouse>
-          <HeroReveal delay={0.35}>
-            <CapaMouse profundidad={-14}>
-              <AgentPanel />
-            </CapaMouse>
-          </HeroReveal>
         </div>
       </ZonaMouse>
 
