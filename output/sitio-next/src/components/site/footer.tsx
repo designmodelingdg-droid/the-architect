@@ -70,7 +70,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener"
                 aria-label={r.label}
-                className="rounded-md border border-white/12 px-2.5 py-1.5 font-heading text-[10px] font-bold uppercase tracking-wider transition-colors hover:border-naranja/50 hover:text-naranja-claro"
+                className="rounded-md border border-white/12 px-3 py-2.5 font-heading text-[10px] font-bold uppercase tracking-wider transition-colors hover:border-naranja/50 hover:text-naranja-claro"
               >
                 {r.label}
               </a>
