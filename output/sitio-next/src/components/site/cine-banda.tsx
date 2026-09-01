@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
+import { VimeoFondo } from "./vimeo-fondo";
 
 /*
  * Banda cinematográfica a sangre completa: video o imagen de fondo con
@@ -13,6 +14,8 @@ export function CineBanda({
   video,
   poster,
   img,
+  vimeoId,
+  vimeoAspect,
   eyebrow,
   titulo,
   cta,
@@ -20,6 +23,8 @@ export function CineBanda({
   video?: string;
   poster?: string;
   img?: string;
+  vimeoId?: string;
+  vimeoAspect?: number;
   eyebrow: string;
   titulo: React.ReactNode;
   cta?: { href: string; label: string };
@@ -47,7 +52,9 @@ export function CineBanda({
   return (
     <section ref={ref} className="relative flex min-h-[74vh] items-center justify-center overflow-hidden bg-navy">
       <motion.div aria-hidden style={reducido ? undefined : { y, scale: 1.22 }} className="absolute inset-0">
-        {video ? (
+        {vimeoId ? (
+          <VimeoFondo id={vimeoId} poster={poster} aspect={vimeoAspect} />
+        ) : video ? (
           <video
             ref={videoRef}
             autoPlay
