@@ -6,8 +6,8 @@ import { Section, SectionHead } from "@/components/site/section";
 import { Reveal, HeroReveal } from "@/components/site/reveal";
 import { AvalesMarquee } from "@/components/site/marquee";
 import { AgentPanel } from "@/components/site/agent-panel";
-import { HeroVideo } from "@/components/site/hero-video";
-import { CineBanda } from "@/components/site/cine-banda";
+import { VimeoFondo } from "@/components/site/vimeo-fondo";
+import { ScrollCine } from "@/components/site/scroll-cine";
 import { ParallaxFondo, ParallaxImg } from "@/components/site/parallax";
 import { DataStrip } from "@/components/site/data-strip";
 import { ContactoBloque } from "@/components/site/contacto-bloque";
@@ -31,7 +31,7 @@ export default function Home() {
       {/* Hero cinematográfico: video del edificio + panel del agente */}
       <section className="relative overflow-hidden border-b border-navy bg-navy py-20 md:py-28">
         <ParallaxFondo>
-          <HeroVideo />
+          <VimeoFondo id="1223019533" poster="/images/hero-poster.jpg" />
         </ParallaxFondo>
         {/* Degradados para legibilidad: navy desde la izquierda y desde abajo */}
         <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/55 to-navy/15" />
@@ -145,14 +145,13 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Banda cinematográfica: el modelado BIM con IA mientras se navega */}
-      <CineBanda
-        video="/videos/revit.mp4"
-        poster="/images/revit-poster.jpg"
+      {/* Efecto reel: teléfono con el modelado BIM que sale de la página */}
+      <ScrollCine
+        vimeoId="1223019570"
         eyebrow="Modelado BIM + IA · Revit"
         titulo={
           <>
-            Tu proyecto se modela <span className="text-naranja-claro">con inteligencia artificial.</span>
+            Tu proyecto se modela <span className="text-naranja">con inteligencia artificial.</span>
           </>
         }
         cta={{ href: "/dg-bim-intelligence", label: "Mira cómo lo hacemos" }}

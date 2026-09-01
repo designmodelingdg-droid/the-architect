@@ -4,7 +4,6 @@ import { PageHero } from "@/components/site/page-hero";
 import { Section, SectionHead } from "@/components/site/section";
 import { Reveal } from "@/components/site/reveal";
 import { CtaFinal } from "@/components/site/cta-final";
-import { CineBanda } from "@/components/site/cine-banda";
 
 export const metadata: Metadata = {
   title: "Proyectos",
@@ -212,17 +211,6 @@ export default function Proyectos() {
           </Reveal>
         </div>
       </Section>
-
-      {/* Banda cinematográfica antes del historial */}
-      <CineBanda
-        img="/images/ing/historia-11-gancho-grua.jpg"
-        eyebrow="Historial"
-        titulo={
-          <>
-            Seis países. <span className="text-naranja-claro">Una forma de trabajar.</span>
-          </>
-        }
-      />
 
       {/* Historial */}
       <Section tone="panel">
