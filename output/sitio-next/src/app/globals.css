@@ -150,7 +150,13 @@ h1, h2, h3, h4, h5 {
 
 /* Botones: feedback físico */
 button:active, a[data-btn]:active { transform: scale(0.97); }
+a[data-btn]:hover { transform: scale(1.02); }
 button, a[data-btn] { transition: background-color 200ms var(--ease-out-brand), color 200ms var(--ease-out-brand), border-color 200ms var(--ease-out-brand), transform 150ms var(--ease-out-brand), box-shadow 200ms var(--ease-out-brand); }
+
+/* Tarjetas que se elevan al pasar el cursor */
+.alza { transition: transform 300ms var(--ease-out-brand), box-shadow 300ms var(--ease-out-brand); }
+.alza:hover { transform: translateY(-6px); box-shadow: 0 4px 8px rgba(0, 30, 48, 0.05), 0 24px 48px rgba(0, 30, 48, 0.14); }
+@media (prefers-reduced-motion: reduce) { .alza:hover { transform: none; } }
 
 /* Etiqueta de sección: Overpass, mayúsculas, naranja — sin monospace */
 .tag-tech {

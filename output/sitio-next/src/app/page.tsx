@@ -9,6 +9,7 @@ import { AgentPanel } from "@/components/site/agent-panel";
 import { VimeoFondo } from "@/components/site/vimeo-fondo";
 import { CineBanda } from "@/components/site/cine-banda";
 import { ParallaxFondo, ParallaxImg } from "@/components/site/parallax";
+import { ZonaMouse, CapaMouse } from "@/components/site/zona-mouse";
 import { DataStrip } from "@/components/site/data-strip";
 import { ContactoBloque } from "@/components/site/contacto-bloque";
 import { ACADEMIA, FAMILIAS, VERTICALES, EQUIPO } from "@/lib/site";
@@ -29,15 +30,17 @@ export default function Home() {
   return (
     <>
       {/* Hero cinematográfico: video del edificio + panel del agente */}
-      <section className="relative overflow-hidden border-b border-navy bg-navy py-20 md:py-28">
-        <ParallaxFondo>
-          <VimeoFondo id="1223019533" poster="/images/hero-poster.jpg" />
-        </ParallaxFondo>
+      <ZonaMouse className="relative overflow-hidden border-b border-navy bg-navy py-20 md:py-28">
+        <CapaMouse profundidad={22} className="absolute inset-0">
+          <ParallaxFondo>
+            <VimeoFondo id="1223019533" poster="/images/hero-poster.jpg" />
+          </ParallaxFondo>
+        </CapaMouse>
         {/* Degradados para legibilidad: navy desde la izquierda y desde abajo */}
         <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-navy/90 via-navy/55 to-navy/15" />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-navy/80 to-transparent" />
         <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-          <div>
+          <CapaMouse profundidad={-7}>
             <HeroReveal>
               <span className="tag-tech mb-5 inline-block text-naranja-claro">
                 Consultoría BIM + IA · Ecuador y Latinoamérica
@@ -66,12 +69,14 @@ export default function Home() {
                 </Link>
               </div>
             </HeroReveal>
-          </div>
+          </CapaMouse>
           <HeroReveal delay={0.35}>
-            <AgentPanel />
+            <CapaMouse profundidad={-14}>
+              <AgentPanel />
+            </CapaMouse>
           </HeroReveal>
         </div>
-      </section>
+      </ZonaMouse>
 
       <DataStrip
         items={[
@@ -134,7 +139,7 @@ export default function Home() {
                     Conocer más <ArrowRight className="size-4" aria-hidden />
                   </Link>
                 </div>
-                <ParallaxImg className="rounded-2xl border border-border shadow-lg shadow-navy/5">
+                <ParallaxImg className="alza rounded-2xl border border-border shadow-lg shadow-navy/5">
                   <div className="relative aspect-[16/9.5]">
                     <Image src={f.img} alt={f.label} fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
                   </div>
@@ -259,7 +264,7 @@ export default function Home() {
           ].map((p, i) => (
             <Reveal key={p.t} delay={i * 0.07}>
               <Link href="/proyectos" className="group block">
-                <article className="panel overflow-hidden">
+                <article className="panel alza overflow-hidden">
                   <div className="relative aspect-video overflow-hidden">
                     <Image src={p.img} alt={p.t} fill sizes="(min-width:768px) 33vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                   </div>
@@ -289,7 +294,7 @@ export default function Home() {
         <div className="mx-auto mt-12 grid max-w-3xl gap-5 sm:grid-cols-2">
           {EQUIPO.map((m, i) => (
             <Reveal key={m.nombre} delay={i * 0.08}>
-              <article className="panel h-full p-7 text-center">
+              <article className="panel alza h-full p-7 text-center">
                 <Image src={m.foto} alt={m.nombre} width={320} height={320} className="mx-auto size-36 rounded-full border-2 border-naranja/40 object-cover md:size-40" />
                 <h3 className="mt-4 text-lg font-bold text-navy">{m.nombre}</h3>
                 <p className="tag-tech mt-1">{m.cargo}</p>

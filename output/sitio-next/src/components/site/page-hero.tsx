@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { HeroReveal } from "./reveal";
 import { ParallaxFondo } from "./parallax";
+import { ZonaMouse, CapaMouse } from "./zona-mouse";
 
 /*
  * Hero de página interna. Con `fondo` se vuelve cinematográfico: imagen a
@@ -24,7 +25,7 @@ export function PageHero({
 }) {
   const oscuro = Boolean(fondo);
   return (
-    <section
+    <ZonaMouse
       className={
         oscuro
           ? "relative overflow-hidden border-b border-navy bg-navy py-20 md:py-28"
@@ -33,15 +34,18 @@ export function PageHero({
     >
       {oscuro && (
         <>
-          <ParallaxFondo>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={fondo} alt="" className="size-full object-cover" />
-          </ParallaxFondo>
+          <CapaMouse profundidad={20} className="absolute inset-0">
+            <ParallaxFondo>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={fondo} alt="" className="size-full object-cover" />
+            </ParallaxFondo>
+          </CapaMouse>
           <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-navy/85 via-navy/55 to-navy/20" />
           <div aria-hidden className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-navy/80 to-transparent" />
         </>
       )}
       <div className="relative mx-auto max-w-6xl px-5">
+        <CapaMouse profundidad={-6}>
         <HeroReveal>
           <nav
             aria-label="Miga de pan"
@@ -59,7 +63,8 @@ export function PageHero({
           <h1 className={`max-w-3xl text-4xl font-bold leading-[1.06] md:text-[3.4rem] ${oscuro ? "text-white" : "text-navy"}`}>{title}</h1>
           <p className={`mt-5 max-w-2xl text-base leading-relaxed md:text-lg ${oscuro ? "text-white/80" : "text-tinta-suave"}`}>{lead}</p>
         </HeroReveal>
+        </CapaMouse>
       </div>
-    </section>
+    </ZonaMouse>
   );
 }

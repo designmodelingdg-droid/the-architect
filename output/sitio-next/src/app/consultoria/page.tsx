@@ -95,7 +95,7 @@ export default function Consultoria() {
               ) : null}
             </Reveal>
             <Reveal delay={0.1} className={i % 2 ? "lg:order-1" : ""}>
-              <ParallaxImg className="panel">
+              <ParallaxImg className="panel alza">
                 <div className="relative aspect-[4/3]">
                   <Image src={f.img} alt={f.label} fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
                 </div>
