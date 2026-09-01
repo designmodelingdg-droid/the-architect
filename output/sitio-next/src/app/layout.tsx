@@ -50,9 +50,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <body className={`${overpass.variable} ${nunito.variable} bg-background text-foreground antialiased`}>
+        <a href="#contenido" className="saltar-contenido">Saltar al contenido</a>
         <TopBar />
         <Navbar />
-        <main>{children}</main>
+        <main id="contenido">{children}</main>
         <Footer />
         <WaFloat />
       </body>

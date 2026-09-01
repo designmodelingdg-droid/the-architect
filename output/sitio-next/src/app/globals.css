@@ -125,6 +125,29 @@ h1, h2, h3, h4, h5 {
 }
 ::selection { background: rgba(202, 117, 32, 0.35); color: #001e30; }
 
+/* Foco visible para navegación con teclado (checklist UI/UX Pro Max) */
+:focus-visible {
+  outline: 3px solid var(--color-naranja);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Enlace «saltar al contenido» — visible solo con foco de teclado */
+.saltar-contenido {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--color-navy);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 0 0 8px 0;
+  font-family: var(--font-overpass), sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+.saltar-contenido:focus-visible { left: 0; }
+
 /* Botones: feedback físico */
 button:active, a[data-btn]:active { transform: scale(0.97); }
 button, a[data-btn] { transition: background-color 200ms var(--ease-out-brand), color 200ms var(--ease-out-brand), border-color 200ms var(--ease-out-brand), transform 150ms var(--ease-out-brand), box-shadow 200ms var(--ease-out-brand); }
@@ -197,7 +220,7 @@ button, a[data-btn] { transition: background-color 200ms var(--ease-out-brand), 
 /* Marquee de avales */
 @keyframes dm-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .dm-marquee-track { animation: dm-scroll 38s linear infinite; }
-.dm-marquee-track:hover { animation-play-state: paused; }
+.dm-marquee-track:hover, .dm-marquee-track:focus-within { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
   .dm-marquee-track { animation: none; flex-wrap: wrap; justify-content: center; width: 100% !important; }
 }
