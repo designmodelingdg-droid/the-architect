@@ -53,8 +53,8 @@ export default function Nosotros() {
           <Reveal delay={0.1}>
             <div className="panel alza overflow-hidden">
               <Image
-                src="/images/nosotros-estudio.jpg"
-                alt="Estructura de hormigón arriostrada en obra al atardecer, con luces de trabajo"
+                src="/images/nosotros-oficina.jpg"
+                alt="Oficina de ingeniería BIM: monitores con modelos estructurales y planos sobre pared navy"
                 width={1920}
                 height={1072}
                 className="size-full object-cover"
@@ -126,9 +126,14 @@ export default function Nosotros() {
         <div className="mx-auto mt-12 grid max-w-6xl grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
           {CLIENTES.map((c, i) => (
             <Reveal key={c.alt} delay={i * 0.05}>
-              <div className={`alza flex aspect-square items-center justify-center rounded-2xl border p-6 sm:aspect-[4/3] ${c.dark ? "border-navy bg-navy" : "border-border bg-white"}`}>
-                <Image src={c.src} alt={c.alt} width={320} height={200} className="max-h-24 w-auto max-w-full object-contain" />
-              </div>
+              <figure className="alza overflow-hidden rounded-2xl border border-border bg-white">
+                <div className={`flex aspect-square items-center justify-center p-6 ${c.dark ? "bg-navy" : "bg-white"}`}>
+                  <Image src={c.src} alt={c.alt} width={360} height={240} className="max-h-28 w-auto max-w-full object-contain" />
+                </div>
+                <figcaption className="border-t border-border bg-crema px-3 py-2.5 text-center font-heading text-[11px] font-bold uppercase tracking-[0.1em] text-tinta">
+                  {c.alt}
+                </figcaption>
+              </figure>
             </Reveal>
           ))}
         </div>
