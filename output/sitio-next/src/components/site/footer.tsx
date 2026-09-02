@@ -86,9 +86,6 @@ export function Footer() {
           <Link className="hover:text-naranja-claro" href="/privacidad">Políticas de privacidad</Link>
         </span>
       </div>
-      <p className="mx-auto mt-4 max-w-6xl text-center text-sm text-azul-palido/30">
-        Built with <a href="https://tododeia.com" className="underline-offset-2 hover:underline">Claude Web Builder by Tododeia</a>
-      </p>
     </footer>
   );
 }
