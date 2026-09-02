@@ -253,9 +253,9 @@ export default function Home() {
         />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {[
-            { img: "/images/proy-piscina.jpg", t: "Piscina P-01 · Castillo del Sol", d: "Costa Rica · 2026 — vaso monolítico sobre 12 micropilotes, detalle constructivo real" },
-            { img: "/images/proy-silos.jpg", t: "Silos Packaging & Process", d: "Quito–Brasil · 2020 — 8 silos de 120 t con ingeniería de detalle en Revit" },
-            { img: "/images/proy-kayuko.jpg", t: "Edificio Kayuko", d: "Oaxaca, México · 2021 — 5 niveles en hormigón armado, Robot + Revit" },
+            { img: "/images/proy25/lc-constructora.jpg", t: "LC Constructora · Ya Está", d: "Guatemala · 2026 — coordinación BIM multidisciplinaria de gran escala con BCF y ACCA" },
+            { img: "/images/proy25/chalets-espana.jpg", t: "García de Celis · 30 Chalets", d: "León, España · 2026 — BIM LOD 350 con detección de interferencias y presupuestos BC3" },
+            { img: "/images/proy25/piscinas-cr.jpg", t: "Complejo de Piscinas", d: "Costa Rica · 2026 — ~2.660 m² con micropilotes, Revit + SAP2000" },
           ].map((p, i) => (
             <Reveal key={p.t} delay={i * 0.07}>
               <Link href="/proyectos" className="group block">
