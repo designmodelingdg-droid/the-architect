@@ -1,0 +1,17 @@
+# Design Modeling DG
+
+> Consultoría en ingeniería estructural, arquitectura y metodología BIM con software propio de inteligencia artificial (DG BIM Intelligence). Operamos desde Quito, Ecuador, para toda Latinoamérica y España. MODELING-DG S.A.S. · RUC 1793148549001.
+
+## Servicios
+- [Consultoría BIM](https://dgdesignmodeling.com/consultoria): cinco familias — Ingeniería Estructural (diseño sismorresistente), Arquitectura y Documentación, Modelado y Coordinación BIM, Implementación BIM, y BIM + Inteligencia Artificial.
+- [DG BIM Intelligence](https://dgdesignmodeling.com/dg-bim-intelligence): software propio — agente de IA que razona sobre el proyecto BIM con evidencia, impacto y acción sugerida; sincronización directa desde Revit con el complemento DG BIM Sync; tableros por rol (modelador, coordinador, gerente, dueño).
+
+## Proyectos
+- [Proyectos](https://dgdesignmodeling.com/proyectos): casos reales 2018–2026 en Ecuador, España, Guatemala, Costa Rica, Panamá, México, Colombia y Perú, con modelos y entregables propios.
+
+## Empresa
+- [Nosotros](https://dgdesignmodeling.com/nosotros): equipo de ingenieros y arquitectos; partner de Autodesk (Authorized Training Center y Learning Partner) y CYPE Authorized Partner.
+- [Contacto](https://dgdesignmodeling.com/contactos): diagnóstico inicial sin costo · info@dgdesignmodeling.com · (+593) 98 4372010 · Juana Terrazas N71-154, Quito.
+
+## Formación
+- [Design Modeling Academy](https://designmodelingacademy.com/es/): la academia del grupo, para quienes buscan formación BIM en lugar de consultoría.

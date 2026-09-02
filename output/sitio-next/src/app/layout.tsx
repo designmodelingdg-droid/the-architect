@@ -6,6 +6,7 @@ import { TopBar } from "@/components/site/topbar";
 import { Footer } from "@/components/site/footer";
 import { WaFloat } from "@/components/site/wa-float";
 import { ScrollSuave } from "@/components/site/scroll-suave";
+import { DatosEstructurados } from "@/components/site/datos-estructurados";
 
 const overpass = Overpass({
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export const metadata: Metadata = {
   },
   description:
     "Consultoría BIM estructural con IA aplicada con criterio: cálculo sismorresistente, coordinación de disciplinas y DG BIM Intelligence, el agente que razona sobre tu proyecto. Ecuador y Latinoamérica.",
+  alternates: { canonical: "./" },
   openGraph: {
     type: "website",
     locale: "es_EC",
@@ -51,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <body className={`${overpass.variable} ${nunito.variable} bg-background text-foreground antialiased`}>
+        <DatosEstructurados />
         <ScrollSuave />
         <a href="#contenido" className="saltar-contenido">Saltar al contenido</a>
         <TopBar />
