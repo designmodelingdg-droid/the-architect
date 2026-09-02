@@ -164,6 +164,7 @@ export const AVALES = [
   { src: "/images/av9-naces.png", alt: "NACES" },
   { src: "/images/av10-dq1.png", alt: "Doctrina Qualitas — Certificación" },
   { src: "/images/av11-dq2.png", alt: "Doctrina Qualitas — Acreditación" },
+  { src: "/images/av12-humantech.png", alt: "HumanTech" },
 ];
 
 export const CLIENTES = [
