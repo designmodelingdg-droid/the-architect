@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Overpass, Nunito } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/site/navbar";
 import { TopBar } from "@/components/site/topbar";
@@ -61,6 +62,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="contenido">{children}</main>
         <Footer />
         <WaFloat />
+        {/* Chat en vivo de Sharp CRM (LeadConnector). Burbuja abajo a la derecha. */}
+        <Script
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="6a989ada7e179c4b6622818a"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );

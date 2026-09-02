@@ -1,11 +1,13 @@
+import Script from "next/script";
 import { Reveal } from "./reveal";
 import { Section } from "./section";
 import { WA, WA_MSG, EMAIL } from "@/lib/site";
 
-/*
- * TODO: cuando esté el Form ID de Sharp CRM, reemplazar el bloque de botones
- * por el iframe: https://link.apisystem.tech/widget/form/{FORM_ID}
- */
+/* Formulario de contacto de Sharp CRM (LeadConnector white-label). El script
+ * form_embed.js ajusta la altura del iframe al contenido del formulario. */
+const FORM_ID = "ihxhvPRUhqfRi7J6Oy8K";
+const FORM_URL = `https://link.apisystem.tech/widget/form/${FORM_ID}`;
+
 export function ContactoBloque({ conDatos = true }: { conDatos?: boolean }) {
   return (
     <Section id="contacto" tone="panel">
@@ -34,6 +36,18 @@ export function ContactoBloque({ conDatos = true }: { conDatos?: boolean }) {
               </div>
             </dl>
           ) : null}
+          <p className="mt-7 text-[13.5px] text-tinta-suave">
+            ¿Prefieres escribir directo?{" "}
+            <a
+              href={WA_MSG("Hola, quiero agendar un diagnóstico de consultoría BIM")}
+              target="_blank"
+              rel="noopener"
+              className="font-bold text-navy hover:text-naranja"
+            >
+              Abre WhatsApp
+            </a>{" "}
+            y un consultor te responde en menos de 24 h.
+          </p>
         </Reveal>
 
         <Reveal delay={0.1}>
@@ -42,28 +56,26 @@ export function ContactoBloque({ conDatos = true }: { conDatos?: boolean }) {
               <span className="tag-tech">Diagnóstico sin costo</span>
               <h3 className="mt-2 text-xl font-bold text-navy">Agenda tu diagnóstico gratuito</h3>
               <p className="mt-1 text-[13.5px] text-tinta-suave">
-                Revisamos tu proyecto y te decimos qué encontramos. Un consultor te contacta en 24 h.
+                Déjanos tus datos y qué proyecto tienes entre manos. Un consultor te contacta en 24 h.
               </p>
             </div>
-            <div className="p-6">
-              <div className="flex flex-col gap-2.5">
-                <a
-                  href={WA_MSG("Hola, quiero agendar un diagnóstico de consultoría BIM")}
-                  target="_blank"
-                  rel="noopener"
-                  data-btn
-                  className="rounded-lg bg-[#25D366] px-5 py-3.5 text-center font-heading text-[14.5px] font-bold text-white hover:brightness-105"
-                >
-                  Escríbenos por WhatsApp
-                </a>
-                <a
-                  href={`mailto:${EMAIL}?subject=${encodeURIComponent("Diagnóstico de consultoría BIM")}`}
-                  data-btn
-                  className="rounded-lg border border-input px-5 py-3 text-center font-heading text-sm font-bold text-tinta hover:border-naranja hover:text-naranja"
-                >
-                  {EMAIL}
-                </a>
-              </div>
+            <div className="bg-white px-2 pb-2 pt-3 sm:px-4">
+              <iframe
+                src={FORM_URL}
+                id={`inline-${FORM_ID}`}
+                title="Formulario de contacto — Design Modeling DG"
+                loading="lazy"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-activation-type="alwaysActivated"
+                data-deactivation-type="neverDeactivate"
+                data-form-name="Contacto web Design Modeling DG"
+                data-height="640"
+                data-layout-iframe-id={`inline-${FORM_ID}`}
+                data-form-id={FORM_ID}
+                className="block w-full border-0"
+                style={{ minHeight: 640 }}
+              />
             </div>
             <p className="border-t border-border px-5 py-3 text-center font-heading text-[10.5px] font-bold uppercase tracking-wider text-tinta-suave/80">
               Respuesta &lt; 24 h · Ecuador y toda Latinoamérica
@@ -71,6 +83,7 @@ export function ContactoBloque({ conDatos = true }: { conDatos?: boolean }) {
           </div>
         </Reveal>
       </div>
+      <Script src="https://link.apisystem.tech/js/form_embed.js" strategy="lazyOnload" />
     </Section>
   );
 }
