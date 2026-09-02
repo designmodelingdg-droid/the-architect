@@ -136,13 +136,6 @@ export const EQUIPO = [
     bio: "Gestiona la organización de cursos, los accesos de la comunidad y los procesos de certificación que sostienen la operación diaria.",
   },
   {
-    nombre: "Camila Pinto",
-    cargo: "Community Manager",
-    foto: "/images/equipo/camila.jpg",
-    linkedin: "https://www.linkedin.com/in/mar%C3%ADa-camila-p-2825aa243/",
-    bio: "Comunicación y gestión de comunidad: la primera experiencia cercana de cada cliente con Design Modeling.",
-  },
-  {
     nombre: "Pilar Dávalos",
     cargo: "Asistencia de Gerencia y Posventa",
     foto: "/images/equipo/pilar.jpg",

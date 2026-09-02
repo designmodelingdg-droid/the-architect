@@ -145,7 +145,8 @@ export default function Plataforma() {
         {/* Demo completo en video */}
         <Reveal className="mt-12">
           <figure className="panel alza mx-auto max-w-4xl overflow-hidden">
-            <div className="relative aspect-video bg-navy">
+            {/* Relación de aspecto nativa del video (1108×720) para que no queden franjas negras */}
+            <div className="relative bg-navy" style={{ aspectRatio: "1108 / 720" }}>
               <iframe
                 src="https://www.loom.com/embed/316e3efa9f364719a632a59244a4ff65?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true"
                 allow="fullscreen"
