@@ -12,16 +12,16 @@ manejo de datos personales debe revisarse con más rigor que el resto.
   de Vercel y se leen con `process.env` solo en código de servidor.
 - Toda variable `NEXT_PUBLIC_*` se envía al navegador: no puede contener secretos.
 - Los siguientes identificadores son PÚBLICOS por diseño y NO deben reportarse como
-  secretos: el Form ID de Sharp CRM (`ihxhvPRUhqfRi7J6Oy8K`), el widget-id del chat
+  secretos: el Form ID de Sharp CRM (`OfA7Ehcb8QSo9VXIDe6X`), el widget-id del chat
   de LeadConnector (`6a989ada7e179c4b6622818a`), los ids de videos de Vimeo y Loom,
   el número de WhatsApp, el RUC y las URLs de redes sociales.
 
 ## Scripts e iframes de terceros
-- Solo se permiten scripts externos de: `link.apisystem.tech` (formulario Sharp CRM)
+- Solo se permiten scripts externos de: `api.leadconnectorhq.com` (formulario Sharp CRM)
   y `widgets.leadconnectorhq.com` (chat). Cualquier otro dominio en un `<Script>` o
   `<script>` es un hallazgo: hay que justificarlo y añadirlo aquí antes de mergear.
 - Solo se permiten iframes de: `player.vimeo.com`, `www.loom.com/embed` y
-  `link.apisystem.tech/widget/form`. Todo iframe lleva `title`, `loading="lazy"` y el
+  `api.leadconnectorhq.com/widget/form`. Todo iframe lleva `title`, `loading="lazy"` y el
   `allow` mínimo necesario. Nunca `allow="*"` ni `sandbox` vacío como excusa.
 - Los videos se sirven desde Vimeo (política de la casa). No se aceptan URLs de
   CloudFront, S3 u otros buckets como fuente de video o imagen en el sitio.

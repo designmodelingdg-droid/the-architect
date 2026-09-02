@@ -2,15 +2,15 @@
   "patterns": [
     {
       "rule_name": "script_externo_fuera_de_allowlist",
-      "regex": "<(Script|script)\\b[^>]*\\bsrc=\"https?://(?!link\\.apisystem\\.tech/|widgets\\.leadconnectorhq\\.com/)",
+      "regex": "<(Script|script)\\b[^>]*\\bsrc=\"https?://(?!api\\.leadconnectorhq\\.com/|widgets\\.leadconnectorhq\\.com/)",
       "paths": ["*.tsx", "*.ts", "*.html"],
-      "reminder": "Script externo fuera de la lista permitida (link.apisystem.tech, widgets.leadconnectorhq.com). Justificarlo y añadirlo a .claude/claude-security-guidance.md antes de mergear."
+      "reminder": "Script externo fuera de la lista permitida (api.leadconnectorhq.com, widgets.leadconnectorhq.com). Justificarlo y añadirlo a .claude/claude-security-guidance.md antes de mergear."
     },
     {
       "rule_name": "iframe_requisitos",
       "substrings": ["<iframe"],
       "paths": ["*.tsx", "*.ts", "*.html"],
-      "reminder": "Iframe: solo player.vimeo.com, www.loom.com/embed o link.apisystem.tech/widget/form. Debe llevar title, loading=\"lazy\" y el allow mínimo."
+      "reminder": "Iframe: solo player.vimeo.com, www.loom.com/embed o api.leadconnectorhq.com/widget/form. Debe llevar title, loading=\"lazy\" y el allow mínimo."
     },
     {
       "rule_name": "video_fuera_de_vimeo",
