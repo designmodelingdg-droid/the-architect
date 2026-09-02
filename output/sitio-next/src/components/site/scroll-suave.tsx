@@ -10,7 +10,7 @@ import Lenis from "lenis";
 export function ScrollSuave() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const lenis = new Lenis({ lerp: 0.11, wheelMultiplier: 1 });
+    const lenis = new Lenis({ lerp: 0.11, wheelMultiplier: 1, anchors: { offset: -96 } });
     let frame: number;
     const raf = (time: number) => {
       lenis.raf(time);
