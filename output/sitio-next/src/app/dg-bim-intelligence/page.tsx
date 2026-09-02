@@ -123,11 +123,12 @@ export default function Plataforma() {
           title="Pantallas reales, no maquetas"
           lead="Lo que ves aquí es la plataforma funcionando sobre un proyecto de ejemplo — el mismo entorno que recibe tu equipo."
         />
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <div className="mt-12 grid gap-5 md:grid-cols-2">
           {[
+            ["/images/sw-sync.jpg", "Sincronización desde Revit", "El complemento DG BIM Sync sube tu modelo a la plataforma en minutos, con versionado automático."],
+            ["/images/sw-ejecutivo.jpg", "Dashboard Ejecutivo + Agente BIM", "Health Score del proyecto y el agente explicando impacto, recomendación y acción sugerida."],
             ["/images/sw-dashboard.jpg", "Dashboard del Modelador", "Elementos, LOD, propiedades por completar y calidad del modelo en un vistazo."],
             ["/images/sw-agente.jpg", "Agente BIM", "Pregunta sobre tu proyecto y recibe hallazgos con evidencia y prioridad."],
-            ["/images/sw-gerente.jpg", "Panel de Gerencia", "Riesgo, avance y calidad para decidir sin abrir veinte reportes."],
           ].map(([img, t, d], i) => (
             <Reveal key={t} delay={i * 0.07}>
               <figure className="panel h-full overflow-hidden">
