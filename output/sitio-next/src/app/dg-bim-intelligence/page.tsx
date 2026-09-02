@@ -141,6 +141,27 @@ export default function Plataforma() {
             </Reveal>
           ))}
         </div>
+
+        {/* Demo completo en video */}
+        <Reveal className="mt-12">
+          <figure className="panel alza mx-auto max-w-4xl overflow-hidden">
+            <div className="relative aspect-video bg-navy">
+              <iframe
+                src="https://www.loom.com/embed/316e3efa9f364719a632a59244a4ff65?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true"
+                allow="fullscreen"
+                allowFullScreen
+                title="Demo de DG BIM Intelligence: sincronización desde Revit, dashboards por rol y Agente BIM"
+                className="absolute inset-0 size-full border-0"
+              />
+            </div>
+            <figcaption className="border-t border-border p-5 text-center">
+              <h3 className="text-base font-bold text-navy">Mira el demo completo (5 min)</h3>
+              <p className="mt-1 text-[13px] leading-relaxed text-tinta-suave">
+                Sincronización desde Revit con DG BIM Sync, dashboards por rol y el Agente BIM analizando un proyecto real.
+              </p>
+            </figcaption>
+          </figure>
+        </Reveal>
       </Section>
 
       <Section tone="base">

@@ -11,6 +11,58 @@ export const metadata: Metadata = {
     "Proyectos reales de consultoría BIM y cálculo estructural en Ecuador, México, Colombia, Panamá, Perú y Costa Rica: edificaciones, silos industriales, naves y librerías BIM.",
 };
 
+/* Últimos proyectos 2025–2026 (tabla oficial del equipo), del más reciente al más antiguo */
+const RECIENTES_2526 = [
+  {
+    img: "/images/proy25/lc-constructora.jpg",
+    titulo: "LC Constructora — Ya Está",
+    lugar: "Guatemala · Jul–Sep 2026",
+    desc: "Desarrollo y coordinación BIM multidisciplinaria de proyecto de gran escala: arquitectura, estructuras, instalaciones y obra civil. Coordinación mediante BCF, revisión interdisciplinaria, cantidades y seguimiento colaborativo con ACCA.",
+  },
+  {
+    img: "/images/proy25/chalets-espana.jpg",
+    titulo: "García de Celis — 30 Chalets",
+    lugar: "León, España · Jul–Ago 2026",
+    desc: "Desarrollo BIM LOD 350 para proyecto residencial de 30 chalets: arquitectura, estructura e instalaciones, coordinación por BCF, detección de interferencias, IFC y vinculación con presupuestos BC3.",
+  },
+  {
+    img: "/images/proy25/piscinas-cr.jpg",
+    titulo: "Complejo de Piscinas",
+    lugar: "Costa Rica · Jun–Jul 2026",
+    desc: "Diseño y desarrollo BIM estructural de un complejo de piscinas de ~2.660 m²: prediseño, alternativas de cimentación, micropilotes, muros, losas, cantidades y documentación técnica con Revit + SAP2000.",
+  },
+  {
+    img: "/images/proy25/woodlab.jpg",
+    titulo: "WoodLab — Residencia Juan Diego",
+    lugar: "Quito, Ecuador · May–Jun 2026",
+    desc: "Desarrollo y coordinación BIM de residencia de varios niveles integrando arquitectura, estructura e instalaciones: gas, calefones, iluminación exterior, ductos y zonas especiales, con documentación en Revit.",
+  },
+  {
+    img: "/images/proy25/casa-juan-diego.jpg",
+    titulo: "Casa Juan Diego — Diseño y Análisis Estructural",
+    lugar: "Quito, Ecuador · Abr–May 2026",
+    desc: "Modelo arquitectónico y estructural de vivienda, coordinación del proyecto y análisis del comportamiento estructural, con flujo integrado Revit + Robot Structural Analysis.",
+  },
+  {
+    img: "/images/proy25/familias-ag.jpg",
+    titulo: "Grupo AG — Librería BIM de Productos de Acero",
+    lugar: "Guatemala · Feb–Mar 2026",
+    desc: "Familias paramétricas BIM para productos comerciales de acero: perfiles, tubos estructurales, angulares, costaneras, mallas y varillas, con parámetros, dimensiones y materiales estandarizados en Revit.",
+  },
+  {
+    img: "/images/proy25/puente-ecoterra.jpg",
+    titulo: "Puente Vehicular Eco Terra",
+    lugar: "Costa Rica · Dic 2025–Ene 2026",
+    desc: "Modelado BIM y análisis estructural de puente vehicular mixto acero–concreto: superestructura, losa, vigas principales, apoyos, bastiones, cimentaciones y obras de protección, con Revit + Robot Structural Analysis.",
+  },
+  {
+    img: "/images/proy25/cubipods.jpg",
+    titulo: "Cubipods — Plataforma Metálica",
+    lugar: "Panamá · Oct–Nov 2025",
+    desc: "Desarrollo BIM y documentación de estructura metálica desmontable: plataforma superior, estructura secundaria, escaleras, barandas, placas, apoyos y detalles de conexiones, todo en Revit.",
+  },
+];
+
 const RECIENTES = [
   {
     img: "/images/proy-piscina.jpg",
@@ -143,9 +195,35 @@ export default function Proyectos() {
       <Section>
         <SectionHead
           num="01"
-          eyebrow="Recientes"
+          eyebrow="Recientes 2025–2026"
           title="Lo último que hemos entregado"
+          lead="Ocho proyectos en cinco países durante el último año — del más reciente al más antiguo, con nuestros propios modelos y entregables."
         />
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {RECIENTES_2526.map((p, i) => (
+            <Reveal key={p.titulo} delay={(i % 3) * 0.06} className={i === 0 ? "sm:col-span-2" : ""}>
+              <article className="group panel alza h-full overflow-hidden">
+                <div className={`blueprint relative overflow-hidden bg-white ${i === 0 ? "aspect-[16/8]" : "aspect-[16/10]"}`}>
+                  <Image
+                    src={p.img}
+                    alt={`Modelos y entregables BIM de ${p.titulo}`}
+                    fill
+                    sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
+                  <span className="absolute left-3 top-3 rounded-md bg-naranja px-2.5 py-1 font-heading text-[10px] font-bold uppercase tracking-[0.1em] text-white">
+                    {p.lugar}
+                  </span>
+                </div>
+                <div className="border-t border-border p-5">
+                  <h3 className="text-base font-bold text-navy transition-colors group-hover:text-naranja">{p.titulo}</h3>
+                  <p className="mt-1.5 text-[13px] leading-relaxed text-tinta-suave">{p.desc}</p>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
         <div className="mt-12 space-y-8">
           {RECIENTES.map((p) => (
             <Reveal key={p.titulo}>
