@@ -53,10 +53,10 @@ export default function Nosotros() {
           <Reveal delay={0.1}>
             <div className="panel alza overflow-hidden">
               <Image
-                src="/images/nosotros-oficina.jpg"
-                alt="Oficina de ingeniería BIM: monitores con modelos estructurales y planos sobre pared navy"
+                src="/images/nosotros-equipo-real.jpg"
+                alt="El equipo de Design Modeling en la PUCE y en eventos de metodología BIM"
                 width={1920}
-                height={1072}
+                height={1080}
                 className="size-full object-cover"
               />
             </div>
