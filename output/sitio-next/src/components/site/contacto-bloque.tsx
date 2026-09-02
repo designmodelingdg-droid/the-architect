@@ -30,7 +30,7 @@ export function ContactoBloque({ conDatos = true }: { conDatos?: boolean }) {
               </div>
               <div>
                 <dt className="tag-tech mb-1.5 !text-tinta-suave">Oficina</dt>
-                <dd className="text-tinta-suave">Tomasa Mideros y Juana Terrazas OE4-86, Quito, Ecuador</dd>
+                <dd className="text-tinta-suave">Juana Terrazas N71-154, Quito, Ecuador</dd>
               </div>
             </dl>
           ) : null}

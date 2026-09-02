@@ -222,16 +222,25 @@ export default function Proyectos() {
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {HISTORIAL.map((p, i) => (
-            <Reveal key={p.titulo} delay={(i % 3) * 0.06}>
-              <article className="panel h-full overflow-hidden">
-                <div className="relative aspect-[16/10]">
-                  <Image src={p.img} alt={`Modelo estructural de ${p.titulo}`} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover" />
+            <Reveal key={p.titulo} delay={(i % 3) * 0.06} className={i === 0 ? "sm:col-span-2" : ""}>
+              <article className="group panel alza h-full overflow-hidden">
+                <div className={`blueprint relative overflow-hidden bg-white ${i === 0 ? "aspect-[16/8]" : "aspect-[16/10]"}`}>
+                  <Image
+                    src={p.img}
+                    alt={`Modelo estructural de ${p.titulo}`}
+                    fill
+                    sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+                    className="object-contain p-5 transition-transform duration-700 ease-out group-hover:scale-[1.05]"
+                  />
+                  <span className="absolute left-3 top-3 rounded-md bg-navy/90 px-2.5 py-1 font-heading text-[10px] font-bold uppercase tracking-[0.1em] text-white">
+                    {p.lugar}
+                  </span>
+                  <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-navy/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>
                 <div className="border-t border-border p-5">
-                  <span className="font-heading text-[10px] font-bold uppercase tracking-[0.12em] text-naranja">{p.lugar}</span>
-                  <h3 className="mt-1 text-base font-bold text-navy">{p.titulo}</h3>
+                  <h3 className="text-base font-bold text-navy transition-colors group-hover:text-naranja">{p.titulo}</h3>
                   {"cliente" in p && p.cliente ? (
-                    <p className="mt-0.5 text-[11.5px] font-semibold text-tinta-suave">Cliente: {p.cliente}</p>
+                    <p className="mt-0.5 text-[11.5px] font-semibold text-naranja">Cliente: {p.cliente}</p>
                   ) : null}
                   <p className="mt-1.5 text-[13px] leading-relaxed text-tinta-suave">{p.desc}</p>
                 </div>
