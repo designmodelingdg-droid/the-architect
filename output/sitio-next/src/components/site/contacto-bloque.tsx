@@ -5,8 +5,8 @@ import { WA, WA_MSG, EMAIL } from "@/lib/site";
 
 /* Formulario de contacto de Sharp CRM (LeadConnector white-label). El script
  * form_embed.js ajusta la altura del iframe al contenido del formulario. */
-const FORM_ID = "ihxhvPRUhqfRi7J6Oy8K";
-const FORM_URL = `https://link.apisystem.tech/widget/form/${FORM_ID}`;
+const FORM_ID = "OfA7Ehcb8QSo9VXIDe6X";
+const FORM_URL = `https://api.leadconnectorhq.com/widget/form/${FORM_ID}`;
 
 export function ContactoBloque({ conDatos = true }: { conDatos?: boolean }) {
   return (
@@ -69,7 +69,7 @@ export function ContactoBloque({ conDatos = true }: { conDatos?: boolean }) {
                 data-trigger-type="alwaysShow"
                 data-activation-type="alwaysActivated"
                 data-deactivation-type="neverDeactivate"
-                data-form-name="Contacto web Design Modeling DG"
+                data-form-name="Formulario de Contacto DG Design Modeling"
                 data-height="640"
                 data-layout-iframe-id={`inline-${FORM_ID}`}
                 data-form-id={FORM_ID}
@@ -83,7 +83,7 @@ export function ContactoBloque({ conDatos = true }: { conDatos?: boolean }) {
           </div>
         </Reveal>
       </div>
-      <Script src="https://link.apisystem.tech/js/form_embed.js" strategy="lazyOnload" />
+      <Script src="https://api.leadconnectorhq.com/js/form_embed.js" strategy="lazyOnload" />
     </Section>
   );
 }
