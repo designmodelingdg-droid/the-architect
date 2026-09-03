@@ -13,7 +13,7 @@ manejo de datos personales debe revisarse con más rigor que el resto.
 - Toda variable `NEXT_PUBLIC_*` se envía al navegador: no puede contener secretos.
 - Los siguientes identificadores son PÚBLICOS por diseño y NO deben reportarse como
   secretos: el Form ID de Sharp CRM (`OfA7Ehcb8QSo9VXIDe6X`), el widget-id del chat
-  de LeadConnector (`6a989ada7e179c4b6622818a`), los ids de videos de Vimeo y Loom,
+  de LeadConnector (`6a99fc15ba70a028e7c03484`), los ids de videos de Vimeo y Loom,
   el número de WhatsApp, el RUC y las URLs de redes sociales.
 
 ## Scripts e iframes de terceros
