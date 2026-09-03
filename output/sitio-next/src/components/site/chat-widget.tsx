@@ -10,7 +10,7 @@ import { useEffect } from "react";
  * flotante ("inline") en cuanto el elemento aparece, antes de que el componente
  * termine de cargar. Si Sharp ya está en modo burbuja, no hace nada.
  */
-const WIDGET_ID = "6a989ada7e179c4b6622818a";
+const WIDGET_ID = "6a99fc15ba70a028e7c03484";
 
 function forzarBurbuja(el: Element) {
   if (el.getAttribute("widget-placement") === "inline") return;
