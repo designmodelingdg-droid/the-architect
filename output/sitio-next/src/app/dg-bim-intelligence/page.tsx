@@ -82,14 +82,14 @@ export default function Plataforma() {
           <Reveal delay={0.12}>
             <figure className="overflow-hidden rounded-2xl border border-white/15 shadow-2xl shadow-black/40">
               <Image
-                src="/images/sw-agente.jpg"
-                alt="El Agente BIM respondiendo dentro de la plataforma: hallazgo de 23 elementos sin código de clasificación, con evidencia"
+                src="/images/dgbim/dashboard-agente.jpg"
+                alt="Dashboard del Modelador de DG BIM Intelligence con el Agente BIM abierto: BIM Model Quality Score, elementos sin clasificar y sugerencias del agente"
                 width={1600}
-                height={954}
+                height={1035}
                 className="size-full object-cover"
               />
               <figcaption className="border-t border-white/10 bg-navy-2 px-4 py-2.5 text-center font-heading text-[10.5px] font-bold uppercase tracking-[0.12em] text-azul-palido/60">
-                Captura real — el agente razonando sobre un proyecto
+                Captura real — dashboard del modelador con el Agente BIM
               </figcaption>
             </figure>
           </Reveal>
@@ -123,16 +123,54 @@ export default function Plataforma() {
           title="Pantallas reales, no maquetas"
           lead="Lo que ves aquí es la plataforma funcionando sobre un proyecto de ejemplo — el mismo entorno que recibe tu equipo."
         />
+        {/* Pantalla principal con el Agente BIM flotando encima, como en la app */}
+        <Reveal className="mt-12">
+          <div className="relative pb-6 sm:pb-16">
+            <figure className="panel overflow-hidden">
+              <div className="flex items-center gap-2 border-b border-border bg-crema px-4 py-2.5">
+                <span aria-hidden className="flex gap-1.5">
+                  <i className="size-2.5 rounded-full bg-tinta-suave/25" />
+                  <i className="size-2.5 rounded-full bg-tinta-suave/25" />
+                  <i className="size-2.5 rounded-full bg-tinta-suave/25" />
+                </span>
+                <span className="ml-2 truncate rounded-md bg-white px-3 py-1 font-heading text-[11px] font-bold uppercase tracking-wider text-tinta-suave">
+                  DG BIM Intelligence · Dashboard del Modelador
+                </span>
+              </div>
+              <Image
+                src="/images/dgbim/dashboard.jpg"
+                alt="Dashboard del Modelador: BIM Model Quality Score, 357 elementos en 9 niveles, estado de clasificación, elementos por categoría y completitud por disciplina"
+                width={2048}
+                height={1133}
+                sizes="(min-width:1024px) 1024px, 100vw"
+                className="w-full"
+              />
+            </figure>
+            <figure className="mx-auto mt-4 w-[72%] overflow-hidden rounded-2xl border border-border bg-white shadow-2xl shadow-navy/25 sm:absolute sm:-bottom-2 sm:right-6 sm:mt-0 sm:w-[34%] sm:max-w-[320px] lg:right-10">
+              <Image
+                src="/images/dgbim/agente.jpg"
+                alt="Agente BIM, asistente de modelado: sugerencias como qué propiedades faltan en puertas, aislar elementos sin clasificación o qué corregir primero"
+                width={1200}
+                height={1520}
+                sizes="(min-width:640px) 320px, 70vw"
+                className="w-full"
+              />
+            </figure>
+          </div>
+          <p className="mx-auto mt-6 max-w-3xl text-center text-[15px] leading-relaxed text-tinta-suave sm:mt-8">
+            El Dashboard del Modelador resume la calidad del modelo en un puntaje y el Agente BIM, siempre a un clic,
+            te dice qué propiedades faltan, qué elementos aislar y qué corregir primero.
+          </p>
+        </Reveal>
+
         <div className="mt-12 grid gap-5 md:grid-cols-2">
           {[
-            ["/images/sw-sync.jpg", "Sincronización desde Revit", "El complemento DG BIM Sync sube tu modelo a la plataforma en minutos, con versionado automático."],
-            ["/images/sw-ejecutivo.jpg", "Dashboard Ejecutivo + Agente BIM", "Health Score del proyecto y el agente explicando impacto, recomendación y acción sugerida."],
-            ["/images/sw-dashboard.jpg", "Dashboard del Modelador", "Elementos, LOD, propiedades por completar y calidad del modelo en un vistazo."],
-            ["/images/sw-agente.jpg", "Agente BIM", "Pregunta sobre tu proyecto y recibe hallazgos con evidencia y prioridad."],
-          ].map(([img, t, d], i) => (
-            <Reveal key={t} delay={i * 0.07}>
+            ["/images/dgbim/sync.jpg", 1280, 860, "Sincronización desde Revit", "El complemento DG BIM Sync sube el modelo a la plataforma en un clic: 357 elementos, versión v2 y acceso directo a la app, sin exportaciones manuales."],
+            ["/images/dgbim/dashboard-agente.jpg", 1600, 1035, "Calidad del modelo + Agente BIM", "BIM Model Quality Score, elementos sin clasificar y familias duplicadas, con el agente proponiendo por dónde empezar a corregir en Revit."],
+          ].map(([img, w, h, t, d], i) => (
+            <Reveal key={t as string} delay={i * 0.07}>
               <figure className="panel h-full overflow-hidden">
-                <Image src={img} alt={`${t} — captura real de DG BIM Intelligence`} width={1600} height={954} className="aspect-video size-full object-cover object-left-top" />
+                <Image src={img as string} alt={`${t} — captura real de DG BIM Intelligence`} width={w as number} height={h as number} className="aspect-[3/2] size-full object-cover object-center" />
                 <figcaption className="p-5">
                   <h3 className="text-base font-bold text-navy">{t}</h3>
                   <p className="mt-1 text-[13px] leading-relaxed text-tinta-suave">{d}</p>

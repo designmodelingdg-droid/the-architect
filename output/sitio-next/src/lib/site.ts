@@ -83,7 +83,7 @@ export const FAMILIAS = [
       "Tableros por rol: modelador, coordinador, gerencia y dueño",
       "Agente especializado disponible 24/7",
     ],
-    img: "/images/sw-dashboard.jpg",
+    img: "/images/dgbim/dashboard.jpg",
     href: "/dg-bim-intelligence",
   },
 ];
