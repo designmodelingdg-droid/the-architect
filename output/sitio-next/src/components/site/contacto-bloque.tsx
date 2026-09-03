@@ -51,33 +51,29 @@ export function ContactoBloque({ conDatos = true }: { conDatos?: boolean }) {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="panel panel-glow overflow-hidden">
-            <div className="border-b border-border px-6 py-5">
-              <span className="tag-tech">Diagnóstico sin costo</span>
-              <h3 className="mt-2 text-xl font-bold text-navy">Agenda tu diagnóstico gratuito</h3>
-              <p className="mt-1 text-[13.5px] text-tinta-suave">
-                Déjanos tus datos y qué proyecto tienes entre manos. Un consultor te contacta en 24 h.
-              </p>
-            </div>
-            <div className="bg-white px-2 pb-2 pt-3 sm:px-4">
-              <iframe
-                src={FORM_URL}
-                id={`inline-${FORM_ID}`}
-                title="Formulario de contacto — Design Modeling DG"
-                loading="lazy"
-                data-layout="{'id':'INLINE'}"
-                data-trigger-type="alwaysShow"
-                data-activation-type="alwaysActivated"
-                data-deactivation-type="neverDeactivate"
-                data-form-name="Formulario de Contacto DG Design Modeling"
-                data-height="640"
-                data-layout-iframe-id={`inline-${FORM_ID}`}
-                data-form-id={FORM_ID}
-                className="block w-full border-0"
-                style={{ minHeight: 640 }}
-              />
-            </div>
-            <p className="border-t border-border px-5 py-3 text-center font-heading text-[10.5px] font-bold uppercase tracking-wider text-tinta-suave/80">
+          <div id="formulario" className="scroll-mt-28">
+            <span className="tag-tech">Diagnóstico sin costo</span>
+            <h3 className="mt-2 text-xl font-bold text-navy">Agenda tu diagnóstico gratuito</h3>
+            <p className="mt-1 mb-5 text-[13.5px] text-tinta-suave">
+              Déjanos tus datos y qué proyecto tienes entre manos. Un consultor te contacta en 24 h.
+            </p>
+            <iframe
+              src={FORM_URL}
+              id={`inline-${FORM_ID}`}
+              title="Formulario de contacto — Design Modeling DG"
+              loading="lazy"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-activation-type="alwaysActivated"
+              data-deactivation-type="neverDeactivate"
+              data-form-name="Formulario de Contacto DG Design Modeling"
+              data-height="560"
+              data-layout-iframe-id={`inline-${FORM_ID}`}
+              data-form-id={FORM_ID}
+              className="block w-full border-0"
+              style={{ height: 560 }}
+            />
+            <p className="mt-4 text-center font-heading text-[10.5px] font-bold uppercase tracking-wider text-tinta-suave/80">
               Respuesta &lt; 24 h · Ecuador y toda Latinoamérica
             </p>
           </div>
