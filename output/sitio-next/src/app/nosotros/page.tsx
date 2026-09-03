@@ -54,7 +54,7 @@ export default function Nosotros() {
             <div className="panel alza overflow-hidden">
               <Image
                 src="/images/nosotros-equipo-real.jpg"
-                alt="El equipo de Design Modeling en la PUCE y en eventos de metodología BIM"
+                alt="El equipo de Design Modeling en visitas técnicas y en eventos de metodología BIM"
                 width={1920}
                 height={1080}
                 className="size-full object-cover"
