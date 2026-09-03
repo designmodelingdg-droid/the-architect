@@ -191,14 +191,14 @@ export default function Home() {
           <Reveal delay={0.12}>
             <figure className="overflow-hidden rounded-2xl border border-white/15 shadow-2xl shadow-black/40">
               <Image
-                src="/images/sw-agente.jpg"
-                alt="DG BIM Intelligence: el Agente BIM respondiendo sobre un proyecto real, con hallazgo y evidencia"
+                src="/images/dgbim/dashboard-agente.jpg"
+                alt="DG BIM Intelligence: dashboard del modelador con el Agente BIM abierto sobre un proyecto real"
                 width={1600}
-                height={954}
+                height={1035}
                 className="size-full object-cover"
               />
               <figcaption className="border-t border-white/10 bg-navy-2 px-4 py-2.5 text-center font-heading text-[10.5px] font-bold uppercase tracking-[0.12em] text-azul-palido/60">
-                Captura real de la plataforma — Agente BIM en un proyecto
+                Captura real de la plataforma — dashboard y Agente BIM
               </figcaption>
             </figure>
           </Reveal>
