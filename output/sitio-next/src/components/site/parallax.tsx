@@ -27,16 +27,24 @@ export function ParallaxFondo({ children }: { children: React.ReactNode }) {
  * Parallax para imágenes dentro del flujo: la imagen viaja verticalmente
  * dentro de su marco mientras la sección cruza el viewport.
  */
-export function ParallaxImg({ children, className }: { children: React.ReactNode; className?: string }) {
+export function ParallaxImg({ children, className, revelar = false }: { children: React.ReactNode; className?: string; revelar?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const reducido = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["-7%", "7%"]);
+  const cortina = revelar && !reducido;
   return (
-    <div ref={ref} className={`overflow-hidden ${className ?? ""}`}>
+    <motion.div
+      ref={ref}
+      className={`overflow-hidden ${className ?? ""}`}
+      initial={cortina ? { clipPath: "inset(0 0 100% 0)" } : undefined}
+      whileInView={cortina ? { clipPath: "inset(0 0 0% 0)" } : undefined}
+      viewport={{ once: true, margin: "-120px" }}
+      transition={{ duration: 0.95, ease: [0.76, 0, 0.24, 1] }}
+    >
       <motion.div style={reducido ? undefined : { y, scale: 1.15 }} className="size-full">
         {children}
       </motion.div>
-    </div>
+    </motion.div>
   );
 }

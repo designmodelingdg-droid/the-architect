@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, ArrowRight, Check } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { IconoLinkedIn } from "@/components/site/icono-linkedin";
 import { Section, SectionHead } from "@/components/site/section";
 import { Reveal, HeroReveal } from "@/components/site/reveal";
@@ -10,6 +10,8 @@ import { CineBanda } from "@/components/site/cine-banda";
 import { ParallaxFondo, ParallaxImg } from "@/components/site/parallax";
 import { ZonaMouse, CapaMouse } from "@/components/site/zona-mouse";
 import { DataStrip } from "@/components/site/data-strip";
+import { TextoCinetico } from "@/components/site/texto-cinetico";
+import { ActoPlataforma } from "@/components/site/acto-plataforma";
 import { ContactoBloque } from "@/components/site/contacto-bloque";
 import { ACADEMIA, FAMILIAS, VERTICALES, EQUIPO } from "@/lib/site";
 
@@ -47,8 +49,13 @@ export default function Home() {
             </HeroReveal>
             <HeroReveal delay={0.08}>
               <h1 className="text-[2.6rem] font-bold leading-[1.04] text-white md:text-[3.7rem]">
-                Aceleramos la transformación digital{" "}
-                <span className="text-naranja-claro">de tus proyectos de construcción.</span>
+                <TextoCinetico
+                  delay={0.1}
+                  partes={[
+                    { texto: "Aceleramos la transformación digital " },
+                    { texto: "de tus proyectos de construcción.", className: "text-naranja-claro" },
+                  ]}
+                />
               </h1>
             </HeroReveal>
             <HeroReveal delay={0.16}>
@@ -133,7 +140,7 @@ export default function Home() {
                     Conocer más <ArrowRight className="size-4" aria-hidden />
                   </Link>
                 </div>
-                <ParallaxImg className="alza rounded-2xl border border-border shadow-lg shadow-navy/5">
+                <ParallaxImg revelar className="alza rounded-2xl border border-border shadow-lg shadow-navy/5">
                   <div className="relative aspect-[16/9.5]">
                     <Image src={f.img} alt={f.label} fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
                   </div>
@@ -157,53 +164,8 @@ export default function Home() {
         cta={{ href: "/dg-bim-intelligence", label: "Mira cómo lo hacemos" }}
       />
 
-      {/* DG BIM Intelligence — banda navy estrella */}
-      <Section tone="navy" id="plataforma">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-14">
-          <Reveal>
-            <span className="tag-tech mb-4 inline-block text-naranja-claro">Nuestro software</span>
-            <h2 className="text-3xl font-bold leading-[1.1] text-white md:text-[2.6rem]">
-              No es un chatbot. Es un consultor BIM que razona.
-            </h2>
-            <p className="mt-4 leading-relaxed text-white/70 md:text-lg">
-              DG BIM Intelligence lee tu proyecto, razona paso a paso con el criterio de +10 años de
-              BIM Management y te dice qué hacer y por qué — con evidencia, impacto y nivel de
-              confianza en cada hallazgo. Lo usamos en nuestra consultoría y lo licenciamos a
-              empresas con equipo BIM propio.
-            </p>
-            <ul className="mt-6 space-y-3.5">
-              {[
-                "Sincronización directa desde Revit con el complemento DG BIM Sync",
-                "Detección de interferencias clasificadas por severidad, con responsable asignado",
-                "Control de calidad del modelo antes de que llegue a obra",
-                "Tableros por rol: modelador, coordinador, gerencia y dueño",
-              ].map((t) => (
-                <li key={t} className="flex gap-3 text-[15px] text-white/85">
-                  <Check className="mt-1 size-4 shrink-0 text-naranja-claro" aria-hidden />
-                  {t}
-                </li>
-              ))}
-            </ul>
-            <Link href="/dg-bim-intelligence" data-btn className="mt-7 inline-block rounded-lg bg-naranja px-6 py-3.5 font-heading text-sm font-bold text-white hover:bg-naranja-claro">
-              Conoce DG BIM Intelligence
-            </Link>
-          </Reveal>
-          <Reveal delay={0.12}>
-            <figure className="overflow-hidden rounded-2xl border border-white/15 shadow-2xl shadow-black/40">
-              <Image
-                src="/images/dgbim/dashboard-agente.jpg"
-                alt="DG BIM Intelligence: dashboard del modelador con el Agente BIM abierto sobre un proyecto real"
-                width={1600}
-                height={1035}
-                className="size-full object-cover"
-              />
-              <figcaption className="border-t border-white/10 bg-navy-2 px-4 py-2.5 text-center font-heading text-[10.5px] font-bold uppercase tracking-[0.12em] text-azul-palido/60">
-                Captura real de la plataforma — dashboard y Agente BIM
-              </figcaption>
-            </figure>
-          </Reveal>
-        </div>
-      </Section>
+      {/* DG BIM Intelligence — acto fijado: el scroll va revelando el argumento */}
+      <ActoPlataforma />
 
       {/* El costo del error */}
       <Section tone="panel">
