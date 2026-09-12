@@ -3,6 +3,7 @@ import { HeroReveal } from "./reveal";
 import { ParallaxFondo } from "./parallax";
 import { ZonaMouse, CapaMouse } from "./zona-mouse";
 import { VimeoFondo } from "./vimeo-fondo";
+import { TextoCinetico } from "./texto-cinetico";
 
 /*
  * Hero de página interna. Con `fondo` se vuelve cinematográfico: imagen a
@@ -68,7 +69,7 @@ export function PageHero({
             <span aria-hidden className="inline-block h-px w-7 bg-naranja/60" />
             {eyebrow}
           </span>
-          <h1 className={`max-w-3xl text-4xl font-bold leading-[1.06] md:text-[3.4rem] ${oscuro ? "text-white" : "text-navy"}`}>{title}</h1>
+          <h1 className={`max-w-3xl text-4xl font-bold leading-[1.06] md:text-[3.4rem] ${oscuro ? "text-white" : "text-navy"}`}><TextoCinetico delay={0.15} partes={[{ texto: title }]} /></h1>
           <p className={`mt-5 max-w-2xl text-base leading-relaxed md:text-lg ${oscuro ? "text-white/80" : "text-tinta-suave"}`}>{lead}</p>
         </HeroReveal>
         </CapaMouse>

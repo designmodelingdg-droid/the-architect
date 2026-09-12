@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Reveal } from "./reveal";
 import { VimeoFondo } from "./vimeo-fondo";
+import { DerivaNavy } from "./deriva-navy";
 
 export function Section({
   children,
@@ -20,10 +21,11 @@ export function Section({
     tone === "panel" ? "bg-crema" :
     tone === "blueprint" ? "bg-white blueprint" :
     tone === "claro" ? "bg-crema" :
-    tone === "navy" ? `bg-navy ${fondoVimeo ? "" : "blueprint-navy"} text-white` :
+    tone === "navy" ? `${fondoVimeo ? "" : "blueprint-navy"} text-white` :
     "bg-white";
+  const Banda = tone === "navy" ? DerivaNavy : "section";
   return (
-    <section id={id} className={`relative scroll-mt-24 overflow-hidden px-5 py-16 md:py-24 ${bg} ${className}`}>
+    <Banda id={id} className={`relative scroll-mt-24 overflow-hidden px-5 py-16 md:py-24 ${bg} ${className}`}>
       {fondoVimeo && (
         <>
           <div aria-hidden className="absolute inset-0 opacity-30">
@@ -33,7 +35,7 @@ export function Section({
         </>
       )}
       <div className="relative mx-auto max-w-6xl">{children}</div>
-    </section>
+    </Banda>
   );
 }
 
