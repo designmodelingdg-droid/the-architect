@@ -1,3 +1,4 @@
+import { alternos } from "@/lib/site";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHero } from "@/components/site/page-hero";
@@ -6,6 +7,7 @@ import { Reveal } from "@/components/site/reveal";
 import { CtaFinal } from "@/components/site/cta-final";
 
 export const metadata: Metadata = {
+  alternates: alternos("/proyectos.md"),
   title: "Proyectos",
   description:
     "Proyectos reales de consultoría BIM y cálculo estructural en Ecuador, México, Colombia, Panamá, Perú y Costa Rica: edificaciones, silos industriales, naves y librerías BIM.",

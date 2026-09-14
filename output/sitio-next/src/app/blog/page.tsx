@@ -1,3 +1,4 @@
+import { alternos } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/site/page-hero";
@@ -6,6 +7,7 @@ import { Reveal } from "@/components/site/reveal";
 import { CtaFinal } from "@/components/site/cta-final";
 
 export const metadata: Metadata = {
+  alternates: alternos("/blog.md"),
   title: "Blog",
   description: "Artículos técnicos sobre metodología BIM, IA aplicada a la construcción y diseño estructural.",
 };

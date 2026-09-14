@@ -9,10 +9,11 @@ import { Reveal } from "@/components/site/reveal";
 import { CtaFinal } from "@/components/site/cta-final";
 import { CineBanda } from "@/components/site/cine-banda";
 import { ParallaxImg } from "@/components/site/parallax";
-import { FAMILIAS } from "@/lib/site";
+import { FAMILIAS, alternos } from "@/lib/site";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const metadata: Metadata = {
+  alternates: alternos("/consultoria.md"),
   title: "Consultoría BIM",
   description:
     "Catálogo completo de consultoría BIM: ingeniería estructural, arquitectura y documentación, coordinación BIM, implementación y BIM + IA con DG BIM Intelligence.",

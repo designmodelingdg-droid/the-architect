@@ -1,7 +1,9 @@
+import { alternos } from "@/lib/site";
 import type { Metadata } from "next";
 import { Section } from "@/components/site/section";
 
 export const metadata: Metadata = {
+  alternates: alternos("/privacidad.md"),
   title: "Política de privacidad",
   description: "Política de protección de datos personales de MODELING-DG S.A.S.",
 };

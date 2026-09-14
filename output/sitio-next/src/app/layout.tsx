@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   description:
     "Consultoría BIM estructural con IA aplicada con criterio: cálculo sismorresistente, coordinación de disciplinas y DG BIM Intelligence, el agente que razona sobre tu proyecto. Ecuador y Latinoamérica.",
-  alternates: { canonical: "./" },
+  alternates: { canonical: "./", types: { "text/markdown": "/index.md" } },
   openGraph: {
     type: "website",
     locale: "es_EC",

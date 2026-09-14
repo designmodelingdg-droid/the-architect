@@ -7,9 +7,10 @@ import { AvalesMarquee } from "@/components/site/marquee";
 import { Section, SectionHead } from "@/components/site/section";
 import { Reveal } from "@/components/site/reveal";
 import { CtaFinal } from "@/components/site/cta-final";
-import { CLIENTES, ACADEMIA, EQUIPO } from "@/lib/site";
+import { CLIENTES, ACADEMIA, EQUIPO, alternos } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: alternos("/nosotros.md"),
   title: "Nosotros",
   description:
     "Consultora de ingeniería estructural y BIM dirigida por los ingenieros Dayana Calderón y Gabriel Pantoja. Partner de Autodesk con avales universitarios internacionales.",
