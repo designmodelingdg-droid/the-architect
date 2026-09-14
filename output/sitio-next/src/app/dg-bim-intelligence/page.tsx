@@ -11,7 +11,7 @@ import { DataStrip } from "@/components/site/data-strip";
 export const metadata: Metadata = {
   title: "DG BIM Intelligence — el consultor BIM que razona",
   description:
-    "No es un chatbot: un agente entrenado con el criterio de +10 años de BIM Management. Lee tu proyecto, razona paso a paso y entrega hallazgos con evidencia, impacto y confianza.",
+    "El agente BIM entrenado con el criterio de +10 años de BIM Management: lee tu modelo de Revit, prioriza los hallazgos y entrega cada uno con su evidencia, su impacto y su nivel de confianza.",
 };
 
 const ROLES = [
@@ -34,7 +34,7 @@ export default function Plataforma() {
         num="02"
         eyebrow="DG BIM Intelligence"
         title="Un consultor BIM que razona, 24/7 dentro de tu proyecto"
-        lead="No es un chatbot. Es un agente con el criterio de +10 años de BIM Management: lee tu proyecto, razona paso a paso y te dice qué hacer y por qué — con evidencia, impacto y nivel de confianza en cada hallazgo."
+        lead="Lee tu modelo de Revit, razona paso a paso con el criterio de +10 años de BIM Management y te dice qué corregir primero. Cada hallazgo llega con su evidencia, su impacto y su nivel de confianza."
         crumb={{ label: "DG BIM Intelligence", href: "/dg-bim-intelligence" }}
         vimeo={{ id: "1223019570", aspect: 9 / 16, poster: "/images/posters/esc3.jpg" }}
       />
@@ -108,7 +108,7 @@ export default function Plataforma() {
             <Reveal key={rol} delay={i * 0.06}>
               <article className="panel h-full p-6">
                 <span className="font-heading text-[10px] font-bold uppercase tracking-[0.16em] text-tinta-suave">Rol 0{i + 1}</span>
-                <h3 className="mt-2 text-lg font-bold text-naranja">{rol}</h3>
+                <h3 className="mt-2 text-lg font-bold text-naranja-texto">{rol}</h3>
                 <p className="mt-2 text-[13.5px] leading-relaxed text-tinta-suave">{d}</p>
               </article>
             </Reveal>
@@ -230,7 +230,7 @@ export default function Plataforma() {
           </Reveal>
           <Reveal delay={0.07}>
             <article className="panel h-full border-t-2 border-t-naranja p-6">
-              <span className="inline-flex items-center gap-1.5 font-heading text-[10px] font-bold uppercase tracking-[0.14em] text-naranja">
+              <span className="inline-flex items-center gap-1.5 font-heading text-[10px] font-bold uppercase tracking-[0.14em] text-naranja-texto">
                 <Clock className="size-3" aria-hidden /> En desarrollo
               </span>
               <ul className="mt-4 space-y-2.5 text-[14.5px] text-tinta">
@@ -271,7 +271,7 @@ export default function Plataforma() {
               <article className="panel flex h-full flex-col border-l-2 border-l-naranja p-7">
                 <h3 className="text-xl font-bold text-navy">{t}</h3>
                 <p className="mt-3 flex-1 text-[14.5px] leading-relaxed text-tinta-suave">{d}</p>
-                <Link href="/contactos" className="mt-5 inline-flex items-center gap-1.5 font-heading text-sm font-bold text-naranja transition-colors hover:text-azul">
+                <Link href="/contactos" className="mt-5 inline-flex items-center gap-1.5 font-heading text-sm font-bold text-naranja-texto transition-colors hover:text-azul">
                   {cta} →
                 </Link>
               </article>

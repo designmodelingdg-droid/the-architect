@@ -23,12 +23,12 @@ export function ContactoBloque({ conDatos = true }: { conDatos?: boolean }) {
             <dl className="mt-7 space-y-5 text-[15px] text-tinta">
               <div>
                 <dt className="tag-tech mb-1.5 !text-tinta-suave">Correo</dt>
-                <dd><a className="hover:text-naranja" href={`mailto:${EMAIL}`}>{EMAIL}</a></dd>
+                <dd><a className="hover:text-naranja-texto" href={`mailto:${EMAIL}`}>{EMAIL}</a></dd>
               </div>
               <div>
                 <dt className="tag-tech mb-1.5 !text-tinta-suave">Teléfonos</dt>
-                <dd><a className="hover:text-naranja" href={WA} target="_blank" rel="noopener">(+593) 98 4372010 · WhatsApp</a></dd>
-                <dd><a className="hover:text-naranja" href="tel:+59325137246">(02) 513-7246</a></dd>
+                <dd><a className="hover:text-naranja-texto" href={WA} target="_blank" rel="noopener">(+593) 98 4372010 · WhatsApp</a></dd>
+                <dd><a className="hover:text-naranja-texto" href="tel:+59325137246">(02) 513-7246</a></dd>
               </div>
               <div>
                 <dt className="tag-tech mb-1.5 !text-tinta-suave">Oficina</dt>
@@ -42,7 +42,7 @@ export function ContactoBloque({ conDatos = true }: { conDatos?: boolean }) {
               href={WA_MSG("Hola, quiero agendar un diagnóstico de consultoría BIM")}
               target="_blank"
               rel="noopener"
-              className="font-bold text-navy hover:text-naranja"
+              className="font-bold text-navy hover:text-naranja-texto"
             >
               Abre WhatsApp
             </a>{" "}
@@ -73,7 +73,7 @@ export function ContactoBloque({ conDatos = true }: { conDatos?: boolean }) {
               className="block w-full border-0"
               style={{ height: 560 }}
             />
-            <p className="mt-4 text-center font-heading text-[10.5px] font-bold uppercase tracking-wider text-tinta-suave/80">
+            <p className="mt-4 text-center font-heading text-[10.5px] font-bold uppercase tracking-wider text-tinta-suave">
               Respuesta &lt; 24 h · Ecuador y toda Latinoamérica
             </p>
           </div>

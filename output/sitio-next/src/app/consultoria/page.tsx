@@ -80,7 +80,7 @@ export default function Consultoria() {
               <ul className="mt-6 space-y-2.5">
                 {f.servicios.map((item) => (
                   <li key={item} className="flex gap-2.5 text-[15px] text-tinta">
-                    <Check className="mt-1 size-4 shrink-0 text-naranja" aria-hidden />
+                    <Check className="mt-1 size-4 shrink-0 text-naranja-texto" aria-hidden />
                     {item}
                   </li>
                 ))}
@@ -88,7 +88,7 @@ export default function Consultoria() {
               {f.href ? (
                 <Link
                   href={f.href}
-                  className="mt-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-bold uppercase tracking-[0.08em] text-naranja hover:text-azul"
+                  className="mt-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-bold uppercase tracking-[0.08em] text-naranja-texto hover:text-azul"
                 >
                   Conoce la plataforma <ArrowRight className="size-4" aria-hidden />
                 </Link>
@@ -121,7 +121,7 @@ export default function Consultoria() {
           dark
           eyebrow="Capacidad técnica"
           title="Qué tipo de estructuras diseñamos"
-          lead="Nuestra experiencia cubre los sistemas y materiales que se usan realmente en la construcción de la región."
+          lead="Nuestra experiencia cubre los sistemas y materiales que se construyen hoy en la región."
         />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {[
@@ -153,7 +153,7 @@ export default function Consultoria() {
               <ul className="mt-4 space-y-3">
                 {SI.map((item) => (
                   <li key={item} className="flex gap-2.5 text-[14.5px] leading-relaxed text-tinta">
-                    <Check className="mt-0.5 size-4 shrink-0 text-naranja" aria-hidden />
+                    <Check className="mt-0.5 size-4 shrink-0 text-naranja-texto" aria-hidden />
                     {item}
                   </li>
                 ))}

@@ -27,7 +27,7 @@ export function Navbar() {
                   href={item.href}
                   aria-current={pathname === item.href ? "page" : undefined}
                   className={`inline-flex items-center gap-1 py-3 font-heading text-[13.5px] font-semibold transition-colors ${
-                    pathname === item.href ? "text-naranja" : "text-azul hover:text-naranja"
+                    pathname === item.href ? "text-naranja-texto" : "text-azul hover:text-naranja-texto"
                   }`}
                 >
                   {item.label}
@@ -43,7 +43,7 @@ export function Navbar() {
                         className="rounded-lg px-3.5 py-3 transition-colors hover:bg-crema"
                       >
                         <span className="flex items-baseline gap-2">
-                          <span className="font-heading text-[11px] font-bold text-naranja">{f.num}/</span>
+                          <span className="font-heading text-[11px] font-bold text-naranja-texto">{f.num}/</span>
                           <span className="font-heading text-[13.5px] font-bold text-tinta">{f.label}</span>
                         </span>
                         <span className="mt-0.5 block text-[12px] leading-snug text-tinta-suave">{f.resumen}</span>
@@ -58,7 +58,7 @@ export function Navbar() {
                 href={item.href}
                 aria-current={pathname === item.href ? "page" : undefined}
                 className={`py-3 font-heading text-[13.5px] font-semibold transition-colors ${
-                  pathname === item.href ? "text-naranja" : "text-azul hover:text-naranja"
+                  pathname === item.href ? "text-naranja-texto" : "text-azul hover:text-naranja-texto"
                 }`}
               >
                 {item.label}
@@ -69,7 +69,7 @@ export function Navbar() {
             href={ACADEMIA}
             target="_blank"
             rel="noopener"
-            className="inline-flex items-center gap-1 font-heading text-[12px] font-bold uppercase tracking-[0.1em] text-tinta-suave transition-colors hover:text-naranja"
+            className="inline-flex items-center gap-1 font-heading text-[12px] font-bold uppercase tracking-[0.1em] text-tinta-suave transition-colors hover:text-naranja-texto"
           >
             Academia <ArrowUpRight className="size-3" aria-hidden />
           </a>
@@ -100,7 +100,7 @@ export function Navbar() {
                       onClick={() => setOpen(false)}
                       aria-current={pathname === item.href ? "page" : undefined}
                       className={`block border-b border-border px-2 py-3.5 font-heading text-[15px] font-semibold ${
-                        pathname === item.href ? "text-naranja" : "text-tinta"
+                        pathname === item.href ? "text-naranja-texto" : "text-tinta"
                       }`}
                     >
                       {item.label}
@@ -114,7 +114,7 @@ export function Navbar() {
                             onClick={() => setOpen(false)}
                             className="block px-4 py-2 text-[13px] text-tinta-suave"
                           >
-                            <span className="font-heading font-bold text-naranja">{f.num}/</span> {f.label}
+                            <span className="font-heading font-bold text-naranja-texto">{f.num}/</span> {f.label}
                           </Link>
                         ))}
                       </div>

@@ -60,7 +60,7 @@ export function Footer() {
             <li><a className="transition-colors hover:text-naranja-claro" href={`mailto:${EMAIL}`}>{EMAIL}</a></li>
             <li><a className="transition-colors hover:text-naranja-claro" href={WA}>(+593) 98 4372010</a></li>
             <li><a className="transition-colors hover:text-naranja-claro" href="tel:+59325137246">(02) 513-7246</a></li>
-            <li className="text-azul-palido/45">Quito, Ecuador</li>
+            <li className="text-azul-palido/55">Quito, Ecuador</li>
           </ul>
           <div className="mt-4 flex flex-wrap gap-2">
             {REDES.map((r) => (
@@ -78,7 +78,7 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <div className="mx-auto mt-9 flex max-w-6xl flex-wrap items-center justify-between gap-3 border-t border-white/8 pt-5 text-[11.5px] text-azul-palido/45">
+      <div className="mx-auto mt-9 flex max-w-6xl flex-wrap items-center justify-between gap-3 border-t border-white/8 pt-5 text-[11.5px] text-azul-palido/55">
         <span>Copyright © 2026 MODELING-DG S.A.S · RUC: 1793148549001 · Todos los derechos reservados.</span>
         <span className="space-x-2">
           <Link className="hover:text-naranja-claro" href="/terminos">Términos y condiciones</Link>

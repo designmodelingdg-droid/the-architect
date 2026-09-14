@@ -135,7 +135,7 @@ export default function Home() {
                   </ul>
                   <Link
                     href={f.href ?? `/consultoria#${f.slug}`}
-                    className="mt-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-bold uppercase tracking-[0.08em] text-naranja hover:text-azul"
+                    className="mt-6 inline-flex items-center gap-1.5 font-heading text-[13px] font-bold uppercase tracking-[0.08em] text-naranja-texto hover:text-azul"
                   >
                     Conocer más <ArrowRight className="size-4" aria-hidden />
                   </Link>
@@ -198,7 +198,7 @@ export default function Home() {
           {VERTICALES.map((v, i) => (
             <Reveal key={v.label} delay={i * 0.05}>
               <article className="border-t-2 border-border pt-5 transition-colors hover:border-naranja">
-                <span className="font-heading text-[12px] font-bold text-naranja" aria-hidden>{i + 1}/</span>
+                <span className="font-heading text-[12px] font-bold text-naranja-texto" aria-hidden>{i + 1}/</span>
                 <h3 className="mt-1.5 text-lg font-bold text-navy">{v.label}</h3>
                 <p className="mt-1.5 text-[13.5px] leading-relaxed text-tinta-suave">{v.detalle}</p>
               </article>
@@ -235,7 +235,7 @@ export default function Home() {
           ))}
         </div>
         <Reveal className="mt-9 text-center">
-          <Link href="/proyectos" data-btn className="inline-block rounded-lg border border-azul/30 px-6 py-3 font-heading text-sm font-bold text-azul hover:border-naranja hover:text-naranja">
+          <Link href="/proyectos" data-btn className="inline-block rounded-lg border border-azul/30 px-6 py-3 font-heading text-sm font-bold text-azul hover:border-naranja hover:text-naranja-texto">
             Ver los proyectos
           </Link>
         </Reveal>
@@ -260,7 +260,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener"
                   aria-label={`LinkedIn de ${m.nombre}`}
-                  className="mt-3 inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-[12px] font-semibold text-azul transition-colors hover:border-naranja hover:text-naranja"
+                  className="mt-3 inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-[12px] font-semibold text-azul transition-colors hover:border-naranja hover:text-naranja-texto"
                 >
                   <IconoLinkedIn /> LinkedIn
                 </a>
@@ -269,7 +269,7 @@ export default function Home() {
           ))}
         </div>
         <Reveal className="mt-9 text-center">
-          <Link href="/nosotros#equipo" className="inline-flex items-center gap-1.5 font-heading text-[13px] font-bold uppercase tracking-[0.08em] text-naranja hover:text-azul">
+          <Link href="/nosotros#equipo" className="inline-flex items-center gap-1.5 font-heading text-[13px] font-bold uppercase tracking-[0.08em] text-naranja-texto hover:text-azul">
             Conoce a todo el equipo <ArrowRight className="size-4" aria-hidden />
           </Link>
         </Reveal>
@@ -280,7 +280,7 @@ export default function Home() {
       <div className="border-b border-border bg-crema px-5 py-5">
         <p className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[13.5px] text-tinta-suave">
           ¿Buscas formarte en BIM en vez de contratar consultoría?
-          <a href={ACADEMIA} target="_blank" rel="noopener" className="inline-flex items-center gap-1 font-heading font-bold text-naranja hover:text-azul">
+          <a href={ACADEMIA} target="_blank" rel="noopener" className="inline-flex items-center gap-1 font-heading font-bold text-naranja-texto hover:text-azul">
             Design Modeling Academy <ArrowUpRight className="size-3.5" aria-hidden />
           </a>
         </p>

@@ -33,7 +33,7 @@ export default function Contactos() {
           lead="Publicamos herramientas, avances de DG BIM Intelligence y contenido técnico para profesionales del sector."
         />
         <Reveal className="mt-8 flex flex-wrap justify-center gap-3">
-          <a href={WA} target="_blank" rel="noopener" data-btn className="rounded-lg bg-[#25D366] px-6 py-3 font-heading text-sm font-bold text-white hover:brightness-105">
+          <a href={WA} target="_blank" rel="noopener" data-btn className="rounded-lg bg-[#25D366] px-6 py-3 font-heading text-sm font-bold text-navy hover:brightness-105">
             WhatsApp
           </a>
           {REDES.map((r) => (
@@ -43,7 +43,7 @@ export default function Contactos() {
               target="_blank"
               rel="noopener"
               data-btn
-              className="rounded-lg border border-input px-6 py-3 font-heading text-sm font-bold text-azul hover:border-naranja hover:text-naranja"
+              className="rounded-lg border border-input px-6 py-3 font-heading text-sm font-bold text-azul hover:border-naranja hover:text-naranja-texto"
             >
               {r.label}
             </a>
