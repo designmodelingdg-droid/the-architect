@@ -47,7 +47,7 @@ total en DG BIM Intelligence, nuestro software de IA.
 
 ## Cifras
 
-- Más de 10 años en proyectos BIM
+- Más de 10 años de experiencia BIM en el equipo
 - Más de 3.800 profesionales formados
 - Coordinación de arquitectura, estructura e instalaciones
 - Agente de IA disponible 24/7
