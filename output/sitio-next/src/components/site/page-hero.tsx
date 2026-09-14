@@ -60,9 +60,9 @@ export function PageHero({
             aria-label="Miga de pan"
             className={`mb-5 font-heading text-[11px] font-bold uppercase tracking-wider ${oscuro ? "text-white/60" : "text-tinta-suave"}`}
           >
-            <Link href="/" className="hover:text-naranja">Inicio</Link>
-            <span className={`mx-2 ${oscuro ? "text-white/35" : "text-tinta-suave/50"}`} aria-hidden>/</span>
-            <Link href={crumb.href} aria-current="page" className={oscuro ? "text-naranja-claro" : "text-naranja"}>{crumb.label}</Link>
+            <Link href="/" className="hover:text-naranja-texto">Inicio</Link>
+            <span className={`mx-2 ${oscuro ? "text-white/50" : "text-tinta-suave"}`} aria-hidden>/</span>
+            <Link href={crumb.href} aria-current="page" className={oscuro ? "text-naranja-claro" : "text-naranja-texto"}>{crumb.label}</Link>
           </nav>
           <span className={`tag-tech mb-3.5 inline-flex items-center gap-2.5 ${oscuro ? "text-naranja-claro" : ""}`}>
             <span className={oscuro ? "text-white/50" : "text-tinta-suave"}>{num}/</span>

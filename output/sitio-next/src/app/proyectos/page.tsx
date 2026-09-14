@@ -216,7 +216,7 @@ export default function Proyectos() {
                   </span>
                 </div>
                 <div className="border-t border-border p-5">
-                  <h3 className="text-base font-bold text-navy transition-colors group-hover:text-naranja">{p.titulo}</h3>
+                  <h3 className="text-base font-bold text-navy transition-colors group-hover:text-naranja-texto">{p.titulo}</h3>
                   <p className="mt-1.5 text-[13px] leading-relaxed text-tinta-suave">{p.desc}</p>
                 </div>
               </article>
@@ -316,9 +316,9 @@ export default function Proyectos() {
                   <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-navy/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>
                 <div className="border-t border-border p-5">
-                  <h3 className="text-base font-bold text-navy transition-colors group-hover:text-naranja">{p.titulo}</h3>
+                  <h3 className="text-base font-bold text-navy transition-colors group-hover:text-naranja-texto">{p.titulo}</h3>
                   {"cliente" in p && p.cliente ? (
-                    <p className="mt-0.5 text-[11.5px] font-semibold text-naranja">Cliente: {p.cliente}</p>
+                    <p className="mt-0.5 text-[11.5px] font-semibold text-naranja-texto">Cliente: {p.cliente}</p>
                   ) : null}
                   <p className="mt-1.5 text-[13px] leading-relaxed text-tinta-suave">{p.desc}</p>
                 </div>
@@ -329,7 +329,7 @@ export default function Proyectos() {
         <Reveal className="mx-auto mt-10 max-w-xl">
           <p className="panel px-6 py-4 text-center font-heading text-[11px] font-bold uppercase tracking-[0.12em] text-tinta-suave">
             Dossier completo de proyectos disponible a solicitud →{" "}
-            <a href="/contactos" className="text-naranja hover:text-azul">pídelo aquí</a>
+            <a href="/contactos" className="text-naranja-texto hover:text-azul">pídelo aquí</a>
           </p>
         </Reveal>
       </Section>

@@ -108,9 +108,12 @@
   --color-azul-palido: #d0eaf5;
   --color-crema: #fafaf7;
   --color-naranja: #ca7520;
+  /* Variante solo para texto pequeño: #ca7520 da 3,30:1 sobre crema y no pasa AA; este da 4,84:1.
+     El naranja de marca no cambia; se usa igual en botones, barras y acentos grandes. */
+  --color-naranja-texto: #a25e1a;
   --color-naranja-claro: #e8a04a;
   --color-tinta: #16344a;
-  --color-tinta-suave: #5c7a8f;
+  --color-tinta-suave: #587589;   /* 4.65:1 sobre crema — antes #5c7a8f daba 4.33:1 */
   --ease-out-brand: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
@@ -158,14 +161,19 @@ button, a[data-btn] { transition: background-color 200ms var(--ease-out-brand), 
 .alza:hover { transform: translateY(-6px); box-shadow: 0 4px 8px rgba(0, 30, 48, 0.05), 0 24px 48px rgba(0, 30, 48, 0.14); }
 @media (prefers-reduced-motion: reduce) { .alza:hover { transform: none; } }
 
-/* Etiqueta de sección: Overpass, mayúsculas, naranja — sin monospace */
-.tag-tech {
-  font-family: var(--font-overpass), sans-serif;
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-naranja);
+/* Etiqueta de sección: Overpass, mayúsculas, naranja de texto — sin monospace.
+   Va en @layer components a propósito: sin capa, esta regla le ganaba a las
+   utilidades de Tailwind y el `text-naranja-claro` de las bandas navy no
+   pintaba nunca. */
+@layer components {
+  .tag-tech {
+    font-family: var(--font-overpass), sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-naranja-texto);
+  }
 }
 
 /* Numeración grande de sección estilo "01/" */

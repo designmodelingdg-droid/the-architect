@@ -44,7 +44,7 @@ export default function Nosotros() {
             <div className="mt-6 grid grid-cols-3 gap-3">
               {[["Política", "Superar expectativas en tiempo, costo y calidad"], ["Visión", "Liderar el diseño con nuevas tecnologías"], ["Misión", "Ejecutar con BIM y tecnología propia"]].map(([t, d]) => (
                 <div key={t} className="panel p-4">
-                  <h3 className="font-heading text-[10px] font-bold uppercase tracking-[0.15em] text-naranja">{t}</h3>
+                  <h3 className="font-heading text-[10px] font-bold uppercase tracking-[0.15em] text-naranja-texto">{t}</h3>
                   <p className="mt-1.5 text-[12px] leading-relaxed text-tinta-suave">{d}</p>
                 </div>
               ))}
@@ -79,14 +79,14 @@ export default function Nosotros() {
                   <Image src={p.foto} alt={p.nombre} width={360} height={360} className="size-full object-cover" />
                 </div>
                 <p className="font-heading text-[17px] font-bold text-navy">{p.nombre}</p>
-                <p className="mt-0.5 font-heading text-[11px] font-bold uppercase tracking-[0.12em] text-naranja">{p.cargo}</p>
+                <p className="mt-0.5 font-heading text-[11px] font-bold uppercase tracking-[0.12em] text-naranja-texto">{p.cargo}</p>
                 <p className="mt-3 text-[14px] leading-relaxed text-tinta-suave">{p.bio}</p>
                 <a
                   href={p.linkedin}
                   target="_blank"
                   rel="noopener"
                   aria-label={`LinkedIn de ${p.nombre}`}
-                  className="mt-3 inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-[12px] font-semibold text-azul transition-colors hover:border-naranja hover:text-naranja"
+                  className="mt-3 inline-flex items-center gap-1.5 rounded-md border border-border px-3 py-1.5 text-[12px] font-semibold text-azul transition-colors hover:border-naranja hover:text-naranja-texto"
                 >
                   <IconoLinkedIn /> LinkedIn
                 </a>
@@ -140,7 +140,7 @@ export default function Nosotros() {
         <Reveal className="mt-10 text-center">
           <p className="text-[14px] text-tinta-suave">
             ¿Buscas formación en BIM para ti o tu equipo?{" "}
-            <a href={ACADEMIA} target="_blank" rel="noopener" className="inline-flex items-center gap-1 font-heading font-bold text-naranja hover:text-azul">
+            <a href={ACADEMIA} target="_blank" rel="noopener" className="inline-flex items-center gap-1 font-heading font-bold text-naranja-texto hover:text-azul">
               Design Modeling Academy <ArrowUpRight className="size-3.5" aria-hidden />
             </a>
           </p>
