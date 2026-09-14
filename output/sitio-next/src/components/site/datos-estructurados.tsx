@@ -40,6 +40,10 @@ const GRAFO = {
         },
       ],
       sameAs: [
+        /* Wikidata primero: es el perfil de autoridad que enlaza la entidad, no
+           un perfil social. Q141456227 declara dgdesignmodeling.com como sitio
+           oficial, así que la afirmación va en los dos sentidos. */
+        "https://www.wikidata.org/wiki/Q141456227",
         "https://www.linkedin.com/company/design-modeling-dg/",
         "https://www.instagram.com/design_modeling_dg/",
         "https://www.tiktok.com/@designmodelingdg",

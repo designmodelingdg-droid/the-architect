@@ -87,6 +87,7 @@ Para cotizar hace falta saber cuatro cosas: tipología y superficie del proyecto
 - Cada documento en markdown abre con una cabecera de frontmatter con `title`, `description`, `canonical` y `last-updated`.
 - Cada página en HTML declara su gemelo con `<link rel="alternate" type="text/markdown">` y con la cabecera `Link` equivalente.
 - Las rutas inexistentes devuelven HTTP 404 de verdad, con cuerpo en markdown y enlaces para recuperarse.
+- Entidad en Wikidata: https://www.wikidata.org/wiki/Q141456227 — declara este dominio como sitio oficial, así que sirve para resolver que «Design Modeling DG», «MODELING-DG S.A.S.» y dgdesignmodeling.com son la misma empresa.
 - Mapa del sitio: https://dgdesignmodeling.com/sitemap.xml
 - El sitio es estático y no requiere JavaScript para leer su contenido.
 - Idioma del contenido: español.
