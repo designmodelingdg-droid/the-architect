@@ -15,6 +15,30 @@ const GRAFO = {
       logo: "https://dgdesignmodeling.com/images/logo-dg.png",
       email: "info@dgdesignmodeling.com",
       telephone: "+593984372010",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Juana Terrazas N71-154",
+        addressLocality: "Quito",
+        addressRegion: "Pichincha",
+        addressCountry: "EC",
+      },
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "sales",
+          email: "info@dgdesignmodeling.com",
+          telephone: "+593984372010",
+          areaServed: ["EC", "CO", "PE", "MX", "GT", "CR", "PA", "ES"],
+          availableLanguage: ["es", "en"],
+        },
+        {
+          "@type": "ContactPoint",
+          contactType: "customer support",
+          email: "info@dgdesignmodeling.com",
+          telephone: "+59325137246",
+          availableLanguage: ["es"],
+        },
+      ],
       sameAs: [
         "https://www.linkedin.com/company/design-modeling-dg/",
         "https://www.instagram.com/design_modeling_dg/",
