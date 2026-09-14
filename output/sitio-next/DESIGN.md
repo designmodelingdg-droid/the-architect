@@ -226,7 +226,10 @@ renders que no sean de un proyecto real.
 
 ## Reglas duras
 
-- Cifras solo si son reales y verificables. Sin número, sin contador.
+- Cifras solo si son reales y verificables. Sin número, sin contador. Y cada
+  cifra dice de quién es: los más de 10 años son de experiencia BIM del equipo,
+  no de la empresa, que se constituyó en 2020. Una cifra del equipo presentada
+  como cifra de la empresa es una cifra falsa.
 - Sin degradados decorativos. Los degradados que hay son velos de navy donde
   se apoya el texto, y existen para que se lea.
 - Sin numerales de sección tipo 01 / 06 que no signifiquen nada: la
