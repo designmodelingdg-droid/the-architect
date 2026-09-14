@@ -169,6 +169,26 @@ El cuerpo del PR es donde queda la memoria del proyecto, así que:
 Un PR que solo dice «mejoras varias» obliga a repetir la investigación dentro de
 seis meses.
 
+### Dónde está la memoria de dgdesignmodeling.com
+
+Este manual resume las decisiones; el razonamiento completo, con las mediciones
+que lo motivaron, está en los PR **#33 a #46** de
+`designmodelingdg-droid/the-architect`. Si algo de aquí parece arbitrario, la
+respuesta está ahí antes que en volver a investigarlo:
+
+| PR | Qué resolvió |
+|---|---|
+| #33, #34 | Redirecciones del WordPress y el hueco del formulario |
+| #35–#38 | Imágenes reales de proyectos, escaladas, y las pantallas del producto |
+| #39 | El widget de chat como botón flotante |
+| #40 | Movimiento: acto fijado, titulares cinéticos, cortinas, contadores |
+| #41 | Auditoría de contraste, la colisión de cascada y el `DESIGN.md` |
+| #42 | Markdown negociado, `llms.txt` con cuándo usarnos, 404 útil |
+| #43 | URLs `.md`, frontmatter, y el cuándo usarnos en inglés |
+| #44 | Los 10+ años son del equipo, no de la empresa |
+| #45 | Este skill |
+| #46 | La entidad de Wikidata enlazada |
+
 ## Escribir para Dayana
 
 - Español. Frases cortas. Sin relleno.
