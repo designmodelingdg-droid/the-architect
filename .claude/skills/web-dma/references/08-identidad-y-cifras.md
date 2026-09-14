@@ -77,9 +77,26 @@ protege un registro de marca. El elemento funciona perfectamente sin logotipo.
 
 ### Después
 
-Cuando exista el elemento, su código `Q…` se añade al `sameAs` del JSON-LD del
-sitio. Eso cierra además la comprobación de vinculación de entidades, que pide
-perfiles de autoridad.
+El código `Q…` del elemento se añade al `sameAs` del JSON-LD del sitio, **en
+primer lugar**: es un perfil de autoridad, no un perfil social. Eso cierra
+además la comprobación de vinculación de entidades, que pide justamente eso. Y
+se cita en las notas para agentes del `llms.txt`, porque es lo que permite
+resolver que el nombre comercial, la razón social y el dominio son la misma
+empresa.
+
+Antes de enlazarlo hay que **verificarlo contra la fuente primaria**, porque una
+vez en el JSON-LD es una afirmación pública sobre la identidad de la empresa:
+
+```bash
+curl -sS -A 'tu-agente/1.0' \
+  https://www.wikidata.org/wiki/Special:EntityData/<Q…>.json
+```
+
+Lo que se comprueba: la etiqueta y la descripción, que `P856` sea el dominio
+correcto, y que `P571` tenga **`precision: 9`** (año) si el mes era aproximado.
+
+Hecho para Design Modeling DG: **`Q141456227`**, con 15 declaraciones, `P571`
+en precisión de año y sin `P154`.
 
 ## Las cifras dicen de quién son
 

@@ -106,5 +106,6 @@ Para no repetir investigación ya hecha:
 - Escáner de agentes: los seis hallazgos del primer informe están cerrados, más
   cinco de la segunda ronda. Lo que queda exige ser plataforma de software y se
   declina por escrito.
-- Pendiente de terceros: el elemento de Wikidata, que crea el equipo; cuando
-  llegue su código `Q…` se añade al `sameAs` del JSON-LD.
+- Entidad en Wikidata: **`Q141456227`**, creada y verificada, enlazada desde el
+  `sameAs` del JSON-LD y citada en el `llms.txt`. Sin logotipo a propósito, por
+  el registro de marca en curso.
