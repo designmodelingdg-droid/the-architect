@@ -1,3 +1,4 @@
+import { alternos } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, Clock, Eye } from "lucide-react";
@@ -9,6 +10,7 @@ import { CtaFinal } from "@/components/site/cta-final";
 import { DataStrip } from "@/components/site/data-strip";
 
 export const metadata: Metadata = {
+  alternates: alternos("/dg-bim-intelligence.md"),
   title: "DG BIM Intelligence — el consultor BIM que razona",
   description:
     "El agente BIM entrenado con el criterio de +10 años de BIM Management: lee tu modelo de Revit, prioriza los hallazgos y entrega cada uno con su evidencia, su impacto y su nivel de confianza.",

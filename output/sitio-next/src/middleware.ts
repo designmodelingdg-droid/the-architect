@@ -8,7 +8,10 @@ import type { NextRequest } from "next/server";
  *    `Accept: text/markdown` recibe el texto de la página en vez de nuestro
  *    HTML con CSS, videos y JavaScript. La petición se reescribe a /md/... y
  *    toda respuesta de página lleva `Vary: Accept` para que ningún CDN sirva
- *    la variante equivocada desde caché.
+ *    la variante equivocada desde caché. El mismo texto tiene además una URL
+ *    propia con sufijo .md (/consultoria.md, /index.md para el inicio), que es
+ *    la forma en que muchos agentes lo piden, y cada página en HTML la anuncia
+ *    con una cabecera `Link ... rel="alternate"`.
  *
  * 2. Mientras el sitio vive en *.vercel.app (staging) no debe indexarse, para
  *    no competir con el dominio definitivo. Esas peticiones llevan la cabecera
@@ -43,8 +46,29 @@ function pideMarkdown(accept: string | null) {
   return q("text/markdown") >= q("text/html");
 }
 
+/* URL canónica del gemelo en markdown de una ruta de página. */
+function gemeloMd(limpia: string) {
+  return `${limpia === "/" ? "/index" : limpia}.md`;
+}
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  /* Sufijo .md: /consultoria.md y /index.md sirven el mismo markdown que la
+     negociación por cabecera, en una URL que se puede compartir y citar. */
+  const conSufijo = /^\/([^/]*)\.md$/i.exec(pathname);
+  if (conSufijo) {
+    const base = conSufijo[1].toLowerCase();
+    const destino = request.nextUrl.clone();
+    destino.pathname = base === "" || base === "index" ? "/md" : `/md/${base}`;
+    const md = NextResponse.rewrite(destino);
+    md.headers.set("Vary", "Accept, Accept-Encoding");
+    if ((request.headers.get("host") ?? "").endsWith(".vercel.app")) {
+      md.headers.set("X-Robots-Tag", "noindex, nofollow");
+    }
+    return md;
+  }
+
   const esPagina = !pathname.startsWith("/_next") && !pathname.startsWith("/md") && !/\.[a-z0-9]+$/i.test(pathname);
 
   if (esPagina && pideMarkdown(request.headers.get("accept"))) {
@@ -60,7 +84,16 @@ export function middleware(request: NextRequest) {
   }
 
   const response = NextResponse.next();
-  if (esPagina) response.headers.append("Vary", "Accept");
+  if (esPagina) {
+    response.headers.append("Vary", "Accept");
+    const limpia = pathname.replace(/\/+$/, "") || "/";
+    if (RUTAS_MD.has(limpia)) {
+      response.headers.append(
+        "Link",
+        `<${gemeloMd(limpia)}>; rel="alternate"; type="text/markdown"`,
+      );
+    }
+  }
   const host = request.headers.get("host") ?? "";
   if (host.endsWith(".vercel.app")) {
     response.headers.set("X-Robots-Tag", "noindex, nofollow");

@@ -174,3 +174,9 @@ export const CLIENTES = [
   { src: "/images/cli-sharp.png", alt: "Sharp CRM", dark: false },
   { src: "/images/cli-inflect.png", alt: "Inflect Consultoría", dark: false },
 ];
+
+/* Cada página en HTML anuncia su gemelo en markdown. Se declara aquí para que
+   el enlace del <head> y la URL con sufijo .md no se separen nunca. */
+export function alternos(md: string) {
+  return { canonical: "./", types: { "text/markdown": md } };
+}

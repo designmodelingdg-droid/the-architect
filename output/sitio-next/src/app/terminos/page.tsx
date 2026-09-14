@@ -1,7 +1,9 @@
+import { alternos } from "@/lib/site";
 import type { Metadata } from "next";
 import { Section } from "@/components/site/section";
 
 export const metadata: Metadata = {
+  alternates: alternos("/terminos.md"),
   title: "Términos y condiciones",
   description: "Términos y condiciones de uso del sitio y de los servicios de MODELING-DG S.A.S.",
 };

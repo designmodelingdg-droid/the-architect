@@ -277,6 +277,65 @@ Contacto para asuntos de privacidad: ${EMAIL}
 ${PIE}`,
 };
 
+/* Metadatos de cada documento, para la cabecera de frontmatter. Un agente que
+   abre el markdown recibe título, descripción, URL canónica y fecha de
+   actualización sin tener que deducirlos del cuerpo. */
+const META: Record<string, { titulo: string; descripcion: string }> = {
+  "": {
+    titulo: "Design Modeling DG",
+    descripcion:
+      "Consultoría en ingeniería estructural, arquitectura y metodología BIM con software propio de inteligencia artificial, desde Quito para Latinoamérica y España.",
+  },
+  consultoria: {
+    titulo: "Consultoría BIM",
+    descripcion:
+      "Cinco familias de servicios: ingeniería estructural, arquitectura y documentación, modelado y coordinación BIM, implementación BIM, y BIM con inteligencia artificial.",
+  },
+  "dg-bim-intelligence": {
+    titulo: "DG BIM Intelligence",
+    descripcion:
+      "Software propio: agente de IA que razona sobre el proyecto BIM con evidencia e impacto, sincronización desde Revit y tableros por rol.",
+  },
+  proyectos: {
+    titulo: "Proyectos",
+    descripcion:
+      "Casos reales 2018-2026 en Ecuador, España, Guatemala, Costa Rica, Panamá, México, Colombia y Perú, con modelos y entregables propios.",
+  },
+  nosotros: {
+    titulo: "Nosotros",
+    descripcion:
+      "Equipo de ingenieros y arquitectos, partner de Autodesk (Authorized Training Center y Learning Partner) y CYPE Authorized Partner.",
+  },
+  contactos: {
+    titulo: "Contacto",
+    descripcion: "Diagnóstico inicial sin costo de 30 minutos. Respuesta en menos de 24 horas.",
+  },
+  blog: { titulo: "Blog", descripcion: "Publicaciones sobre BIM, cálculo estructural e inteligencia artificial aplicada." },
+  terminos: { titulo: "Términos y condiciones", descripcion: "Condiciones de uso del sitio y de los servicios de MODELING-DG S.A.S." },
+  privacidad: { titulo: "Política de privacidad", descripcion: "Tratamiento de datos personales conforme a la LOPDP de Ecuador y al RGPD." },
+};
+
+/* Fecha de la última publicación, en UTC y sin hora: es la que el sitio ya
+   declara en el sitemap, así que las dos no pueden discrepar. */
+const ACTUALIZADO = new Date().toISOString().slice(0, 10);
+
+function frontmatter(ruta: string) {
+  const m = META[ruta];
+  if (!m) return "";
+  const canonica = `${BASE}${ruta === "" ? "/" : `/${ruta}`}`;
+  return [
+    "---",
+    `title: ${JSON.stringify(m.titulo)}`,
+    `description: ${JSON.stringify(m.descripcion)}`,
+    `canonical: ${canonica}`,
+    `last-updated: ${ACTUALIZADO}`,
+    `language: es`,
+    "---",
+    "",
+    "",
+  ].join("\n");
+}
+
 const ALIAS: Record<string, string> = {
   contacto: "contactos",
   contact: "contactos",
@@ -325,7 +384,7 @@ La ruta \`/${bruto}\` no existe en dgdesignmodeling.com.
     return new Response(cuerpo, { status: 404, headers: CABECERAS });
   }
 
-  return new Response(pagina(), { status: 200, headers: CABECERAS });
+  return new Response(frontmatter(ruta) + pagina(), { status: 200, headers: CABECERAS });
 }
 
 export function generateStaticParams() {

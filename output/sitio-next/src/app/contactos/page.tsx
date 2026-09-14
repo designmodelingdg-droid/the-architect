@@ -3,9 +3,10 @@ import { PageHero } from "@/components/site/page-hero";
 import { ContactoBloque } from "@/components/site/contacto-bloque";
 import { Section, SectionHead } from "@/components/site/section";
 import { Reveal } from "@/components/site/reveal";
-import { REDES, WA } from "@/lib/site";
+import { REDES, WA, alternos } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: alternos("/contactos.md"),
   title: "Contacto",
   description:
     "Agenda un diagnóstico gratuito de tu proyecto. MODELING-DG S.A.S, Quito, Ecuador. Atendemos toda Latinoamérica.",
