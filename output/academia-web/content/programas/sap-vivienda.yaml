@@ -1,0 +1,37 @@
+titulo: "Diseño de Viviendas en Hormigón Armado y Acero Estructural"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Diseño de elementos de hormigón armado y acero en viviendas (sistema mixto, sismorresistente) con códigos internacionales y normas locales."
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "N°0 Formación Estructuras Mixtas"
+      - titulo: "N°1 Introducción a SAP2000 y Ejercicio 1 en plano XZ"
+      - titulo: "N°2 Criterios de Vivienda"
+      - titulo: "N°3 Criterios de Prediseño"
+      - titulo: "N°4 Modelamiento y Prediseño de Hormigón"
+      - titulo: "N°5 Gradas en H.A y Prediseño de Acero"
+      - titulo: "N°6 Cargas Gravitacionales y Diafragma Rígido"
+      - titulo: "N°7 Análisis Dinámico"
+      - titulo: "N°8 Fin de Análisis Dinámico y Combinaciones"
+      - titulo: "N°9 Diseño y Material Pre-clase"
+horas: 30
+modalidad: "mixto"
+nivel: "intermedio"
+proximoInicio: "2023-06-22"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "certificado-design-modeling"
+docentes:
+  - "gabriel-pantoja"
+software:
+  - "sap2000"
+area: "calculo-estructural"
+slugAnterior: "/curso/sap-vivienda"
+alumnos: 28

@@ -1,0 +1,44 @@
+titulo: "Análisis y Diseño de Cimentaciones Profundas para Edificios"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Análisis y Diseño de Cimentaciones Profundas para Edificios"
+aprenderas:
+  - "Aspectos geotécnicos"
+  - "Información geotécnica"
+  - "Selección del sistema"
+  - "Cargas gravitacionales y sísmicas"
+  - "Módulos de reacción"
+  - "Bases aisladas y combinadas"
+  - "Cabezal-pilote"
+  - "Modelación (2 casos)"
+  - "Estabilidad y asentamientos"
+  - "Diseño y revisión"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "N°1 Descripción de la estructura y modelo matemático"
+      - titulo: "N°2 Provisiones de diseño según proporciones geométricas"
+      - titulo: "N°3 Diseño asistido por computador: refuerzo general"
+      - titulo: "N°4 Sistema estructural de cimentación: principios"
+      - titulo: "N°5 Clasificación de cimentaciones según Df/B"
+      - titulo: "N°6 Análisis y diseño de bases aisladas asistido por computador"
+horas: 18
+modalidad: "mixto"
+nivel: "intermedio"
+proximoInicio: "2023-04-04"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "certificado-design-modeling"
+docentes:
+  - "manuel-luces"
+software:
+  - "etabs"
+area: "cimentaciones"
+slugAnterior: "/curso/etabs-edificios"
+alumnos: 26

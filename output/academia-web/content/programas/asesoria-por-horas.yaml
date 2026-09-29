@@ -1,0 +1,10 @@
+titulo: "Asesoría especializada por horas"
+tipo: "mentoria"
+estado: "publico"
+resumen: "Horas de asesoría técnica sobre tu proyecto, con el docente que corresponda."
+modalidad: "vivo"
+nivel: "todos"
+mostrarPrecio: false
+docentes:
+  - "gabriel-pantoja"
+slugAnterior: "/es/meetings"

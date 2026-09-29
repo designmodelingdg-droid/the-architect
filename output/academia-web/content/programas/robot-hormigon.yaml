@@ -1,0 +1,49 @@
+titulo: "Diseño Estructural en Hormigón Armado en Edificaciones"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Diseño Estructural en Hormigón Armado en Edificaciones"
+aprenderas:
+  - "Estructuración"
+  - "Predimensionado"
+  - "Modelo matemático"
+  - "Cargas gravitatorias"
+  - "Análisis modal espectral"
+  - "Espectros"
+  - "Diseño sismorresistente"
+  - "Verificación"
+  - "LRFD vs ASD"
+  - "Columnas, vigas, losas, muros, zapatas"
+  - "Refuerzo ACI 318-19"
+  - "Comparación de métodos y costos"
+  - "Memoria de cálculo"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "N°1 Diseño Conceptual"
+      - titulo: "N°2–4 Criterios de Predimensionado (P1–3)"
+      - titulo: "N°5–6 Fase Analítica"
+      - titulo: "N°7–9 Filosofía de Diseño Sismorresistente"
+      - titulo: "N°10–12 Diseño de Elementos de Hormigón Armado (P1, P2, 12a, 12b)"
+      - titulo: "Sesiones de Refuerzo (algunas inactivas): Consideraciones en un Plano Arquitectónico"
+      - titulo: "Prediseño de H.A"
+      - titulo: "Entorno de Robot"
+      - titulo: "Modelado en RSA (pt1, pt2)"
+      - titulo: "Modelado y Configuración de Análisis Modal"
+      - titulo: "Cortante Basal y Derivas"
+modalidad: "mixto"
+nivel: "intermedio"
+proximoInicio: "2024-08-27"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "autodesk-certificate-of-completion"
+docentes:
+  - "gabriel-pantoja"
+area: "calculo-estructural"
+slugAnterior: "/curso/robot-hormigon"
+alumnos: 59

@@ -1,0 +1,80 @@
+titulo: "Diseño y Análisis profesional en SAP2000"
+tipo: "especializacion"
+estado: "publico"
+destacado: false
+resumen: "2 meses: diseño estructural básico y avanzado + análisis sismorresistente en SAP2000 para proyectos residenciales, industriales y metálicos"
+descripcion: "Programa 100 % online: clases en video, recursos descargables, ejercicios y consultorías 1 a 1."
+paraQuien:
+  - "Ingenieros civiles"
+  - "Proyectistas"
+  - "Calculistas"
+  - "Diseñadores de estructuras metálicas e industriales"
+  - "Consultores"
+  - "Estudiantes avanzados"
+aprenderas:
+  - "Modelado"
+  - "Cargas"
+  - "Resultados"
+  - "Acero"
+  - "Perfiles"
+  - "Normativa"
+  - "Filosofía sismorresistente"
+  - "Análisis modal"
+  - "Diseño de elementos"
+beneficios:
+  - "Acceso inmediato e ilimitado a las formaciones del paquete"
+  - "Contenido 100 % original y material descargable"
+  - "Videoclases cortas, prácticas y teóricas, con apuntes en PDF"
+  - "Certificación internacional con aval Design Modeling Academy y QR de verificación"
+  - "Acceso a la comunidad Design Premium"
+  - "Preparación para acceder al Diplomado Universitario BIM"
+  - "Certificación Universitaria Internacional DQ"
+  - "Cuatro sesiones 1 a 1 de 45 minutos durante el primer mes"
+modulos:
+  - titulo: "Análisis y Diseño de Edificaciones Residenciales en Hormigón Armado"
+  - titulo: "Naves Industriales PRO 30 Horas en SAP2000"
+  - titulo: "Diseño de Edificaciones Sismorresistentes en Hormigón Armado"
+horas: 70
+meses: 2
+modalidad: "pregrabado"
+nivel: "todos"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 199.99
+    moneda: "USD"
+    tachado: 499.99
+  - opcion: "cuotas"
+    monto: 100
+    moneda: "USD"
+    cuotas: 2
+excluidoDeSuscripcion: false
+credenciales:
+  - "certificado-design-modeling"
+  - "doctrinas-qualitas-dq"
+docentes:
+  - "gabriel-pantoja"
+  - "manuel-luces"
+software:
+  - "sap2000"
+area: "metodologia-bim"
+incluye:
+  - "sap-residenciales"
+  - "sap-naves"
+  - "etabs-sismorresistente"
+whatsapp: "https://wa.link/ffg7u0"
+faq:
+  - pregunta: "¿Las clases son en vivo o pregrabadas?"
+    respuesta: "Hay de las dos. La página de cada curso indica la modalidad, y todo se puede ver cuando quieras, donde quieras y cuantas veces quieras."
+  - pregunta: "¿Dónde ingreso después de comprar?"
+    respuesta: "Llega un correo con la invitación al grupo de WhatsApp de la formación y el enlace de acceso al campus."
+  - pregunta: "¿Puedo descargar el material?"
+    respuesta: "Todo el material se descarga; los videos se ven desde el campus."
+  - pregunta: "¿Hay requisitos?"
+    respuesta: "Ninguno. Desde cero hasta especialistas."
+  - pregunta: "¿El acceso es ilimitado?"
+    respuesta: "Sí, en modalidad pregrabada el acceso es ilimitado."
+  - pregunta: "¿Hay soporte personalizado?"
+    respuesta: "Sí: cuatro sesiones 1 a 1 de 45 minutos durante el primer mes."
+slugAnterior: "/especializacion/diseno-analisis-profesional-sap"
+alumnos: 2

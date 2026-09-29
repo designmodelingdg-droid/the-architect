@@ -1,0 +1,14 @@
+titulo: "Sesión de mentoría para proyectos estructurales"
+tipo: "mentoria"
+estado: "publico"
+resumen: "Una hora con un ingeniero de la academia sobre tu proyecto real: criterio, revisión y siguiente paso."
+modalidad: "vivo"
+nivel: "todos"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 99.99
+    moneda: "USD"
+docentes:
+  - "gabriel-pantoja"
+slugAnterior: "/es/meetings"

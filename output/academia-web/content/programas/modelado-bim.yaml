@@ -1,0 +1,60 @@
+titulo: "Modelado BIM en Hormigón Armado y Acero Estructural"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Revit Structure: documentación del proyecto (planimetría, detalles, medición, refuerzo de hormigón, conexiones de acero, planos estructurales) con metodología BIM."
+aprenderas:
+  - "Qué es Revit Structure"
+  - "Plantillas y familias"
+  - "Interoperabilidad BIM"
+  - "Elementos estructurales"
+  - "Columnas y vigas"
+  - "Cimentaciones, losas y cubiertas"
+  - "Edificaciones irregulares en hormigón y acero"
+  - "Detallado de hormigón"
+  - "Tipologías de conexiones"
+  - "Cantidades y planillas de acero"
+  - "Planos para aprobación municipal"
+beneficios:
+  - "100% a distancia"
+  - "Certificado Autodesk (Revit)"
+  - "1 mes de dudas con el instructor"
+  - "Certificado Design Modeling con QR"
+  - "Acceso de por vida"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "N°0 Conceptos y Modelado BIM en Revit Structure"
+      - titulo: "N°1 \"Un cambio de paradigma en la forma de desarrollar nuestros proyectos estructurales\""
+      - titulo: "N°2 Inducción del Modelado BIM en Revit"
+      - titulo: "N°3 Modelado de Elementos Lineales y Elementos Área"
+      - titulo: "N°4 Modelado de Losas y Réplicas de Niveles"
+      - titulo: "N°5 Modelado de Muros y Escaleras"
+      - titulo: "N°6–8 Refuerzo de Acero de Hormigón Armado (Pt1–3)"
+      - titulo: "N°9–11 Estructuras de Acero Estructural (Pt1–3)"
+      - titulo: "Sesión Extra N°1 Muros de Contención"
+      - titulo: "N°12 Cantidades de Obra"
+      - titulo: "N°13 Documentación de Planos"
+      - titulo: "Videos Complementarios N°1 y N°2"
+horas: 50
+modalidad: "mixto"
+nivel: "intermedio"
+proximoInicio: "2026-07-05"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "autodesk-certificate-of-completion"
+  - "certificado-design-modeling"
+docentes:
+  - "gabriel-pantoja"
+software:
+  - "autocad"
+  - "revit"
+area: "acero-estructural"
+whatsapp: "https://wa.link/ilqxim"
+slugAnterior: "/curso/modelado-bim"
+alumnos: 88

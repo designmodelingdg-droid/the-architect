@@ -1,0 +1,41 @@
+titulo: "Análisis y Diseño Profesional de Puentes Metálicos y Hormigón Pretensado"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Análisis y Diseño Profesional de Puentes Metálicos y Hormigón Pretensado"
+aprenderas:
+  - "AASHTO"
+  - "Cargas (viento, sismo, tránsito, armónicas)"
+  - "Combinaciones"
+  - "Análisis estructural de puentes"
+  - "Diseño de elementos"
+  - "Pilares y estribos. Puentes de dovelas metálicas y hormigón pretensado"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "N°1 Revisión General del Curso (P1, P2)"
+      - titulo: "N°2 Líneas de Influencia"
+      - titulo: "N°3 Análisis de viento RSA (P1, P2)"
+      - titulo: "N°4 Puentes atirantados y colgantes"
+      - titulo: "N°5 Ejercicio práctico – Cargas muertas"
+      - titulo: "N°6 Cargas vivas y prediseño"
+      - titulo: "N°7 Prediseño de dovelas"
+      - titulo: "N°8 Prediseño y condición de dovelas y rigidizadores"
+      - titulo: "N°9 Vigas compuestas"
+      - titulo: "N°10 Modelo RSA y diseño"
+modalidad: "mixto"
+nivel: "intermedio"
+proximoInicio: "2023-11-01"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "autodesk-certificate-of-completion"
+docentes:
+  - "mijail-mayorga"
+area: "calculo-estructural"
+slugAnterior: "/curso/robot-puentes"
+alumnos: 29

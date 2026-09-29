@@ -1,0 +1,10 @@
+titulo: "Sesiones de refuerzo para especializaciones"
+tipo: "mentoria"
+estado: "publico"
+resumen: "Sesiones en vivo de refuerzo para quien cursa una especialización."
+modalidad: "vivo"
+nivel: "todos"
+mostrarPrecio: false
+docentes:
+  - "gabriel-pantoja"
+slugAnterior: "/es/meetings"

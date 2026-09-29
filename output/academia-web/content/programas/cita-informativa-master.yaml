@@ -1,0 +1,10 @@
+titulo: "Cita informativa del Máster BIM + IA"
+tipo: "mentoria"
+estado: "publico"
+resumen: "Treinta minutos con un asesor académico para saber si el Máster es para ti y cómo empezar."
+modalidad: "vivo"
+nivel: "todos"
+mostrarPrecio: true
+docentes:
+  - "gabriel-pantoja"
+slugAnterior: "/es/meetings"

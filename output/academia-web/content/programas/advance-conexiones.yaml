@@ -1,0 +1,54 @@
+titulo: "Teoría y Calculo de Uniones Metálicas en Edificaciones"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Diseño de conexiones metálicas desde la teoría y tipos de uniones hasta la práctica con diseños detallados de estructuras de acero."
+descripcion: "Normas AISC 360-16, 358-16, ANSI/AWS; Advance Steel + hojas MathCAD; asincrónico. Requisito: no necesita Advance Steel previo."
+aprenderas:
+  - "1) introducción a conexiones"
+  - "2) simples y resistentes a momento"
+  - "3) interoperabilidad Robot–Advance"
+  - "4) soldadura"
+  - "5) empernadas"
+  - "6) precalificadas"
+  - "7) montaje de columnas y cálculo de izaje"
+  - "8) bases de columnas y aplastamiento del concreto"
+  - "9) planos y listas en Advance Steel"
+beneficios:
+  - "100% a distancia"
+  - "Certificación Autodesk (Revit)"
+  - "1 mes de dudas con el instructor"
+  - "Certificación Design Modeling con QR"
+  - "Acceso de por vida"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "N°0 Introducción al Curso"
+      - titulo: "N°1 Introducción a las Conexiones Metálicas"
+      - titulo: "N°2 Fundamentos a conexiones metálicas simples y resistentes a momento"
+      - titulo: "N°3 Interoperabilidad en Programas de Cálculo de Autodesk (Pt1, Pt2)"
+      - titulo: "N°4 Soldadura en Conexiones en Advance Steel"
+      - titulo: "N°5–6 Definición de Conexiones Empernadas (Pt1, Pt2)"
+      - titulo: "N°7–8 Desarrollo de Conexiones Precalificadas (Pt1, Pt2)"
+      - titulo: "N°9 Placa de Izaje y Oreja de Anclajes"
+      - titulo: "N°10 Entregables finales y Conclusiones"
+modalidad: "pregrabado"
+nivel: "intermedio"
+proximoInicio: "2026-07-05"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "certificado-design-modeling"
+docentes:
+  - "mijail-mayorga"
+software:
+  - "advance-steel"
+  - "revit"
+area: "acero-estructural"
+whatsapp: "https://wa.link/pjd75w"
+slugAnterior: "/curso/advance-conexiones"
+alumnos: 46

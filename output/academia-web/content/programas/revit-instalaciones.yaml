@@ -1,0 +1,52 @@
+titulo: "Introducción de Instalaciones Hidrosanitarias con Modelado BIM"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Instalaciones sanitarias y mecánicas; modelar componentes, elementos y familias MEP integrados con arquitectura."
+aprenderas:
+  - "Menús de disciplinas"
+  - "Herramientas de creación y visualización"
+  - "Plantilla de trabajo"
+  - "Parámetros"
+  - "Clasificación de tuberías"
+  - "Pendientes y accesorios"
+  - "Sanitarias, agua fría y caliente"
+  - "Rígidas y flexibles"
+  - "Familias de aparatos"
+  - "Diseño automático de tuberías"
+  - "Cuantificación"
+  - "Planos y exportación"
+  - "Coordinación con arquitectura y estructura"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "Inducción de Revit (MEP)"
+      - titulo: "Coordinación de Vínculos y Logística"
+      - titulo: "Operaciones en Revit MEP"
+      - titulo: "Introducción a Instalaciones Sanitarias: Tuberías"
+      - titulo: "Inserción de Sistemas Sanitarios en Revit"
+      - titulo: "Conceptos de Agua Fría en Subterráneos"
+      - titulo: "Desarrollo de Sistemas de Alcantarillado"
+      - titulo: "Tuberías de Agua Fría y Caliente (Pt1, Pt2)"
+      - titulo: "Inserción de Componentes Sanitarios"
+      - titulo: "Modelado de Tuberías y Aparatos Mecánicos en Edificaciones (Pt1, Pt2)"
+horas: 30
+modalidad: "mixto"
+nivel: "intermedio"
+proximoInicio: "2025-08-02"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "autodesk-certificate-of-completion"
+  - "certificado-design-modeling"
+docentes:
+  - "gabriel-pantoja"
+software:
+  - "revit"
+area: "metodologia-bim"
+slugAnterior: "/curso/revit-instalaciones"
+alumnos: 40

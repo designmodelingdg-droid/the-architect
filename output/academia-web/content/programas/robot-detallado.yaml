@@ -1,0 +1,43 @@
+titulo: "Detallado de Refuerzo de Acero en Elementos de Hormigón Armado"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Detallado de Refuerzo de Acero en Elementos de Hormigón Armado"
+aprenderas:
+  - "Columnas (flexo-compresión, diagrama de interacción, corte, confinamiento, empalmes)"
+  - "Vigas (flexión, acero longitudinal, longitudes de corte y desarrollo, corte)"
+  - "Losas aligeradas y macizas (flexión, corte, traslapes)"
+  - "Muros (flexo-compresión, corte, columnas de borde y núcleos, detallado)"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "Introductoria (Robot-Revit)"
+      - titulo: "N°1 Inducción de Detallado de Acero"
+      - titulo: "N°2 Diseño a Flexo-Compresión Columnas"
+      - titulo: "N°3–4 Diseño de Columnas en RSA"
+      - titulo: "N°5–6 Diseño de Vigas a Flexión"
+      - titulo: "N°7 Diseño de Vigas y Cimentaciones"
+      - titulo: "N°8 Diseño de Cimentaciones y Muros"
+      - titulo: "N°9 Diseño de Muros y Losas"
+      - titulo: "Extra N°1 Conceptos y Modelado BIM en Revit Structure"
+      - titulo: "Extra N°2 Combinaciones de Cargas y Configuración Rápida de Espectro"
+horas: 40
+modalidad: "mixto"
+nivel: "todos"
+proximoInicio: "2024-08-28"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "autodesk-certificate-of-completion"
+  - "certificado-design-modeling"
+docentes:
+  - "gabriel-pantoja"
+software:
+  - "revit"
+area: "cimentaciones"
+slugAnterior: "/curso/robot-detallado"
+alumnos: 30

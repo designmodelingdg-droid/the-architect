@@ -1,0 +1,63 @@
+titulo: "Guía Práctica para el Cálculo Tipo Cerchas en Naves Industriales"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Especialización en Diseño de Naves Industriales con Cálculo de Uniones Metálicas en marcos rígidos y elementos cerchados con Robot Structural Analysis y Advance Steel."
+descripcion: "AISC 360 y 358; esfuerzos en Robot → conexiones en Advance Steel. Programas: Advance Steel 2023, AutoCAD, Robot 2023 (misma versión); opcionales Excel, MathCAD. Requisitos: conocimientos básicos de naves."
+aprenderas:
+  - "Conexiones metálicas"
+  - "Simples y a momento"
+  - "Interoperabilidad Robot–Advance"
+  - "Soldadura"
+  - "Empernadas"
+  - "Precalificadas AISC 360"
+  - "Montaje e izaje"
+  - "Bases de columnas"
+  - "Planos y listas en Advance Steel"
+  - "Control de calidad y costos"
+beneficios:
+  - "Asincrónico con clases pregrabadas"
+  - "Acceso ilimitado"
+  - "Reuniones pre-agendadas con el instructor (Zoom/WhatsApp)"
+  - "Apuntes en PDF"
+  - "Soporte de instalación y licencias"
+  - "Certificado Autodesk"
+  - "Certificado Design Modeling con QR"
+  - "Material descargable (incluye Material de Apoyo .rar 17.5 MB)"
+  - "Acceso de por vida"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "N°1 Introducción a los Galpones Industriales"
+      - titulo: "N°2 Conexiones Metálicas (Soldadura)"
+      - titulo: "N°3 Conexiones Metálicas en Galpones Cerchados"
+      - titulo: "N°4 Conceptos de Modelado de Galpones Cerchados (Parte 1 y 2)"
+      - titulo: "N°5 Verificación de Galpones Cerchados en Robot"
+      - titulo: "N°6 Introducción de Marcos Rígidos"
+      - titulo: "N°7 Modelado de Marcos Rígidos y Cerchas Parabólicas"
+      - titulo: "N°8 Análisis de Conexiones metálicas incluyendo Pernos de Anclaje"
+      - titulo: "N°9 Disposiciones finales de Conexiones de Acero"
+horas: 30
+modalidad: "pregrabado"
+nivel: "intermedio"
+proximoInicio: "2026-07-05"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "autodesk-certificate-of-completion"
+  - "certificado-design-modeling"
+docentes:
+  - "mijail-mayorga"
+software:
+  - "advance-steel"
+  - "autocad"
+  - "excel"
+  - "robot-structural-analysis"
+area: "conexiones-y-detalles"
+whatsapp: "https://wa.link/1522ph"
+slugAnterior: "/curso/robot-naves"
+alumnos: 91

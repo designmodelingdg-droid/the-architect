@@ -1,0 +1,49 @@
+titulo: "Análisis Profesional de Estructuras de Acero. Incluyendo Conexiones."
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Análisis Profesional de Estructuras de Acero. Incluyendo Conexiones."
+aprenderas:
+  - "Módulo 1 (revisión arquitectónica"
+  - "AISC 360/341"
+  - "Estructuración"
+  - "Sistemas sismorresistentes"
+  - "Predimensión"
+  - "Materiales"
+  - "Cargas"
+  - "Modelación"
+  - "Steel deck"
+  - "Análisis estático y dinámico"
+  - "Diseño de vigas, columnas, arriostramientos). Módulo 2 (conexiones: principios"
+  - "Normativa"
+  - "Precalificadas"
+  - "Viga-columna a momento y corte"
+  - "Placas de anclaje) según AISC 358"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "F1 Fundamentos de estructuración y sistemas estructurales en acero"
+      - titulo: "F2 Modelación Matemática"
+      - titulo: "F3 Análisis y Diseño de Losas Steel Deck (vigas compuestas)"
+      - titulo: "F4 Análisis del Sistema de Resistencia Sísmica"
+      - titulo: "F5 Diseño del SRS"
+      - titulo: "F6 Análisis y diseño de Conexiones para elementos de acero"
+horas: 40
+modalidad: "mixto"
+nivel: "intermedio"
+proximoInicio: "2024-10-02"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "certificado-design-modeling"
+docentes:
+  - "manuel-luces"
+software:
+  - "etabs"
+area: "acero-estructural"
+slugAnterior: "/curso/etabs"
+alumnos: 99

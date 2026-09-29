@@ -1,0 +1,71 @@
+titulo: "Diplomado Universitario Internacional BIM: Diseño, Cálculo y Marketing para la Innovación en Ingeniería y Arquitectura"
+tipo: "diplomado"
+estado: "publico"
+destacado: false
+resumen: "Programa integral para actualizarse en BIM aplicado a estructuras de hormigón y acero y potenciar el perfil comercial."
+descripcion: "Pregrabado + MasterClass en vivo por módulo + webinars/consultorías de marketing. 700 h, cronograma 12 meses. Software: Revit, Robot, Navisworks, Advance Steel, Excel, MathCAD, Sharp CRM. Normativas como #29586."
+aprenderas:
+  - "BIM en proyectos estructurales"
+  - "Diseño sismorresistente"
+  - "Modelado arquitectónico 3D"
+  - "Documentación BIM"
+  - "Coordinación multidisciplinaria"
+  - "MEP"
+  - "Marketing digital para técnicos"
+  - "CRM"
+  - "Ventas especializadas"
+  - "Automatización e IA en marketing"
+beneficios:
+  - "Perfil técnico + comercial"
+  - "Acceso ilimitado"
+  - "Certificado oficial por módulo (universidades y Autodesk)"
+  - "Certificación complementaria \"Especialización en Marca Personal y Marketing para Profesionales Técnicos\""
+  - "DQ"
+  - "Sabal"
+  - "Universidad de las Naciones"
+  - "Foros y networking"
+  - "Asistencia de instalación y actualización de contenidos"
+  - "Material PDF/CAD/DWG, ejercicios y talleres"
+modulos:
+  - titulo: "M1–M9 idénticos al Diplomado #29586 (Iniciación BIM"
+  - titulo: "Acero sismorresistente"
+  - titulo: "Conexiones precalificadas"
+  - titulo: "Hormigón sismorresistente"
+  - titulo: "Refuerzo en hormigón"
+  - titulo: "Cimentaciones"
+  - titulo: "Documentación BIM"
+  - titulo: "Instalaciones + Navisworks"
+  - titulo: "Presupuestos BIM) + M10 Marketing Digital y Automatización integrado a la construcción"
+horas: 700
+modalidad: "pregrabado"
+nivel: "avanzado"
+proximoInicio: "2026-07-05"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 1499.99
+    moneda: "USD"
+excluidoDeSuscripcion: true
+credenciales:
+  - "autodesk-certificate-of-completion"
+  - "certificado-design-modeling"
+  - "doctrinas-qualitas-dq"
+  - "sabal-university"
+  - "universidad-de-las-naciones"
+docentes:
+  - "gabriel-pantoja"
+  - "andres-linares"
+  - "christopher-mendez"
+  - "manuel-luces"
+  - "mijail-mayorga"
+  - "pablo-sandoya"
+  - "patricio-hernandez-marin"
+software:
+  - "advance-steel"
+  - "excel"
+  - "revit"
+  - "navisworks"
+area: "cimentaciones"
+whatsapp: "https://wa.link/tb9e7b"
+slugAnterior: "/curso/diplomado-estructuras-marketing"
+alumnos: 0

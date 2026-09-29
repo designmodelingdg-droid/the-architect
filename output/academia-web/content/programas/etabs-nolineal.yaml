@@ -1,0 +1,40 @@
+titulo: "Análisis No Lineal en Estructuras de Hormigón Armado"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Análisis No Lineal en Estructuras de Hormigón Armado"
+descripcion: "Análisis no lineal y diseño por desempeño de un edificio de H.A de 6 niveles. Normas: FEMA 356, ATC 40, ASCE/SEI 41, FEMA 440. 3 casos prácticos."
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "N°1 Introducción al Análisis Estático No Lineal (Pushover)"
+      - titulo: "N°2 Estado del Arte y Ductilidad Teórica"
+      - titulo: "N°3 Configuración para Revisión de Criterios"
+      - titulo: "N°4 Rótulas Plásticas"
+      - titulo: "N°5 Rigidez Efectiva"
+      - titulo: "N°6 Extensión de Fundamentos No Lineales"
+      - titulo: "N°7 Acciones para cumplir Desempeño Sísmico"
+      - titulo: "N°8 Espectro de Capacidad FEMA 440"
+      - titulo: "N°9 Espectro de Capacidad ATC 40"
+      - titulo: "N°10 No Linealidad Geométrica"
+      - titulo: "N°11 Control de Desplazamiento"
+      - titulo: "N°12 Configuración Manual de Rótulas Plásticas"
+horas: 30
+modalidad: "mixto"
+nivel: "intermedio"
+proximoInicio: "2023-04-16"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "certificado-design-modeling"
+docentes:
+  - "manuel-luces"
+software:
+  - "etabs"
+area: "calculo-estructural"
+slugAnterior: "/curso/etabs-nolineal"
+alumnos: 29

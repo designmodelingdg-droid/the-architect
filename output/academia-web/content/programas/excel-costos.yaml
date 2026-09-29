@@ -1,0 +1,46 @@
+titulo: "Costos y Presupuestos de Obras de Construcción Aplicado a Viviendas"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Costos y Presupuestos de Obras de Construcción Aplicado a Viviendas"
+aprenderas:
+  - "Ingeniería de costos"
+  - "Costos directos e indirectos"
+  - "Procedimiento de presupuestos"
+  - "Optimización"
+  - "Mano de obra y materiales"
+  - "Logística"
+  - "Rendimientos"
+  - "Productividad"
+  - "APUs con caso residencial"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "N°0 Inducción"
+      - titulo: "N°1 Introducción a la Ingeniería de Costos"
+      - titulo: "N°2 Costos Directos e Indirectos"
+      - titulo: "N°3 Presupuestos de Obra"
+      - titulo: "N°4 Tarifa de Maquinaria y Equipos"
+      - titulo: "N°5 Salario de Mano de Obra y Materiales"
+      - titulo: "N°6 Logística, Transporte y Rendimientos"
+      - titulo: "N°7–9 Análisis de Precios Unitarios (APUs) Pt1–3"
+      - titulo: "N°10 Finalización y Cierre"
+horas: 40
+modalidad: "mixto"
+nivel: "intermedio"
+proximoInicio: "2023-09-06"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "certificado-design-modeling"
+docentes:
+  - "pablo-sandoya"
+software:
+  - "excel"
+area: "presupuesto"
+slugAnterior: "/curso/excel-costos"
+alumnos: 34

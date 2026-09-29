@@ -1,0 +1,49 @@
+titulo: "Bloque 3: BIM Management"
+tipo: "bloque"
+estado: "publico"
+destacado: false
+resumen: "Un trimestre del Máster BIM + IA, cursable por separado y apilable hacia el máster completo. 2 módulos, con microcredencial al terminar."
+descripcion: "Cada bloque cierra con un proyecto entregable y una microcredencial. Lo cursado suma hacia el Máster completo, sin expiración y con reingreso sin costo."
+paraQuien:
+  - "Ingenieros Civiles y Arquitectos"
+  - "Gerentes y Coordinadores de Proyectos"
+  - "Coordinadores BIM que buscan escalar a BIM Manager"
+  - "Jefes de obra, ingenieros residentes y diseñadores estructurales"
+  - "Docentes universitarios del área de construcción"
+  - "Profesionales en altos cargos que buscan liderar la transformación digital del sector"
+modulos:
+  - titulo: "Módulo 08: BIM 4D: planificación"
+  - titulo: "Módulo 09: BIM 5D: costos"
+horas: 360
+meses: 3
+modalidad: "mixto"
+nivel: "avanzado"
+proximoInicio: "2026-10-05"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 600
+    moneda: "USD"
+  - opcion: "cuotas"
+    monto: 300.0
+    moneda: "USD"
+    cuotas: 2
+excluidoDeSuscripcion: true
+credenciales:
+  - "microcredencial-nft-dq"
+  - "certificado-design-modeling"
+docentes:
+  - "gabriel-pantoja"
+  - "cristina-holguin"
+  - "manuel-luces"
+  - "mijail-mayorga"
+  - "pablo-sandoya"
+software:
+  - "revit"
+  - "navisworks"
+  - "dynamo"
+  - "python"
+  - "robot-structural-analysis"
+area: "metodologia-bim"
+whatsapp: "https://wa.link/2f7ag0"
+alumnos: 23

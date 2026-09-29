@@ -1,0 +1,30 @@
+titulo: "Análisis y Diseño de Cimentaciones Superficiales y Profundas"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Análisis y Diseño de Cimentaciones Superficiales y Profundas"
+aprenderas:
+  - "Reacciones de superestructura"
+  - "Zapatas aisladas, combinadas, corridas, losas"
+  - "Parámetros de suelo"
+  - "Asentamientos y punzonamiento"
+  - "Cimentaciones profundas losa-pilote y cabezal-viga-pilote"
+horas: 30
+modalidad: "mixto"
+nivel: "intermedio"
+proximoInicio: "2023-04-07"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "autodesk-certificate-of-completion"
+docentes:
+  - "mijail-mayorga"
+software:
+  - "revit"
+area: "cimentaciones"
+slugAnterior: "/curso/robot-cimentaciones"
+alumnos: 34

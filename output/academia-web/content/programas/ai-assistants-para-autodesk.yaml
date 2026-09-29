@@ -1,0 +1,56 @@
+titulo: "AI Assistants para Autodesk (ChatGPT, Copilot, Firefly)"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Integrar ChatGPT, Copilot y Firefly en el flujo de trabajo con Autodesk para automatizar tareas, optimizar diseños y decidir mejor en menos tiempo."
+descripcion: "100% online, Aula Virtual, clases prácticas + MasterClass en vivo, acceso ilimitado. Herramientas: Revit, AutoCAD, Excel, Adobe Firefly, ChatGPT y Copilot, add-ins de automatización para Revit."
+paraQuien:
+  - "Ingenieros civiles y estructurales"
+  - "Arquitectos técnicos/BIM"
+  - "BIM Managers y coordinadores"
+  - "Modeladores y proyectistas"
+  - "Profesionales que quieren integrar IA"
+aprenderas:
+  - "Integrar asistentes de IA en Autodesk"
+  - "Automatizar modelado, documentación y coordinación"
+  - "Optimizar flujos BIM con IA"
+  - "Generar contenido técnico, parámetros y documentación"
+  - "Análisis asistido por IA"
+  - "Prompts para arquitectura e ingeniería"
+  - "Reducir tiempos y errores"
+beneficios:
+  - "Acceso ilimitado"
+  - "Cursos enfocados en automatización, IA, Data BIM, gestión y presentación"
+  - "Reducción de tiempos 30–60%"
+  - "Material descargable (PDF, Revit, plantillas)"
+  - "Clases maestras en vivo (horario según mayoría del grupo)"
+  - "Comunidad privada con foro"
+  - "Soporte e instalación y licencias Autodesk"
+  - "Certificación 15 h aval Modeling-DG"
+  - "Certificado Autodesk"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "1 módulo interno \"AI Assistants para Autodesk (ChatGPT, Copilot, Firefly)\" (forma parte del paquete de 12 cursos BIM+IA)"
+horas: 15
+modalidad: "vivo"
+nivel: "avanzado"
+proximoInicio: "2026-07-05"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 199.99
+    moneda: "USD"
+excluidoDeSuscripcion: true
+credenciales:
+  - "autodesk-certificate-of-completion"
+  - "certificado-design-modeling"
+docentes:
+  - "gabriel-pantoja"
+software:
+  - "autocad"
+  - "excel"
+  - "revit"
+area: "metodologia-bim"
+slugAnterior: "/curso/ai-assistants-para-autodesk"
+alumnos: 1

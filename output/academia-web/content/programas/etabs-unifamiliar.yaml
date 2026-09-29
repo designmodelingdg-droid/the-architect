@@ -1,0 +1,49 @@
+titulo: "Diseño y Modelado de Viviendas Unifamiliares en Acero Estructural"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Diseño y Modelado de Viviendas Unifamiliares en Acero Estructural"
+aprenderas:
+  - "Análisis de plano arquitectónico"
+  - "Criterios de acero"
+  - "Ejes y niveles"
+  - "Materiales y secciones"
+  - "Modelado 3D frames"
+  - "Cargas estáticas"
+  - "Análisis modal"
+  - "Sismo"
+  - "Diseño de vigas y columnas"
+  - "Interpretación de resultados"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "N°0 Introductoria"
+      - titulo: "N°1 Consideraciones en un Plano Arquitectónico"
+      - titulo: "N°2 Criterios Iniciales en ETABS"
+      - titulo: "N°3 Implantación de Elementos"
+      - titulo: "N°4 Estimación de Perfiles"
+      - titulo: "N°5 Modelado en ETABS"
+      - titulo: "N°6–7 Fase Final de Modelado"
+      - titulo: "N°8 Modelo Analítico"
+      - titulo: "N°9 Análisis Dinámicos"
+      - titulo: "N°10 Análisis Sísmico y Diseño Final"
+      - titulo: "N°11 Limitación de Daños y Diseño Final"
+horas: 30
+modalidad: "mixto"
+nivel: "intermedio"
+proximoInicio: "2023-04-06"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "certificado-design-modeling"
+docentes:
+  - "gabriel-pantoja"
+software:
+  - "etabs"
+area: "acero-estructural"
+slugAnterior: "/curso/etabs-unifamiliar"
+alumnos: 27

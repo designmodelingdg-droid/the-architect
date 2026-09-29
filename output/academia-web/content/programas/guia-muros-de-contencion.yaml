@@ -1,0 +1,13 @@
+titulo: "Guía de muros de contención"
+tipo: "guia"
+estado: "publico"
+resumen: "Guía práctica de diseño de muros de contención."
+modalidad: "pregrabado"
+nivel: "todos"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 14.99
+    moneda: "USD"
+    tachado: 49.99
+slugAnterior: "/producto/guia-muros-de-contencion"

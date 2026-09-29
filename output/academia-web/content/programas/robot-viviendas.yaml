@@ -1,0 +1,51 @@
+titulo: "Análisis Profesional de Viviendas en Hormigón Armado"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Análisis Profesional de Viviendas en Hormigón Armado"
+aprenderas:
+  - "Interpretación de arquitectura"
+  - "Prediseño"
+  - "Cálculo en Robot"
+  - "Unidades, materiales, normativas"
+  - "Modelo matemático"
+  - "Barras y áreas"
+  - "Estados de carga"
+  - "Diseño sismorresistente"
+  - "Solución modal y espectros"
+  - "Verificación"
+  - "Diseño de columnas, vigas y losas"
+  - "Memoria de cálculo"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "Introducción"
+      - titulo: "F1 Conociendo Robot Structural Analysis"
+      - titulo: "F2 Presentación de Proyectos de Viviendas"
+      - titulo: "F3 Prediseño de Elementos de Hormigón Armado"
+      - titulo: "F4 Modelo Matemático en RSA"
+      - titulo: "F5 Introducción de Cargas"
+      - titulo: "F6 Análisis Modal Espectral"
+      - titulo: "F7 Filosofía de Diseño Sismorresistente"
+      - titulo: "F8 Diseño de Elementos de Hormigón Armado"
+      - titulo: "F9 Diseño de Elementos de Acero"
+      - titulo: "F10 Entregables Finales"
+horas: 30
+modalidad: "mixto"
+nivel: "intermedio"
+proximoInicio: "2024-08-29"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "autodesk-certificate-of-completion"
+docentes:
+  - "gabriel-pantoja"
+software:
+  - "robot-structural-analysis"
+area: "calculo-estructural"
+slugAnterior: "/curso/robot-viviendas"
+alumnos: 76

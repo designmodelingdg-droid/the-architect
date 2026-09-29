@@ -1,0 +1,45 @@
+titulo: "Diseño y Cálculo de Edificaciones Industriales en Acero Estructural"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Diseño y Cálculo de Edificaciones Industriales en Acero Estructural"
+aprenderas:
+  - "Tipologías industriales"
+  - "Criterios"
+  - "Generación de elementos"
+  - "Modelo matemático"
+  - "Cargas estáticas y dinámicas en ETABS"
+  - "Verificación AISC 360-16"
+  - "Diseño de acero"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "N°1 Fundamentos en Estructuras Industriales"
+      - titulo: "N°2 Modelado Inicial en ETABS"
+      - titulo: "N°3 Elementos Lineales y Área"
+      - titulo: "N°4 Escaleras y Solicitaciones Gravitatorias"
+      - titulo: "N°5 Solicitaciones Gravitatorias y Conceptos Sismorresistentes"
+      - titulo: "N°6 Análisis Modal"
+      - titulo: "N°7 Filosofía de Diseño Sismorresistente"
+      - titulo: "N°8 Espectro de Respuesta y Análisis Modal"
+      - titulo: "N°9 Solución Modal en Edificaciones Industriales"
+      - titulo: "N°10 Diseño de Elementos de Acero"
+horas: 30
+modalidad: "mixto"
+nivel: "intermedio"
+proximoInicio: "2023-04-20"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "certificado-design-modeling"
+docentes:
+  - "gabriel-pantoja"
+software:
+  - "etabs"
+area: "calculo-estructural"
+slugAnterior: "/curso/etabs-industriales"
+alumnos: 28

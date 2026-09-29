@@ -1,0 +1,32 @@
+titulo: "Análisis y Diseño de Cimentaciones en Tanques Elevados"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Análisis y Diseño de Cimentaciones en Tanques Elevados"
+descripcion: "Cimentaciones superficiales según ACI 318-19 y normativas locales; zapatas aisladas, vigas de cimentación. ¿Qué voy a aprender?: zapatas aisladas; sistemas compuestos; detallado de refuerzo; hojas de cálculo; verificación geotécnica."
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "N°1 Inducción de Criterios de Cimentaciones"
+      - titulo: "N°2 Conceptos Estructurales de Diseño de Zapatas Aisladas"
+      - titulo: "N°3–4 Diseño de Sistemas de Cimentaciones en SAFE (a, b)"
+      - titulo: "N°5 Diseño de Losas de Cimentación"
+horas: 10
+modalidad: "mixto"
+nivel: "intermedio"
+proximoInicio: "2025-04-14"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "certificado-design-modeling"
+docentes:
+  - "gabriel-pantoja"
+software:
+  - "safe"
+area: "cimentaciones"
+slugAnterior: "/curso/safe-tanque"
+alumnos: 29

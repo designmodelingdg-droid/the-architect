@@ -1,0 +1,10 @@
+titulo: "Cita informativa de los Diplomados BIM"
+tipo: "mentoria"
+estado: "publico"
+resumen: "Treinta minutos para elegir el diplomado que te conviene según lo que ya sabes."
+modalidad: "vivo"
+nivel: "todos"
+mostrarPrecio: true
+docentes:
+  - "gabriel-pantoja"
+slugAnterior: "/es/meetings"

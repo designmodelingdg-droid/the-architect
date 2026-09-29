@@ -1,0 +1,48 @@
+titulo: "Ruta de aprendizaje: Diseño Estructural con Hormigón Armado BIM"
+tipo: "ruta"
+estado: "publico"
+destacado: false
+resumen: "Los cursos de la especialización en Diseño Estructural con Hormigón Armado BIM, en el orden en que conviene tomarlos. 99 h 05 min de clase en 4 meses."
+descripcion: "Programa 100 % online: clases en video, recursos descargables, ejercicios y consultorías 1 a 1."
+aprenderas:
+  - "BIM en diseño estructural"
+  - "Modelado en Revit"
+  - "Análisis en Robot"
+  - "Planos para obra"
+  - "Detallado de refuerzo"
+  - "Proyecto final"
+  - "Ofertar servicios como profesional certificado"
+beneficios:
+  - "Acceso inmediato e ilimitado a las formaciones del paquete"
+  - "Contenido 100 % original y material descargable"
+  - "Videoclases cortas, prácticas y teóricas, con apuntes en PDF"
+  - "Certificación internacional con aval Design Modeling Academy y QR de verificación"
+  - "Acceso a la comunidad Design Premium"
+  - "Preparación para acceder al Diplomado Universitario BIM"
+  - "Certificación Universitaria Internacional DQ"
+  - "Cuatro sesiones 1 a 1 de 45 minutos durante el primer mes"
+modulos:
+  - titulo: "Modelado BIM en Hormigón Armado y Acero Estructural"
+  - titulo: "De Principiante a Profesional: Diseño de Viviendas en Hormigón con Robot"
+  - titulo: "Diseño Estructural en Hormigón Armado en Edificaciones"
+horas: 120
+meses: 4
+modalidad: "pregrabado"
+nivel: "todos"
+mostrarPrecio: false
+excluidoDeSuscripcion: false
+credenciales:
+  - "certificado-design-modeling"
+  - "doctrinas-qualitas-dq"
+  - "autodesk-certificate-of-completion"
+docentes:
+  - "gabriel-pantoja"
+software:
+  - "revit"
+area: "hormigon-armado"
+incluye:
+  - "modelado-bim"
+  - "robot-profesional"
+  - "robot-hormigon"
+whatsapp: "https://wa.link/yfo4yg"
+slugAnterior: "/ruta-aprendizaje/diseno-estructural-hormigon-armado-bim-46481"

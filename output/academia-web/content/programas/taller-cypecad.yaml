@@ -1,0 +1,50 @@
+titulo: "Desarrollo de Edificio Real de Hormigón Armado en CypeCAD"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Desarrollo de Edificio Real de Hormigón Armado en CypeCAD"
+aprenderas:
+  - "Definición geométrica con plantillas DWG"
+  - "Introducción de la estructura"
+  - "Combinaciones por uso"
+  - "Carga sísmica"
+  - "Análisis de resultados"
+  - "Derivas"
+  - "Estructuración para reducir torsión"
+  - "Punzonamiento"
+  - "Diseño de cimentaciones. Incluye licencia de 90 días de CypeCAD"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "Taller 1: Diseño de Estructuras de Hormigón Armado en CYPE"
+      - titulo: "Sesiones de Refuerzo en Vivo"
+      - titulo: "F1 Conociendo CypeCAD"
+      - titulo: "F2 Presentación de Proyectos"
+      - titulo: "F3 Prediseño"
+      - titulo: "F4 Modelo Matemático"
+      - titulo: "F5 Cargas"
+      - titulo: "F6 Análisis Modal Espectral"
+      - titulo: "F7 Diseño Sismorresistente"
+      - titulo: "F8 Diseño de Elementos de H.A"
+      - titulo: "F9 Documentación"
+      - titulo: "Fase Final: Entrega de Proyecto"
+horas: 30
+modalidad: "vivo"
+nivel: "todos"
+proximoInicio: "2024-01-04"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "certificado-design-modeling"
+  - "cype"
+docentes:
+  - "gabriel-pantoja"
+software:
+  - "cypecad"
+area: "calculo-estructural"
+slugAnterior: "/curso/taller-cypecad"
+alumnos: 56

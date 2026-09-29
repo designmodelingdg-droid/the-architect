@@ -1,0 +1,70 @@
+titulo: "Gerencia de Costos, Presupuesto y Control de Obras"
+tipo: "especializacion"
+estado: "publico"
+destacado: false
+resumen: "2 meses: presupuestos y control de obras con Excel y MS Project"
+descripcion: "Programa 100 % online: clases en video, recursos descargables, ejercicios y consultorías 1 a 1."
+paraQuien:
+  - "Arquitectos, ingenieros, residentes, consultores, constructores, estudiantes"
+aprenderas:
+  - "Costos directos e indirectos"
+  - "Presupuestos, rendimientos, fórmulas polinómicas"
+  - "Viviendas reales"
+  - "Cronogramas y Gantt"
+  - "Avance físico-financiero"
+  - "Ruta crítica y reportes"
+beneficios:
+  - "Acceso inmediato e ilimitado a las formaciones del paquete"
+  - "Contenido 100 % original y material descargable"
+  - "Videoclases cortas, prácticas y teóricas, con apuntes en PDF"
+  - "Certificación internacional con aval Design Modeling Academy y QR de verificación"
+  - "Acceso a la comunidad Design Premium"
+  - "Preparación para acceder al Diplomado Universitario BIM"
+  - "Certificación Universitaria Internacional DQ"
+  - "Cuatro sesiones 1 a 1 de 45 minutos durante el primer mes"
+modulos:
+  - titulo: "Costos y Presupuestos de Obras de Construcción Aplicado a Viviendas"
+  - titulo: "Ingeniería de Costos y Elaboración de Cronogramas en Construcción"
+horas: 70
+meses: 2
+modalidad: "pregrabado"
+nivel: "todos"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 199.99
+    moneda: "USD"
+    tachado: 499.99
+  - opcion: "cuotas"
+    monto: 100
+    moneda: "USD"
+    cuotas: 2
+excluidoDeSuscripcion: false
+credenciales:
+  - "certificado-design-modeling"
+  - "doctrinas-qualitas-dq"
+docentes:
+  - "pablo-sandoya"
+software:
+  - "excel"
+  - "project"
+area: "presupuesto"
+incluye:
+  - "excel-costos"
+  - "excel-cronograma"
+whatsapp: "https://wa.link/q3xshu"
+faq:
+  - pregunta: "¿Las clases son en vivo o pregrabadas?"
+    respuesta: "Hay de las dos. La página de cada curso indica la modalidad, y todo se puede ver cuando quieras, donde quieras y cuantas veces quieras."
+  - pregunta: "¿Dónde ingreso después de comprar?"
+    respuesta: "Llega un correo con la invitación al grupo de WhatsApp de la formación y el enlace de acceso al campus."
+  - pregunta: "¿Puedo descargar el material?"
+    respuesta: "Todo el material se descarga; los videos se ven desde el campus."
+  - pregunta: "¿Hay requisitos?"
+    respuesta: "Ninguno. Desde cero hasta especialistas."
+  - pregunta: "¿El acceso es ilimitado?"
+    respuesta: "Sí, en modalidad pregrabada el acceso es ilimitado."
+  - pregunta: "¿Hay soporte personalizado?"
+    respuesta: "Sí: cuatro sesiones 1 a 1 de 45 minutos durante el primer mes."
+slugAnterior: "/especializacion/costos-presupuesto-control-obras"
+alumnos: 10

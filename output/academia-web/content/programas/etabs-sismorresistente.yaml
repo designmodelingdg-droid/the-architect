@@ -1,0 +1,48 @@
+titulo: "Diseño de Edificaciones Sismorresistentes en Hormigón Armado"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Diseño de Edificaciones Sismorresistentes en Hormigón Armado"
+aprenderas:
+  - "Fundamentos de H.A"
+  - "Diseño sismorresistente"
+  - "Análisis asistido por computador"
+  - "SAP2000"
+  - "Predimensión y cargas"
+  - "Método estático y modal"
+  - "Corrección de respuesta lateral"
+  - "Diseño de elementos"
+  - "Intercambio SAP2000–ETABS"
+  - "Reportes"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "N°1 Fundamentos y Conceptos de Diseño en H.A"
+      - titulo: "N°2 Filosofía y Estado del Arte Sismorresistente"
+      - titulo: "N°3 Entorno de SAP2000"
+      - titulo: "N°4 Prediseño y Evaluación de Cargas"
+      - titulo: "N°5 Modelado Matemático en SAP2000"
+      - titulo: "N°6 Sistema de Resistencia Sísmica"
+      - titulo: "N°7 Verificación de Requisitos Sismorresistentes"
+      - titulo: "N°8 Diseño de Losas, Vigas, Columnas y Muros en SAP2000"
+      - titulo: "N°9 Extracción de Resultados para Cimentación"
+horas: 30
+modalidad: "mixto"
+nivel: "intermedio"
+proximoInicio: "2023-04-18"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "certificado-design-modeling"
+docentes:
+  - "manuel-luces"
+software:
+  - "etabs"
+  - "sap2000"
+area: "calculo-estructural"
+slugAnterior: "/curso/etabs-sismorresistente"
+alumnos: 28

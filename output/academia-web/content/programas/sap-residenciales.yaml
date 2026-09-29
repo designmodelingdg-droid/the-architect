@@ -1,0 +1,46 @@
+titulo: "Análisis y Diseño de Edificaciones Residenciales en Hormigón Armado"
+tipo: "curso"
+estado: "publico"
+destacado: false
+resumen: "Análisis y Diseño de Edificaciones Residenciales en Hormigón Armado"
+aprenderas:
+  - "Criterios estructurales"
+  - "Modelo geométrico"
+  - "Elementos"
+  - "Cargas estáticas"
+  - "Combinaciones"
+  - "Diseño sismorresistente"
+  - "Análisis modal 3 GDL"
+  - "Superposición modal espectral"
+  - "Edificaciones regulares e irregulares"
+modulos:
+  - titulo: "Sesiones"
+    sesiones:
+      - titulo: "N°1 Fundamentos de Diseño en H.A"
+      - titulo: "N°2 Filosofía Sismorresistente"
+      - titulo: "N°3 Predimensionado y Cargas"
+      - titulo: "N°4 Sistema de Resistencia Sísmica"
+      - titulo: "N°5 Revisión y Aceptación de Respuesta Lateral"
+      - titulo: "N°6–7 Diseño de Elementos de H.A"
+      - titulo: "N°8 Resultados y Reacciones en la Base"
+      - titulo: "N°9 Reporte de Análisis y Diseño"
+      - titulo: "N°10 Optimización y Conclusiones"
+horas: 30
+modalidad: "pregrabado"
+nivel: "intermedio"
+proximoInicio: "2023-04-02"
+mostrarPrecio: true
+precios:
+  - opcion: "unico"
+    monto: 154.99
+    moneda: "USD"
+excluidoDeSuscripcion: false
+credenciales:
+  - "certificado-design-modeling"
+docentes:
+  - "gabriel-pantoja"
+software:
+  - "sap2000"
+area: "calculo-estructural"
+slugAnterior: "/curso/sap-residenciales"
+alumnos: 25
