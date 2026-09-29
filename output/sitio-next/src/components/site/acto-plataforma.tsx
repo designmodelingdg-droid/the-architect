@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { motion, useScroll, useTransform, useReducedMotion, type MotionValue } from "motion/react";
+import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
+import { useMovimientoReducido } from "./use-movimiento-reducido";
 import Image from "next/image";
 import Link from "next/link";
 import { Check } from "lucide-react";
@@ -43,7 +44,7 @@ function Tramo({ p, activo, desde, hasta, children, className }: { p: MotionValu
 export function ActoPlataforma() {
   const ref = useRef<HTMLElement>(null);
   const escritorio = useEscritorio();
-  const reducido = useReducedMotion();
+  const reducido = useMovimientoReducido();
   const fijar = escritorio && !reducido;
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
 

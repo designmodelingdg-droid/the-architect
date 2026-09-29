@@ -46,7 +46,7 @@ export default function Plataforma() {
           ["24/7", "razonando en tu proyecto"],
           ["10 años", "de criterio BIM destilado"],
           ["4 roles", "cada quien ve lo suyo"],
-          ["+3.800", "profesionales formados detrás"],
+          ["5.000+", "profesionales formados por la academia"],
         ]}
       />
 

@@ -48,7 +48,7 @@ total en DG BIM Intelligence, nuestro software de IA.
 ## Cifras
 
 - Más de 10 años de experiencia BIM en el equipo
-- Más de 3.800 profesionales formados
+- Más de 5.000 profesionales de 30 países formados por Design Modeling Academy, la escuela del grupo
 - Coordinación de arquitectura, estructura e instalaciones
 - Agente de IA disponible 24/7
 

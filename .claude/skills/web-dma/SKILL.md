@@ -64,6 +64,7 @@ empezar un sitio nuevo. Resumen del recorrido:
 | `references/08-identidad-y-cifras.md` | Wikidata sí / Wikipedia no, honestidad de las cifras |
 | `references/09-proceso-y-trampas.md` | Verificación, trampas del entorno, git y PR, cómo reportar |
 | `references/10-orden-de-construccion.md` | **El paso a paso completo** |
+| `references/11-catalogo-con-cms.md` | Keystatic sobre git, esquema de catálogo, sitio anterior que rebota bots, logo tardío (la academia) |
 
 ## Los activos
 
@@ -73,7 +74,9 @@ En `assets/`, listos para copiar a un proyecto nuevo:
 |---|---|
 | `medir-contraste.mjs` | Auditor de contraste WCAG. Resuelve oklab, alfa por capas y la deriva de fondo ligada al scroll. Validado: 982 nodos en 8 rutas, un único fallo real |
 | `DESIGN.ejemplo.md` | El sistema visual de la consultoría, completo, como referencia de profundidad |
-| `middleware.ts` | Sufijo `.md`, negociación por `Accept` con q-values, cabecera `Link`, noindex en staging |
+| `middleware.ts` | Sufijo `.md`, negociación por `Accept` con q-values, cabecera `Link`, noindex en staging. En Next 16 el archivo se llama `proxy.ts` y exporta `proxy`; la versión con sufijo `.md` a cualquier profundidad está en `academia-web/src/proxy.ts` |
+| `proxy.ts` | La versión Next 16 del anterior, sin lista cerrada de rutas: sufijo `.md` a cualquier profundidad, excluye `/keystatic`, `/api` y `/md` |
+| `use-movimiento-reducido.ts` | Sustituto de `useReducedMotion` de motion, seguro para la hidratación (ver `03-movimiento.md`) |
 | `chat-widget.tsx` | Burbuja de chat de LeadConnector, con el forzado de colocación |
 | `contacto-bloque.tsx` | Formulario del CRM embebido, sin tarjeta envolvente |
 | `scroll-suave.tsx` | Lenis con la compensación de ancla para la barra fija |
@@ -90,6 +93,21 @@ En `assets/`, listos para copiar a un proyecto nuevo:
 | `code-review` / `security-review` | Sobre el diff, antes de mergear algo grande |
 | `/watch` | Si Dayana manda un video de referencia |
 | `app-dma` | Si lo que se pide resulta ser una aplicación, no un sitio |
+
+## Estado actual de designmodelingacademy.com (repo `academia-web`)
+
+- Cascarón completo en local (`/home/user/academia-web`, rama `main`), sin
+  repo remoto hasta que Dayana lo cree. Next 16.3.2, Keystatic en modo local,
+  84 programas, 10 docentes, 11 credenciales, 6 avales cargados desde la
+  auditoría del LMS. 114 páginas HTML, cada una con gemelo en markdown,
+  `llms.txt` bilingüe generado del contenido, `Course` + `CourseInstance` por
+  programa (sin `offers` en el máster, que se vende con cita).
+- Contraste medido en 15 rutas: un único par en rojo, el naranja de marca.
+- Pendiente de insumos: logo original, logos de credenciales y avales, fotos y
+  bios de docentes, ID de formulario, ID de widget, URL del calendario, temas
+  de los 12 módulos del máster, testimonios verificados, política de reembolso.
+- El corte de dominio (Hostinger, solo A y CNAME `www`) espera a que el CRM
+  confirme que los alumnos entran al campus de GHL: LeadGods es también el aula.
 
 ## Estado actual de dgdesignmodeling.com
 

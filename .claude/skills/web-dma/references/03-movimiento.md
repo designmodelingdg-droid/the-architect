@@ -30,6 +30,16 @@ la deriva de color de las bandas navy (`deriva-navy.tsx`) y los contadores
   `cubic-bezier(0.23, 1, 0.32, 1)`, declarada como `--ease-out-brand`.
   Para las cortinas, `[0.76, 0, 0.24, 1]`.
 - Con `prefers-reduced-motion` todo se queda quieto y completo.
+- **No usar `useReducedMotion` de motion.** Guarda el estado en un módulo
+  compartido: el primer componente que lo llama recibe `null` y el servidor
+  pinta el `motion.div` con `opacity: 0`; los siguientes ya reciben `true` en
+  el primer render del cliente, hidratan un `<div>` plano contra ese HTML y
+  React en producción no repara el atributo. Resultado medido: heros internos
+  en blanco para quien pide movimiento reducido (la home se salvaba por
+  orden de montaje). El hook de la casa, `use-movimiento-reducido.ts`, empieza
+  en `false` como el servidor y cambia en un efecto, así el div se remonta
+  limpio. Se probó con Playwright y `reducedMotion: "reduce"`, leyendo la
+  opacidad computada del `h1`.
 
 ## El acto fijado
 
