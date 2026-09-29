@@ -23,7 +23,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
         <Link href="/" aria-label="Design Modeling Academy — Inicio">
-          <Logo className="h-9 w-auto md:h-10" />
+          <Logo className="h-11 w-auto md:h-12" />
         </Link>
 
         <nav aria-label="Principal" className="hidden items-center gap-6 lg:flex">

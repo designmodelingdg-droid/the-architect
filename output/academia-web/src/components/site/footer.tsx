@@ -30,7 +30,7 @@ export function Footer() {
     <footer className="border-t border-white/8 bg-navy px-5 pb-7 pt-14 text-azul-palido/70">
       <div className="mx-auto grid max-w-6xl gap-9 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <div className="mb-4"><Logo oscuro className="h-11 w-auto" /></div>
+          <div className="mb-4"><Logo oscuro className="h-14 w-auto" /></div>
           <p className="max-w-xs text-[13.5px] leading-relaxed">
             Escuela online de BIM, ingeniería estructural e inteligencia artificial
             aplicada. Autodesk Authorized Training Center. Latinoamérica, España y Estados Unidos.
