@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { animate, useInView, useReducedMotion } from "motion/react";
+import { animate, useInView } from "motion/react";
+import { useMovimientoReducido } from "./use-movimiento-reducido";
 
 /*
  * Cifra que florece al entrar en pantalla. Solo anima valores numéricos reales
- * ("10+", "+3.800", "4 roles"); cualquier otro texto ("ARQ/EST/MEP", "24/7")
+ * ("10+", "+4.800", "4 roles"); cualquier otro texto ("ARQ/EST/MEP", "24/7")
  * se pinta tal cual. Nunca inventa números: parte de 0 y llega al valor dado.
  */
 const PATRON = /^(\+?)(\d{1,3}(?:\.\d{3})+|\d+)([^\d/]*)$/;
@@ -18,7 +19,7 @@ export function Contador({ valor, className }: { valor: string; className?: stri
   const m = useMemo(() => PATRON.exec(valor.trim()), [valor]);
   const ref = useRef<HTMLSpanElement>(null);
   const visible = useInView(ref, { once: true, margin: "-40px" });
-  const reducido = useReducedMotion();
+  const reducido = useMovimientoReducido();
   const objetivo = m ? Number(m[2].replace(/\./g, "")) : 0;
   const [actual, setActual] = useState(0);
 

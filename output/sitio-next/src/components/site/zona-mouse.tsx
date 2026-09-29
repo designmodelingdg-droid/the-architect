@@ -1,7 +1,8 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import { motion, useMotionValue, useSpring, useTransform, useReducedMotion, type MotionValue } from "motion/react";
+import { motion, useMotionValue, useSpring, useTransform, type MotionValue } from "motion/react";
+import { useMovimientoReducido } from "./use-movimiento-reducido";
 
 /*
  * Parallax de cursor estilo Horyx: dentro de una ZonaMouse, cada CapaMouse
@@ -16,7 +17,7 @@ export function ZonaMouse({ className, children }: { className?: string; childre
   const y = useMotionValue(0);
   const sx = useSpring(x, { stiffness: 55, damping: 16, mass: 0.4 });
   const sy = useSpring(y, { stiffness: 55, damping: 16, mass: 0.4 });
-  const reducido = useReducedMotion();
+  const reducido = useMovimientoReducido();
   return (
     <section
       className={className}

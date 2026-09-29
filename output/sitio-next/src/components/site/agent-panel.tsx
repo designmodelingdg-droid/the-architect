@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useMovimientoReducido } from "./use-movimiento-reducido";
 
 const EASE = [0.23, 1, 0.32, 1] as const;
 
@@ -12,7 +13,7 @@ const FILAS = [
 ] as const;
 
 export function AgentPanel() {
-  const reduced = useReducedMotion();
+  const reduced = useMovimientoReducido();
   return (
     <div className="panel-oscuro relative overflow-hidden p-0" role="img" aria-label="DG BIM Intelligence analizando un proyecto: hallazgo, evidencia, impacto y acción recomendada">
       <div className="flex items-center justify-between border-b border-white/8 px-5 py-3">

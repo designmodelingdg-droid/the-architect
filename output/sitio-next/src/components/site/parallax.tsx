@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useMovimientoReducido } from "./use-movimiento-reducido";
 
 /*
  * Parallax de fondo para heros: el medio (video/imagen) se desplaza más lento
@@ -10,7 +11,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from "motion/react"
  */
 export function ParallaxFondo({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
-  const reducido = useReducedMotion();
+  const reducido = useMovimientoReducido();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
   const scale = useTransform(scrollYProgress, [0, 1], [1.06, 1.18]);
@@ -29,7 +30,7 @@ export function ParallaxFondo({ children }: { children: React.ReactNode }) {
  */
 export function ParallaxImg({ children, className, revelar = false }: { children: React.ReactNode; className?: string; revelar?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
-  const reducido = useReducedMotion();
+  const reducido = useMovimientoReducido();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["-7%", "7%"]);
   const cortina = revelar && !reducido;
