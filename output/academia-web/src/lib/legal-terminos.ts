@@ -21,8 +21,12 @@ export const TERMINOS: [string, string[]][] = [
     "Los precios se publican en dólares de los Estados Unidos (USD) salvo indicación expresa de otra moneda o país, e incluyen la certificación del programa cuando la ficha lo indica. Las opciones de cuotas o preventa se detallan en cada programa. La suscripción Design Premium da acceso a los cursos incluidos en ella y excluye los programas que su ficha indica.",
     "La cita informativa es gratuita y no genera obligación de matricularse.",
   ]],
-  ["6. Cancelaciones y devoluciones", [
-    "Las condiciones de cancelación, cambio de programa y devolución se entregan por escrito antes de la matrícula y forman parte del acuerdo con cada alumno. Si tienes dudas sobre ellas, escríbenos antes de matricularte.",
+  ["6. Cancelaciones, cambios y devoluciones", [
+    "Puedes pedir la devolución íntegra de lo pagado dentro de los siete días naturales siguientes a la matrícula, siempre que no hayas completado más del veinte por ciento del contenido del programa ni hayas descargado su material o solicitado su certificado. Pasado ese plazo, o superado ese avance, no hay devolución, porque el acceso al campus, las grabaciones y el material ya se han entregado.",
+    "Si un programa en vivo se cancela por causa de la escuela, o su fecha de inicio se aplaza más de treinta días, puedes elegir entre la devolución íntegra o mantener tu cupo en la siguiente edición. Si tú no puedes empezar en la fecha prevista, puedes trasladar tu matrícula una vez a la siguiente edición del mismo programa, avisando antes del inicio.",
+    "Puedes cambiar tu matrícula a otro programa de igual o mayor valor dentro de los primeros treinta días, pagando la diferencia si la hay. Las suscripciones se cancelan desde la cuenta del campus o escribiéndonos, y dejan de cobrarse en el siguiente ciclo; el periodo ya pagado no se reembolsa.",
+    "Los pagos en cuotas obligan al total del programa: una cuota impaga suspende el acceso hasta regularizarla. Las devoluciones se hacen por el mismo medio de pago, en un plazo de hasta quince días hábiles, y no incluyen las comisiones de la pasarela ni las tasas de emisión de títulos ya pagadas a las instituciones aliadas.",
+    `Para pedir una devolución o un cambio, escribe a ${EMAIL} desde el correo con el que te matriculaste, indicando el programa y la fecha de compra.`,
   ]],
   ["7. Certificados y títulos", [
     "Cada programa indica qué credencial otorga y quién la emite. Los certificados de la escuela llevan código de verificación. Los títulos y diplomas emitidos por instituciones aliadas (universidades, Autodesk, CYPE u otras) se rigen por los requisitos de cada emisor, que pueden incluir asistencia mínima, evaluaciones aprobadas o tasas de emisión indicadas en la ficha del programa.",

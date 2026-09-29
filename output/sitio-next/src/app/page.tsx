@@ -82,7 +82,7 @@ export default function Home() {
       <DataStrip
         items={[
           ["10+", "años de experiencia BIM del equipo"],
-          ["5.000+", "profesionales formados por la academia del grupo"],
+          ["+4.800", "profesionales formados por la academia del grupo"],
           ["ARQ/EST/MEP", "coordinación completa"],
           ["24/7", "agente de IA razonando"],
         ]}

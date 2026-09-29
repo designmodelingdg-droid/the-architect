@@ -266,7 +266,7 @@ sean de un proyecto o de un alumno real.
 ## Reglas duras
 
 - Cifras solo si son reales y verificables, y cada cifra dice de quién es. Los
-  5.000+ alumnos de 30 países son de la academia; la fuente va en el campo
+  +4.800 alumnos de 30 países son de la academia; la fuente va en el campo
   `fuente` del contenido.
 - Un testimonio entra solo con resultado concreto y con el cargo y el país
   verificados contra la reseña original. «Excelente experiencia» no entra.

@@ -3,7 +3,7 @@ tipo: "bloque"
 estado: "publico"
 destacado: false
 resumen: "Un trimestre del Máster BIM + IA, cursable por separado y apilable hacia el máster completo. 2 módulos, con microcredencial al terminar."
-descripcion: "Cada bloque cierra con un proyecto entregable y una microcredencial. Lo cursado suma hacia el Máster completo, sin expiración y con reingreso sin costo."
+descripcion: "Planificación, Costos y Gestión Integral. Evolucionar desde la coordinación técnica hacia la planificación, control y dirección estratégica de proyectos BIM, incorporando tiempo, costos, operación y toma de decisiones. Resultado: planifica → controla → decide → lidera. Es el bloque 3 del Máster Internacional en BIM Management e IA: se cursa por separado, con microcredencial por módulo e insignia de especialista al completarlo, y suma hacia el título del máster."
 paraQuien:
   - "Ingenieros Civiles y Arquitectos"
   - "Gerentes y Coordinadores de Proyectos"
@@ -12,10 +12,30 @@ paraQuien:
   - "Docentes universitarios del área de construcción"
   - "Profesionales en altos cargos que buscan liderar la transformación digital del sector"
 modulos:
-  - titulo: "Módulo 08: BIM 4D: planificación"
-  - titulo: "Módulo 09: BIM 5D: costos"
+  - titulo: "Módulo 07: Gestión BIM 4D–7D: Tiempo, Costos y Ciclo de Vida"
+    descripcion: "Integra las dimensiones superiores del BIM: tiempo, costo, desempeño y operación. Vincular el modelo con cronograma, presupuesto e información del ciclo de vida del activo."
+    sesiones:
+      - titulo: "BIM 4D: planificación y tiempo"
+        duracion: "Clase + sesión práctica"
+      - titulo: "BIM 5D: cantidades, presupuestos y costos"
+        duracion: "Clase + sesión práctica"
+      - titulo: "BIM 6D: desempeño y sostenibilidad"
+        duracion: "Clase + sesión práctica"
+      - titulo: "BIM 7D: operación y ciclo de vida"
+        duracion: "Clase + sesión práctica"
+  - titulo: "Módulo 08: Dirección Estratégica de Proyectos BIM"
+    descripcion: "Desarrolla las competencias de dirección: planificar estratégicamente un proyecto BIM, organizar equipos y roles, controlar mediante KPI y liderar la toma de decisiones."
+    sesiones:
+      - titulo: "Planificación estratégica BIM"
+        duracion: "Clase + sesión práctica"
+      - titulo: "Roles, responsabilidades y gobernanza"
+        duracion: "Clase + sesión práctica"
+      - titulo: "KPI, seguimiento y control"
+        duracion: "Clase + sesión práctica"
+      - titulo: "Liderazgo y toma de decisiones"
+        duracion: "Clase + sesión práctica"
 horas: 360
-meses: 3
+meses: 2
 modalidad: "mixto"
 nivel: "avanzado"
 proximoInicio: "2026-10-05"

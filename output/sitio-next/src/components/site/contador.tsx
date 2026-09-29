@@ -6,7 +6,7 @@ import { useMovimientoReducido } from "./use-movimiento-reducido";
 
 /*
  * Cifra que florece al entrar en pantalla. Solo anima valores numéricos reales
- * ("10+", "5.000+", "4 roles"); cualquier otro texto ("ARQ/EST/MEP", "24/7")
+ * ("10+", "+4.800", "4 roles"); cualquier otro texto ("ARQ/EST/MEP", "24/7")
  * se pinta tal cual. Nunca inventa números: parte de 0 y llega al valor dado.
  */
 const PATRON = /^(\+?)(\d{1,3}(?:\.\d{3})+|\d+)([^\d/]*)$/;
