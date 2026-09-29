@@ -96,8 +96,8 @@ En `assets/`, listos para copiar a un proyecto nuevo:
 
 ## Estado actual de designmodelingacademy.com (repo `academia-web`)
 
-- Cascarón completo en local (`/home/user/academia-web`, rama `main`), sin
-  repo remoto hasta que Dayana lo cree. Next 16.3.2, Keystatic en modo local,
+- Cascarón completo en `designmodelingdg-droid/academia-web` (rama `main`,
+  privado), empujado el 29/09/2026. Next 16.3.2, Keystatic en modo local,
   84 programas, 10 docentes, 11 credenciales, 6 avales cargados desde la
   auditoría del LMS. 114 páginas HTML, cada una con gemelo en markdown,
   `llms.txt` bilingüe generado del contenido, `Course` + `CourseInstance` por
