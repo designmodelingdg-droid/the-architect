@@ -5,7 +5,7 @@ import { WA, WA_MSG, EMAIL } from "@/lib/site";
 
 /* Formulario de contacto de Sharp CRM (LeadConnector white-label). El script
  * form_embed.js ajusta la altura del iframe al contenido del formulario. */
-const FORM_ID = "OfA7Ehcb8QSo9VXIDe6X";
+const FORM_ID = "hlkHht1xDkQc6ZZhGflm";
 const FORM_URL = `https://api.leadconnectorhq.com/widget/form/${FORM_ID}`;
 
 export function ContactoBloque({ conDatos = true }: { conDatos?: boolean }) {
