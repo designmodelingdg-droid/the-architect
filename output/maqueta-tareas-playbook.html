@@ -1,0 +1,1047 @@
+<title>Tareas y Playbook DG</title>
+
+<style>
+/* ============================================================
+   Módulos "Tareas" y "Playbook" — Design Modeling OS
+   Mismo sistema visual que el módulo KPIs Equipo.
+   ============================================================ */
+
+:root {
+  --navy:        #102a3f;
+  --navy-deep:   #0a1c2b;
+  --azul:        #003e5c;
+  --azul-texto:  #0b2f4a;
+  --naranja:     #ca7520;
+  --crema:       #f9ecdb;
+  --crema-borde: #ecd6b6;
+
+  --ground:      #ffffff;
+  --surface:     #ffffff;
+  --surface-2:   #f6f8fa;
+  --borde:       #e4eaef;
+  --borde-fuerte:#cfd9e1;
+
+  --tinta:       #16303f;
+  --tinta-2:     #5a7183;
+  --tinta-3:     #8296a5;
+
+  --ok:          #16874d;
+  --ok-bg:       #e2f4ea;
+  --alerta:      #a9761a;
+  --alerta-bg:   #fbf0d8;
+  --grave:       #b5342f;
+  --grave-bg:    #fbe6e5;
+  --neutro:      #7c8f9d;
+  --neutro-bg:   #eef2f5;
+  --info:        #1f6a94;
+  --info-bg:     #e3eff6;
+
+  --sb-texto:    #b9cad8;
+  --sb-hover:    rgba(255,255,255,.07);
+
+  --r-card: 12px;
+  --r-ctl:  9px;
+  --sombra: 0 1px 2px rgb(11 47 74 / .06), 0 1px 3px rgb(11 47 74 / .04);
+
+  --f-ui: Overpass, Nunito, ui-rounded, "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-tx: Nunito, ui-rounded, "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --navy:#0c1f2e; --navy-deep:#071521; --azul-texto:#d7e6f0;
+    --crema:#33261a; --crema-borde:#574230;
+    --ground:#0b1723; --surface:#12222f; --surface-2:#172937;
+    --borde:#23394a; --borde-fuerte:#33506a;
+    --tinta:#e2edf4; --tinta-2:#9db2c2; --tinta-3:#7b93a5;
+    --ok:#5cc98d; --ok-bg:#123324;
+    --alerta:#e0b354; --alerta-bg:#382e12;
+    --grave:#f08d88; --grave-bg:#3a1a19;
+    --neutro:#8ea3b2; --neutro-bg:#1b2c3a;
+    --info:#7cc0e4; --info-bg:#12303f;
+    --sombra: 0 1px 2px rgb(0 0 0 / .3);
+  }
+}
+:root[data-theme="dark"] {
+  --navy:#0c1f2e; --navy-deep:#071521; --azul-texto:#d7e6f0;
+  --crema:#33261a; --crema-borde:#574230;
+  --ground:#0b1723; --surface:#12222f; --surface-2:#172937;
+  --borde:#23394a; --borde-fuerte:#33506a;
+  --tinta:#e2edf4; --tinta-2:#9db2c2; --tinta-3:#7b93a5;
+  --ok:#5cc98d; --ok-bg:#123324;
+  --alerta:#e0b354; --alerta-bg:#382e12;
+  --grave:#f08d88; --grave-bg:#3a1a19;
+  --neutro:#8ea3b2; --neutro-bg:#1b2c3a;
+  --info:#7cc0e4; --info-bg:#12303f;
+  --sombra: 0 1px 2px rgb(0 0 0 / .3);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--ground); color: var(--tinta);
+  font-family: var(--f-tx); font-size: 15px; line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.aviso {
+  background: var(--crema); border-bottom: 1px solid var(--crema-borde);
+  color: var(--tinta); padding: 9px 20px; font-size: 13px;
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+}
+.aviso strong { font-family: var(--f-ui); font-weight: 700; }
+
+.app { display: flex; min-height: 100vh; align-items: stretch; }
+.sidebar {
+  width: 244px; flex: 0 0 244px; background: var(--navy);
+  padding: 18px 12px 28px; display: flex; flex-direction: column; gap: 20px;
+}
+.marca { display: flex; gap: 11px; align-items: center; padding: 4px 8px 0; }
+.marca .logo {
+  width: 40px; height: 40px; border-radius: 10px; flex: 0 0 40px;
+  background: linear-gradient(150deg, #1d4f6e, #0d3049);
+  color: #fff; font-family: var(--f-ui); font-weight: 800; font-size: 15px;
+  display: grid; place-items: center; letter-spacing: -.02em;
+}
+.marca .nom {
+  font-family: var(--f-ui); font-weight: 800; font-size: 13px; color: #fff;
+  letter-spacing: .01em; line-height: 1.15; white-space: nowrap;
+}
+.marca .sub {
+  font-size: 10px; color: var(--sb-texto); letter-spacing: .13em;
+  text-transform: uppercase; margin-top: 3px; font-weight: 600;
+}
+.nav { display: flex; flex-direction: column; gap: 1px; }
+.nav a {
+  display: flex; align-items: center; gap: 11px; padding: 9px 12px;
+  border-radius: var(--r-ctl); color: var(--sb-texto); text-decoration: none;
+  font-family: var(--f-ui); font-size: 14px; font-weight: 600;
+}
+.nav a .ic { font-size: 15px; width: 20px; text-align: center; }
+.nav a .ir { margin-left: auto; font-size: 12px; opacity: .65; }
+.nav a .globo {
+  margin-left: auto; background: var(--naranja); color: #fff;
+  font-size: 10.5px; font-weight: 800; padding: 1px 7px; border-radius: 20px;
+  font-variant-numeric: tabular-nums;
+}
+.nav a:hover { background: var(--sb-hover); color: #fff; }
+.nav a.on { background: #fff; color: var(--navy-deep); }
+.nav a:focus-visible { outline: 2px solid var(--naranja); outline-offset: 1px; }
+.nav .sep {
+  margin: 9px 12px 4px; font-size: 10px; letter-spacing: .13em;
+  text-transform: uppercase; color: #6c8598; font-weight: 700; font-family: var(--f-ui);
+}
+
+.main { flex: 1 1 auto; min-width: 0; padding: 30px 34px 64px; }
+.wrap { max-width: 1240px; }
+
+.eyebrow {
+  font-family: var(--f-ui); font-size: 11.5px; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--naranja); margin: 0 0 7px;
+}
+h1 {
+  font-family: var(--f-ui); font-weight: 800; font-size: 33px; line-height: 1.13;
+  color: var(--azul-texto); margin: 0 0 9px; letter-spacing: -.015em; text-wrap: balance;
+}
+.lede { color: var(--tinta-2); margin: 0; max-width: 66ch; }
+
+.tabs { display: flex; gap: 3px; margin: 24px 0; border-bottom: 1px solid var(--borde); flex-wrap: wrap; }
+.tab {
+  appearance: none; background: none; border: 0; cursor: pointer;
+  font-family: var(--f-ui); font-size: 14.5px; font-weight: 700;
+  color: var(--tinta-2); padding: 10px 15px 12px;
+  border-bottom: 2.5px solid transparent; margin-bottom: -1px;
+  display: flex; align-items: center; gap: 8px;
+}
+.tab:hover { color: var(--azul-texto); }
+.tab[aria-selected="true"] { color: var(--azul-texto); border-bottom-color: var(--naranja); }
+.tab:focus-visible { outline: 2px solid var(--naranja); outline-offset: -3px; border-radius: 4px; }
+.tab .cuenta {
+  font-size: 11px; font-weight: 800; padding: 1px 7px; border-radius: 20px;
+  background: var(--neutro-bg); color: var(--tinta-2); font-variant-numeric: tabular-nums;
+}
+.tab[aria-selected="true"] .cuenta { background: var(--crema); color: var(--naranja); }
+.panel[hidden] { display: none; }
+
+.filtros { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+.chip {
+  appearance: none; cursor: pointer; font-family: var(--f-ui);
+  font-size: 13px; font-weight: 700; padding: 6px 13px; border-radius: 20px;
+  border: 1px solid var(--borde-fuerte); background: var(--surface); color: var(--tinta-2);
+  display: inline-flex; align-items: center; gap: 7px;
+}
+.chip:hover { border-color: var(--azul); color: var(--azul-texto); }
+.chip[aria-pressed="true"] { background: var(--azul); border-color: var(--azul); color: #fff; }
+.chip:focus-visible { outline: 2px solid var(--naranja); outline-offset: 2px; }
+.chip .n { font-variant-numeric: tabular-nums; opacity: .8; font-size: 11.5px; }
+
+/* ---------- Bandeja ---------- */
+.bandeja { display: flex; flex-direction: column; gap: 9px; }
+.aviso-item {
+  display: flex; gap: 13px; align-items: flex-start; padding: 14px 16px;
+  background: var(--surface); border: 1px solid var(--borde);
+  border-left: 3px solid var(--c, var(--neutro)); border-radius: var(--r-card);
+}
+.aviso-item.leido { opacity: .5; }
+.aviso-item .em { font-size: 19px; line-height: 1.2; flex: 0 0 auto; }
+.aviso-item .cuerpo2 { flex: 1 1 auto; min-width: 0; }
+.aviso-item .tit2 { font-family: var(--f-ui); font-weight: 700; font-size: 14.5px; color: var(--tinta); }
+.aviso-item .det { font-size: 13.5px; color: var(--tinta-2); margin-top: 3px; }
+.aviso-item .cuando { font-size: 12px; color: var(--tinta-3); margin-top: 5px; }
+.aviso-item .btn { flex: 0 0 auto; align-self: center; }
+
+/* ---------- Kanban ---------- */
+.tablero { display: grid; grid-template-columns: repeat(4, minmax(228px, 1fr)); gap: 13px; align-items: start; }
+.col { background: var(--surface-2); border: 1px solid var(--borde); border-radius: var(--r-card); padding: 12px; }
+.col > h3 {
+  font-family: var(--f-ui); font-size: 11.5px; font-weight: 800; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--cc, var(--tinta-2)); margin: 0 0 11px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.col > h3 .n { font-variant-numeric: tabular-nums; opacity: .75; }
+.col-hacer { --cc: var(--tinta-2); }
+.col-proceso{ --cc: var(--alerta); }
+.col-rev    { --cc: var(--info); }
+.col-listo  { --cc: var(--ok); }
+.pila { display: flex; flex-direction: column; gap: 9px; min-height: 40px; }
+
+.card {
+  background: var(--surface); border: 1px solid var(--borde); border-radius: 10px;
+  padding: 12px 13px; box-shadow: var(--sombra);
+}
+.card .ct { font-family: var(--f-ui); font-weight: 700; font-size: 14px; color: var(--tinta); }
+.card .cd { font-size: 12.5px; color: var(--tinta-2); margin-top: 4px; }
+.card .metas { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 9px; align-items: center; }
+.mini {
+  font-family: var(--f-ui); font-size: 10.5px; font-weight: 700; padding: 2px 8px;
+  border-radius: 20px; background: var(--cbg, var(--neutro-bg)); color: var(--c, var(--tinta-2));
+  white-space: nowrap;
+}
+.card .mover { display: flex; gap: 4px; margin-top: 10px; flex-wrap: wrap; }
+.mini-btn {
+  appearance: none; cursor: pointer; font-family: var(--f-ui); font-size: 11px; font-weight: 700;
+  padding: 4px 9px; border-radius: 6px; border: 1px solid var(--borde-fuerte);
+  background: var(--surface); color: var(--tinta-2);
+}
+.mini-btn:hover { border-color: var(--azul); color: var(--azul-texto); }
+.mini-btn[aria-current="true"] { background: var(--azul); border-color: var(--azul); color: #fff; }
+.mini-btn:focus-visible { outline: 2px solid var(--naranja); outline-offset: 1px; }
+.vacio-col { color: var(--tinta-3); font-size: 13px; padding: 12px 2px; }
+
+.a-marketing { --c: #8a5a17; --cbg: #f7ecd9; }
+.a-gerencia  { --c: #2a4d7a; --cbg: #e6edf7; }
+.a-soporte   { --c: #1f6a58; --cbg: #e0f2ed; }
+.a-plataforma{ --c: #5c4a8a; --cbg: #ece8f7; }
+.a-comercial { --c: #9c3d5e; --cbg: #f9e6ed; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .a-marketing { --c:#e0b877; --cbg:#3a2e18; }
+  :root:not([data-theme="light"]) .a-gerencia  { --c:#9dbde8; --cbg:#1b2b42; }
+  :root:not([data-theme="light"]) .a-soporte   { --c:#7fd0bd; --cbg:#153029; }
+  :root:not([data-theme="light"]) .a-plataforma{ --c:#b8a9e0; --cbg:#2a2440; }
+  :root:not([data-theme="light"]) .a-comercial { --c:#e79cb6; --cbg:#3d1f2b; }
+}
+:root[data-theme="dark"] .a-marketing { --c:#e0b877; --cbg:#3a2e18; }
+:root[data-theme="dark"] .a-gerencia  { --c:#9dbde8; --cbg:#1b2b42; }
+:root[data-theme="dark"] .a-soporte   { --c:#7fd0bd; --cbg:#153029; }
+:root[data-theme="dark"] .a-plataforma{ --c:#b8a9e0; --cbg:#2a2440; }
+:root[data-theme="dark"] .a-comercial { --c:#e79cb6; --cbg:#3d1f2b; }
+
+.st-ok { --c: var(--ok); --cbg: var(--ok-bg); }
+.st-al { --c: var(--alerta); --cbg: var(--alerta-bg); }
+.st-gr { --c: var(--grave); --cbg: var(--grave-bg); }
+.st-in { --c: var(--info); --cbg: var(--info-bg); }
+.st-nd { --c: var(--neutro); --cbg: var(--neutro-bg); }
+
+/* ---------- Calendario ---------- */
+.cal-cab {
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 1px;
+  margin-bottom: 1px;
+}
+.cal-cab span {
+  font-family: var(--f-ui); font-size: 10.5px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--tinta-3); padding: 6px 8px; text-align: center;
+}
+.cal {
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 1px;
+  background: var(--borde); border: 1px solid var(--borde);
+  border-radius: var(--r-card); overflow: hidden;
+}
+.dia {
+  background: var(--surface); min-height: 108px; min-width: 0; padding: 7px 8px 9px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.dia.fuera { background: var(--surface-2); }
+.dia .num {
+  font-family: var(--f-ui); font-size: 12px; font-weight: 700; color: var(--tinta-2);
+  font-variant-numeric: tabular-nums;
+}
+.dia.fuera .num { color: var(--tinta-3); opacity: .6; }
+.dia.hoy .num {
+  background: var(--azul); color: #fff; border-radius: 20px;
+  padding: 1px 7px; align-self: flex-start;
+}
+.ev {
+  font-size: 11.5px; line-height: 1.3; padding: 3px 6px; border-radius: 5px;
+  background: var(--cbg, var(--neutro-bg)); color: var(--c, var(--tinta-2));
+  border-left: 2.5px solid var(--c, var(--neutro));
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.ev.venc { font-weight: 700; }
+.dia .mas { font-size: 11px; color: var(--tinta-3); }
+
+/* ---------- Adjuntos en la card ---------- */
+.adj { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; }
+.adj a, .adj span {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-family: var(--f-ui); font-weight: 600;
+  padding: 3px 8px; border-radius: 6px; text-decoration: none;
+  background: var(--surface-2); border: 1px solid var(--borde); color: var(--tinta-2);
+}
+.adj a:hover { border-color: var(--azul); color: var(--azul-texto); }
+
+/* ---------- Reuniones ---------- */
+.reunion {
+  background: var(--surface); border: 1px solid var(--borde);
+  border-radius: var(--r-card); margin-bottom: 14px; overflow: hidden;
+}
+.reunion > header { padding: 14px 16px; border-bottom: 1px solid var(--borde); background: var(--surface-2); }
+.reunion h3 { font-family: var(--f-ui); font-size: 15.5px; font-weight: 800; color: var(--azul-texto); margin: 0; }
+.reunion .rmeta { font-size: 12.5px; color: var(--tinta-3); margin-top: 4px; }
+.reunion .rmeta a { color: var(--info); }
+.acc { display: flex; gap: 12px; align-items: flex-start; padding: 11px 16px; border-top: 1px solid var(--borde); }
+.acc:first-child { border-top: 0; }
+.acc .txt2 { flex: 1 1 auto; min-width: 0; font-size: 14px; }
+.acc .sug { font-size: 12px; color: var(--tinta-3); margin-top: 3px; }
+.acc .btn { flex: 0 0 auto; }
+.btn {
+  appearance: none; cursor: pointer; font-family: var(--f-ui); font-size: 12.5px; font-weight: 700;
+  padding: 6px 12px; border-radius: 7px; border: 1px solid var(--borde-fuerte);
+  background: var(--surface); color: var(--tinta-2); white-space: nowrap;
+}
+.btn:hover { border-color: var(--azul); color: var(--azul-texto); }
+.btn.pri { background: var(--azul); border-color: var(--azul); color: #fff; }
+.btn.pri:hover { filter: brightness(1.15); color: #fff; }
+.btn:focus-visible { outline: 2px solid var(--naranja); outline-offset: 2px; }
+.btn[disabled] { opacity: .5; cursor: default; }
+
+/* ---------- Playbook ---------- */
+.llamada {
+  background: var(--surface); border: 1px solid var(--borde);
+  border-radius: var(--r-card); margin-bottom: 13px; overflow: hidden;
+}
+.llamada > header {
+  padding: 14px 16px; display: flex; gap: 13px; align-items: center;
+  flex-wrap: wrap; border-bottom: 1px solid var(--borde);
+}
+.llamada h3 { font-family: var(--f-ui); font-size: 15px; font-weight: 800; color: var(--azul-texto); margin: 0; flex: 1 1 220px; }
+.llamada h3 small { display: block; font-family: var(--f-tx); font-weight: 400; font-size: 12.5px; color: var(--tinta-3); margin-top: 2px; }
+.rubrica { display: grid; gap: 1px; background: var(--borde); }
+.crit { background: var(--surface); padding: 11px 16px; display: flex; gap: 13px; align-items: flex-start; }
+.crit .cn { flex: 0 0 150px; font-family: var(--f-ui); font-weight: 700; font-size: 13px; color: var(--tinta-2); }
+.crit .cv { flex: 1 1 auto; font-size: 13.5px; }
+.crit .cp { flex: 0 0 auto; }
+.hallazgo {
+  background: var(--crema); border-top: 1px solid var(--crema-borde);
+  padding: 13px 16px; font-size: 13.5px;
+}
+.hallazgo b { font-family: var(--f-ui); }
+
+.nota {
+  background: var(--crema); border: 1px solid var(--crema-borde);
+  border-radius: var(--r-card); padding: 14px 16px; margin: 22px 0 0; font-size: 14px;
+}
+.nota b { font-family: var(--f-ui); }
+.rotulo-sec {
+  font-family: var(--f-ui); font-size: 11.5px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--tinta-3); margin: 30px 0 12px;
+}
+footer.pie {
+  margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--borde);
+  font-size: 13px; color: var(--tinta-3);
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+@media (max-width: 1100px) { .tablero { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 900px) {
+  .app { flex-direction: column; }
+  .sidebar { width: 100%; flex: none; padding-bottom: 14px; }
+  .nav { flex-direction: row; flex-wrap: wrap; }
+  .nav .sep { width: 100%; margin: 6px 4px 2px; }
+  .nav a .globo { margin-left: 6px; }
+  .main { padding: 22px 18px 50px; }
+  h1 { font-size: 27px; }
+  .tablero { grid-template-columns: 1fr; }
+  .crit { flex-direction: column; gap: 5px; }
+  .crit .cn { flex: none; }
+}
+</style>
+
+<div class="aviso">
+  <strong>Maqueta navegable</strong>
+  <span>Reuniones, tareas y llamadas reales tomadas de Fathom. Lo que muevas o marques vive solo en este navegador.</span>
+</div>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="marca">
+      <div class="logo">DG</div>
+      <div>
+        <div class="nom">DESIGN MODELING</div>
+        <div class="sub">OS · Contenido</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#" tabindex="-1"><span class="ic">🏠</span> Inicio</a>
+      <a href="#" tabindex="-1"><span class="ic">🤖</span> Copiloto</a>
+      <a href="#" tabindex="-1"><span class="ic">🧠</span> Estrategia mensual</a>
+      <a href="#" tabindex="-1"><span class="ic">✨</span> Generador</a>
+      <a href="#" tabindex="-1"><span class="ic">📤</span> Subir</a>
+      <a href="#" tabindex="-1"><span class="ic">✅</span> Aprobación</a>
+      <a href="#" tabindex="-1"><span class="ic">📅</span> Calendario</a>
+      <a href="#" class="on" aria-current="page"><span class="ic">🗂️</span> Tareas <span class="globo" id="globo-nav">6</span></a>
+      <div class="sep">Nuevo</div>
+      <a href="#" tabindex="-1"><span class="ic">🎙️</span> Playbook</a>
+      <a href="https://claude.ai/code/artifact/e2d2ef2f-0352-42ba-9883-9a55b9658d44" target="_blank" rel="noopener"><span class="ic">📊</span> KPIs Equipo <span class="ir">↗</span></a>
+      <div class="sep">Resto</div>
+      <a href="#" tabindex="-1"><span class="ic">📝</span> Blog &amp; SEO</a>
+      <a href="#" tabindex="-1"><span class="ic">💬</span> Comunidades</a>
+      <a href="#" tabindex="-1"><span class="ic">✉️</span> Correo</a>
+      <a href="#" tabindex="-1"><span class="ic">📈</span> Métricas</a>
+      <a href="#" tabindex="-1"><span class="ic">🔌</span> Integraciones</a>
+      <a href="#" tabindex="-1"><span class="ic">🎨</span> Marca</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+   <div class="wrap">
+    <p class="eyebrow">Design Modeling OS</p>
+    <h1>Tareas y Playbook del equipo</h1>
+    <p class="lede">Todo lo que el equipo tiene que hacer, de dónde salió y cómo va. Las reuniones se convierten en tareas, las tareas avisan solas, y las llamadas de venta dejan aprendizaje.</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="t-ban" aria-controls="p-ban" aria-selected="true">🔔 Bandeja <span class="cuenta" id="c-ban">6</span></button>
+      <button class="tab" role="tab" id="t-kan" aria-controls="p-kan" aria-selected="false">🗂️ Kanban <span class="cuenta" id="c-kan">0</span></button>
+      <button class="tab" role="tab" id="t-cal" aria-controls="p-cal" aria-selected="false">📅 Calendario</button>
+      <button class="tab" role="tab" id="t-reu" aria-controls="p-reu" aria-selected="false">🎙️ Reuniones <span class="cuenta" id="c-reu">0</span></button>
+      <button class="tab" role="tab" id="t-pla" aria-controls="p-pla" aria-selected="false">🎯 Playbook de ventas</button>
+    </div>
+
+    <!-- ============ BANDEJA ============ -->
+    <section class="panel" id="p-ban" role="tabpanel" aria-labelledby="t-ban">
+      <div class="filtros">
+        <span style="font-size:13px;color:var(--tinta-2);font-family:var(--f-ui);font-weight:600">Viendo como</span>
+        <select class="chip" id="quien" style="padding:6px 11px">
+          <option>Ester Álvarez</option>
+          <option>Camila Pinto</option>
+          <option>Eber Martínez</option>
+          <option>Aylin Tapia</option>
+          <option>Dayana Calderón</option>
+        </select>
+        <button class="btn" id="marcar-todo" type="button">Marcar todo como leído</button>
+      </div>
+      <div class="bandeja" id="bandeja"></div>
+      <div class="nota">
+        <b>Esto es lo que reemplaza al grupo de WhatsApp.</b> Cada aviso nace de algo que pasó
+        en la plataforma: una tarea asignada, un comentario, una fecha que se vence, una
+        reunión que dejó pendientes. En producción el mismo aviso sale por correo y por push
+        del navegador, con un resumen diario a las 08:00 para quien no entre.
+      </div>
+    </section>
+
+    <!-- ============ KANBAN ============ -->
+    <section class="panel" id="p-kan" role="tabpanel" aria-labelledby="t-kan" hidden>
+      <div class="filtros" id="filtros-area"></div>
+      <div class="tablero" id="tablero"></div>
+      <div class="nota">
+        <b>Una tarea por área, no un tablero por área.</b> Cinco áreas conviven en el mismo
+        tablero y se filtran con los chips de arriba: así Dayana ve todo de un vistazo y cada
+        quien filtra lo suyo. Las tareas que nacen de una reunión llevan el ícono 🎙️ y
+        guardan el enlace a la grabación en el minuto exacto.
+      </div>
+    </section>
+
+    <!-- ============ CALENDARIO ============ -->
+    <section class="panel" id="p-cal" role="tabpanel" aria-labelledby="t-cal" hidden>
+      <div class="filtros" id="capas"></div>
+      <div class="cal-cab" id="cal-cab"></div>
+      <div class="cal" id="cal"></div>
+      <div class="nota">
+        <b>No es un calendario nuevo: son capas sobre el que ya existe.</b> El de
+        publicaciones sigue siendo el mismo; encima se encienden tareas, vencimientos de
+        proyecto, reuniones y recordatorios. Dos calendarios separados obligan a mirar en dos
+        lugares para saber cómo viene la semana — que es justo lo que ya pasa entre ClickUp,
+        GHL y las planillas. Las vencidas se quedan en su día en rojo: mover la fecha es una
+        decisión de alguien, no un efecto de la interfaz.
+      </div>
+    </section>
+
+    <!-- ============ REUNIONES ============ -->
+    <section class="panel" id="p-reu" role="tabpanel" aria-labelledby="t-reu" hidden>
+      <p class="lede" style="margin-bottom:20px">
+        Fathom ya graba y extrae los compromisos de cada reunión. Lo que falta es el paso que
+        hoy nadie hace: <b>convertirlos en tareas con dueño y fecha</b>. Revisa y envía al tablero.
+      </p>
+      <div id="reuniones"></div>
+      <div class="nota">
+        <b>Por qué hay un paso de revisión y no es automático.</b> Fathom asigna la mayoría de
+        los compromisos a la cuenta que grabó («Design Modeling DG»), no a la persona real, y
+        los escribe en inglés. Volcarlos directo al tablero llenaría el Kanban de tareas sin
+        dueño verdadero. El módulo propone —con un responsable sugerido a partir de quién
+        estuvo en la llamada— y una persona confirma en dos clics.
+      </div>
+    </section>
+
+    <!-- ============ PLAYBOOK ============ -->
+    <section class="panel" id="p-pla" role="tabpanel" aria-labelledby="t-pla" hidden>
+      <p class="lede" style="margin-bottom:8px">
+        Cada asesoría del Máster queda grabada. El playbook la lee contra la misma rúbrica
+        siempre, para que Eber y Franklin vean qué repetir y qué corregir — y Camila vea si
+        el setteo está trayendo gente que califica.
+      </p>
+      <p class="rotulo-sec">Closer · Asesorías del Máster</p>
+      <div id="llamadas"></div>
+
+      <p class="rotulo-sec">Setter · Calidad del agendamiento</p>
+      <div id="setteo"></div>
+
+      <div class="nota">
+        <b>El dato que más duele está en la rúbrica de precio.</b> El método de cierre de mes
+        define el ticket del Máster en US$ 2.699,99 y la promoción de Acero en US$ 100 solo
+        como rescate. Si las asesorías cierran sistemáticamente por debajo, el problema no es
+        de volumen de leads sino de defensa de precio — y eso se corrige con entrenamiento,
+        no con más pauta.
+      </div>
+    </section>
+
+    <footer class="pie">
+      Maqueta de los módulos <b>Tareas</b> y <b>Playbook</b> para Design Modeling OS ·
+      Reuniones, compromisos y llamadas reales de Fathom (abr–ago 2026).
+      Los enlaces a las grabaciones son reales y abren en Fathom.
+    </footer>
+   </div>
+  </main>
+</div>
+
+<script type="module">
+/* ==========================================================
+   Datos reales de Fathom — Design Modeling DG
+   ========================================================== */
+
+const AREAS = {
+  marketing:  { nom: "Marketing",       cls: "a-marketing"  },
+  gerencia:   { nom: "Gerencia",        cls: "a-gerencia"   },
+  soporte:    { nom: "Soporte",         cls: "a-soporte"    },
+  plataforma: { nom: "Plataforma",      cls: "a-plataforma" },
+  comercial:  { nom: "Closer / Setter", cls: "a-comercial"  }
+};
+
+const COLUMNAS = [
+  { id: "hacer",   nom: "Por hacer", cls: "col-hacer"   },
+  { id: "proceso", nom: "En proceso", cls: "col-proceso" },
+  { id: "rev",     nom: "Revisión",  cls: "col-rev"     },
+  { id: "listo",   nom: "Listo",     cls: "col-listo"   }
+];
+
+/* Tareas: las de origen "reunión" salen de compromisos reales de Fathom. */
+const TAREAS = [
+  { t: "Limpiar CRM: duplicados, pruebas, montos y fuentes", d: "Mover los cruzados entre pipelines",
+    a: "comercial", q: "Ester", f: "18/08", col: "proceso",
+    reu: "Cierre y Apertura DM · 07 ago", url: "https://fathom.video/calls/775933090?timestamp=2436",
+    adj: [{t:"archivo", n:"Lista de higiene.xlsx"}, {t:"nota", n:"Criterios de depuración"}] },
+  { t: "Revisar automatización pre-WhatsApp", d: "Afinar etiquetas, asignaciones y notificaciones",
+    a: "plataforma", q: "Ester", f: "20/08", col: "hacer",
+    reu: "Cierre y Apertura DM · 07 ago", url: "https://fathom.video/calls/775933090?timestamp=2707" },
+  { t: "Agendar revisión semanal de desempeño con el equipo", d: "Ritmo fijo, no cuando se acuerde",
+    a: "gerencia", q: "Gabriel", f: "21/08", col: "hacer",
+    reu: "Cierre y Apertura DM · 07 ago", url: "https://fathom.video/calls/775933090?timestamp=2495" },
+  { t: "Capacitar a Camila y Pily; luego onboarding de Fran Bayas con Eber", d: "",
+    a: "comercial", q: "Gabriel", f: "19/08", col: "proceso",
+    reu: "Cierre y Apertura DM · 07 ago", url: "https://fathom.video/calls/775933090?timestamp=2995" },
+  { t: "Pausar anuncios de tráfico a perfil con bajo rendimiento", d: "Mantener solo los ganadores",
+    a: "marketing", q: "Fabián", f: "18/08", col: "listo",
+    reu: "Cierre y Apertura DM · 07 ago", url: "https://fathom.video/calls/775933090?timestamp=3297" },
+  { t: "Llamar a los 42 leads del Máster", d: "Mensajear ~80 no calificados; agendar con Eber si aplica",
+    a: "comercial", q: "Camila", f: "19/08", col: "proceso",
+    reu: "Onboarding Camila · 06 ago", url: "https://fathom.video/calls/775983340?timestamp=3056" },
+  { t: "Leer el script de llamadas del Máster y adaptarlo a Diplomados", d: "",
+    a: "comercial", q: "Camila", f: "18/08", col: "rev",
+    reu: "Onboarding Camila · 06 ago", url: "https://fathom.video/calls/775983340?timestamp=2990" },
+  { t: "Dar acceso de administrador de redes a Camila", d: "Facebook, Instagram y LinkedIn",
+    a: "soporte", q: "Aylin", f: "18/08", col: "listo",
+    reu: "Onboarding Camila · 06 ago", url: "https://fathom.video/calls/775983340?timestamp=2842" },
+  { t: "Reconectar cuentas sociales en GoHighLevel", d: "Confirmar con Dayana al terminar",
+    a: "plataforma", q: "Aylin", f: "20/08", col: "hacer",
+    reu: "Onboarding Camila · 06 ago", url: "https://fathom.video/calls/775983340?timestamp=1152" },
+  { t: "Enviar assets del lead magnet a Fabián", d: "Después Fabián lanza los anuncios",
+    a: "marketing", q: "Ester", f: "19/08", col: "rev",
+    reu: "Cierre y Apertura DM · 07 ago", url: "https://fathom.video/calls/775933090?timestamp=3232" },
+  { t: "Grabar reels de orgánico y pauta", d: "Enviar a Francisco para edición con logos",
+    a: "marketing", q: "Ester", f: "21/08", col: "hacer",
+    reu: "Cierre y Apertura DM · 07 ago", url: "https://fathom.video/calls/775933090?timestamp=2476",
+    adj: [{t:"archivero", n:"Guion agosto.pdf"}, {t:"archivero", n:"Logos DG"}] },
+  { t: "Correos post-pérdida en GHL", d: "Secuencia tras marcar oportunidad perdida",
+    a: "plataforma", q: "Ester", f: "20/08", col: "hacer", reu: null, url: null },
+  { t: "Actualizar landings de la página de recursos", d: "",
+    a: "marketing", q: "Ester", f: "18/08", col: "proceso", reu: null, url: null,
+    adj: [{t:"enlace", n:"Landing actual", u:"https://dg-contenido-ia.vercel.app/panel"}] },
+  { t: "Política de privacidad en Vimeo", d: "Revisar y aplicar",
+    a: "soporte", q: "Aylin", f: "18/08", col: "hacer", reu: null, url: null },
+  { t: "Enviar a Patricio el código consolidado del bot", d: "PR #4",
+    a: "plataforma", q: "Ester", f: "18/08", col: "rev", reu: null, url: null }
+];
+
+/* Compromisos que Fathom extrajo y todavía nadie convirtió en tarea. */
+const REUNIONES = [
+  {
+    tit: "Reunión de Cierre y Apertura DM", fecha: "07 ago 2026",
+    url: "https://fathom.video/calls/775933090",
+    gente: "Dayana, Gabriel, Ester, Eber, Aylin, Camila, Patricio, Fabián",
+    accs: [
+      { t: "Enviar el deck y el plan de agosto al equipo; resumen a Francisco", q: "Dayana", a: "gerencia", ts: 1551 },
+      { t: "Sumar a Pily a los grupos de Design Modeling", q: "Ester", a: "soporte", ts: 512 },
+      { t: "Subir el video de Francisco; luego Fabián lanza los anuncios", q: "Ester", a: "marketing", ts: 3255 }
+    ]
+  },
+  {
+    tit: "Reunión con Camila — indicaciones de puesto y capacitaciones", fecha: "03 ago 2026",
+    url: "https://fathom.video/calls/768734257",
+    gente: "Dayana, Camila",
+    accs: [
+      { t: "Enviar el pitch de setter a Camila; luego agendar capacitación con Camila y Eber", q: "Gabriel", a: "comercial", ts: 566 },
+      { t: "Agendar y dictar la capacitación de marketing a Camila", q: "Ester", a: "marketing", ts: 1071 },
+      { t: "Enviar el documento de contenido de agosto a Camila", q: "Dayana", a: "marketing", ts: 376 }
+    ]
+  },
+  {
+    tit: "Equipo Ventas Máster DM", fecha: "11 ago 2026",
+    url: "https://fathom.video/calls/780861241",
+    gente: "Gabriel, Eber, Ester, Camila",
+    accs: []
+  }
+];
+
+/* Asesorías reales del Máster (closer: Eber). */
+const LLAMADAS = [
+  {
+    cli: "Ronal Hinojosa", fecha: "29 jul 2026", closer: "Eber",
+    url: "https://fathom.video/calls/766148644", res: "cerrado",
+    crit: [
+      { n: "Diagnóstico", v: "Sólido. Ingeniero civil en la Empresa Pública de Movilidad de Quito; problemas concretos identificados: cuantificación manual en Excel, planos desactualizados, silos entre equipos.", p: "ok" },
+      { n: "Encaje con el producto", v: "Bien argumentado: enfoque metodológico, módulo de IA y certificación internacional, atados a lo que le faltó en su formación previa.", p: "ok" },
+      { n: "Defensa de precio", v: "Cerró en US$ 1.900 presentando US$ 2.400 como estándar. El ticket de referencia del método es US$ 2.699,99.", p: "gr" },
+      { n: "Manejo de objeciones", v: "La objeción real era el ciclo de facturación de su tarjeta, no el precio. Se resolvió partiendo el pago sin bajar más.", p: "ok" },
+      { n: "Próximo paso", v: "Concreto y con fecha: US$ 100 el 30 de julio, US$ 1.800 el 1 de agosto, datos por WhatsApp.", p: "ok" }
+    ],
+    hall: "El cierre fue bueno y el próximo paso impecable. Lo que hay que revisar es de dónde sale el ancla de US$ 2.400: si el precio de lista es US$ 2.699,99, la conversación arrancó US$ 800 por debajo del ticket y el descuento se concedió antes de que apareciera una objeción de precio."
+  },
+  {
+    cli: "Mauricio González", fecha: "28 jul 2026", closer: "Eber",
+    url: "https://fathom.video/calls/764489757", res: "en proceso",
+    crit: [
+      { n: "Diagnóstico", v: "Derivó a Diplomado de Arquitectura en vez de Máster — downsell aplicado.", p: "in" },
+      { n: "Defensa de precio", v: "Sin evidencia de negociación de precio en el resumen.", p: "nd" },
+      { n: "Manejo de objeciones", v: "Objeción operativa real: tarjeta bloqueada en el banco. No es objeción de valor.", p: "in" },
+      { n: "Próximo paso", v: "Sesión de pago agendada para el 4 de agosto, 18:00 hora de Panamá. Con fecha y hora.", p: "ok" }
+    ],
+    hall: "Buen manejo de una traba bancaria, que es la objeción más fácil de perder por no dar seguimiento. Queda pendiente confirmar si el pago del 4 de agosto se concretó — el tablero debería abrir la tarea de seguimiento solo."
+  },
+  {
+    cli: "Rodrigo Faicán", fecha: "30 jul 2026", closer: "Eber",
+    url: "https://fathom.video/calls/766224789", res: "en riesgo",
+    crit: [
+      { n: "Próximo paso", v: "Depende de que Rodrigo escriba a Eber el 5 de agosto a las 17:00. El siguiente movimiento quedó del lado del cliente.", p: "gr" },
+      { n: "Defensa de precio", v: "Se pidió a Gabriel mantener la oferta abierta hasta el 5 de agosto.", p: "al" }
+    ],
+    hall: "Patrón a corregir: el próximo paso quedó en manos del prospecto. Cuando el cliente es quien tiene que escribir, la tasa de no-respuesta se dispara. La regla del playbook debería ser que el closer siempre agenda el siguiente contacto."
+  },
+  {
+    cli: "Jose Sánchez · Xavier · Juan Pablo Guerrero · Oswaldo", fecha: "30 jul – 13 ago", closer: "Eber",
+    url: null, res: "sin analizar",
+    crit: [], hall: null
+  }
+];
+
+const SETTEO = [
+  { m: "Citas agendadas en el ciclo", v: "53", p: "nd" },
+  { m: "Llegaron a la reunión", v: "16 · 30,2%", p: "gr" },
+  { m: "No se presentaron", v: "37", p: "gr" },
+  { m: "Meta de asistencia", v: "80%", p: "nd" },
+  { m: "Setter en el puesto durante el ciclo", v: "No — Camila entró el 05/08, último día", p: "al" }
+];
+
+const AVISOS = [
+  { em: "📌", c: "gr", t: "Se te asignó: Limpiar CRM (duplicados, pruebas, montos)",
+    d: "Salió de la Reunión de Cierre y Apertura del 07 de agosto · vence el 18/08",
+    w: "hace 2 horas" },
+  { em: "⏰", c: "gr", t: "Vence hoy: Enviar a Patricio el código consolidado del bot",
+    d: "Está en Revisión desde ayer", w: "hace 3 horas" },
+  { em: "💬", c: "in", t: "Gabriel comentó en «Capacitar a Camila y Pily»",
+    d: "«¿Podemos mover el onboarding de Fran para después del jueves?»", w: "hace 5 horas" },
+  { em: "🎙️", c: "al", t: "La reunión Equipo Ventas Máster DM dejó compromisos sin repartir",
+    d: "3 pendientes esperando responsable y fecha", w: "ayer" },
+  { em: "✅", c: "ok", t: "Aylin cerró «Dar acceso de administrador de redes a Camila»",
+    d: "Pasó a Listo", w: "ayer" },
+  { em: "🎯", c: "al", t: "Nueva asesoría analizada: Rodrigo Faicán",
+    d: "El próximo paso quedó del lado del cliente — revisar en el playbook", w: "hace 2 días" }
+];
+
+/* ================= Utilidades ================= */
+const $  = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const el = (tag, cls, txt) => {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (txt != null) n.textContent = txt;
+  return n;
+};
+const CLS_P = { ok: "st-ok", al: "st-al", gr: "st-gr", in: "st-in", nd: "st-nd" };
+
+/* "Hoy" siempre en horario de Ecuador, nunca con la hora del navegador. */
+const HOY_ISO = new Date().toLocaleDateString("en-CA", { timeZone: "America/Guayaquil" });
+const aISO = f => { const [d, m] = f.split("/"); return `2026-${m}-${d}`; };
+/* Una tarea está vencida si su fecha ya pasó y no está en Listo.
+   Misma regla en el Kanban y en el calendario: una sola fuente de verdad. */
+const estaVencida = (f, col) => col !== "listo" && aISO(f) < HOY_ISO;
+
+/* ================= Bandeja ================= */
+const leidos = new Set();
+
+function pintaBandeja() {
+  const cont = $("#bandeja");
+  cont.replaceChildren(...AVISOS.map((a, i) => {
+    const yaLeido = leidos.has(i);
+    const d = el("div", "aviso-item" + (yaLeido ? " leido" : ""));
+    d.style.setProperty("--c", `var(--${a.c === "ok" ? "ok" : a.c === "gr" ? "grave" : a.c === "al" ? "alerta" : "info"})`);
+    d.append(el("span", "em", a.em));
+    const cuerpo = el("div", "cuerpo2");
+    cuerpo.append(el("div", "tit2", a.t), el("div", "det", a.d), el("div", "cuando", a.w));
+    d.append(cuerpo);
+    if (!yaLeido) {
+      const b = el("button", "btn", "Marcar leído");
+      b.type = "button";
+      b.onclick = () => { leidos.add(i); pintaBandeja(); };
+      d.append(b);
+    }
+    return d;
+  }));
+  const sinLeer = AVISOS.length - leidos.size;
+  $("#c-ban").textContent = sinLeer;
+  $("#globo-nav").textContent = sinLeer;
+  $("#globo-nav").style.display = sinLeer ? "" : "none";
+}
+$("#marcar-todo").onclick = () => { AVISOS.forEach((_, i) => leidos.add(i)); pintaBandeja(); };
+
+/* ================= Kanban ================= */
+let areaActiva = "todas";
+const estadoCol = new Map(TAREAS.map((t, i) => [i, t.col]));
+
+function pintaFiltros() {
+  const conteo = a => TAREAS.filter(t => a === "todas" || t.a === a).length;
+  const opciones = [["todas", "Todas"], ...Object.entries(AREAS).map(([k, v]) => [k, v.nom])];
+  $("#filtros-area").replaceChildren(...opciones.map(([k, nom]) => {
+    const b = el("button", "chip");
+    b.type = "button";
+    b.setAttribute("aria-pressed", String(k === areaActiva));
+    b.append(document.createTextNode(nom), el("span", "n", String(conteo(k))));
+    b.onclick = () => { areaActiva = k; pintaKanban(); };
+    return b;
+  }));
+}
+
+function pintaKanban() {
+  pintaFiltros();
+  const visibles = TAREAS.map((t, i) => ({ t, i })).filter(o => areaActiva === "todas" || o.t.a === areaActiva);
+  $("#c-kan").textContent = visibles.length;
+
+  $("#tablero").replaceChildren(...COLUMNAS.map(c => {
+    const enCol = visibles.filter(o => estadoCol.get(o.i) === c.id);
+    const col = el("div", "col " + c.cls);
+    const h = el("h3");
+    h.append(document.createTextNode(c.nom), el("span", "n", String(enCol.length)));
+    col.append(h);
+
+    const pila = el("div", "pila");
+    if (!enCol.length) pila.append(el("div", "vacio-col", "Nada por acá."));
+
+    enCol.forEach(({ t, i }) => {
+      const card = el("div", "card");
+      card.append(el("div", "ct", t.t));
+      if (t.d) card.append(el("div", "cd", t.d));
+
+      const metas = el("div", "metas");
+      metas.append(el("span", "mini " + AREAS[t.a].cls, AREAS[t.a].nom));
+      metas.append(el("span", "mini st-nd", t.q));
+      metas.append(el("span", "mini " + (estaVencida(t.f, estadoCol.get(i)) ? "st-gr" : "st-nd"), t.f));
+      if (t.reu) {
+        const a = el("a", "mini st-in", "🎙️ " + t.reu);
+        a.href = t.url; a.target = "_blank"; a.rel = "noopener";
+        a.style.textDecoration = "none";
+        metas.append(a);
+      }
+      card.append(metas);
+
+      if (t.adj?.length) {
+        const a = el("div", "adj");
+        t.adj.forEach(x => {
+          const ic = { archivo: "📄", nota: "📝", enlace: "🔗", archivero: "📎" }[x.t];
+          const n = x.u ? el("a", null) : el("span", null);
+          if (x.u) { n.href = x.u; n.target = "_blank"; n.rel = "noopener"; }
+          n.textContent = `${ic} ${x.n}`;
+          a.append(n);
+        });
+        card.append(a);
+      }
+
+      const mover = el("div", "mover");
+      COLUMNAS.forEach(dest => {
+        const b = el("button", "mini-btn", dest.nom);
+        b.type = "button";
+        if (dest.id === estadoCol.get(i)) b.setAttribute("aria-current", "true");
+        b.onclick = () => { estadoCol.set(i, dest.id); pintaKanban(); };
+        mover.append(b);
+      });
+      card.append(mover);
+      pila.append(card);
+    });
+
+    col.append(pila);
+    return col;
+  }));
+}
+
+/* ================= Reuniones ================= */
+const convertidas = new Set();
+
+function pintaReuniones() {
+  let pendientes = 0;
+  const nodos = REUNIONES.map((r, ri) => {
+    const box = el("div", "reunion");
+    const head = el("header");
+    head.append(el("h3", null, r.tit));
+    const meta = el("div", "rmeta");
+    meta.append(document.createTextNode(`${r.fecha} · ${r.gente} · `));
+    const a = el("a", null, "ver grabación");
+    a.href = r.url; a.target = "_blank"; a.rel = "noopener";
+    meta.append(a);
+    head.append(meta);
+    box.append(head);
+
+    if (!r.accs.length) {
+      box.append(el("div", "acc", "Fathom no extrajo compromisos de esta reunión. Se pueden agregar a mano."));
+      return box;
+    }
+
+    r.accs.forEach((ac, ai) => {
+      const clave = `${ri}-${ai}`;
+      const ya = convertidas.has(clave);
+      if (!ya) pendientes++;
+      const fila = el("div", "acc");
+      const txt = el("div", "txt2");
+      txt.append(el("div", null, ac.t));
+      txt.append(el("div", "sug", `Responsable sugerido: ${ac.q} · Área: ${AREAS[ac.a].nom} · minuto ${Math.floor(ac.ts / 60)}:${String(ac.ts % 60).padStart(2, "0")}`));
+      fila.append(txt);
+
+      if (ya) {
+        fila.append(el("span", "mini st-ok", "✓ En el tablero"));
+      } else {
+        const b = el("button", "btn pri", "Convertir en tarea");
+        b.type = "button";
+        b.onclick = () => {
+          convertidas.add(clave);
+          TAREAS.push({ t: ac.t, d: "", a: ac.a, q: ac.q, f: "21/08", col: "hacer",
+                        reu: `${r.tit} · ${r.fecha}`, url: `${r.url}?timestamp=${ac.ts}` });
+          estadoCol.set(TAREAS.length - 1, "hacer");
+          pintaReuniones(); pintaKanban();
+        };
+        fila.append(b);
+      }
+      box.append(fila);
+    });
+    return box;
+  });
+
+  $("#reuniones").replaceChildren(...nodos);
+  $("#c-reu").textContent = pendientes;
+}
+
+/* ================= Playbook ================= */
+const ETIQ_RES = { cerrado: ["st-ok", "Cerrado"], "en proceso": ["st-in", "En proceso"],
+                   "en riesgo": ["st-gr", "En riesgo"], "sin analizar": ["st-nd", "Sin analizar"] };
+
+function pintaLlamadas() {
+  $("#llamadas").replaceChildren(...LLAMADAS.map(l => {
+    const box = el("div", "llamada");
+    const head = el("header");
+    const h = el("h3", null, l.cli);
+    const s = el("small", null, `${l.fecha} · Closer: ${l.closer}`);
+    h.append(s);
+    head.append(h);
+    const [cls, txt] = ETIQ_RES[l.res];
+    head.append(el("span", "mini " + cls, txt));
+    if (l.url) {
+      const a = el("a", "btn", "Ver llamada");
+      a.href = l.url; a.target = "_blank"; a.rel = "noopener"; a.style.textDecoration = "none";
+      head.append(a);
+    }
+    box.append(head);
+
+    if (l.crit.length) {
+      const rub = el("div", "rubrica");
+      l.crit.forEach(c => {
+        const f = el("div", "crit");
+        f.append(el("div", "cn", c.n), el("div", "cv", c.v));
+        const p = el("div", "cp");
+        p.append(el("span", "mini " + CLS_P[c.p],
+          c.p === "ok" ? "Bien" : c.p === "gr" ? "Corregir" : c.p === "al" ? "Atención" : c.p === "in" ? "Correcto" : "Sin dato"));
+        f.append(p);
+        rub.append(f);
+      });
+      box.append(rub);
+    } else {
+      box.append(el("div", "acc", "Cuatro asesorías grabadas, todavía sin pasar por la rúbrica."));
+    }
+
+    if (l.hall) {
+      const hz = el("div", "hallazgo");
+      hz.append(el("b", null, "Qué corregir: "), document.createTextNode(l.hall));
+      box.append(hz);
+    }
+    return box;
+  }));
+}
+
+function pintaSetteo() {
+  const box = el("div", "llamada");
+  const head = el("header");
+  const h = el("h3", null, "Camila Pinto — calidad del setteo");
+  h.append(el("small", null, "Ciclo 05 jul – 05 ago 2026 · datos de GoHighLevel"));
+  head.append(h);
+  box.append(head);
+
+  const rub = el("div", "rubrica");
+  SETTEO.forEach(s => {
+    const f = el("div", "crit");
+    f.append(el("div", "cn", s.m), el("div", "cv", s.v));
+    const p = el("div", "cp");
+    if (s.p !== "nd") p.append(el("span", "mini " + CLS_P[s.p], s.p === "gr" ? "Corregir" : "Atención"));
+    f.append(p);
+    rub.append(f);
+  });
+  box.append(rub);
+
+  const hz = el("div", "hallazgo");
+  hz.append(el("b", null, "Qué corregir: "), document.createTextNode(
+    "De 53 citas agendadas, 37 no llegaron. La rama operó sin setter todo el ciclo, así que " +
+    "este número mide la ausencia del puesto, no el desempeño de Camila. Es la línea base " +
+    "contra la cual medirla desde agosto: confirmación el día antes, recordatorio dos horas " +
+    "antes, y reagendar en el momento al que no llega."));
+  box.append(hz);
+
+  $("#setteo").replaceChildren(box);
+}
+
+
+/* ================= Calendario ================= */
+/* Capas sobre el calendario que ya existe, no un calendario nuevo. */
+const CAPAS = [
+  { id:"pub",  nom:"📅 Publicaciones", c:"var(--info)",    bg:"var(--info-bg)"    },
+  { id:"tar",  nom:"🗂️ Tareas",        c:"var(--azul)",    bg:"var(--neutro-bg)"  },
+  { id:"proy", nom:"📌 Proyectos",      c:"var(--naranja)", bg:"var(--crema)"      },
+  { id:"reu",  nom:"🎙️ Reuniones",     c:"var(--ok)",      bg:"var(--ok-bg)"      },
+  { id:"rec",  nom:"⏰ Recordatorios",  c:"var(--alerta)",  bg:"var(--alerta-bg)"  }
+];
+const capasOn = new Set(CAPAS.map(c => c.id));
+
+/* Eventos que no son tareas (las tareas se leen de TAREAS por su fecha). */
+const OTROS = [
+  { d:"2026-08-18", capa:"pub",  t:"Post: caso de obra" },
+  { d:"2026-08-19", capa:"reu",  t:"Equipo de ventas" },
+  { d:"2026-08-20", capa:"pub",  t:"Reel de valor" },
+  { d:"2026-08-21", capa:"rec",  t:"Confirmar citas del lunes" },
+  { d:"2026-08-24", capa:"pub",  t:"Carrusel Máster" },
+  { d:"2026-08-26", capa:"reu",  t:"Revisión semanal" },
+  { d:"2026-08-28", capa:"pub",  t:"Testimonio egresado" },
+  { d:"2026-08-31", capa:"proy", t:"Vence: campañas de agosto" },
+  { d:"2026-09-01", capa:"pub",  t:"Apertura septiembre" }
+];
+
+const HOY_EC = new Date(new Date().toLocaleDateString("en-CA", { timeZone:"America/Guayaquil" }) + "T12:00:00");
+
+function pintaCapas() {
+  $("#capas").replaceChildren(...CAPAS.map(c => {
+    const b = el("button", "chip");
+    b.type = "button";
+    b.setAttribute("aria-pressed", String(capasOn.has(c.id)));
+    b.textContent = c.nom;
+    b.onclick = () => {
+      capasOn.has(c.id) ? capasOn.delete(c.id) : capasOn.add(c.id);
+      pintaCalendario();
+    };
+    return b;
+  }));
+}
+
+function pintaCalendario() {
+  pintaCapas();
+  const y = 2026, m = 7;                                  // agosto de 2026
+  $("#cal-cab").replaceChildren(...["lun","mar","mié","jue","vie","sáb","dom"]
+    .map(d => el("span", null, d)));
+
+  const primero = new Date(y, m, 1);
+  const inicio = new Date(primero);
+  inicio.setDate(1 - ((primero.getDay() + 6) % 7));       // arranca en lunes
+
+  // Tareas por día, a partir de su vencimiento "DD/MM"
+  const porDia = {};
+  const empuja = (iso, capa, txt, venc) => (porDia[iso] ||= []).push({ capa, txt, venc });
+  if (capasOn.has("tar")) {
+    TAREAS.forEach((t, i) => {
+      const [d, mm] = t.f.split("/");
+      const iso = `2026-${mm}-${d}`;
+      empuja(iso, "tar", t.t, estaVencida(t.f, estadoCol.get(i)));
+    });
+  }
+  OTROS.forEach(o => { if (capasOn.has(o.capa)) empuja(o.d, o.capa, o.t, false); });
+
+  const celdas = [];
+  for (let i = 0; i < 42; i++) {
+    const f = new Date(inicio); f.setDate(inicio.getDate() + i);
+    const iso = f.toLocaleDateString("en-CA");
+    const fuera = f.getMonth() !== m;
+    const esHoy = iso === HOY_ISO;
+
+    const c = el("div", "dia" + (fuera ? " fuera" : "") + (esHoy ? " hoy" : ""));
+    c.append(el("span", "num", String(f.getDate())));
+
+    const evs = porDia[iso] || [];
+    evs.slice(0, 3).forEach(e => {
+      const capa = CAPAS.find(x => x.id === e.capa);
+      const n = el("div", "ev" + (e.venc ? " venc" : ""), e.txt);
+      n.style.setProperty("--c",  e.venc ? "var(--grave)"    : capa.c);
+      n.style.setProperty("--cbg", e.venc ? "var(--grave-bg)" : capa.bg);
+      n.title = e.txt;
+      c.append(n);
+    });
+    if (evs.length > 3) c.append(el("div", "mas", `+${evs.length - 3} más`));
+    celdas.push(c);
+  }
+  $("#cal").replaceChildren(...celdas);
+}
+
+/* ================= Pestañas ================= */
+$$(".tab").forEach(t => {
+  t.onclick = () => {
+    $$(".tab").forEach(o => {
+      const activa = o === t;
+      o.setAttribute("aria-selected", String(activa));
+      $("#" + o.getAttribute("aria-controls")).hidden = !activa;
+    });
+  };
+});
+
+/* ================= Arranque ================= */
+pintaBandeja();
+pintaKanban();
+pintaReuniones();
+pintaLlamadas();
+pintaSetteo();
+pintaCalendario();
+</script>
