@@ -23,7 +23,7 @@ export function TarjetaNovedad({ n }: { n: Novedad }) {
   return (
     <article className="panel flex h-full flex-col overflow-hidden">
       {n.imagenUrl ? (
-        <div className="relative aspect-[16/9] w-full bg-navy">
+        <div className="relative aspect-[4/3] w-full bg-navy">
           <Image src={n.imagenUrl} alt="" fill sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw" className="object-cover" />
         </div>
       ) : null}
