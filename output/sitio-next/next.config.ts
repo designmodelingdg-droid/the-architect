@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  /* Imágenes de ofertas y eventos que el equipo sube en la app de contenido (bucket público "novedades"). */
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "wykwcbohcsqfojsgkfxp.supabase.co", pathname: "/storage/v1/object/public/novedades/**" }],
+  },
   /*
    * `Vary: Accept` en las respuestas de página. Sin esta cabecera, un CDN
    * puede servirle a un agente el HTML cacheado cuando pidió markdown, o al

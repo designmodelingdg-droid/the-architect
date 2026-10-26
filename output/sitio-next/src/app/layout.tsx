@@ -3,6 +3,7 @@ import { Overpass, Nunito } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/site/navbar";
 import { TopBar } from "@/components/site/topbar";
+import { FranjaNovedades } from "@/components/site/franja-novedades";
 import { Footer } from "@/components/site/footer";
 import { ChatWidget } from "@/components/site/chat-widget";
 import { ScrollSuave } from "@/components/site/scroll-suave";
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <DatosEstructurados />
         <ScrollSuave />
         <a href="#contenido" className="saltar-contenido">Saltar al contenido</a>
+        <FranjaNovedades />
         <TopBar />
         <Navbar />
         <main id="contenido">{children}</main>

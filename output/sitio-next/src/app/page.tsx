@@ -13,6 +13,7 @@ import { DataStrip } from "@/components/site/data-strip";
 import { TextoCinetico } from "@/components/site/texto-cinetico";
 import { ActoPlataforma } from "@/components/site/acto-plataforma";
 import { ContactoBloque } from "@/components/site/contacto-bloque";
+import { NovedadesInicio } from "@/components/site/novedades-inicio";
 import { ACADEMIA, FAMILIAS, VERTICALES, EQUIPO } from "@/lib/site";
 
 const PILARES = [
@@ -78,6 +79,8 @@ export default function Home() {
           </CapaMouse>
         </div>
       </ZonaMouse>
+
+      <NovedadesInicio />
 
       <DataStrip
         items={[
