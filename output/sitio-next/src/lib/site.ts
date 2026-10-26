@@ -78,9 +78,9 @@ export const FAMILIAS = [
     resumen: "Nuestro plus: cada servicio se entrega con DG BIM Intelligence, el agente que razona sobre tu proyecto.",
     servicios: [
       "Auditoría del modelo con agente de IA",
-      "Detección de interferencias clasificadas por severidad",
+      "Detección de interferencias clasificadas por severidad (en desarrollo)",
       "Control de calidad de datos del modelo",
-      "Tableros por rol: modelador, coordinador, gerencia y dueño",
+      "Tableros de Modelador y Gerente BIM; Coordinador en desarrollo",
       "Agente especializado disponible 24/7",
     ],
     img: "/images/dgbim/dashboard.jpg",
