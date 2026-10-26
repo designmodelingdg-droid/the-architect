@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useMovimientoReducido } from "./use-movimiento-reducido";
 import type { ReactNode } from "react";
 
 const EASE = [0.23, 1, 0.32, 1] as const;
@@ -14,7 +15,7 @@ export function Reveal({
   delay?: number;
   className?: string;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useMovimientoReducido();
   if (reduced) return <div className={className}>{children}</div>;
   return (
     <motion.div
@@ -38,7 +39,7 @@ export function HeroReveal({
   delay?: number;
   className?: string;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useMovimientoReducido();
   if (reduced) return <div className={className}>{children}</div>;
   return (
     <motion.div

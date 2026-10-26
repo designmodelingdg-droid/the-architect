@@ -73,7 +73,15 @@ language: es
 ---
 ```
 
-### 3. El middleware
+### 3. El middleware (en Next 16, `proxy.ts`)
+
+Next 16 avisa: `middleware` pasa a llamarse `proxy` (archivo `src/proxy.ts`,
+función exportada `proxy`). Misma API. Cuando las rutas salen del contenido y
+no hay lista cerrada, el proxy reescribe **cualquier** ruta con sufijo `.md`, a
+cualquier profundidad (`/docentes/gabriel-pantoja.md`), excluye `/keystatic`,
+`/api` y `/md`, y deja que el handler decida el 404. La cabecera `Link` va en
+todas las páginas.
+
 
 En `assets/middleware.ts`. Hace dos cosas, y ninguna toca el HTML que ve una
 persona:
@@ -115,7 +123,27 @@ Las respuestas de markdown sí llevan su `Vary` correcto. Si un escáner insiste
 en el `Vary` del HTML, se fija en el borde con una regla en `vercel.json`.
 Por eso conviene declarar el gemelo también en el HTML.
 
+### 5. Cuando el contenido crece: generar, no escribir
+
+En la academia, `llms.txt` es un route handler (`src/app/llms.txt/route.ts`,
+`force-static`) y el markdown de cada página sale de `src/lib/markdown.ts`,
+los dos leyendo el reader de Keystatic. `generateStaticParams` del handler de
+markdown prerenderiza los 114 gemelos en build; una ruta desconocida llega en
+ejecución y responde 404 en markdown. Para que ese caso pueda leer `content/`
+en Vercel: `outputFileTracingIncludes: { "/md/[[...slug]]": ["./content/**/*"] }`.
+
 ## JSON-LD
+
+### `Course` por programa
+
+Cada página de programa lleva `Course` con `@id`, `provider` (la
+`EducationalOrganization`), `hasCourseInstance` (`courseMode` online,
+`courseWorkload` en ISO 8601, fecha de inicio si la hay), `teaches`,
+`educationalCredentialAwarded`, y `offers` **solo cuando el precio es
+público**. El máster se vende con cita: sin `offers`, y el texto dice por qué.
+Es el schema que Google usa para resultados enriquecidos de cursos y ninguna
+de las referencias del sector lo tenía.
+
 
 Un solo componente, `datos-estructurados.tsx`, y es **el único sitio del
 proyecto con `dangerouslySetInnerHTML`** (lo dice la regla de seguridad).

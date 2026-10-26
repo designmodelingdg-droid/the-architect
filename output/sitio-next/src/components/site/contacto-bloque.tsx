@@ -5,8 +5,11 @@ import { WA, WA_MSG, EMAIL } from "@/lib/site";
 
 /* Formulario de contacto de Sharp CRM (LeadConnector white-label). El script
  * form_embed.js ajusta la altura del iframe al contenido del formulario. */
-const FORM_ID = "OfA7Ehcb8QSo9VXIDe6X";
+const FORM_ID = "hlkHht1xDkQc6ZZhGflm";
 const FORM_URL = `https://api.leadconnectorhq.com/widget/form/${FORM_ID}`;
+/* Calendario de diagnóstico de Gabriel en Sharp CRM (Ester, 26/10/2026). El
+ * mismo form_embed.js ajusta su altura. */
+const CALENDARIO_URL = "https://api.leadconnectorhq.com/widget/booking/bVtL1gbYL4sjxJe7jDdW";
 
 export function ContactoBloque({ conDatos = true }: { conDatos?: boolean }) {
   return (
@@ -51,9 +54,23 @@ export function ContactoBloque({ conDatos = true }: { conDatos?: boolean }) {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div id="formulario" className="scroll-mt-28">
+          <div id="cita" className="scroll-mt-28">
             <span className="tag-tech">Diagnóstico sin costo</span>
             <h3 className="mt-2 text-xl font-bold text-navy">Agenda tu diagnóstico gratuito</h3>
+            <p className="mt-1 mb-5 text-[13.5px] text-tinta-suave">
+              Elige día y hora directamente en la agenda del Ing. Gabriel Pantoja.
+            </p>
+            <iframe
+              src={CALENDARIO_URL}
+              title="Calendario de diagnóstico — Design Modeling DG"
+              loading="lazy"
+              className="block w-full rounded-lg border-0"
+              style={{ height: 720 }}
+            />
+          </div>
+          <div id="formulario" className="mt-12 scroll-mt-28">
+            <span className="tag-tech">O escríbenos</span>
+            <h3 className="mt-2 text-xl font-bold text-navy">Cuéntanos tu proyecto</h3>
             <p className="mt-1 mb-5 text-[13.5px] text-tinta-suave">
               Déjanos tus datos y qué proyecto tienes entre manos. Un consultor te contacta en 24 h.
             </p>

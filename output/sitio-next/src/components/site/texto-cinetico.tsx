@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useMovimientoReducido } from "./use-movimiento-reducido";
 
 /*
  * Titular cinético: las palabras entran una a una, con un pequeño ascenso y
@@ -18,7 +19,7 @@ export function TextoCinetico({
   delay?: number;
   paso?: number;
 }) {
-  const reducido = useReducedMotion();
+  const reducido = useMovimientoReducido();
   if (reducido) {
     return (
       <>

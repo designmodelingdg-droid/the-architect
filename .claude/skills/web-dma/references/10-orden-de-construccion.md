@@ -56,9 +56,10 @@ cayendo en 404 en producción).
     use …» en inglés, los casos en que no somos la respuesta, y las notas para
     agentes.
 16. **Handler de markdown** en `src/app/md/[[...slug]]/route.ts`, componiendo
-    desde `site.ts`, con frontmatter y 404 útil.
-17. **Middleware:** sufijo `.md`, negociación por `Accept` con q-values,
-    cabecera `Link`.
+    desde `site.ts` (o desde el reader del CMS, ver `11-catalogo-con-cms.md`),
+    con frontmatter y 404 útil.
+17. **Proxy** (`src/proxy.ts` en Next 16): sufijo `.md`, negociación por
+    `Accept` con q-values, cabecera `Link`.
 18. **`alternos()`** en el `alternates` de cada página, para el
     `<link rel="alternate">`.
 19. **JSON-LD** con `Organization` completo: `address` y `contactPoint`
@@ -74,6 +75,10 @@ cayendo en 404 en producción).
     navegador, y una ruta inexistente devuelve 404 de verdad.
 23. **Capturas** a 1440 px y a 390 px, del scroll por pasos. Recordar que los
     iframes externos saldrán en gris y eso no es un fallo.
+24. **Movimiento reducido:** Playwright con `reducedMotion: "reduce"`, leer la
+    opacidad computada del `h1` en dos páginas internas. Tiene que ser 1.
+25. **Si hay CMS:** `/keystatic` responde 200 con su propio título, y la
+    editora crea, edita y borra un programa de prueba.
 
 ## Fase 5 · El corte de dominio
 

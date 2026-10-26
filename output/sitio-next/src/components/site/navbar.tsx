@@ -77,7 +77,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <Link
-            href="/contactos#formulario"
+            href="/contactos#cita"
             data-btn
             className="rounded-lg bg-naranja px-4 py-2.5 font-heading text-[13px] font-bold text-white hover:bg-azul"
           >

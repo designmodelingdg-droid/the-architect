@@ -2,7 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useMovimientoReducido } from "./use-movimiento-reducido";
 import { VimeoFondo } from "./vimeo-fondo";
 import { ZonaMouse, CapaMouse } from "./zona-mouse";
 
@@ -32,7 +33,7 @@ export function CineBanda({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const reducido = useReducedMotion();
+  const reducido = useMovimientoReducido();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
   const yTexto = useTransform(scrollYProgress, [0.15, 0.85], ["14%", "-14%"]);

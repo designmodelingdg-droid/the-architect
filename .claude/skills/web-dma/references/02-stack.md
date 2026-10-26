@@ -19,6 +19,12 @@ Las del sitio de consultoría, en producción y verificadas:
 
 `eslint-config-next` va clavado a la versión de Next.
 
+Para un catálogo que cambia sin desarrollador: `@keystatic/core` ^0.6.9,
+`@keystatic/next` ^5.0.5 y `@markdoc/markdoc`. Ver `11-catalogo-con-cms.md`.
+
+Next 16 renombra `middleware.ts` a `proxy.ts` (función `proxy`); el codemod
+es `npx @next/codemod@canary middleware-to-proxy .`.
+
 Scripts: `dev`, `build`, `start`, `lint` (`eslint` a secas).
 
 ## Tailwind 4: el tema va en CSS, no en un archivo de config
