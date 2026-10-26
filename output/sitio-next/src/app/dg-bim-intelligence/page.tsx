@@ -1,4 +1,4 @@
-import { alternos } from "@/lib/site";
+import { alternos, WA_MSG } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, Clock, Eye } from "lucide-react";
@@ -17,10 +17,10 @@ export const metadata: Metadata = {
 };
 
 const ROLES = [
-  ["Modelador", "Entrega limpio. Ve inconsistencias accionables antes de pasar a coordinación."],
-  ["Coordinador", "Llega en control. Prioriza interferencias, estados y responsables sin ruido."],
-  ["Gerente", "Decide con datos. Entiende riesgo, avance y calidad sin abrir veinte reportes."],
-  ["Dueño", "Protege el margen. Ve dónde el error técnico se vuelve atraso, RFI o sobrecosto."],
+  ["Modelador", "Entrega un modelo limpio. Ve inconsistencias accionables antes de pasar a coordinación.", "Disponible hoy"],
+  ["Gerente", "Decide con datos. Entiende riesgo, avance y calidad sin abrir veinte reportes.", "Disponible hoy"],
+  ["Coordinador", "Llega en control. Prioriza interferencias, estados y responsables sin ruido.", "En desarrollo"],
+  ["Dueño", "Protege el margen. Ve dónde el error técnico se vuelve atraso, RFI o sobrecosto.", "Próximamente"],
 ] as const;
 
 const PASOS = [
@@ -38,19 +38,19 @@ export default function Plataforma() {
         title="Un consultor BIM que razona, 24/7 dentro de tu proyecto"
         lead="Lee tu modelo de Revit, razona paso a paso con el criterio de +10 años de BIM Management y te dice qué corregir primero. Cada hallazgo llega con su evidencia, su impacto y su nivel de confianza."
         crumb={{ label: "DG BIM Intelligence", href: "/dg-bim-intelligence" }}
-        vimeo={{ id: "1223019570", aspect: 9 / 16, poster: "/images/posters/esc3.jpg" }}
+        vimeo={{ id: "1223019570", aspect: 9 / 16, poster: "/images/fondos/banda-navy.jpg" }}
       />
 
       <DataStrip
         items={[
           ["24/7", "razonando en tu proyecto"],
           ["10 años", "de criterio BIM destilado"],
-          ["4 roles", "cada quien ve lo suyo"],
+          ["2 tableros", "Modelador y Gerente, disponibles hoy"],
           ["+4.800", "profesionales formados por la academia"],
         ]}
       />
 
-      <Section tone="navy" fondoVimeo={{ id: "1223019560", aspect: 9 / 16, poster: "/images/posters/esc2.jpg" }}>
+      <Section tone="navy" fondoVimeo={{ id: "1223019560", aspect: 9 / 16, poster: "/images/fondos/cta-navy.jpg" }}>
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-14">
           <Reveal>
             <span className="tag-tech mb-4 inline-flex items-center gap-2.5 text-naranja-claro">
@@ -102,14 +102,14 @@ export default function Plataforma() {
         <SectionHead
           num="02"
           eyebrow="Por rol"
-          title="Un mismo proyecto, cuatro formas de decidir mejor"
-          lead="Nadie navega información que no le sirve. Cada perfil entra y ve exactamente lo que necesita decidir hoy."
+          title="Un mismo proyecto, un tablero por rol"
+          lead="Nadie navega información que no le sirve. Hoy están en producción los tableros de Modelador y Gerente; el de Coordinador está en desarrollo y el de Dueño viene después."
         />
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {ROLES.map(([rol, d], i) => (
+          {ROLES.map(([rol, d, estado], i) => (
             <Reveal key={rol} delay={i * 0.06}>
               <article className="panel h-full p-6">
-                <span className="font-heading text-[10px] font-bold uppercase tracking-[0.16em] text-tinta-suave">Rol 0{i + 1}</span>
+                <span className={`inline-block rounded-md px-2 py-0.5 font-heading text-[10px] font-bold uppercase tracking-[0.14em] ${estado === "Disponible hoy" ? "bg-emerald-50 text-emerald-700" : estado === "En desarrollo" ? "bg-naranja/10 text-naranja-texto" : "bg-crema text-tinta-suave"}`}>{estado}</span>
                 <h3 className="mt-2 text-lg font-bold text-naranja-texto">{rol}</h3>
                 <p className="mt-2 text-[13.5px] leading-relaxed text-tinta-suave">{d}</p>
               </article>
@@ -208,7 +208,7 @@ export default function Plataforma() {
       <Section tone="base">
         <SectionHead
           num="04"
-          eyebrow="Roadmap honesto"
+          eyebrow="Hoja de ruta honesta"
           title="Lo disponible se demuestra. Lo futuro es visión."
           lead="Preferimos decirte exactamente en qué punto está la plataforma antes de que la contrates."
         />
@@ -273,9 +273,15 @@ export default function Plataforma() {
               <article className="panel flex h-full flex-col border-l-2 border-l-naranja p-7">
                 <h3 className="text-xl font-bold text-navy">{t}</h3>
                 <p className="mt-3 flex-1 text-[14.5px] leading-relaxed text-tinta-suave">{d}</p>
-                <Link href="/contactos" className="mt-5 inline-flex items-center gap-1.5 font-heading text-sm font-bold text-naranja-texto transition-colors hover:text-azul">
-                  {cta} →
-                </Link>
+                {i === 0 ? (
+                  <Link href="/contactos#cita" className="mt-5 inline-flex items-center gap-1.5 font-heading text-sm font-bold text-naranja-texto transition-colors hover:text-azul">
+                    {cta} →
+                  </Link>
+                ) : (
+                  <a href={WA_MSG("Hola, quiero una demo en vivo de DG BIM Intelligence para mi equipo BIM")} target="_blank" rel="noopener" className="mt-5 inline-flex items-center gap-1.5 font-heading text-sm font-bold text-naranja-texto transition-colors hover:text-azul">
+                    {cta} →
+                  </a>
+                )}
               </article>
             </Reveal>
           ))}
@@ -284,8 +290,9 @@ export default function Plataforma() {
 
       <CtaFinal
         title="Está funcionando. Puedes verlo hoy."
-        text="Te mostramos la plataforma con datos reales de ejemplo y tableros por rol, para que evalúes si el criterio ayuda a tu equipo."
+        text="Te mostramos la plataforma con datos reales de ejemplo y los tableros disponibles, para que evalúes si el criterio ayuda a tu equipo."
         cta="Solicita una demo en vivo"
+        href={WA_MSG("Hola, quiero una demo en vivo de DG BIM Intelligence")}
       />
     </>
   );

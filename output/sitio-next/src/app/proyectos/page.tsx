@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: alternos("/proyectos.md"),
   title: "Proyectos",
   description:
-    "Proyectos reales de consultoría BIM y cálculo estructural en Ecuador, México, Colombia, Panamá, Perú y Costa Rica: edificaciones, silos industriales, naves y librerías BIM.",
+    "Proyectos reales de consultoría BIM y cálculo estructural en Ecuador, Guatemala, España, Costa Rica, Panamá, México, Colombia y Perú: edificaciones, silos industriales, naves y librerías BIM.",
 };
 
 /* Últimos proyectos 2025–2026 (tabla oficial del equipo), del más reciente al más antiguo */
@@ -81,6 +81,10 @@ const RECIENTES = [
     alcance: ["Informe de prediseño con cantidades presupuestables", "Losa de 30 cm y muros de 25 cm con acero en ambas caras", "Borde infinito integrado con viga perimetral", "230 m² de impermeabilización + 45 ml de waterstop"],
   },
 ];
+
+/* Ancla de cada proyecto (desde las tarjetas de la home) y año del historial. */
+const ancla = (t: string) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const anio = (lugar: string) => Number(/(\d{4})\s*$/.exec(lugar)?.[1] ?? 0);
 
 const HISTORIAL = [
   {
@@ -188,9 +192,9 @@ export default function Proyectos() {
         num="03"
         eyebrow="Proyectos"
         title="El criterio se demuestra en obra"
-        lead="Proyectos reales en Ecuador, México, Colombia, Panamá, Perú y Costa Rica. Lo que ves aquí son nuestros propios modelos de cálculo, detalles constructivos y entregables — no fotos de banco de imágenes."
+        lead="Proyectos reales en Ecuador, Guatemala, España, Costa Rica, Panamá, México, Colombia y Perú. Lo que ves aquí son nuestros propios modelos de cálculo, detalles constructivos y entregables — no fotos de banco de imágenes."
         crumb={{ label: "Proyectos", href: "/proyectos" }}
-        vimeo={{ id: "1223019550", aspect: 9 / 16, poster: "/images/posters/esc1.jpg" }}
+        vimeo={{ id: "1223019550", aspect: 9 / 16, poster: "/images/fondos/banda-navy.jpg" }}
       />
 
       {/* Proyectos recientes */}
@@ -204,7 +208,7 @@ export default function Proyectos() {
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {RECIENTES_2526.map((p, i) => (
             <Reveal key={p.titulo} delay={(i % 3) * 0.06} className={i === 0 ? "sm:col-span-2" : ""}>
-              <article className="group panel alza h-full overflow-hidden">
+              <article id={ancla(p.titulo)} className="group panel alza h-full scroll-mt-28 overflow-hidden">
                 <div className={`blueprint relative overflow-hidden bg-white ${i === 0 ? "aspect-[16/8]" : "aspect-[16/10]"}`}>
                   <Image
                     src={p.img}
@@ -301,7 +305,7 @@ export default function Proyectos() {
           lead="Las imágenes son nuestros modelos reales de análisis y BIM de cada proyecto."
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {HISTORIAL.map((p, i) => (
+          {[...HISTORIAL].sort((a, b) => anio(b.lugar) - anio(a.lugar)).map((p, i) => (
             <Reveal key={p.titulo} delay={(i % 3) * 0.06} className={i === 0 ? "sm:col-span-2" : ""}>
               <article className="group panel alza h-full overflow-hidden">
                 <div className={`blueprint relative overflow-hidden bg-white ${i === 0 ? "aspect-[16/8]" : "aspect-[16/10]"}`}>

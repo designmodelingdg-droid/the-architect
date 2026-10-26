@@ -7,7 +7,7 @@ import { AvalesMarquee } from "@/components/site/marquee";
 import { Section, SectionHead } from "@/components/site/section";
 import { Reveal } from "@/components/site/reveal";
 import { CtaFinal } from "@/components/site/cta-final";
-import { CLIENTES, ACADEMIA, EQUIPO, alternos } from "@/lib/site";
+import { CLIENTES, CLIENTES_SIN_LOGO, ACADEMIA, EQUIPO, alternos } from "@/lib/site";
 
 export const metadata: Metadata = {
   alternates: alternos("/nosotros.md"),
@@ -42,11 +42,15 @@ export default function Nosotros() {
               Trabajamos con constructoras, promotoras, estudios de arquitectura y propietarios que
               necesitan que su proyecto llegue a obra sin conflictos entre disciplinas.
             </p>
-            <div className="mt-6 grid grid-cols-3 gap-3">
-              {[["Política", "Superar expectativas en tiempo, costo y calidad"], ["Visión", "Liderar el diseño con nuevas tecnologías"], ["Misión", "Ejecutar con BIM y tecnología propia"]].map(([t, d]) => (
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              {[
+                ["Política", "Superar las expectativas del cliente en tiempo, costo y calidad. Cada entrega se revisa contra el alcance pactado y se coordina con las otras disciplinas antes de salir de la oficina."],
+                ["Visión", "Liderar el diseño estructural y la coordinación BIM en Latinoamérica apoyados en tecnología propia, con una escuela que forma a quienes van a usarla."],
+                ["Misión", "Ejecutar proyectos de ingeniería y arquitectura con metodología BIM y DG BIM Intelligence, para que el cliente decida con información verificada y llegue a obra sin conflictos."],
+              ].map(([t, d]) => (
                 <div key={t} className="panel p-4">
                   <h3 className="font-heading text-[10px] font-bold uppercase tracking-[0.15em] text-naranja-texto">{t}</h3>
-                  <p className="mt-1.5 text-[12px] leading-relaxed text-tinta-suave">{d}</p>
+                  <p className="mt-1.5 text-[12.5px] leading-relaxed text-tinta-suave">{d}</p>
                 </div>
               ))}
             </div>
@@ -97,7 +101,7 @@ export default function Nosotros() {
         </div>
       </Section>
 
-      <Section id="acreditaciones" tone="navy" fondoVimeo={{ id: "1223019550", aspect: 9 / 16, poster: "/images/posters/esc1.jpg" }}>
+      <Section id="acreditaciones" tone="navy" fondoVimeo={{ id: "1223019550", aspect: 9 / 16, poster: "/images/fondos/banda-navy.jpg" }}>
         <SectionHead
           dark
           num="02"
@@ -124,7 +128,7 @@ export default function Nosotros() {
 
       <Section>
         <SectionHead num="03" eyebrow="Confían en nosotros" title="Empresas que trabajan con Design Modeling" />
-        <div className="mx-auto mt-12 grid max-w-6xl grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-5 sm:grid-cols-4">
           {CLIENTES.map((c, i) => (
             <Reveal key={c.alt} delay={i * 0.05}>
               <figure className="alza overflow-hidden rounded-2xl border border-border bg-white">
@@ -138,6 +142,12 @@ export default function Nosotros() {
             </Reveal>
           ))}
         </div>
+        <Reveal className="mx-auto mt-8 max-w-3xl text-center">
+          <p className="text-[14px] leading-relaxed text-tinta-suave">
+            También trabajamos en 2025 y 2026 con <b className="font-semibold text-tinta">{CLIENTES_SIN_LOGO.join(", ")}</b>. Los detalles están en{" "}
+            <a href="/proyectos" className="font-semibold text-naranja-texto hover:text-azul">Proyectos</a>.
+          </p>
+        </Reveal>
         <Reveal className="mt-10 text-center">
           <p className="text-[14px] text-tinta-suave">
             ¿Buscas formación en BIM para ti o tu equipo?{" "}

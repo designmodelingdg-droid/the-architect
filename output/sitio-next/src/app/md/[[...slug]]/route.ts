@@ -61,7 +61,8 @@ ${familias()}
 Software propio: un agente que razona sobre el proyecto BIM con el criterio de
 más de 10 años de BIM Management. Cada hallazgo llega con su evidencia, su
 impacto y su nivel de confianza. Sincroniza directo desde Revit con el
-complemento DG BIM Sync y ofrece tableros por rol.
+complemento DG BIM Sync y ofrece tableros por rol (Modelador y Gerente hoy;
+Coordinador en desarrollo).
 
 Detalle: ${BASE}/dg-bim-intelligence
 
@@ -133,9 +134,9 @@ modelo, el impacto estimado y la acción sugerida, más un nivel de confianza.
 
 - **Modelador**: elementos, nivel de detalle, propiedades por completar y
   puntaje de calidad del modelo.
-- **Coordinador**: interferencias clasificadas por severidad, con responsable.
 - **Gerencia**: avance y riesgo por disciplina.
-- **Dueño del proyecto**: estado general sin tecnicismos.
+- **Coordinador** (en desarrollo): interferencias clasificadas por severidad, con responsable.
+- **Dueño del proyecto** (próximamente): estado general sin tecnicismos.
 
 ## Estado del producto
 
@@ -294,7 +295,7 @@ const META: Record<string, { titulo: string; descripcion: string }> = {
   "dg-bim-intelligence": {
     titulo: "DG BIM Intelligence",
     descripcion:
-      "Software propio: agente de IA que razona sobre el proyecto BIM con evidencia e impacto, sincronización desde Revit y tableros por rol.",
+      "Software propio: agente de IA que razona sobre el proyecto BIM con evidencia e impacto, sincronización desde Revit y tableros de Modelador y Gerente (Coordinador en desarrollo).",
   },
   proyectos: {
     titulo: "Proyectos",

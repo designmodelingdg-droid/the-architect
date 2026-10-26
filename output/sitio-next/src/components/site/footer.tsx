@@ -15,7 +15,6 @@ const COLS = [
       { label: "Nosotros", href: "/nosotros" },
       { label: "Equipo", href: "/nosotros#equipo" },
       { label: "Acreditaciones", href: "/nosotros#acreditaciones" },
-      { label: "Blog", href: "/blog" },
       { label: "Contacto", href: "/contactos" },
     ],
   },

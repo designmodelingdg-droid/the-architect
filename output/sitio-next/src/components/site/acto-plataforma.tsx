@@ -17,9 +17,9 @@ import { Reveal } from "./reveal";
  */
 const PUNTOS = [
   "Sincronización directa desde Revit con el complemento DG BIM Sync",
-  "Detección de interferencias clasificadas por severidad, con responsable asignado",
   "Control de calidad del modelo antes de que llegue a obra",
-  "Tableros por rol: modelador, coordinador, gerencia y dueño",
+  "Tableros de Modelador y Gerente BIM disponibles hoy; Coordinador en desarrollo",
+  "Agente especializado 24/7 que razona sobre tu proyecto con evidencia e impacto",
 ];
 
 function useEscritorio() {

@@ -36,6 +36,15 @@ export function ContactoBloque({ conDatos = true }: { conDatos?: boolean }) {
               <div>
                 <dt className="tag-tech mb-1.5 !text-tinta-suave">Oficina</dt>
                 <dd className="text-tinta-suave">Juana Terrazas N71-154, Quito, Ecuador</dd>
+                <dd className="mt-3 overflow-hidden rounded-lg border border-border">
+                  <iframe
+                    src="https://www.google.com/maps?q=Juana+Terrazas+N71-154,+Quito,+Ecuador&z=16&output=embed"
+                    title="Mapa de la oficina de Design Modeling DG en Quito"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="block h-48 w-full border-0"
+                  />
+                </dd>
               </div>
             </dl>
           ) : null}

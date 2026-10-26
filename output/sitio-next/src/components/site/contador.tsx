@@ -7,7 +7,9 @@ import { useMovimientoReducido } from "./use-movimiento-reducido";
 /*
  * Cifra que florece al entrar en pantalla. Solo anima valores numéricos reales
  * ("10+", "+4.800", "4 roles"); cualquier otro texto ("ARQ/EST/MEP", "24/7")
- * se pinta tal cual. Nunca inventa números: parte de 0 y llega al valor dado.
+ * se pinta tal cual. El HTML lleva siempre la cifra real (Google, las vistas
+ * previas de WhatsApp y quien baja rápido no ven «+0»); la animación de 0 al
+ * valor empieza solo cuando el número entra en pantalla.
  */
 const PATRON = /^(\+?)(\d{1,3}(?:\.\d{3})+|\d+)([^\d/]*)$/;
 
@@ -21,7 +23,7 @@ export function Contador({ valor, className }: { valor: string; className?: stri
   const visible = useInView(ref, { once: true, margin: "-40px" });
   const reducido = useMovimientoReducido();
   const objetivo = m ? Number(m[2].replace(/\./g, "")) : 0;
-  const [actual, setActual] = useState(0);
+  const [actual, setActual] = useState(objetivo);
 
   useEffect(() => {
     if (!m || !visible || reducido) return;

@@ -6,10 +6,12 @@ export function CtaFinal({
   title = "Cuéntanos de tu proyecto",
   text = "Treinta minutos de diagnóstico pueden ahorrarte semanas de retrabajo en obra. Sin costo, sin compromiso y con una respuesta concreta sobre qué encontramos.",
   cta = "Agenda tu diagnóstico gratuito",
+  href = "/contactos#cita",
 }: {
   title?: string;
   text?: string;
   cta?: string;
+  href?: string;
 }) {
   return (
     <section className="fondo-cta border-t border-white/8 bg-navy px-5 py-20 text-center">
@@ -19,7 +21,7 @@ export function CtaFinal({
         <p className="mx-auto mt-4 max-w-xl leading-relaxed text-white/70">{text}</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link
-            href="/contactos"
+            href={href}
             data-btn
             className="rounded-lg bg-naranja px-7 py-3.5 font-heading text-[15px] font-bold text-white shadow-lg shadow-naranja/25 hover:bg-naranja-claro"
           >

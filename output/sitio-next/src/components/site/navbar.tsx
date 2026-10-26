@@ -81,7 +81,8 @@ export function Navbar() {
             data-btn
             className="rounded-lg bg-naranja px-4 py-2.5 font-heading text-[13px] font-bold text-white hover:bg-azul"
           >
-            Agenda tu diagnóstico
+            <span className="sm:hidden">Agendar</span>
+            <span className="hidden sm:inline">Agenda tu diagnóstico</span>
           </Link>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
