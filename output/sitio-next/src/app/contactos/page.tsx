@@ -16,10 +16,10 @@ export default function Contactos() {
   return (
     <>
       <PageHero
-        vimeo={{ id: "1223019560", aspect: 9 / 16, poster: "/images/posters/esc2.jpg" }}
+        vimeo={{ id: "1223019560", aspect: 9 / 16, poster: "/images/fondos/cta-navy.jpg" }}
         num="05"
         eyebrow="Contacto"
-        title="Cuéntanos de tu proyecto"
+        title="Hablemos de tu proyecto"
         lead="Treinta minutos de diagnóstico pueden ahorrarte semanas de retrabajo en obra. Sin costo, sin compromiso y con una respuesta concreta sobre qué encontramos."
         crumb={{ label: "Contacto", href: "/contactos" }}
       />

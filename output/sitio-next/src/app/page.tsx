@@ -12,6 +12,12 @@ import { ZonaMouse, CapaMouse } from "@/components/site/zona-mouse";
 import { DataStrip } from "@/components/site/data-strip";
 import { TextoCinetico } from "@/components/site/texto-cinetico";
 import { ActoPlataforma } from "@/components/site/acto-plataforma";
+import type { Metadata } from "next";
+
+/* La URL oficial de la portada es la raíz del dominio, no /index. */
+export const metadata: Metadata = {
+  alternates: { canonical: "/", types: { "text/markdown": "/index.md" } },
+};
 import { ContactoBloque } from "@/components/site/contacto-bloque";
 import { NovedadesInicio } from "@/components/site/novedades-inicio";
 import { ACADEMIA, FAMILIAS, VERTICALES, EQUIPO } from "@/lib/site";
@@ -23,7 +29,7 @@ const PILARES = [
 ];
 
 const COSTOS = [
-  ["5–10%", "del proyecto se va en rework", "El retrabajo por errores de coordinación consume el margen antes de que lo veas venir."],
+  ["5–10%", "del proyecto se va en retrabajo", "El retrabajo por errores de coordinación consume el margen antes de que lo veas venir."],
   ["US$1.080", "cuesta cada RFI en promedio", "Cada solicitud de información que nace de un conflicto no resuelto tiene precio."],
   ["5–10×", "más caro corregir en obra", "El mismo error cuesta horas en el modelo y semanas cuando ya está construido."],
 ];
@@ -35,7 +41,7 @@ export default function Home() {
       <ZonaMouse className="relative overflow-hidden border-b border-navy bg-navy py-20 md:py-28">
         <CapaMouse profundidad={22} className="absolute inset-0">
           <ParallaxFondo>
-            <VimeoFondo id="1223019533" poster="/images/hero-poster.jpg" />
+            <VimeoFondo id="1223019533" poster="/images/dm-hero.jpg" />
           </ParallaxFondo>
         </CapaMouse>
         {/* Degradados para legibilidad: navy desde la izquierda y desde abajo */}
@@ -68,7 +74,7 @@ export default function Home() {
             </HeroReveal>
             <HeroReveal delay={0.24}>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/contactos" data-btn className="rounded-lg bg-naranja px-7 py-3.5 font-heading text-[15px] font-bold text-white shadow-lg shadow-naranja/40 hover:bg-naranja-claro">
+                <Link href="/contactos#cita" data-btn className="rounded-lg bg-naranja px-7 py-3.5 font-heading text-[15px] font-bold text-white shadow-lg shadow-naranja/40 hover:bg-naranja-claro">
                   Agenda tu diagnóstico
                 </Link>
                 <Link href="/consultoria" data-btn className="rounded-lg border border-white/40 px-7 py-3.5 font-heading text-[15px] font-bold text-white hover:border-naranja-claro hover:text-naranja-claro">
@@ -92,7 +98,7 @@ export default function Home() {
       />
 
       {/* Tres pilares — banda navy con video tenue */}
-      <Section tone="navy" fondoVimeo={{ id: "1223019550", aspect: 9 / 16, poster: "/images/posters/esc1.jpg" }}>
+      <Section tone="navy" fondoVimeo={{ id: "1223019550", aspect: 9 / 16, poster: "/images/fondos/banda-navy.jpg" }}>
         <SectionHead
           dark
           eyebrow="Consultoría — BIM — IA"
@@ -188,6 +194,13 @@ export default function Home() {
             </Reveal>
           ))}
         </div>
+        <Reveal className="mt-6">
+          <p className="text-center text-[12px] leading-relaxed text-tinta-suave">
+            Fuentes: costo medio por RFI según el estudio «Impact &amp; Control of RFIs on Construction Projects» del Navigant Construction Forum (2013);
+            retrabajo del 5 al 10 % del costo del proyecto según el Construction Industry Institute y los estudios de P. E. D. Love sobre rework en construcción;
+            el sobrecosto de corregir en obra es una regla de la industria, variable según el proyecto.
+          </p>
+        </Reveal>
       </Section>
 
       {/* Con quiénes trabajamos */}
@@ -218,12 +231,12 @@ export default function Home() {
         />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {[
-            { img: "/images/proy25/lc-constructora.jpg", t: "LC Constructora · Ya Está", d: "Guatemala · 2026 — coordinación BIM multidisciplinaria de gran escala con BCF y ACCA" },
-            { img: "/images/proy25/chalets-espana.jpg", t: "García de Celis · 30 Chalets", d: "León, España · 2026 — BIM LOD 350 con detección de interferencias y presupuestos BC3" },
-            { img: "/images/proy25/piscinas-cr.jpg", t: "Complejo de Piscinas", d: "Costa Rica · 2026 — ~2.660 m² con micropilotes, Revit + SAP2000" },
+            { img: "/images/proy25/lc-constructora.jpg", t: "LC Constructora · Ya Está", d: "Guatemala · 2026 — coordinación BIM multidisciplinaria de gran escala con BCF y ACCA", ancla: "lc-constructora-ya-esta" },
+            { img: "/images/proy25/chalets-espana.jpg", t: "García de Celis · 30 Chalets", d: "León, España · 2026 — BIM LOD 350 con detección de interferencias y presupuestos BC3", ancla: "garcia-de-celis-30-chalets" },
+            { img: "/images/proy25/piscinas-cr.jpg", t: "Complejo de Piscinas", d: "Costa Rica · 2026 — ~2.660 m² con micropilotes, Revit + SAP2000", ancla: "complejo-de-piscinas" },
           ].map((p, i) => (
             <Reveal key={p.t} delay={i * 0.07}>
-              <Link href="/proyectos" className="group block">
+              <Link href={`/proyectos#${p.ancla}`} className="group block">
                 <article className="panel alza overflow-hidden">
                   <div className="relative aspect-video overflow-hidden">
                     <Image src={p.img} alt={p.t} fill sizes="(min-width:768px) 33vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
@@ -248,11 +261,11 @@ export default function Home() {
       <Section tone="base">
         <SectionHead
           eyebrow="El equipo"
-          title="Ingenieros con nombre, apellido y LinkedIn"
-          lead="Quien firma tu proyecto es quien lo revisa. Conoce a las personas detrás de cada entrega."
+          title="Las personas que dirigen, calculan y revisan tu proyecto"
+          lead="Quien firma tu proyecto es quien lo revisa. Conoce a las personas detrás de cada entrega, con nombre, apellido y LinkedIn."
         />
-        <div className="mx-auto mt-12 grid max-w-3xl gap-5 sm:grid-cols-2">
-          {EQUIPO.slice(0, 2).map((m, i) => (
+        <div className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {EQUIPO.slice(0, 4).map((m, i) => (
             <Reveal key={m.nombre} delay={i * 0.08}>
               <article className="panel alza h-full p-7 text-center">
                 <Image src={m.foto} alt={m.nombre} width={320} height={320} className="mx-auto size-36 rounded-full border-2 border-naranja/40 object-cover md:size-40" />

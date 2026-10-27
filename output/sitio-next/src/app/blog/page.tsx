@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   alternates: alternos("/blog.md"),
   title: "Blog",
   description: "Artículos técnicos sobre metodología BIM, IA aplicada a la construcción y diseño estructural.",
+  /* Sin artículos todavía: fuera del índice y del menú hasta tener al menos tres. */
+  robots: { index: false, follow: true },
 };
 
 export default function Blog() {

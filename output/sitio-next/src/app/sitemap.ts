@@ -10,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ["/proyectos", 0.8],
     ["/nosotros", 0.7],
     ["/contactos", 0.8],
-    ["/blog", 0.4],
     ["/terminos", 0.2],
     ["/privacidad", 0.2],
   ];

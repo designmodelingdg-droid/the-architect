@@ -78,9 +78,9 @@ export const FAMILIAS = [
     resumen: "Nuestro plus: cada servicio se entrega con DG BIM Intelligence, el agente que razona sobre tu proyecto.",
     servicios: [
       "Auditoría del modelo con agente de IA",
-      "Detección de interferencias clasificadas por severidad",
+      "Detección de interferencias clasificadas por severidad (en desarrollo)",
       "Control de calidad de datos del modelo",
-      "Tableros por rol: modelador, coordinador, gerencia y dueño",
+      "Tableros de Modelador y Gerente BIM; Coordinador en desarrollo",
       "Agente especializado disponible 24/7",
     ],
     img: "/images/dgbim/dashboard.jpg",
@@ -109,7 +109,7 @@ export const EQUIPO = [
   },
   {
     nombre: "Gabriel Pantoja Linares",
-    cargo: "CEO y Cofundador · Dirección Técnica BIM",
+    cargo: "Cofundador · Director Técnico BIM",
     foto: "/images/equipo/gabriel.jpg",
     linkedin: "https://www.linkedin.com/in/gabriel-pantoja-b9202a115/",
     bio: "Ingeniero Civil, especialista en estructuras y BIM Management. Dirige el rumbo técnico de cada proyecto — y su criterio de +10 años es el que entrena a DG BIM Intelligence.",
@@ -149,6 +149,7 @@ export const REDES = [
   { label: "Instagram", href: "https://www.instagram.com/design_modeling_dg/" },
   { label: "TikTok", href: "https://www.tiktok.com/@designmodelingdg" },
   { label: "Facebook", href: "https://www.facebook.com/designmodelingdg" },
+  { label: "YouTube", href: "https://youtube.com/@DesignModelingDG" },
   { label: "X", href: "https://x.com/DgModeling" },
 ];
 
@@ -167,11 +168,14 @@ export const AVALES = [
   { src: "/images/av12-humantech.png", alt: "HumanTech" },
 ];
 
+/* Clientes de los proyectos recientes (2025–2026) de los que aún no tenemos
+   logo: se nombran en texto hasta que lleguen los archivos oficiales. */
+export const CLIENTES_SIN_LOGO = ["LC Constructora (Guatemala)", "García de Celis (España)", "Tradycsa Services (Panamá)", "Proding", "Galileo", "Ramalta"];
+
 export const CLIENTES = [
   { src: "/images/cli-spi.png", alt: "SPI", dark: false },
   { src: "/images/cli-vymsa.png", alt: "VYMSA", dark: true },
   { src: "/images/cli-arconsa.png", alt: "ARCONSA — Estructuras de Acero", dark: false },
-  { src: "/images/cli-sharp.png", alt: "Sharp CRM", dark: false },
   { src: "/images/cli-inflect.png", alt: "Inflect Consultoría", dark: false },
 ];
 

@@ -64,7 +64,7 @@ export default function Consultoria() {
         title="Un catálogo completo de consultoría BIM"
         lead="Cinco familias de servicios que cubren el proyecto de punta a punta: del cálculo estructural a la inteligencia artificial aplicada. Diseño sismorresistente según códigos nacionales e internacionales, y cada servicio entregado con visibilidad total en DG BIM Intelligence."
         crumb={{ label: "Consultoría", href: "/consultoria" }}
-        vimeo={{ id: "1223019560", aspect: 9 / 16, poster: "/images/posters/esc2.jpg" }}
+        vimeo={{ id: "1223019560", aspect: 9 / 16, poster: "/images/fondos/cta-navy.jpg" }}
       />
       <AvalesMarquee />
 
@@ -108,7 +108,7 @@ export default function Consultoria() {
 
       {/* Banda cinematográfica: acero real antes de la capacidad técnica */}
       <CineBanda
-        img="/images/ing/historia-3-portico-nave.jpg"
+        img="/images/esp-estructural.jpg"
         eyebrow="Capacidad técnica"
         titulo={
           <>
@@ -117,7 +117,7 @@ export default function Consultoria() {
         }
       />
 
-      <Section tone="navy" fondoVimeo={{ id: "1223019570", aspect: 9 / 16, poster: "/images/posters/esc3.jpg" }}>
+      <Section tone="navy" fondoVimeo={{ id: "1223019570", aspect: 9 / 16, poster: "/images/fondos/banda-navy.jpg" }}>
         <SectionHead
           dark
           eyebrow="Capacidad técnica"
@@ -179,6 +179,16 @@ export default function Consultoria() {
 
       <Section>
         <SectionHead eyebrow="Preguntas frecuentes" title="Lo que nos preguntan antes de contratar" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: FAQ.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })),
+            }).replace(/</g, "\\u003c"),
+          }}
+        />
         <Reveal className="mx-auto mt-10 max-w-3xl">
           <Accordion type="single" collapsible className="space-y-2.5">
             {FAQ.map(([q, a], i) => (

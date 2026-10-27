@@ -3,7 +3,7 @@ import { Overpass, Nunito } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/site/navbar";
 import { TopBar } from "@/components/site/topbar";
-import { FranjaNovedades } from "@/components/site/franja-novedades";
+import { AnuncioBarra } from "@/components/site/anuncio-barra";
 import { Footer } from "@/components/site/footer";
 import { ChatWidget } from "@/components/site/chat-widget";
 import { ScrollSuave } from "@/components/site/scroll-suave";
@@ -36,16 +36,10 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_EC",
     siteName: "Design Modeling DG",
-    title: "Design Modeling DG — Consultoría BIM con inteligencia artificial",
-    description:
-      "Consultoría BIM estructural y arquitectónica con un plus: DG BIM Intelligence, nuestro software de IA. Ecuador y Latinoamérica.",
     images: [{ url: "/images/og-web.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Design Modeling DG — Consultoría BIM con inteligencia artificial",
-    description:
-      "Consultoría BIM estructural y arquitectónica con software propio de IA. Ecuador y Latinoamérica.",
     images: ["/images/og-web.jpg"],
   },
 };
@@ -57,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <DatosEstructurados />
         <ScrollSuave />
         <a href="#contenido" className="saltar-contenido">Saltar al contenido</a>
-        <FranjaNovedades />
+        <AnuncioBarra />
         <TopBar />
         <Navbar />
         <main id="contenido">{children}</main>
