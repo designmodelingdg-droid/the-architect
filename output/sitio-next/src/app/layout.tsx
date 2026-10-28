@@ -23,6 +23,10 @@ const nunito = Nunito({
   display: "swap",
 });
 
+/* Toda página se regenera como mucho cada 5 minutos: lo publicado desde la app
+   de operaciones (franja, ofertas, eventos) sale solo, sin desplegar. */
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://dgdesignmodeling.com"),
   title: {

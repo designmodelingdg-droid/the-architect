@@ -25,10 +25,7 @@ const enlaceSeguro = (u?: string) => (u && /^(https:\/\/|\/(?!\/))/.test(u) ? u 
 const vigente = (x: { desde?: string; hasta?: string }, ahora: number) =>
   (!x.desde || Date.parse(x.desde) <= ahora) && (!x.hasta || Date.parse(x.hasta) >= ahora);
 
-let enMemoria: { t: number; v: NovedadesWeb | null } | null = null;
-
 export async function novedadesWeb(): Promise<NovedadesWeb | null> {
-  if (enMemoria && Date.now() - enMemoria.t < 60_000) return enMemoria.v;
   let v: NovedadesWeb | null = null;
   try {
     const r = await fetch(`${BASE}/api/public/web?sitio=${SITIO}`, { next: { revalidate: 300, tags: [ETIQUETA_CACHE] }, headers: { Accept: "application/json" } });
@@ -49,6 +46,5 @@ export async function novedadesWeb(): Promise<NovedadesWeb | null> {
   } catch {
     v = null;
   }
-  enMemoria = { t: Date.now(), v };
   return v;
 }
