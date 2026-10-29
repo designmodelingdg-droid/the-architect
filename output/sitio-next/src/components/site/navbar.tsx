@@ -13,7 +13,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur-md">
+    <header className="border-b border-border bg-white/95 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
         <Link href="/" aria-label="Design Modeling DG — Inicio">
           <Image src="/images/logo-dg.png" alt="Design Modeling DG" width={190} height={45} priority className="h-9 w-auto md:h-10" />

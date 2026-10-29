@@ -55,9 +55,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <DatosEstructurados />
         <ScrollSuave />
         <a href="#contenido" className="saltar-contenido">Saltar al contenido</a>
-        <AnuncioBarra />
         <TopBar />
-        <Navbar />
+        {/* Barra de anuncio y menú viajan juntos, fijos arriba al hacer scroll. */}
+        <div className="sticky top-0 z-50">
+          <AnuncioBarra />
+          <Navbar />
+        </div>
         <main id="contenido">{children}</main>
         <Footer />
         <ChatWidget />
