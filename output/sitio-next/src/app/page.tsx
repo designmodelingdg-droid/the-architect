@@ -41,7 +41,7 @@ export default function Home() {
       <ZonaMouse className="relative overflow-hidden border-b border-navy bg-navy py-20 md:py-28">
         <CapaMouse profundidad={22} className="absolute inset-0">
           <ParallaxFondo>
-            <VideoFondo />
+            <VideoFondo despues={{ id: "1223019533", poster: "/images/dm-hero.jpg" }} />
           </ParallaxFondo>
         </CapaMouse>
         {/* Degradados para legibilidad: navy desde la izquierda y desde abajo */}
