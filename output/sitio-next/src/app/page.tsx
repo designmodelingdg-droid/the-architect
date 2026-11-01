@@ -5,7 +5,7 @@ import { IconoLinkedIn } from "@/components/site/icono-linkedin";
 import { Section, SectionHead } from "@/components/site/section";
 import { Reveal, HeroReveal } from "@/components/site/reveal";
 import { AvalesMarquee } from "@/components/site/marquee";
-import { VimeoFondo } from "@/components/site/vimeo-fondo";
+import { VideoFondo } from "@/components/site/video-fondo";
 import { CineBanda } from "@/components/site/cine-banda";
 import { ParallaxFondo, ParallaxImg } from "@/components/site/parallax";
 import { ZonaMouse, CapaMouse } from "@/components/site/zona-mouse";
@@ -41,7 +41,7 @@ export default function Home() {
       <ZonaMouse className="relative overflow-hidden border-b border-navy bg-navy py-20 md:py-28">
         <CapaMouse profundidad={22} className="absolute inset-0">
           <ParallaxFondo>
-            <VimeoFondo id="1223019533" poster="/images/dm-hero.jpg" />
+            <VideoFondo />
           </ParallaxFondo>
         </CapaMouse>
         {/* Degradados para legibilidad: navy desde la izquierda y desde abajo */}
