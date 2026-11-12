@@ -37,6 +37,11 @@ manejo de datos personales debe revisarse con más rigor que el resto.
   construir HTML, redirecciones o URLs de terceros sin validar contra una lista fija.
 
 ## Middleware y cabeceras
+- `next.config.ts` envía en todas las rutas: `X-Frame-Options: SAMEORIGIN`,
+  CSP con `frame-ancestors 'self'`, `base-uri 'self'`, `object-src 'none'` y
+  `form-action 'self'`, `X-Content-Type-Options: nosniff`,
+  `Referrer-Policy: strict-origin-when-cross-origin` y una `Permissions-Policy`
+  sin cámara, micrófono, ubicación ni pagos. No se quitan sin revisarlo aquí.
 - `src/middleware.ts` solo añade cabeceras (`X-Robots-Tag` en hosts `*.vercel.app`).
   No debe redirigir ni reescribir en función de cabeceras controladas por el usuario
   (`host`, `x-forwarded-*`, `referer`) sin una lista cerrada de valores permitidos.
@@ -55,6 +60,8 @@ manejo de datos personales debe revisarse con más rigor que el resto.
 - Los precios y condiciones internas de DG BIM Intelligence no van al sitio público.
 
 ## Dependencias y build
+- `next` va fijado a una versión con los parches de seguridad al día (16.4.6 en
+  noviembre de 2026). `shadcn` es solo la CLI: dependencia de desarrollo.
 - No añadir dependencias con postinstall que descarguen binarios sin revisarlas.
 - Mantener `next`, `react` y `motion` en versiones con soporte; revisar `npm audit`
   ante cualquier `high` o `critical` antes de mergear.

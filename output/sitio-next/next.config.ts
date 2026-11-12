@@ -16,6 +16,14 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         headers: [
+          /* Seguridad: sin incrustar el sitio en marcos ajenos (clickjacking),
+             sin adivinar tipos de archivo, referer recortado a otros dominios y
+             sin cámara, micrófono ni ubicación. HSTS ya lo pone Vercel. */
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Content-Security-Policy", value: "frame-ancestors 'self'; base-uri 'self'; object-src 'none'; form-action 'self'" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()" },
           {
             key: "Vary",
             value:
